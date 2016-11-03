@@ -1,0 +1,34 @@
+#coding: utf-8
+
+class Event
+  attr_reader :event_id, :title, :catch, :description, :event_url, :started_at, :ended_at, :url, :address, :place, :lat, :lon, :owner_id, :owner_nickname, :owner_twitter_id, :limit, :accepted, :waiting, :updated_at, :hash_tag, :event_type, :series
+  def initialize(data)
+    @event_id = data[:event_id] || data[:id] || ''              # イベントID
+    @title = data[:title] || ''                                 # タイトル
+    @catch = data[:catch] || ''                                 # キャッチコピー
+    @description = data[:description] || ''                     # 詳細
+    @event_url = data[:event_url] || data[:public_url] || ''    # 告知ページ
+    @started_at = data[:started_at] || data[:starts_at] || ''   # イベント開催日時
+    @ended_at = data[:ended_at] || data[:ends_at] || ''         # イベント終了日時
+    @url = data[:url] || ''                                     # 参考URL
+    @address = data[:address] || ''                             # 開催場所(住所)
+    @place = data[:place] || data[:venue_name] || ''            # 開催会場
+    @lat = data[:lat] || data[:long] || ''                      # 開催会場の緯度
+    @lon = data[:lon] || ''                                     # 開催会場の経度
+    @owner_id = data[:owner_id] || ''                           # 主催者ID
+    @owner_nickname = data[:owner_nickname] || ''               # 主催者nickname
+    @owner_twitter_id = data[:owner_twitter_id] || ''           # 主催者twitter
+    @limit = data[:limit] || data[:ticket_limit] || 0           # 定員
+    @accepted = data[:accepted] || data[:participants] || 0     # 参加者
+    @waiting = data[:waiting] || data[:waitlisted] || ''        # キャンセル待ち
+    @updated_at = data[:updated_at] || ''                       # 更新日時
+    @hash_tag = data[:hash_tag] || ''                           # ハッシュタグ
+    @event_type = data[:event_type] || ''
+    @series = data[:series] || ''
+  end
+
+  def limit_over?
+    return 0 if accepted == 0
+    limit <= accepted
+  end
+end
