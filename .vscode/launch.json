@@ -9,6 +9,13 @@
             "program": "${workspaceRoot}/main.rb"
         },
         {
+            "name": "Exec test",
+            "type": "Ruby",
+            "request": "launch",
+            "cwd": "${workspaceRoot}",
+            "program": "${workspaceRoot}/test.rb"
+        },
+        {
             "name": "Listen for rdebug-ide",
             "type": "Ruby",
             "request": "attach",

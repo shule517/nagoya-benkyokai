@@ -1,18 +1,8 @@
 # encoding: utf-8
-require 'test/unit'
 require './connpass'
 
-class ConnpassTest < Test::Unit::TestCase
-  def test_event_users
-    api = Connpass.new
-    users = api.event_users(41648)
-    assert(users.count > 0)
-    assert(users.include?('http://connpass.com/user/shule517/'))
-  end
-
-  def test_search
-    api = Connpass.new
-    events = api.search('名古屋')
-    assert(events.count > 0)
-  end
+api = Connpass.new
+events = api.search('名古屋').sort_by {|event| event.started_at}
+events.each do |event|
+  puts "#{event.started_at[0..9]}【#{event.title}】 #{event.catch}　◆#{event.place} #{event.accepted}/#{event.limit} #{event.limit_over? ? "定員" : "まだいけます"}"
 end
