@@ -2,8 +2,9 @@
 require "./http"
 
 class Event
-  attr_reader :event_id, :title, :catch, :description, :event_url, :started_at, :ended_at, :url, :address, :place, :lat, :lon, :owner_id, :owner_nickname, :owner_twitter_id, :limit, :accepted, :waiting, :updated_at, :hash_tag, :event_type, :series, :image, :group_url, :group_id, :group_title
+  attr_reader :data, :event_id, :title, :catch, :description, :event_url, :started_at, :ended_at, :url, :address, :place, :lat, :lon, :owner_id, :owner_nickname, :owner_twitter_id, :limit, :accepted, :waiting, :updated_at, :hash_tag, :event_type, :series
   def initialize(data)
+    @data = data
     @event_id = data[:event_id] || data[:id] || ''              # イベントID
     @title = data[:title] || ''                                 # タイトル
     @catch = data[:catch] || ''                                 # キャッチコピー
@@ -26,17 +27,29 @@ class Event
     @hash_tag = data[:hash_tag] || ''                           # ハッシュタグ
     @event_type = data[:event_type] || ''
     @series = data[:series] || {}                               # グループ情報
-    @group_url = series[:url]
-    @group_id = series[:id]
-    @group_title = series[:title]
+  end
+end
+
+class ConnpassEvent < Event
+
+  def group_url
+      series[:url]
+  end
+
+  def group_id
+      series[:id]
+  end
+
+  def group_title
+      series[:title]
   end
 
   def owner_twitter_url
     @owner_twitter_url ||= user_doc.css('.social_link > a').attribute('href').value
   end
 
-  def image
-    @image ||= event_doc.css('//meta[property="og:image"]/@content').to_s
+  def logo
+    @logo ||= event_doc.css('//meta[property="og:image"]/@content').to_s
   end
 
   def limit_over?
@@ -50,5 +63,31 @@ class Event
 
   def user_doc
     @user_doc ||= Http.get_document("http://connpass.com/user/#{owner_nickname}")
+  end
+end
+
+class DoorkeeperEvent < Event
+  def group_url
+    @group_url ||= event_doc.css('//meta[property="og:url"]/@content').to_s.gsub(/events.*/, '')
+  end
+
+  def group_id
+    data[:group]
+  end
+
+  def group_title
+    @group_title ||= event_doc.css('//meta[property="og:site_name"]/@content').to_s
+  end
+
+  def group_logo
+    @group_logo ||= event_doc.css('//meta[property="og:image"]/@content').to_s
+  end
+
+  def logo
+    @logo ||= event_doc.css('div.event-banner-image > img').attribute('src').value
+  end
+
+  def event_doc
+    @event_doc ||= Http.get_document(event_url)
   end
 end

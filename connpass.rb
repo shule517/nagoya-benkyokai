@@ -27,10 +27,10 @@ class Connpass
     results_available = result[:results_available]
     results_start = result[:results_start]
     next_start = results_start + results_returned
-    events = result[:events].map {|event| Event.new(event)}
+    events = result[:events].map {|event| ConnpassEvent.new(event)}
 
     if next_start < results_available
-      events + search(keywords, next_start)
+      events + search_core(next_start, keywords)
     else
       events
     end
