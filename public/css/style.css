@@ -1,0 +1,36 @@
+table {
+  border-collapse: collapse;
+  border: 2px solid green; /* 外側の枠線 */
+}
+th, tr {
+  border-bottom: 1px #000000 solid;
+  padding: 10px;
+}
+td {
+  border-width: 1px 0px; /* 上下だけ引く */
+  border-color: green;   /* 線色：緑 */
+  border-style: solid;   /* 線種：実線 */
+  padding: 0.3em;        /* セル内側の余白 */
+}
+h1 {
+  color: black;
+  background-color: orange;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+table {
+  border: 1px #000000 solid;
+  border-color: white;
+}
+img {
+  width: auto;
+  /*height: auto;*/
+  height: 200px;
+  max-width: 300px;
+  max-height: 200px;
+  padding: 10px 40px 10px 100px;
+}
+p {
+  text-align:center;
+}

@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="/css/style.css" />
+<script type="text/jsx;harmony=true" src="/js/test.js"></script>
+<h1 style="background=orange">名古屋勉強会λ</h1>
+<table>
+  <tr>
+    <th>date</th>
+    <th>title</th>
+  </tr>
+  <% @data.each do |event| %>
+  <tr>
+    <% year = event.started_at[0...4].to_i %>
+    <% month = event.started_at[5...7].to_i %>
+    <% day = event.started_at[8...10].to_i %>
+    <% d = Date.new(year, month, day) %>
+    <td>
+      <p>
+        <img src="<%= event.image %>">
+      </p>
+    </dt>
+    <td>
+      <%= event.started_at[0...10] %> (<%= d.strftime('%a') %>)<br>
+      <a href="<%= event.event_url %>">
+        <%= event.title %><br>
+      </a>
+      <%= event.catch %><br>
+      <%= event.place %><br><br>
+      <%= "#{event.accepted}/#{event.limit} #{event.limit_over? ? "定員" : "まだいけます"}" %><br>
+      <%#<%= event.source %>
+      <a href="<%= event.group_url %>"><%= event.group_title %></a><br>
+
+      <a href="http://connpass.com/user/<%= event.owner_nickname %>"><%= event.owner_nickname %></a><br>
+
+      <% if @owner_twitter_id %>
+      twitter:<a href="http://twitter.com/<%= event.owner_twitter_id %>"><%= event.owner_nickname %></a><br>
+      <% end %>
+      
+    </td>
+  </tr>
+  <% end %>
+</table>
