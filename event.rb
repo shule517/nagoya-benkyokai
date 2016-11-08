@@ -1,7 +1,8 @@
 #coding: utf-8
+require "./http"
 
 class Event
-  attr_reader :event_id, :title, :catch, :description, :event_url, :started_at, :ended_at, :url, :address, :place, :lat, :lon, :owner_id, :owner_nickname, :owner_twitter_id, :limit, :accepted, :waiting, :updated_at, :hash_tag, :event_type, :series
+  attr_reader :event_id, :title, :catch, :description, :event_url, :started_at, :ended_at, :url, :address, :place, :lat, :lon, :owner_id, :owner_nickname, :owner_twitter_id, :limit, :accepted, :waiting, :updated_at, :hash_tag, :event_type, :series, :image, :group_url, :group_id, :group_title
   def initialize(data)
     @event_id = data[:event_id] || data[:id] || ''              # イベントID
     @title = data[:title] || ''                                 # タイトル
@@ -24,11 +25,30 @@ class Event
     @updated_at = data[:updated_at] || ''                       # 更新日時
     @hash_tag = data[:hash_tag] || ''                           # ハッシュタグ
     @event_type = data[:event_type] || ''
-    @series = data[:series] || ''
+    @series = data[:series] || {}                               # グループ情報
+    @group_url = series[:url]
+    @group_id = series[:id]
+    @group_title = series[:title]
+  end
+
+  def owner_twitter_url
+    @owner_twitter_url ||= user_doc.css('.social_link > a').attribute('href').value
+  end
+
+  def image
+    @image ||= event_doc.css('//meta[property="og:image"]/@content').to_s
   end
 
   def limit_over?
     return 0 if accepted == 0
     limit <= accepted
+  end
+
+  def event_doc
+    @event_doc ||= Http.get_document(event_url)
+  end
+
+  def user_doc
+    @user_doc ||= Http.get_document("http://connpass.com/user/#{owner_nickname}")
   end
 end

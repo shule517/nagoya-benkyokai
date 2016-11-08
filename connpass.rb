@@ -4,19 +4,23 @@ require './http'
 require './event'
 
 class Connpass
+  # イベントのグループ
+  # イベント参加者一覧
   def event_users(event_id)
     url = "http://jxug.connpass.com/event/#{event_id}/participation/#participants"
     doc = Http.get_document(url)
     doc.css('.user_info > a.image_link').map {|link| link.attribute('href').value}
   end
 
-  def search(keywords)
-    search_core(keywords, 0)
+  def search(keywords, ym = nil)
+    search_core(0, keywords, ym)
   end
 
   private
-  def search_core(keywords, start)
-    url = "http://connpass.com/api/v1/event/?keyword_or=#{keywords}&ym=201611&count=100&order=2&start=#{start.to_s}"
+
+  def search_core(start, keywords, ym = nil)
+    url = "http://connpass.com/api/v1/event/?keyword_or=#{keywords}&count=100&order=2&start=#{start.to_s}"
+    url += "&ym=#{ym}" if ym != nil
     result = Http.get_json(url)
 
     results_returned = result[:results_returned]
