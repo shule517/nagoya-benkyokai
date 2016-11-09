@@ -17,6 +17,7 @@ class ConnpassTest < Test::Unit::TestCase
     assert_equal('JXUGC #14 Xamarin ハンズオン 名古屋大会', event.title)
     assert_equal('https://connpass-tokyo.s3.amazonaws.com/thumbs/d7/3c/d73cccc993bb52bffbc0b65bc4c10d38.png', event.logo)
     assert_equal('にゃごやでも話題の Xamarin を触ってみよう！', event.catch)
+    assert_equal('2016-05-15T13:00:00+09:00', event.started_at)
     assert_equal('熱田生涯学習センター', event.place)
     assert_equal('JXUG', event.group_title)
     assert_equal(1134, event.group_id)
@@ -31,10 +32,11 @@ class ConnpassTest < Test::Unit::TestCase
 
   def test_doorkeeper
     api = Doorkeeper.new
-    events = api.search('リモート開発 de ナイト')
+    events = api.search('リモート開発 de ナイト', 201601)
     event = events.first
     assert_equal('リモート開発 de ナイト ＠名古屋ギークバー', event.title)
     assert_equal('https://dzpp79ucibp5a.cloudfront.net/events_banners/45257_normal_1463562966_%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%90%E3%83%BC%E3%83%AD%E3%82%B4.png', event.logo)
+    assert_equal('2016-06-13T10:30:00.000Z', event.started_at)
     assert_equal('Club Adriana', event.place)
     assert_equal('名古屋ギークバー', event.group_title)
     assert_equal(1995, event.group_id)

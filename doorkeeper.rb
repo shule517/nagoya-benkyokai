@@ -19,8 +19,7 @@ class Doorkeeper
   private
 
   def search_core(start, keywords, ym = nil)
-    url = "https://api.doorkeeper.jp/events/?q=#{keywords}&sort=starts_at&since=20160101000000&page=#{start.to_s}"
-    # url += "&ym=#{ym}" if ym != nil
+    url = "https://api.doorkeeper.jp/events/?q=#{keywords}&sort=starts_at#{ym.nil? ? "" : "&since=#{ym}01000000"}&page=#{start.to_s}"
     result = Http.get_json(url)
     events = result.map {|event| DoorkeeperEvent.new(event[:event])}
 

@@ -1,12 +1,16 @@
 # encoding: utf-8
 require './connpass'
+require './doorkeeper'
 
 puts "start"
-api = Connpass.new
-events = api.search('名古屋', 201611).sort_by {|event| event.started_at}
-# events.each do |event|
-#   puts "#{event.started_at[0..9]}【#{event.title}】 #{event.catch}　◆#{event.place} #{event.accepted}/#{event.limit} #{event.limit_over? ? "定員" : "まだいけます"}"
-# end
+apis = []
+apis << Connpass.new
+apis << Doorkeeper.new
+events = []
+apis.each do |api|
+  events += api.search('名古屋', 201611)
+end
+events.sort_by! {|event| event.started_at}
 
 require 'sinatra'
 require 'sinatra/reloader'

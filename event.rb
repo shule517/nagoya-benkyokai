@@ -2,7 +2,7 @@
 require "./http"
 
 class Event
-  attr_reader :data, :event_id, :title, :catch, :description, :event_url, :started_at, :ended_at, :url, :address, :place, :lat, :lon, :owner_id, :owner_nickname, :owner_twitter_id, :limit, :accepted, :waiting, :updated_at, :hash_tag, :event_type, :series
+  attr_reader :data, :event_id, :title, :catch, :description, :event_url, :started_at, :ended_at, :url, :address, :place, :lat, :lon, :owner_id, :owner_nickname, :owner_twitter_id, :limit, :accepted, :waiting, :updated_at, :hash_tag, :event_type, :series, :logo
   def initialize(data)
     @data = data
     @event_id = data[:event_id] || data[:id] || ''              # イベントID
@@ -28,6 +28,11 @@ class Event
     @event_type = data[:event_type] || ''
     @series = data[:series] || {}                               # グループ情報
   end
+
+  def limit_over?
+    return 0 if accepted == 0
+    limit <= accepted
+  end
 end
 
 class ConnpassEvent < Event
@@ -50,11 +55,6 @@ class ConnpassEvent < Event
 
   def logo
     @logo ||= event_doc.css('//meta[property="og:image"]/@content').to_s
-  end
-
-  def limit_over?
-    return 0 if accepted == 0
-    limit <= accepted
   end
 
   def event_doc
@@ -84,7 +84,11 @@ class DoorkeeperEvent < Event
   end
 
   def logo
-    @logo ||= event_doc.css('div.event-banner-image > img').attribute('src').value
+    begin
+      @logo ||= event_doc.css('div.event-banner-image > img').attribute('src').value
+    rescue
+      @logo = group_logo
+    end
   end
 
   def event_doc
