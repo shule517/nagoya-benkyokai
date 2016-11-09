@@ -24,7 +24,7 @@ class Doorkeeper
     events = result.map {|event| DoorkeeperEvent.new(event[:event])}
 
     if events.count == 25
-      events + search(start+1, keywords)
+      events + search(start+1, keywords, ym)
     else
       events
     end

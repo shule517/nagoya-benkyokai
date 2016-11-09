@@ -30,7 +30,7 @@ class Connpass
     events = result[:events].map {|event| ConnpassEvent.new(event)}
 
     if next_start < results_available
-      events + search_core(next_start, keywords)
+      events + search_core(next_start, keywords, ym)
     else
       events
     end
