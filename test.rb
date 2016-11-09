@@ -2,6 +2,7 @@
 require 'test/unit'
 require './connpass'
 require './doorkeeper'
+require './Atnd'
 
 class ConnpassTest < Test::Unit::TestCase
   def test_search
@@ -19,6 +20,7 @@ class ConnpassTest < Test::Unit::TestCase
     assert_equal('にゃごやでも話題の Xamarin を触ってみよう！', event.catch)
     assert_equal('2016-05-15T13:00:00+09:00', event.started_at)
     assert_equal('熱田生涯学習センター', event.place)
+    assert_equal('熱田区熱田西町2-13', event.address)
     assert_equal('JXUG', event.group_title)
     assert_equal(1134, event.group_id)
     assert_equal('http://jxug.connpass.com/', event.group_url)
@@ -38,6 +40,7 @@ class ConnpassTest < Test::Unit::TestCase
     assert_equal('https://dzpp79ucibp5a.cloudfront.net/events_banners/45257_normal_1463562966_%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%90%E3%83%BC%E3%83%AD%E3%82%B4.png', event.logo)
     assert_equal('2016-06-13T10:30:00.000Z', event.started_at)
     assert_equal('Club Adriana', event.place)
+    assert_equal('名古屋市中区葵1-27-37シティハイツ1F', event.address)
     assert_equal('名古屋ギークバー', event.group_title)
     assert_equal(1995, event.group_id)
     assert_equal('https://geekbar.doorkeeper.jp/', event.group_url)
@@ -46,5 +49,26 @@ class ConnpassTest < Test::Unit::TestCase
     users = api.event_users(event.event_id)
     assert(users.count > 0)
     assert(users.include?('シュール'))
+  end
+
+  def test_atnd
+    api = Atnd.new
+    events = api.search('エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！')
+    event = events.first
+    assert_equal('エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！', event.title)
+    #assert_equal('https://atnd.org/event_images/0008/0890/008_original.jpg?1474957731', event.logo)
+    assert_equal('', event.catch)
+    assert_equal('2016-10-11T20:00:00.000+09:00', event.started_at)
+    assert_equal('エイチーム　本社', event.place)
+    assert_equal('〒450-6432　名古屋市中村区名駅三丁目28番12号　大名古屋ビルヂング 32F', event.address)
+    #assert_equal('JXUG', event.group_title)
+    #assert_equal(1134, event.group_id)
+    #assert_equal('http://jxug.connpass.com/', event.group_url)
+    assert_equal(false, event.limit_over?)
+    #assert_equal('http://twitter.com/ytabuchi', event.owner_twitter_url)
+
+    #users = api.event_users(event.event_id)
+    #assert(users.count > 0)
+    #assert(users.include?('http://connpass.com/user/shule517/'))
   end
 end

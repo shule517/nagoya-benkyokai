@@ -1,11 +1,13 @@
 # encoding: utf-8
 require './connpass'
 require './doorkeeper'
+require './atnd'
 
 puts "start"
 apis = []
 apis << Connpass.new
 apis << Doorkeeper.new
+apis << Atnd.new
 events = []
 apis.each do |api|
   events += api.search('名古屋', 201611)

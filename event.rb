@@ -2,7 +2,7 @@
 require "./http"
 
 class Event
-  attr_reader :data, :event_id, :title, :catch, :description, :event_url, :started_at, :ended_at, :url, :address, :place, :lat, :lon, :owner_id, :owner_nickname, :owner_twitter_id, :limit, :accepted, :waiting, :updated_at, :hash_tag, :event_type, :series, :logo
+  attr_reader :data, :event_id, :title, :catch, :description, :event_url, :started_at, :ended_at, :url, :address, :place, :lat, :lon, :owner_id, :owner_nickname, :owner_twitter_id, :limit, :accepted, :waiting, :updated_at, :hash_tag, :event_type, :series, :logo, :year, :month, :day, :wday
   def initialize(data)
     @data = data
     @event_id = data[:event_id] || data[:id] || ''              # イベントID
@@ -27,6 +27,12 @@ class Event
     @hash_tag = data[:hash_tag] || ''                           # ハッシュタグ
     @event_type = data[:event_type] || ''
     @series = data[:series] || {}                               # グループ情報
+
+    @year = started_at[0...4].to_i
+    @month = started_at[5...7].to_i
+    @day = started_at[8...10].to_i
+    d = Date.new(year, month, day)
+    @wday = %w(日 月 火 水 木 金 土)[d.wday]
   end
 
   def limit_over?
@@ -36,6 +42,9 @@ class Event
 end
 
 class ConnpassEvent < Event
+  def source
+    'connpass'
+  end
 
   def group_url
       series[:url]
@@ -67,6 +76,10 @@ class ConnpassEvent < Event
 end
 
 class DoorkeeperEvent < Event
+  def source
+    'doorkeeper'
+  end
+
   def group_url
     @group_url ||= event_doc.css('//meta[property="og:url"]/@content').to_s.gsub(/events.*/, '')
   end
@@ -93,5 +106,35 @@ class DoorkeeperEvent < Event
 
   def event_doc
     @event_doc ||= Http.get_document(event_url)
+  end
+end
+
+class AtndEvent < Event
+  def source
+    'ATND'
+  end
+
+  def group_url
+  end
+
+  def group_id
+  end
+
+  def group_title
+  end
+
+  def owner_twitter_url
+  end
+
+  def logo
+    #@logo ||= event_doc.css('//meta[property="og:image"]/@content').to_s
+  end
+
+  def event_doc
+    @event_doc ||= Http.get_document(event_url)
+  end
+
+  def user_doc
+    @user_doc ||= Http.get_document("http://connpass.com/user/#{owner_nickname}")
   end
 end
