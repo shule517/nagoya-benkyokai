@@ -58,6 +58,14 @@ class ConnpassEvent < Event
       series[:title]
   end
 
+  def group_logo
+    begin
+      @group_logo ||= event_doc.css('.event_group_area > div.group_inner > div > a').attribute('style').value.match(%r{url\((.*)\)})[1]
+    rescue
+      ''
+    end
+  end
+
   def owner_twitter_url
     @owner_twitter_url ||= user_doc.css('.social_link > a').attribute('href').value
   end

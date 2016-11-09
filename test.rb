@@ -24,6 +24,7 @@ class ConnpassTest < Test::Unit::TestCase
     assert_equal('JXUG', event.group_title)
     assert_equal(1134, event.group_id)
     assert_equal('http://jxug.connpass.com/', event.group_url)
+    assert_equal('https://connpass-tokyo.s3.amazonaws.com/thumbs/c9/d3/c9d379a73fa278df5fae314abd0d227a.png', event.group_logo)
     assert_equal(true, event.limit_over?)
     assert_equal('http://twitter.com/ytabuchi', event.owner_twitter_url)
 
