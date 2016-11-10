@@ -7,12 +7,13 @@ puts "start"
 apis = []
 apis << Connpass.new
 apis << Doorkeeper.new
-apis << Atnd.new
+# apis << Atnd.new
 events = []
 apis.each do |api|
   events += api.search('名古屋', 201611)
 end
 events.sort_by! {|event| event.started_at}
+events.select! {|event| event.address.include?('名古屋')}
 
 require 'sinatra'
 require 'sinatra/reloader'

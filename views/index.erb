@@ -1,12 +1,12 @@
 <table>
   <tr>
-    <th>date</th>
-    <th>title</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
   <% @data.each do |event| %>
   <tr>
     <td>
-      <%= event.source %><br>
       <%= "#{event.month}/#{event.day} (#{event.wday})" %><br>
       <p>
       <a href="<%= event.group_url %>">
@@ -19,7 +19,9 @@ box-shadow: 0px 0px 10px #ccc,
 inset 0px 0px 10px rgba(0, 0, 0, 0.8);
 background: url(<%= event.group_logo %>) center center;
 background-repeat: no-repeat;">
-</div>
+      </div>
+    </td>
+    <td>
       </a>
         <!--<img src="<%= event.group_logo %>" width="150" height="150" style="border-radius:5000px;">-->
         <img src="<%= event.logo %>">
@@ -33,15 +35,14 @@ background-repeat: no-repeat;">
       <%= event.place %><br>
       <%= event.address %><br><br>
       <%= "#{event.accepted}/#{event.limit} #{event.limit_over? ? "定員" : "まだいけます"}" %><br>
-      <%#<%= event.source %>
       <a href="<%= event.group_url %>"><%= event.group_title %></a><br>
 
       <a href="http://connpass.com/user/<%= event.owner_nickname %>"><%= event.owner_nickname %></a><br>
 
       <% if @owner_twitter_id %>
       twitter:<a href="http://twitter.com/<%= event.owner_twitter_id %>"><%= event.owner_nickname %></a><br>
-      <% end %>
-      
+      <% end %><br><br>
+      <%= event.source %>
     </td>
   </tr>
   <% end %>

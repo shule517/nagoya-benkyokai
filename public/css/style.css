@@ -11,6 +11,7 @@ td {
   border-color: green;   /* 線色：緑 */
   border-style: solid;   /* 線種：実線 */
   padding: 0.3em;        /* セル内側の余白 */
+  vertical-align: top; /* 上詰め */
 }
 h1 {
   color: black;
@@ -23,14 +24,11 @@ table {
   border: 1px #000000 solid;
   border-color: white;
 }
-img {
-  width: auto;
-  /*height: auto;*/
-  height: 200px;
-  max-width: 300px;
-  max-height: 200px;
-  padding: 10px 40px 10px 100px;
-}
 p {
   text-align:center;
+}
+.thumbnail img {
+  border-radius: 20px;
+  height: 40px;
+  width: 40px;
 }
