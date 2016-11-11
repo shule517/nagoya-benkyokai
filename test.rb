@@ -48,9 +48,10 @@ class ConnpassTest < Test::Unit::TestCase
     assert_equal('https://geekbar.doorkeeper.jp/', event.group_url)
     assert_equal('https://dzpp79ucibp5a.cloudfront.net/groups_logos/1995_normal_1380975297_251035_156371434432231_4785187_n.jpg', event.group_logo)
 
-    users = api.event_users(event.event_id)
-    assert(users.count > 0)
-    assert(users.include?('シュール'))
+    assert(event.users.count > 0)
+    assert(event.users.any? {|user| user[:id] == 'シュール'})
+    assert(event.users.any? {|user| user[:name] == 'シュール'})
+    assert(event.users.any? {|user| user[:image] == 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/295014_original_1464427238_PeerstPlayer_Icon_normal.png'})
   end
 
   def test_atnd

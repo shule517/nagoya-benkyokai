@@ -8,6 +8,7 @@
   <tr>
     <td>
       <%= "#{event.month}/#{event.day} (#{event.wday})" %><br>
+      <%= event.source %>
       <p>
       <a href="<%= event.group_url %>">
       <div style="
@@ -22,11 +23,8 @@ background-repeat: no-repeat;">
       </div>
     </td>
     <td>
-      </a>
-        <!--<img src="<%= event.group_logo %>" width="150" height="150" style="border-radius:5000px;">-->
-        <img src="<%= event.logo %>"style="width: 250px; padding: 30px">
-      </p>
-    </dt>
+      <img src="<%= event.logo %>" class="shadow" style="width: 250px; padding: 30px, 30px, 30px, 30px; margin-top: 5px; display: inline-block; box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.8);">
+    </td>
     <td>
       <a href="<%= event.event_url %>">
         <%= event.title %><br>
@@ -49,7 +47,6 @@ background-repeat: no-repeat;">
       <% end %>
       <br>
       <br>
-      <%= event.source %>
     </td>
   </tr>
   <% end %>

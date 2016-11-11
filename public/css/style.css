@@ -32,3 +32,8 @@ p {
   height: 40px;
   width: 40px;
 }
+.shadow {
+    margin-top: 5px; /* 画像の上の余白*/
+    display: inline-block; 
+    box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.8); /*横方向　下方向　ぼかし　広がり　色 */
+}

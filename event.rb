@@ -132,6 +132,26 @@ class DoorkeeperEvent < Event
     end
   end
 
+  def users
+    begin
+      users = []
+      participation_doc.css('.user-profile-details').each do |user|
+        id = user.css('div.user-name').children.text
+        name = user.css('div.user-name').children.text
+        image = user.css('img').attribute('src').value
+        users << {id: id, name: name, image: image}
+      end
+      users
+    rescue
+      puts "error event:#{title} / #{group_url} / #{event_id}"
+      []
+    end
+  end
+
+  def participation_doc
+    @participation_doc ||= Http.get_document("#{group_url}/events/#{event_id}/participants")
+  end
+
   def event_doc
     @event_doc ||= Http.get_document(event_url)
   end
