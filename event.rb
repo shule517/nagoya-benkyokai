@@ -74,6 +74,26 @@ class ConnpassEvent < Event
     @logo ||= event_doc.css('//meta[property="og:image"]/@content').to_s
   end
 
+  def users
+    begin
+      users = []
+      participation_doc.css('.applicant_area > .participation_table_area > .common_table > tbody > tr > td.user > div.user_info > .image_link').each do |user|
+        id = user.attribute('href').value
+        name = user.css('img').attribute('alt').value
+        image = user.css('img').attribute('src').value
+        users << {id: id, name: name, image: image}
+      end
+      users
+    rescue
+      puts "error event:#{title} / #{group_url} / #{event_id}"
+      []
+    end
+  end
+
+  def participation_doc
+    @participation_doc ||= Http.get_document("#{group_url}/event/#{event_id}/participation/#participants")
+  end
+
   def event_doc
     @event_doc ||= Http.get_document(event_url)
   end

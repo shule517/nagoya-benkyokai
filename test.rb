@@ -28,9 +28,10 @@ class ConnpassTest < Test::Unit::TestCase
     assert_equal(true, event.limit_over?)
     assert_equal('http://twitter.com/ytabuchi', event.owner_twitter_url)
 
-    users = api.event_users(event.event_id)
-    assert(users.count > 0)
-    assert(users.include?('http://connpass.com/user/shule517/'))
+    assert(event.users.count > 0)
+    assert(event.users.any? {|user| user[:id] == 'http://connpass.com/user/shule517/'})
+    assert(event.users.any? {|user| user[:name] == 'シュール'})
+    assert(event.users.any? {|user| user[:image] == 'https://connpass-tokyo.s3.amazonaws.com/thumbs/b9/93/b99305b6784e742244868ddd5acc8646.png'})
   end
 
   def test_doorkeeper

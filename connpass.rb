@@ -9,7 +9,14 @@ class Connpass
   def event_users(event_id)
     url = "http://jxug.connpass.com/event/#{event_id}/participation/#participants"
     doc = Http.get_document(url)
-    doc.css('.user_info > a.image_link').map {|link| link.attribute('href').value}
+    users = []
+    doc.css('.applicant_area > .participation_table_area > .common_table > tbody > tr > td.user > div.user_info > .image_link').each do |user|
+      id = user.attribute('href').value
+      image = user.css('img').attribute('src').value
+      users << {id: id, image: image}
+      puts "#{id} : #{image}"
+    end
+    users
   end
 
   def search(keywords, ym = nil)

@@ -24,7 +24,7 @@ background-repeat: no-repeat;">
     <td>
       </a>
         <!--<img src="<%= event.group_logo %>" width="150" height="150" style="border-radius:5000px;">-->
-        <img src="<%= event.logo %>">
+        <img src="<%= event.logo %>"style="width: 250px; padding: 30px">
       </p>
     </dt>
     <td>
@@ -42,6 +42,13 @@ background-repeat: no-repeat;">
       <% if @owner_twitter_id %>
       twitter:<a href="http://twitter.com/<%= event.owner_twitter_id %>"><%= event.owner_nickname %></a><br>
       <% end %><br><br>
+
+      <% event.users.each do |user| %>
+      <img src="<%= user[:image] %>" style="width: 36px; height: 36px; border-radius: 20px;">
+      <!--<%= user[:name] %><br>-->
+      <% end %>
+      <br>
+      <br>
       <%= event.source %>
     </td>
   </tr>

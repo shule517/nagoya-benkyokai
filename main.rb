@@ -6,7 +6,7 @@ require './atnd'
 puts "start"
 apis = []
 apis << Connpass.new
-apis << Doorkeeper.new
+# apis << Doorkeeper.new
 # apis << Atnd.new
 events = []
 apis.each do |api|
