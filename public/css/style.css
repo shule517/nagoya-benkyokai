@@ -13,13 +13,6 @@ td {
   padding: 0.3em;        /* セル内側の余白 */
   vertical-align: top; /* 上詰め */
 }
-h1 {
-  color: black;
-  background-color: orange;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-}
 table {
   border: 1px #000000 solid;
   border-color: white;

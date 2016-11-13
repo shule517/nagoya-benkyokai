@@ -1,17 +1,22 @@
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="col-sm-1"></th>
+      <th class="col-sm-1"></th>
+      <th class="col-sm-3"></th>
+      <th class="col-sm-6"></th>
+      <th class="col-sm-1"></th>
+    </tr>
+  </thead>
+  <tbody>
   <% @data.each do |event| %>
-  <tr>
-    <td>
-      <%= "#{event.month}/#{event.day} (#{event.wday})" %><br>
-      <%= event.source %>
-      <p>
-      <a href="<%= event.group_url %>">
-      <div style="
+    <tr>
+      <td></dt>
+      <td>
+        <%= "#{event.month}/#{event.day} (#{event.wday})" %><br>
+        <p>
+        <a href="<%= event.group_url %>">
+        <div style="
 width:70px;
 height:70px;
 border-radius: 400px;
@@ -20,34 +25,38 @@ box-shadow: 0px 0px 10px #ccc,
 inset 0px 0px 10px rgba(0, 0, 0, 0.8);
 background: url(<%= event.group_logo %>) center center;
 background-repeat: no-repeat;">
-      </div>
-    </td>
-    <td>
-      <img src="<%= event.logo %>" class="shadow" style="width: 250px; padding: 30px, 30px, 30px, 30px; margin-top: 5px; display: inline-block; box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.8);">
-    </td>
-    <td>
-      <a href="<%= event.event_url %>">
-        <%= event.title %><br>
-      </a>
-      <%= event.catch %><br>
-      <%= event.place %><br>
-      <%= event.address %><br><br>
-      <%= "#{event.accepted}/#{event.limit} #{event.limit_over? ? "定員" : "まだいけます"}" %><br>
-      <a href="<%= event.group_url %>"><%= event.group_title %></a><br>
+        </div>
+        <%= event.source %>
+      </td>
+      <td>
+        <img src="<%= event.logo %>" class="shadow" style="width: 250px">
+      </td>
+      <td>
+        <a href="<%= event.event_url %>">
+          <h1 style="font-family: 游ゴシック体"><%= event.title %></h1>
+        </a>
+        <%= event.catch %><br>
+        <%= event.place %><br>
+        <%= event.address %><br><br>
+        <%= "#{event.accepted}/#{event.limit} #{event.limit_over? ? "定員" : "まだいけます"}" %><br>
+        <a href="<%= event.group_url %>"><%= event.group_title %></a><br>
 
-      <a href="http://connpass.com/user/<%= event.owner_nickname %>"><%= event.owner_nickname %></a><br>
+        <a href="http://connpass.com/user/<%= event.owner_nickname %>"><%= event.owner_nickname %></a><br>
 
-      <% if @owner_twitter_id %>
-      twitter:<a href="http://twitter.com/<%= event.owner_twitter_id %>"><%= event.owner_nickname %></a><br>
-      <% end %><br><br>
+        <% if @owner_twitter_id %>
+        twitter:<a href="http://twitter.com/<%= event.owner_twitter_id %>"><%= event.owner_nickname %></a><br>
+        <% end %><br><br>
 
-      <% event.users.each do |user| %>
-      <img src="<%= user[:image] %>" style="width: 36px; height: 36px; border-radius: 20px;">
-      <!--<%= user[:name] %><br>-->
-      <% end %>
-      <br>
-      <br>
-    </td>
-  </tr>
+        <% event.users.each do |user| %>
+        <a href="<%= user[:id] %>">
+          <img src="<%= user[:image] %>" data-toggle="tooltip" title="<%= user[:name] %>" style="width: 36px; height: 36px; border-radius: 20px;">
+        </a>
+        <% end %>
+        <br>
+        <br>
+      </td>
+      <td></dt>
+    </tr>
   <% end %>
+  </tbody>
 </table>
