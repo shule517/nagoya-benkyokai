@@ -12,8 +12,10 @@ events = []
 apis.each do |api|
   events += api.search('名古屋', 201611)
 end
-events.sort_by! {|event| event.started_at}
 events.select! {|event| event.address.include?('名古屋')}
+today = Time.now.strftime("%Y-%m-%d")
+events.select! {|event| event.started_at >= today}
+events.sort_by! {|event| event.started_at}
 
 require 'sinatra'
 require 'sinatra/reloader'
