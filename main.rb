@@ -14,6 +14,7 @@ apis.each do |api|
 end
 events.select! {|event| event.address.include?('名古屋')}
 today = Time.now.strftime("%Y-%m-%d")
+puts "today:#{today}"
 events.select! {|event| event.started_at >= today}
 events.sort_by! {|event| event.started_at}
 
