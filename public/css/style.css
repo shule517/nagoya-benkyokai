@@ -1,6 +1,9 @@
+body {
+    font-family: "游ゴシック体";
+}
 table {
   border-collapse: collapse;
-  border: 2px solid green; /* 外側の枠線 */
+  border: 2px solid #AAAAAA; /* 外側の枠線 */
 }
 th, tr {
   border-bottom: 1px #000000 solid;
@@ -8,14 +11,14 @@ th, tr {
 }
 td {
   border-width: 1px 0px; /* 上下だけ引く */
-  border-color: green;   /* 線色：緑 */
+  border-color: #AAAAAA;   /* 線色：緑 */
   border-style: solid;   /* 線種：実線 */
   padding: 0.3em;        /* セル内側の余白 */
   vertical-align: top; /* 上詰め */
 }
 table {
   border: 1px #000000 solid;
-  border-color: white;
+  border-color: #FFFFFF;
 }
 p {
   text-align:center;

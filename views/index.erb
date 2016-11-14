@@ -2,9 +2,8 @@
   <thead>
     <tr>
       <th class="col-sm-1"></th>
-      <th class="col-sm-1"></th>
-      <th class="col-sm-3"></th>
-      <th class="col-sm-6"></th>
+      <th class="col-sm-2"></th>
+      <th class="col-sm-8"></th>
       <th class="col-sm-1"></th>
     </tr>
   </thead>
@@ -13,27 +12,17 @@
     <tr>
       <td></dt>
       <td>
+        <br>
         <%= "#{event.month}/#{event.day} (#{event.wday})" %><br>
-        <p>
         <a href="<%= event.group_url %>">
-        <div style="
-width:70px;
-height:70px;
-border-radius: 400px;
-border:1px solid #fff;
-box-shadow: 0px 0px 10px #ccc,
-inset 0px 0px 10px rgba(0, 0, 0, 0.8);
-background: url(<%= event.group_logo %>) center center;
-background-repeat: no-repeat;">
-        </div>
-        <%= event.source %>
+          <img src="<%= event.group_logo %>" style="height: 50px; width: 50px;  border-radius: 50px; border: 1px #AAAAAA solid;">
+          <%= event.group_title %>
+        </a><br>
+        <img src="<%= event.logo %>" class="shadow" style="width: 250px; padding-top: 10px;">
       </td>
-      <td>
-        <img src="<%= event.logo %>" class="shadow" style="width: 250px">
-      </td>
-      <td>
+      <td style="padding-left: 20px">
         <a href="<%= event.event_url %>">
-          <h1 style="font-family: 游ゴシック体"><%= event.title %></h1>
+          <h1><%= event.title %></h1>
         </a>
         <%= event.catch %><br>
         <%= event.place %><br>
@@ -52,6 +41,7 @@ background-repeat: no-repeat;">
           <img src="<%= user[:image] %>" data-toggle="tooltip" title="<%= user[:name] %>" style="width: 36px; height: 36px; border-radius: 20px;">
         </a>
         <% end %>
+        <br>
         <br>
         <br>
       </td>
