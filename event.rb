@@ -2,7 +2,7 @@
 require "./http"
 
 class Event
-  attr_reader :data, :event_id, :title, :catch, :description, :event_url, :started_at, :ended_at, :url, :address, :place, :lat, :lon, :owner_id, :owner_nickname, :owner_twitter_id, :limit, :accepted, :waiting, :updated_at, :hash_tag, :event_type, :series, :logo, :year, :month, :day, :wday
+  attr_reader :data, :event_id, :title, :description, :event_url, :started_at, :ended_at, :url, :address, :place, :lat, :lon, :owner_id, :owner_nickname, :owner_twitter_id, :limit, :accepted, :waiting, :updated_at, :hash_tag, :event_type, :series, :logo, :year, :month, :day, :wday
   def initialize(data)
     @data = data
     @event_id = data[:event_id] || data[:id] || ''              # イベントID
@@ -44,6 +44,10 @@ end
 class ConnpassEvent < Event
   def source
     'connpass'
+  end
+
+  def catch
+    @catch
   end
 
   def group_url
@@ -106,6 +110,10 @@ end
 class DoorkeeperEvent < Event
   def source
     'doorkeeper'
+  end
+
+  def catch
+    description.gsub(/<\/?[^>]*>/, "")[0, 100]
   end
 
   def group_url
