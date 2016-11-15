@@ -47,7 +47,7 @@ class ConnpassEvent < Event
   end
 
   def catch
-    @catch
+    @catch + '<br>' + @description.gsub(/<\/?[^>]*>/, "")
   end
 
   def group_url
@@ -113,7 +113,7 @@ class DoorkeeperEvent < Event
   end
 
   def catch
-    description.gsub(/<\/?[^>]*>/, "")[0, 100]
+    description.gsub(/<\/?[^>]*>/, "")
   end
 
   def group_url

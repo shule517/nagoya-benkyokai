@@ -33,3 +33,6 @@ p {
     display: inline-block; 
     box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.8); /*横方向　下方向　ぼかし　広がり　色 */
 }
+/*div {  
+    border: 1px solid #000000;  
+}*/
