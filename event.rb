@@ -47,7 +47,11 @@ class ConnpassEvent < Event
   end
 
   def catch
-    @catch + '<br>' + @description.gsub(/<\/?[^>]*>/, "")
+    if @catch != ''
+      @catch + '<br>' + @description.gsub(/<\/?[^>]*>/, "")
+    else
+      @description.gsub(/<\/?[^>]*>/, "")
+    end
   end
 
   def group_url
