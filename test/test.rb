@@ -29,10 +29,10 @@ class ConnpassTest < Test::Unit::TestCase
     # assert_equal('http://twitter.com/ytabuchi', event.owner_twitter_url)
 
     assert(event.users.count > 0)
-    user = event.users.select {|user| user[:name] == 'シュール'}.first
-    assert_equal(user[:id], 'https://connpass.com/user/shule517/')
-    assert_equal(user[:name], 'シュール')
-    assert_equal(user[:image], 'https://connpass-tokyo.s3.amazonaws.com/thumbs/b9/93/b99305b6784e742244868ddd5acc8646.png')
+    shule = event.users.select {|user| user[:name] == 'シュール'}.first
+    assert_equal(shule[:id], 'https://connpass.com/user/shule517/')
+    assert_equal(shule[:name], 'シュール')
+    assert_equal(shule[:image], 'https://connpass-tokyo.s3.amazonaws.com/thumbs/b9/93/b99305b6784e742244868ddd5acc8646.png')
   end
 
   def test_doorkeeper
@@ -50,10 +50,10 @@ class ConnpassTest < Test::Unit::TestCase
     assert_equal('https://dzpp79ucibp5a.cloudfront.net/groups_logos/1995_normal_1380975297_251035_156371434432231_4785187_n.jpg', event.group_logo)
 
     assert(event.users.count > 0)
-    user = event.users.select {|user| user[:name] == 'シュール'}.first
-    assert_equal(user[:id], 'シュール')
-    assert_equal(user[:name], 'シュール')
-    assert_equal(user[:image], 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/295014_original_1464427238_PeerstPlayer_Icon_normal.png')
+    shule = event.users.select {|user| user[:name] == 'シュール'}.first
+    assert_equal(shule[:id], 'シュール')
+    assert_equal(shule[:name], 'シュール')
+    assert_equal(shule[:image], 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/295014_original_1464427238_PeerstPlayer_Icon_normal.png')
   end
 
   def test_atnd
