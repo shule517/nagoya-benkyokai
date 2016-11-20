@@ -174,6 +174,14 @@ class AtndEvent < Event
     'ATND'
   end
 
+  def catch
+    if @catch != ''
+      @catch + '<br>' + @description.gsub(/<\/?[^>]*>/, "")
+    else
+      @description.gsub(/<\/?[^>]*>/, "")
+    end
+  end
+
   def group_url
   end
 
