@@ -34,7 +34,6 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  nokogiri
   rake
   ruby-debug-ide
   sinatra
