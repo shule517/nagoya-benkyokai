@@ -1,5 +1,5 @@
 #coding: utf-8
-require "./http"
+require_relative "./http"
 
 class Event
   attr_reader :data, :event_id, :title, :description, :event_url, :started_at, :ended_at, :url, :address, :place, :lat, :lon, :owner_id, :owner_nickname, :owner_twitter_id, :limit, :accepted, :waiting, :updated_at, :hash_tag, :event_type, :series, :logo, :year, :month, :day, :wday

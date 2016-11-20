@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'nokogiri'
-require './http'
-require './event'
+require_relative './http'
+require_relative './event'
 
 class Doorkeeper
   # イベントのグループ

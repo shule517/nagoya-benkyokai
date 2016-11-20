@@ -6,7 +6,7 @@
             "type": "Ruby",
             "request": "launch",
             "cwd": "${workspaceRoot}",
-            "program": "${workspaceRoot}/main.rb"
+            "program": "${workspaceRoot}/app/main.rb"
         },
         {
             "name": "Exec test",

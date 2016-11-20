@@ -1,19 +1,22 @@
 # encoding: utf-8
-require './connpass'
-require './doorkeeper'
-require './atnd'
+require_relative './connpass'
+require_relative './doorkeeper'
+require_relative './atnd'
 
 puts "start"
 apis = []
-apis << Connpass.new
-# apis << Doorkeeper.new
+# apis << Connpass.new
+apis << Doorkeeper.new
 # apis << Atnd.new
 events = []
 apis.each do |api|
   events += api.search('名古屋', 201611)
 end
-events.sort_by! {|event| event.started_at}
 events.select! {|event| event.address.include?('名古屋')}
+today = Time.now.strftime("%Y-%m-%d")
+puts "today:#{today}"
+events.select! {|event| event.started_at >= today}
+events.sort_by! {|event| event.started_at}
 
 require 'sinatra'
 require 'sinatra/reloader'
