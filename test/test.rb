@@ -1,8 +1,8 @@
 # encoding: utf-8
 require 'test/unit'
-require './app/connpass'
-require './app/doorkeeper'
-require './app/Atnd'
+require_relative '../app/connpass'
+require_relative '../app/doorkeeper'
+require_relative '../app/Atnd'
 
 class ConnpassTest < Test::Unit::TestCase
   def test_search
