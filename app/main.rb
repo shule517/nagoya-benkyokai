@@ -5,7 +5,7 @@ require_relative './atnd'
 
 puts "start"
 apis = []
-# apis << Connpass.new
+apis << Connpass.new
 apis << Doorkeeper.new
 # apis << Atnd.new
 events = []
