@@ -33,6 +33,28 @@ p {
     display: inline-block; 
     box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.8); /*横方向　下方向　ぼかし　広がり　色 */
 }
-/*div {  
+/*div {
     border: 1px solid #000000;  
 }*/
+
+hr.style-eight {
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+}
+hr.style-eight:after {
+    content: "λ";
+    display: inline-block;
+    position: relative; 
+    top: -0.7em;  
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
+}
+hr.style-three {
+    border: 0;
+    border-bottom: 1px dashed #ccc;
+    background: #999;
+}

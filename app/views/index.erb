@@ -1,21 +1,33 @@
 <%= bday = "" %>
 <% @data.each do |event| %>
-<% day = "#{event.month}/#{event.day} (#{event.wday})" %>
-<% if bday != day %>
+<% day = "#{event.month}/#{event.day}" %>
 <div class="row">
-  <div class="col-xs-3"></div>
-  <div class="col-xs-6">
+  <% if bday != day %>
+    <hr style="height: 6px;
+      background: url(http://ibrahimjabbari.com/english/images/hr-12.png) repeat-x 0 0;
+        border: 0;">
+  <% end %>
+  <div class="col-xs-1"></div>
+  <div class="col-xs-2">
     <h1>
-      <%= day %>
+      <% if bday != day %>
+        <div style="text-align: right;">
+          <%= day %>
+          <h3 style="display:inline;"><%= "(#{event.wday})" %></h3>
+        </div>
+        <% day = "#{event.month}/#{event.day}" %>
+      <% end %>
     </h1>
   </div>
-  <div class="col-xs-3"></div>
-</div>
-<% bday = day %>
-<% end %>
-<div class="row">
-  <div class="col-xs-3"></div>
   <div class="col-xs-6">
+    <% if bday == day %>
+    <hr class="style-three">
+    <% end %>
+
+    <% if bday != day %>
+    <% bday = day %>
+    <% end %>
+
     <div class="row">
       <div class="col-xs-3">
         <a href="<%= event.event_url %>">
@@ -32,13 +44,15 @@
       <div class="col-xs-9">
         <div style="max-height: 270px;overflow: hidden;">
           <a>
-          <h3 style="vertical-align: top;"><%= event.title %></h3>
+            <h3 style="vertical-align: top;"><%= event.title %></h3>
           </a>
-          <a href="<%= event.group_url %>">
-            <img src="<%= event.group_logo %>" style="height: 20px; width: 20px;  border-radius: 20px; border: 1px #AAAAAA solid;">
-            <%= event.group_title %>
-          </a>
-          <br>
+          <% if event.group_url %>
+            <a href="<%= event.group_url %>">
+              <img src="<%= event.group_logo %>" style="height: 20px; width: 20px;  border-radius: 20px; border: 1px #AAAAAA solid;">
+              <%= event.group_title %>
+            </a>
+            <br>
+          <% end %>
           <div style="color: #888888; padding-top: 10px; height: 90px;overflow: hidden;">
             <%= event.catch %>
           </div>
@@ -50,14 +64,11 @@
           <img src="<%= user[:image] %>" data-toggle="tooltip" title="<%= user[:name] %>" style="width: 36px; height: 36px; border-radius: 20px;">
         </a>
         <% end %>
-        <div style="width: 10px; margin-left: auto;">
-          <h4><%= "#{event.accepted}/#{event.limit}" %></h4>
+        <div style="text-align: right;">
+          <h3 style="display:inline;"><%= "#{event.accepted} / #{event.limit}" %></h3> 人
         </div>
       </div>
     </div>
-    <hr style="height: 6px;
-      background: url(http://ibrahimjabbari.com/english/images/hr-12.png) repeat-x 0 0;
-        border: 0;">
   </div>
   <div class="col-xs-3"></div>
 </div>

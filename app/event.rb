@@ -198,6 +198,10 @@ class AtndEvent < Event
     #@logo ||= event_doc.css('//meta[property="og:image"]/@content').to_s
   end
 
+  def users
+    []
+  end
+
   def event_doc
     @event_doc ||= Http.get_document(event_url)
   end
