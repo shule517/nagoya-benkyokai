@@ -2,7 +2,7 @@
 require 'test/unit'
 require_relative '../app/connpass'
 require_relative '../app/doorkeeper'
-require_relative '../app/Atnd'
+require_relative '../app/atnd'
 
 class ConnpassTest < Test::Unit::TestCase
   def test_search
