@@ -21,11 +21,9 @@
   </div>
   <div class="col-xs-6">
     <% if bday == day %>
-    <hr class="style-three">
-    <% end %>
-
-    <% if bday != day %>
-    <% bday = day %>
+      <hr class="style-three">
+    <% else %>
+      <% bday = day %>
     <% end %>
 
     <div class="row">
