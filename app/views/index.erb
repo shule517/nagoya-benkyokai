@@ -7,19 +7,15 @@
       background: url(http://ibrahimjabbari.com/english/images/hr-12.png) repeat-x 0 0;
         border: 0;">
   <% end %>
-  <div class="col-xs-1"></div>
-  <div class="col-xs-2">
-    <h1>
-      <% if bday != day %>
-        <div style="text-align: right;">
-          <%= day %>
-          <h3 style="display:inline;"><%= "(#{event.wday})" %></h3>
-        </div>
-        <% day = "#{event.month}/#{event.day}" %>
-      <% end %>
-    </h1>
+  <div class="col-md-2 col-xs-11 col-xs-offset-1">
+    <% if bday != day %>
+      <h1 style="text-align: right;">
+        <%= day %>
+        <small><%= "(#{event.wday})" %></small>
+      </h1>
+    <% end %>
   </div>
-  <div class="col-xs-6">
+  <div class="col-md-6 col-xs-10 col-md-offset-0 col-xs-offset-1">
     <% if bday == day %>
       <hr class="style-three">
     <% else %>
