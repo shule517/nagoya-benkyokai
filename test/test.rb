@@ -69,6 +69,8 @@ class ConnpassTest < Test::Unit::TestCase
     assert_equal(shule[:id], 'https://connpass.com/user/shule517/')
     assert_equal(shule[:name], 'シュール')
     assert_equal(shule[:image], 'https://connpass-tokyo.s3.amazonaws.com/thumbs/b9/93/b99305b6784e742244868ddd5acc8646.png')
+
+    assert(event.owners.count > 0)
   end
 end
 
@@ -101,6 +103,8 @@ class DoorkeeperTest < Test::Unit::TestCase
     assert_equal(shule[:id], 'シュール')
     assert_equal(shule[:name], 'シュール')
     assert_equal(shule[:image], 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/295014_original_1464427238_PeerstPlayer_Icon_normal.png')
+
+    assert(event.owners.count > 0)
   end
 end
 

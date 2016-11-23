@@ -16,6 +16,19 @@ hr.style-three {
     background: #999;
 }
 
+img.owner-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 20px;
+  border: 3px red solid;
+}
+
+img.owner-icon:hover {
+  width: 36px;
+  height: 36px;
+  border-radius: 20px;
+  border: 3px orange solid;
+}
 img.user-icon {
   width: 36px;
   height: 36px;

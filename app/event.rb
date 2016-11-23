@@ -124,7 +124,23 @@ class ConnpassEvent < Event
       end
       users
     rescue
-      puts "error event:#{title} / #{group_url} / #{event_id}"
+      puts "no users event:#{title} / #{group_url} / #{event_id}"
+      []
+    end
+  end
+
+  def owners
+    begin
+      owners = []
+      event_doc.css('.owner_list li a').each do |owner|
+        id = owner.attribute('href').value
+        name = owner.css('img').attribute('alt').value
+        image = owner.css('img').attribute('src').value
+        owners << {id: id, name: name, image: image}
+      end
+      owners
+    rescue
+      puts "no owners event:#{title} / #{group_url} / #{event_id}"
       []
     end
   end
@@ -186,9 +202,31 @@ class DoorkeeperEvent < Event
       end
       users
     rescue
-      puts "error event:#{title} / #{group_url} / #{event_id}"
+      puts "no users event:#{title} / #{group_url} / #{event_id}"
       []
     end
+  end
+
+  def owners
+    []
+    # begin
+    #   owners = []
+    #   group_doc.css('.with-gutter div div .user-profile .user-profile-details').each do |owner|
+    #     # id = owner.attribute('href').value
+    #     id = owner.css('img').attribute('alt').value
+    #     name = owner.css('img').attribute('alt').value
+    #     image = owner.css('img').attribute('src').value
+    #     owners << {id: id, name: name, image: image}
+    #   end
+    #   owners
+    # rescue
+    #   puts "no owners event:#{title} / #{group_url} / #{event_id}"
+    #   []
+    # end
+  end
+
+  def group_doc
+    @group_doc ||= Http.get_document("#{group_url}/members")
   end
 
   def participation_doc
@@ -229,6 +267,10 @@ class AtndEvent < Event
   end
 
   def users
+    []
+  end
+
+  def owners
     []
   end
 
