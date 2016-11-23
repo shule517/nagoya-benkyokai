@@ -196,6 +196,9 @@ class AtndEvent < Event
   def group_title
   end
 
+  def group_logo
+  end
+
   def owner_twitter_url
   end
 
