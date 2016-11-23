@@ -6,7 +6,7 @@ require_relative '../app/atnd'
 
 module EventInterfaceTest
   def test_implements_interface
-    assert_respond_to(@event, :data)
+    # assert_respond_to(@event, :data)
     assert_respond_to(@event, :event_id)
     assert_respond_to(@event, :title)
     assert_respond_to(@event, :catch)
@@ -19,16 +19,11 @@ module EventInterfaceTest
     assert_respond_to(@event, :place)
     assert_respond_to(@event, :lat)
     assert_respond_to(@event, :lon)
-    assert_respond_to(@event, :owner_id)
-    assert_respond_to(@event, :owner_nickname)
-    assert_respond_to(@event, :owner_twitter_id)
     assert_respond_to(@event, :limit)
     assert_respond_to(@event, :accepted)
     assert_respond_to(@event, :waiting)
     assert_respond_to(@event, :updated_at)
     assert_respond_to(@event, :hash_tag)
-    assert_respond_to(@event, :event_type)
-    assert_respond_to(@event, :series)
     assert_respond_to(@event, :place_enc)
     assert_respond_to(@event, :limit_over?)
     assert_respond_to(@event, :source)
@@ -37,7 +32,6 @@ module EventInterfaceTest
     assert_respond_to(@event, :group_id)
     assert_respond_to(@event, :group_title)
     assert_respond_to(@event, :group_logo)
-    # assert_respond_to(@event, :owner_twitter_url)
     assert_respond_to(@event, :logo)
     assert_respond_to(@event, :users)
   end
@@ -51,36 +45,6 @@ class ConnpassTest < Test::Unit::TestCase
     events = api.search('名古屋', 201611)
     assert(events.count > 0)
     @event = events.first
-  end
-end
-
-class DoorkeeperTest < Test::Unit::TestCase
-  include EventInterfaceTest
-
-  def setup
-    api = Doorkeeper.new
-    events = api.search('リモート開発 de ナイト', 201601)
-    assert(events.count > 0)
-    @event = events.first
-  end
-end
-
-class AtndTest < Test::Unit::TestCase
-  include EventInterfaceTest
-
-  def setup
-    api = Atnd.new
-    events = api.search('エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！')
-    assert(events.count > 0)
-    @event = events.first
-  end
-end
-
-class ApiTest < Test::Unit::TestCase
-  def test_search
-    api = Connpass.new
-    events = api.search('名古屋', 201611)
-    assert(events.count > 0)
   end
 
   def test_connpass
@@ -106,6 +70,17 @@ class ApiTest < Test::Unit::TestCase
     assert_equal(shule[:name], 'シュール')
     assert_equal(shule[:image], 'https://connpass-tokyo.s3.amazonaws.com/thumbs/b9/93/b99305b6784e742244868ddd5acc8646.png')
   end
+end
+
+class DoorkeeperTest < Test::Unit::TestCase
+  include EventInterfaceTest
+
+  def setup
+    api = Doorkeeper.new
+    events = api.search('リモート開発 de ナイト', 201601)
+    assert(events.count > 0)
+    @event = events.first
+  end
 
   def test_doorkeeper
     api = Doorkeeper.new
@@ -126,6 +101,17 @@ class ApiTest < Test::Unit::TestCase
     assert_equal(shule[:id], 'シュール')
     assert_equal(shule[:name], 'シュール')
     assert_equal(shule[:image], 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/295014_original_1464427238_PeerstPlayer_Icon_normal.png')
+  end
+end
+
+class AtndTest < Test::Unit::TestCase
+  include EventInterfaceTest
+
+  def setup
+    api = Atnd.new
+    events = api.search('エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！')
+    assert(events.count > 0)
+    @event = events.first
   end
 
   def test_atnd

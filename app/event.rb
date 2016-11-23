@@ -3,7 +3,38 @@ require 'uri'
 require_relative "./http"
 
 class Event
-  attr_reader :data, :event_id, :title, :description, :event_url, :started_at, :ended_at, :url, :address, :place, :lat, :lon, :owner_id, :owner_nickname, :owner_twitter_id, :limit, :accepted, :waiting, :updated_at, :hash_tag, :event_type, :series, :logo, :year, :month, :day, :wday
+  public
+  attr_reader :event_id,
+    :title,
+    :description,
+    :event_url,
+    :started_at,
+    :ended_at,
+    :url,
+    :address,
+    :place,
+    :lat,
+    :lon,
+    :limit,
+    :accepted,
+    :waiting,
+    :updated_at,
+    :hash_tag,
+    :logo,
+    :year,
+    :month,
+    :day,
+    :wday
+
+  private
+  attr_reader :data,
+    :owner_id,
+    :owner_nickname,
+    :owner_twitter_id,
+    :series,
+    :event_type
+
+  public
   def initialize(data)
     @data = data
     @event_id = data[:event_id] || data[:id] || ''              # イベントID
@@ -26,7 +57,6 @@ class Event
     @waiting = data[:waiting] || data[:waitlisted] || ''        # キャンセル待ち
     @updated_at = data[:updated_at] || ''                       # 更新日時
     @hash_tag = data[:hash_tag] || ''                           # ハッシュタグ
-    @event_type = data[:event_type] || ''
     @series = data[:series] || {}                               # グループ情報
 
     @year = started_at[0...4].to_i
@@ -77,10 +107,6 @@ class ConnpassEvent < Event
     rescue
       ''
     end
-  end
-
-  def owner_twitter_url
-    @owner_twitter_url ||= user_doc.css('.social_link > a').attribute('href').value
   end
 
   def logo
@@ -199,11 +225,7 @@ class AtndEvent < Event
   def group_logo
   end
 
-  def owner_twitter_url
-  end
-
   def logo
-    #@logo ||= event_doc.css('//meta[property="og:image"]/@content').to_s
   end
 
   def users

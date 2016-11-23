@@ -17,7 +17,6 @@ class Doorkeeper
   end
 
   private
-
   def search_core(start, keywords, ym = nil)
     url = "https://api.doorkeeper.jp/events/?q=#{keywords}&sort=starts_at#{ym.nil? ? "" : "&since=#{ym}01000000"}&page=#{start.to_s}"
     result = Http.get_json(url)

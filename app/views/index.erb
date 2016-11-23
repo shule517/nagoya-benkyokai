@@ -65,6 +65,11 @@
             <% end %>
             <p><small>人</small></p>
           </h3>
+          <% if !event.hash_tag.empty? %>
+          <a href="<%= "https://twitter.com/hashtag/#{event.hash_tag}?f=tweets&vertical=default&src=hash" %>">
+            Twiter: <%= "#{event.hash_tag}" %>
+          </a>
+          <% end %>
         </div>
       </div>
     </div>
