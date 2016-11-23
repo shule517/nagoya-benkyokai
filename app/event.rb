@@ -1,4 +1,5 @@
 #coding: utf-8
+require 'uri'
 require_relative "./http"
 
 class Event
@@ -33,6 +34,10 @@ class Event
     @day = started_at[8...10].to_i
     d = Date.new(year, month, day)
     @wday = %w(日 月 火 水 木 金 土)[d.wday]
+  end
+
+  def place_enc
+    URI.escape(place)
   end
 
   def limit_over?

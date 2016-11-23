@@ -20,7 +20,7 @@
     <% bday = day %>
     <% end %>
 
-    <% #イベント情報 %>
+    <!-- イベント情報 -->
     <div class="row">
       <div class="event-left col-xs-3">
         <a href="<%= event.event_url %>">
@@ -29,7 +29,7 @@
           </p>
         </a>
         <div class="event-place">
-          <a data-toggle="tooltip" title="<%= event.address %>">
+          <a data-toggle="tooltip" title="<%= event.address %>" href="https://maps.google.co.jp/maps?q=<%= event.place_enc %>">
             <span class="glyphicon glyphicon-map-marker">
             <%= event.place %>
             </span>
@@ -58,7 +58,7 @@
         </a>
         <% end %>
         <div class="user-limit">
-          <h3>
+          <h3 style="margin-top: 10px">
             <p><%= "#{event.accepted}" %></p>
             <% if event.limit != 0 %>
             <p><%= "/ #{event.limit}" %></p>

@@ -20,6 +20,14 @@ img.user-icon {
   width: 36px;
   height: 36px;
   border-radius: 20px;
+  border: 1px #AAAAAA solid;
+}
+
+img.user-icon:hover {
+  width: 36px;
+  height: 36px;
+  border-radius: 20px;
+  border: 3px orange solid;
 }
 
 .event-detail {
@@ -100,7 +108,6 @@ body {
 
 .user-limit {
   text-align: right;
-  margin-top: 10px;
 }
 
 .user-limit p {
