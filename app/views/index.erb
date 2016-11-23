@@ -2,11 +2,9 @@
 <% @data.each do |event| %>
 <% day = "#{event.month}/#{event.day}" %>
 <div class="row">
-  <% if bday != day %>
-    <hr style="height: 6px;
-      background: url(http://ibrahimjabbari.com/english/images/hr-12.png) repeat-x 0 0;
-        border: 0;">
-  <% end %>
+<% if bday != day %>
+<hr class="wave">
+<% end %>
   <div class="col-md-2 col-xs-11 col-xs-offset-1">
     <% if bday != day %>
       <h1 style="text-align: right;">
@@ -26,7 +24,7 @@
       <div class="col-xs-3">
         <a href="<%= event.event_url %>">
           <p class="resizeimage">
-            <img src="<%= event.logo %>" class="shadow" style="width: 100%; padding-top: 10px;"><br>
+            <img class="event-logo shadow" src="<%= event.logo %>"><br>
           </p>
         </a>
         <div style="margin-top: 10px; margin-bottom: 10px">
@@ -47,7 +45,7 @@
             </a>
             <br>
           <% end %>
-          <div style="color: #888888; padding-top: 10px; height: 110px;overflow: hidden;">
+          <div class="event-detail">
             <%= event.catch %>
           </div>
         </div>
@@ -55,7 +53,7 @@
       <div class="col-xs-12">
         <% event.users.each do |user| %>
         <a href="<%= user[:id] %>">
-          <img src="<%= user[:image] %>" data-toggle="tooltip" title="<%= user[:name] %>" style="width: 36px; height: 36px; border-radius: 20px;">
+          <img class="user-icon" src="<%= user[:image] %>" data-toggle="tooltip" title="<%= user[:name] %>">
         </a>
         <% end %>
         <div style="text-align: right; margin-top: 10px;">

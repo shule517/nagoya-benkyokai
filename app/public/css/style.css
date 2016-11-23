@@ -1,60 +1,73 @@
-body {
-    font-family: "游ゴシック体";
-}
-table {
-  border-collapse: collapse;
-  border: 2px solid #AAAAAA; /* 外側の枠線 */
-}
-th, tr {
-  border-bottom: 1px #000000 solid;
-  padding: 10px;
-}
-td {
-  border-width: 1px 0px; /* 上下だけ引く */
-  border-color: #AAAAAA;   /* 線色：緑 */
-  border-style: solid;   /* 線種：実線 */
-  padding: 0.3em;        /* セル内側の余白 */
-  vertical-align: top; /* 上詰め */
-}
-table {
-  border: 1px #000000 solid;
-  border-color: #FFFFFF;
-}
-p {
-  text-align:center;
-}
-.thumbnail img {
-  border-radius: 20px;
-  height: 40px;
-  width: 40px;
-}
 .shadow {
     margin-top: 5px; /* 画像の上の余白*/
     display: inline-block; 
     box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.8); /*横方向　下方向　ぼかし　広がり　色 */
 }
-/*div {
-    border: 1px solid #000000;  
-}*/
 
-hr.style-eight {
-    padding: 0;
-    border: none;
-    border-top: medium double #333;
-    color: #333;
-    text-align: center;
+hr.wave {
+  height: 6px;
+  background: url(http://ibrahimjabbari.com/english/images/hr-12.png) repeat-x 0 0;
+  border: 0;
 }
-hr.style-eight:after {
-    content: "λ";
-    display: inline-block;
-    position: relative; 
-    top: -0.7em;  
-    font-size: 1.5em;
-    padding: 0 0.25em;
-    background: white;
-}
+
 hr.style-three {
     border: 0;
     border-bottom: 1px dashed #ccc;
     background: #999;
+}
+
+img.user-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 20px;
+}
+
+.event-detail {
+  color: #888888;
+  padding-top: 10px;
+  height: 110px;overflow:
+  hidden;
+}
+
+/* ------------------------------
+　　ベース
+------------------------------ */
+body {
+	color: #333;
+	font-family: "Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",Meiryo,"メイリオ","ＭＳ Ｐゴシック","MS PGothic",Verdana,sans-serif;
+	font-size: 16px;
+	background: #FFF;
+	border-top: 10px solid #CCC;
+}
+
+/* ------------------------------
+　　ヘッダー
+------------------------------ */
+.header {
+	padding: 30px 0;
+}
+
+.site-name {
+	font-size: 30px;
+  background-color: orange;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+/* ------------------------------
+　　イベント
+------------------------------ */
+.event-logo {
+  width: 100%;
+  padding-top: 10px;
+}
+
+/* ------------------------------
+　　フッター
+------------------------------ */
+.footer {
+	padding: 20px 0;
+	color: #FFF;
+	background: #333;
 }
