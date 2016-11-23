@@ -2,67 +2,69 @@
 <% @data.each do |event| %>
 <% day = "#{event.month}/#{event.day}" %>
 <div class="row">
-<% if bday != day %>
-<hr class="wave">
-<% end %>
+  <% if bday != day %>
+  <hr class="wave">
+  <% end %>
   <div class="col-md-2 col-xs-11 col-xs-offset-1">
     <% if bday != day %>
-      <h1 style="text-align: right;">
-        <%= day %>
-        <small><%= "(#{event.wday})" %></small>
-      </h1>
+    <h1 class="day">
+      <%= day %>
+      <small><%= "(#{event.wday})" %></small>
+    </h1>
     <% end %>
   </div>
   <div class="col-md-6 col-xs-10 col-md-offset-0 col-xs-offset-1">
     <% if bday == day %>
-      <hr class="style-three">
+    <hr class="style-three">
     <% else %>
-      <% bday = day %>
+    <% bday = day %>
     <% end %>
 
+    <% #イベント情報 %>
     <div class="row">
-      <div class="col-xs-3">
+      <div class="event-left col-xs-3">
         <a href="<%= event.event_url %>">
           <p class="resizeimage">
             <img class="event-logo shadow" src="<%= event.logo %>"><br>
           </p>
         </a>
-        <div style="margin-top: 10px; margin-bottom: 10px">
+        <div class="event-place">
           <a data-toggle="tooltip" title="<%= event.address %>">
-            <span class="glyphicon glyphicon glyphicon-map-marker"><span style="padding-left: 3px"><%= event.place %></span>
+            <span class="glyphicon glyphicon-map-marker">
+            <%= event.place %>
+            </span>
           </a>
         </div>
       </div>
-      <div class="col-xs-9">
-        <div style="max-height: 270px;overflow: hidden;">
-          <a href="<%= event.event_url %>">
-            <h3 style="vertical-align: top;"><%= event.title %></h3>
-          </a>
-          <% if event.group_url %>
-            <a href="<%= event.group_url %>">
-              <img src="<%= event.group_logo %>" style="height: 20px; width: 20px;  border-radius: 20px; border: 1px #AAAAAA solid;">
-              <%= event.group_title %>
-            </a>
-            <br>
-          <% end %>
-          <div class="event-detail">
-            <%= event.catch %>
-          </div>
+      <div class="event-right col-xs-9">
+        <a href="<%= event.event_url %>">
+          <h3 class="event-title"><%= event.title %></h3>
+        </a>
+        <% if event.group_url %>
+        <a href="<%= event.group_url %>">
+          <img class="group-logo" src="<%= event.group_logo %>">
+          <%= event.group_title %>
+        </a>
+        <br>
+        <% end %>
+        <div class="event-detail">
+          <%= event.catch %>
         </div>
       </div>
-      <div class="col-xs-12">
+      <div class="event-user col-xs-12">
         <% event.users.each do |user| %>
         <a href="<%= user[:id] %>">
           <img class="user-icon" src="<%= user[:image] %>" data-toggle="tooltip" title="<%= user[:name] %>">
         </a>
         <% end %>
-        <div style="text-align: right; margin-top: 10px;">
-          <h3 style="display:inline;">
-            <%= "#{event.accepted}" %>
+        <div class="user-limit">
+          <h3>
+            <p><%= "#{event.accepted}" %></p>
             <% if event.limit != 0 %>
-              <%= "/ #{event.limit}" %>
+            <p><%= "/ #{event.limit}" %></p>
             <% end %>
-          </h3> 人
+            <p><small>人</small></p>
+          </h3>
         </div>
       </div>
     </div>

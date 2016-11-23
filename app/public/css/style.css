@@ -58,9 +58,53 @@ body {
 /* ------------------------------
 　　イベント
 ------------------------------ */
+.event-left {
+}
+
+.event-right {
+  max-height: 270px;
+  overflow: hidden
+}
+
+.event-user {
+  padding-top: 10px
+}
+
+.day {
+  text-align: right;
+}
+
 .event-logo {
+  margin-top: 0px;
+  padding-top: 0px;
   width: 100%;
   padding-top: 10px;
+}
+
+.event-place {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.event-title {
+  margin-top: 10px;
+  vertical-align: top;
+}
+
+.group-logo {
+  height: 20px;
+  width: 20px;
+  border-radius: 20px;
+  border: 1px #AAAAAA solid;
+}
+
+.user-limit {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.user-limit p {
+  display: inline;
 }
 
 /* ------------------------------
