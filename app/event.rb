@@ -115,24 +115,27 @@ class ConnpassEvent < Event
 
   def users
     begin
-      users = []
+      if !@users.nil?
+        return @users
+      end
+      @users = []
       participation_doc.css('.applicant_area > .participation_table_area > .common_table > tbody > tr > td.user > div.user_info > .image_link').each do |user|
         id = user.attribute('href').value
         name = user.css('img').attribute('alt').value
         image = user.css('img').attribute('src').value
-        # users << {id: id, name: name, image: image}
-        begin
-          user_doc = Http.get_document(id)
-          twitter_url = user_doc.css('.social_link a').attribute('href').value
-          if !twitter_url.include?('http://twitter.com/')
-            twitter_url = ''
-          else
-            twitter_id = twitter_url.replace('http://twitter.com/', '')
-            user = client.user(twitter_id)
-          end
-        rescue
-        end
-        users << {id: id, name: name, image: image, twitter_url: twitter_url, user: user}
+        @users << {id: id, name: name, image: image}
+        # begin
+        #   user_doc = Http.get_document(id)
+        #   twitter_url = user_doc.css('.social_link a').attribute('href').value
+        #   if !twitter_url.include?('http://twitter.com/')
+        #     twitter_url = ''
+        #   else
+        #     twitter_id = twitter_url.replace('http://twitter.com/', '')
+        #     user = client.user(twitter_id)
+        #   end
+        # rescue
+        # end
+        # @users << {id: id, name: name, image: image, twitter_url: twitter_url, user: user}
       end
       users
     rescue
