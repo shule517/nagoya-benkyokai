@@ -1,0 +1,10 @@
+<% event = @data %>
+<% event.users.each do |user| %>
+<a href="<%= user[:id] %>">
+  <img class="user-icon" src="<%= user[:image] %>" style="margin-top:5px; margin-bottom:5px; width: 50px;">
+</a>
+<% if user[:twitter_url] != '' %>
+<a href="<%= user[:twitter_url] %>"> twitter</a>
+<% end %>
+<br>
+<% end %>
