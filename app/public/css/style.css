@@ -43,13 +43,6 @@ img.user-icon:hover {
   border: 3px orange solid;
 }
 
-.event-detail {
-  color: #888888;
-  padding-top: 10px;
-  height: 110px;overflow:
-  hidden;
-}
-
 /* ------------------------------
 　　ベース
 ------------------------------ */
@@ -83,8 +76,6 @@ body {
 }
 
 .event-right {
-  max-height: 270px;
-  overflow: hidden
 }
 
 .event-user {
@@ -117,6 +108,13 @@ body {
   width: 20px;
   border-radius: 20px;
   border: 1px #AAAAAA solid;
+}
+
+.event-detail {
+  color: #888888;
+  padding-top: 10px;
+  max-height: 90px;
+  overflow: hidden
 }
 
 .user-limit {
