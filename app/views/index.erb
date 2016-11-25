@@ -1,4 +1,4 @@
-<a href="/date/201612">12月の勉強会→</a>
+<%#<a href="/date/201612">12月の勉強会→</a>%>
 <%= bday = "" %>
 <% @data.each do |event| %>
 <% day = "#{event.month}/#{event.day}" %>
@@ -25,7 +25,7 @@
 
     <!-- イベント情報 -->
     <div class="event-left col-xs-3">
-      <a href="/event/<%= event.event_id %>">
+      <a href="<%= event.event_url %>">
         <p class="resizeimage">
           <img class="event-logo shadow" src="<%= event.logo %>" style="  object-fit: contain;
 width: 110px;
