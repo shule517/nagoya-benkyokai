@@ -20,14 +20,14 @@ img.owner-icon {
   width: 36px;
   height: 36px;
   border-radius: 20px;
-  border: 3px red solid;
+  border: 3px #FA7484 solid;
 }
 
 img.owner-icon:hover {
   width: 36px;
   height: 36px;
   border-radius: 20px;
-  border: 3px orange solid;
+  border: 3px #ffbf7f solid;
 }
 img.user-icon {
   width: 36px;
@@ -40,7 +40,7 @@ img.user-icon:hover {
   width: 36px;
   height: 36px;
   border-radius: 20px;
-  border: 3px orange solid;
+  border: 3px #ffbf7f solid;
 }
 
 /* ------------------------------

@@ -20,7 +20,7 @@ def get_events(date)
 end
 
 puts "start"
-events = get_events(201611)
+events = get_events(201612)
 
 require 'sinatra'
 require 'sinatra/reloader'
