@@ -8,7 +8,7 @@ class Doorkeeper
   # イベント参加者一覧
   def event_users(event_id)
     url = "https://geekbar.doorkeeper.jp/events/#{event_id}/participants"
-    doc = Http.get_document(url)
+    doc = Shule::Http.get_document(url)
     doc.css('.user-profile-details > div.user-name').map {|link| link.children.text}
   end
 
@@ -19,7 +19,7 @@ class Doorkeeper
   private
   def search_core(start, keywords, ym = nil)
     url = "https://api.doorkeeper.jp/events/?q=#{keywords}&sort=starts_at#{ym.nil? ? "" : "&since=#{ym}01000000"}&page=#{start.to_s}"
-    result = Http.get_json(url)
+    result = Shule::Http.get_json(url)
     events = result.map {|event| DoorkeeperEvent.new(event[:event])}
 
     if events.count == 25

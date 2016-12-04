@@ -8,7 +8,7 @@ class Connpass
   # イベント参加者一覧
   def event_users(event_id)
     url = "http://jxug.connpass.com/event/#{event_id}/participation/#participants"
-    doc = Http.get_document(url)
+    doc = Shule::Http.get_document(url)
     users = []
     doc.css('.applicant_area > .participation_table_area > .common_table > tbody > tr > td.user > div.user_info > .image_link').each do |user|
       id = user.attribute('href').value
@@ -28,7 +28,7 @@ class Connpass
   def search_core(start, keywords, ym = nil)
     url = "http://connpass.com/api/v1/event/?keyword_or=#{keywords}&count=100&order=2&start=#{start.to_s}"
     url += "&ym=#{ym}" if ym != nil
-    result = Http.get_json(url)
+    result = Shule::Http.get_json(url)
 
     results_returned = result[:results_returned]
     results_available = result[:results_available]

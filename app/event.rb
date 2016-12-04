@@ -114,34 +114,33 @@ class ConnpassEvent < Event
   end
 
   def users
-    begin
       if !@users.nil?
         return @users
       end
       @users = []
-      participation_doc.css('.applicant_area > .participation_table_area > .common_table > tbody > tr > td.user > div.user_info > .image_link').each do |user|
-        id = user.attribute('href').value
-        name = user.css('img').attribute('alt').value
-        image = user.css('img').attribute('src').value
-        @users << {id: id, name: name, image: image}
-        # begin
-        #   user_doc = Http.get_document(id)
-        #   twitter_url = user_doc.css('.social_link a').attribute('href').value
-        #   if !twitter_url.include?('http://twitter.com/')
-        #     twitter_url = ''
-        #   else
-        #     twitter_id = twitter_url.replace('http://twitter.com/', '')
-        #     user = client.user(twitter_id)
-        #   end
-        # rescue
-        # end
-        # @users << {id: id, name: name, image: image, twitter_url: twitter_url, user: user}
+      participation_doc.css('.applicant_area > .participation_table_area > .common_table > tbody > tr').each do |line|
+        begin
+          user = line.css('td.user > div.user_info > .image_link')
+          if user
+            id = user.attribute('href').value
+            name = user.css('img').attribute('alt').value
+            image = user.css('img').attribute('src').value
+          end
+
+          social = line.css('td.social > a')
+          if social
+            url = social.attribute('href').value
+            if url.include?('https://twitter.com/')
+              twitter_id = url.gsub('https://twitter.com/intent/user?screen_name=', '')
+            end
+          end
+          @users << {id: id, name: name, image: image, twitter_id: twitter_id}
+        rescue => e
+          puts "no users event:#{title} / #{group_url} / #{event_id}"
+          p e
+        end
       end
       users
-    rescue
-      puts "no users event:#{title} / #{group_url} / #{event_id}"
-      []
-    end
   end
 
   def owners
@@ -161,15 +160,19 @@ class ConnpassEvent < Event
   end
 
   def participation_doc
-    @participation_doc ||= Http.get_document("#{group_url}/event/#{event_id}/participation/#participants")
+    begin
+      @participation_doc ||= Shule::Http.get_document("#{group_url}/event/#{event_id}/participation/#participants")
+    rescue
+      Nokogiri::HTML("")
+    end
   end
 
   def event_doc
-    @event_doc ||= Http.get_document(event_url)
+    @event_doc ||= Shule::Http.get_document(event_url)
   end
 
   def user_doc
-    @user_doc ||= Http.get_document("http://connpass.com/user/#{owner_nickname}")
+    @user_doc ||= Shule::Http.get_document("http://connpass.com/user/#{owner_nickname}")
   end
 end
 
@@ -223,33 +226,39 @@ class DoorkeeperEvent < Event
   end
 
   def owners
-    []
-    # begin
-    #   owners = []
-    #   group_doc.css('.with-gutter div div .user-profile .user-profile-details').each do |owner|
-    #     # id = owner.attribute('href').value
-    #     id = owner.css('img').attribute('alt').value
-    #     name = owner.css('img').attribute('alt').value
-    #     image = owner.css('img').attribute('src').value
-    #     owners << {id: id, name: name, image: image}
-    #   end
-    #   owners
-    # rescue
-    #   puts "no owners event:#{title} / #{group_url} / #{event_id}"
-    #   []
-    # end
+    begin
+      owners = []
+      group_doc.css('div.with-gutter > div.row > div > div.user-profile > div.user-profile-details').each do |owner|
+        image = owner.css('img').attribute('src').value
+        name = owner.css('img').attribute('alt').value
+        id = ''
+        owner.css('div.user-social > a.external-profile-link').each do |social|
+          url = social.attribute('href').value
+          if url.include?('twitter')
+            id = url.gsub('http://twitter.com/', '')
+            name = social.attribute('title').value # twitterの表示名を優先
+            break
+          end
+        end
+        owners << {id: id, name: name, image: image}
+      end
+      owners
+    rescue
+      puts "no owners event:#{title} / #{group_url} / #{event_id}"
+      []
+    end
   end
 
   def group_doc
-    @group_doc ||= Http.get_document("#{group_url}/members")
+    @group_doc ||= Shule::Http.get_document("#{group_url}/members")
   end
 
   def participation_doc
-    @participation_doc ||= Http.get_document("#{group_url}/events/#{event_id}/participants")
+    @participation_doc ||= Shule::Http.get_document("#{group_url}/events/#{event_id}/participants")
   end
 
   def event_doc
-    @event_doc ||= Http.get_document(event_url)
+    @event_doc ||= Shule::Http.get_document(event_url)
   end
 end
 
@@ -290,10 +299,10 @@ class AtndEvent < Event
   end
 
   def event_doc
-    @event_doc ||= Http.get_document(event_url)
+    @event_doc ||= Shule::Http.get_document(event_url)
   end
 
   def user_doc
-    @user_doc ||= Http.get_document("http://connpass.com/user/#{owner_nickname}")
+    @user_doc ||= Shule::Http.get_document("http://connpass.com/user/#{owner_nickname}")
   end
 end

@@ -22,7 +22,7 @@ class Atnd
     count = 100
     url = "http://api.atnd.org/events/?keyword_or=#{keywords}&count=#{count}&order=2&start=#{start.to_s}&format=json"
     url += "&ym=#{ym}" if ym != nil
-    result = Http.get_json(url)
+    result = Shule::Http.get_json(url)
 
     results_returned = result[:results_returned]
     results_start = result[:results_start]

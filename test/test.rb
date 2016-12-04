@@ -71,6 +71,8 @@ class ConnpassTest < Test::Unit::TestCase
     assert_equal(shule[:image], 'https://connpass-tokyo.s3.amazonaws.com/thumbs/b9/93/b99305b6784e742244868ddd5acc8646.png')
 
     assert(event.owners.count > 0)
+
+    # assert_equal(event.accepted, event.owners.count + event.users.count)
   end
 end
 
