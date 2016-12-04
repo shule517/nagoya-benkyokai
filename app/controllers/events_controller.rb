@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
   def index
-    render text: 'hello world!'
+    @events = Event.all
   end
 end
