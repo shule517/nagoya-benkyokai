@@ -1,6 +1,7 @@
 #coding: utf-8
 require 'uri'
 require_relative "./http"
+require_relative './event'
 
 class DoorkeeperEvent < Event
   def source
@@ -81,6 +82,7 @@ class DoorkeeperEvent < Event
     owners
   end
 
+  private
   def group_doc
     @group_doc ||= Shule::Http.get_document("#{group_url}/members")
   end

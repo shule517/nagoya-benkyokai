@@ -1,6 +1,7 @@
 #coding: utf-8
 require 'uri'
 require_relative "./http"
+require_relative './event'
 
 class ConnpassEvent < Event
   def source
@@ -16,15 +17,15 @@ class ConnpassEvent < Event
   end
 
   def group_url
-      series[:url]
+    series[:url]
   end
 
   def group_id
-      series[:id]
+    series[:id]
   end
 
   def group_title
-      series[:title]
+    series[:title]
   end
 
   def group_logo
@@ -102,6 +103,7 @@ class ConnpassEvent < Event
     end
   end
 
+  private
   def participation_doc
     begin
       if group_url.nil?

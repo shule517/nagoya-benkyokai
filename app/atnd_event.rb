@@ -1,6 +1,7 @@
 #coding: utf-8
 require 'uri'
 require_relative "./http"
+require_relative './event'
 
 class AtndEvent < Event
   def source
@@ -38,6 +39,7 @@ class AtndEvent < Event
     []
   end
 
+  private
   def event_doc
     @event_doc ||= Shule::Http.get_document(event_url)
   end
