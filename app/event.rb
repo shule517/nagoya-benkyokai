@@ -119,14 +119,14 @@ class ConnpassEvent < Event
       end
       @users = []
       participation_doc.css('.applicant_area > .participation_table_area > .common_table > tbody > tr').each do |line|
-        begin
-          user = line.css('td.user > div.user_info > .image_link')
-          if user
-            id = user.attribute('href').value
-            name = user.css('img').attribute('alt').value
-            image = user.css('img').attribute('src').value
-          end
+        user = line.css('td.user > div.user_info > .image_link')
+        if user
+          id = user.attribute('href').value.gsub('https://connpass.com/user/', '').gsub('/', '')
+          name = user.css('img').attribute('alt').value
+          image = user.css('img').attribute('src').value
+        end
 
+        begin
           social = line.css('td.social > a')
           if social
             url = social.attribute('href').value
@@ -134,11 +134,12 @@ class ConnpassEvent < Event
               twitter_id = url.gsub('https://twitter.com/intent/user?screen_name=', '')
             end
           end
-          @users << {id: id, name: name, image: image, twitter_id: twitter_id}
         rescue => e
           puts "no users event:#{title} / #{group_url} / #{event_id}"
           p e
         end
+
+        @users << {id: id, name: name, image: image, twitter_id: twitter_id}
       end
       users
   end
@@ -214,9 +215,18 @@ class DoorkeeperEvent < Event
       users = []
       participation_doc.css('.user-profile-details').each do |user|
         id = user.css('div.user-name').children.text
+        twitter_id = ''
         name = user.css('div.user-name').children.text
         image = user.css('img').attribute('src').value
-        users << {id: id, name: name, image: image}
+        user.css('div.user-social > a.external-profile-link').each do |social|
+          url = social.attribute('href').value
+          if url.include?('twitter')
+            twitter_id = url.gsub('http://twitter.com/', '')
+            id = twitter_id
+            break
+          end
+        end
+        users << {id: id, twitter_id: twitter_id, name: name, image: image}
       end
       users
     rescue
@@ -226,12 +236,12 @@ class DoorkeeperEvent < Event
   end
 
   def owners
-    begin
-      owners = []
-      group_doc.css('div.with-gutter > div.row > div > div.user-profile > div.user-profile-details').each do |owner|
-        image = owner.css('img').attribute('src').value
-        name = owner.css('img').attribute('alt').value
-        id = ''
+    owners = []
+    group_doc.css('div.with-gutter > div.row > div > div.user-profile > div.user-profile-details').each do |owner|
+      id = ''
+      name = owner.css('img').attribute('alt').value
+      image = owner.css('img').attribute('src').value
+      begin
         owner.css('div.user-social > a.external-profile-link').each do |social|
           url = social.attribute('href').value
           if url.include?('twitter')
@@ -240,13 +250,12 @@ class DoorkeeperEvent < Event
             break
           end
         end
-        owners << {id: id, name: name, image: image}
+      rescue
+        puts "owners unregistered social#{name}"
       end
-      owners
-    rescue
-      puts "no owners event:#{title} / #{group_url} / #{event_id}"
-      []
+      owners << {id: id, name: name, image: image}
     end
+    owners
   end
 
   def group_doc
