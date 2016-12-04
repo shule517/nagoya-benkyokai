@@ -2,6 +2,7 @@
 require 'nokogiri'
 require_relative './http'
 require_relative './event'
+require_relative './atnd_event'
 
 class Atnd
   def search(keywords, ym = nil)

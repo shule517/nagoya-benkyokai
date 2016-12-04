@@ -2,6 +2,7 @@
 require 'nokogiri'
 require_relative './http'
 require_relative './event'
+require_relative './connpass_event'
 
 class Connpass
   def search(keywords, ym = nil)
