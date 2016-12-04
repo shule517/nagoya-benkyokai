@@ -76,6 +76,16 @@ class ConnpassTest < Test::Unit::TestCase
     assert_equal(kuu[:name], 'くう@牛奶茶')
     assert_equal(kuu[:image], 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png')
   end
+
+  def test_users
+    # group_urlがない場合
+    api = Connpass.new
+    events = api.search('ちゅーんさんちでHaskellやると楽しいという会')
+    event = events.first
+    users = event.users
+    assert_equal(event.accepted, users.count)
+    assert_equal(event.owners.count, 1)
+  end
 end
 
 class DoorkeeperTest < Test::Unit::TestCase

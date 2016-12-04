@@ -178,7 +178,12 @@ class ConnpassEvent < Event
 
   def participation_doc
     begin
-      @participation_doc ||= Shule::Http.get_document("#{group_url}/event/#{event_id}/participation/#participants")
+      if group_url.nil?
+        url = 'https://connpass.com'
+      else
+        url = group_url
+      end
+      @participation_doc ||= Shule::Http.get_document("#{url}/event/#{event_id}/participation/#participants")
     rescue
       Nokogiri::HTML("")
     end
