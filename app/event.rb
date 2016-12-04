@@ -114,49 +114,65 @@ class ConnpassEvent < Event
   end
 
   def users
-      if !@users.nil?
-        return @users
-      end
-      @users = []
-      participation_doc.css('.applicant_area > .participation_table_area > .common_table > tbody > tr').each do |line|
-        user = line.css('td.user > div.user_info > .image_link')
-        if user
-          id = user.attribute('href').value.gsub('https://connpass.com/user/', '').gsub('/', '')
-          name = user.css('img').attribute('alt').value
-          image = user.css('img').attribute('src').value
-        end
+    puts "get users : #{title}"
 
-        begin
-          social = line.css('td.social > a')
-          if social
-            url = social.attribute('href').value
-            if url.include?('https://twitter.com/')
-              twitter_id = url.gsub('https://twitter.com/intent/user?screen_name=', '')
-            end
-          end
-        rescue => e
-          puts "no users event:#{title} / #{group_url} / #{event_id}"
-          p e
-        end
+    users = []
+    participation_doc.css('.applicant_area > .participation_table_area > .common_table > tbody > tr').each do |line|
+      user = line.css('.user > .user_info > .image_link')
+      return [] if user.empty? # 参加者がいない場合
 
-        @users << {id: id, name: name, image: image, twitter_id: twitter_id}
+      id = user.attribute('href').value.gsub('https://connpass.com/user/', '').gsub('/', '')
+      twitter_id = ''
+      name = user.css('img').attribute('alt').value
+      image = user.css('img').attribute('src').value
+
+      line.css('td.social > a').each do |social|
+        url = social.attribute('href').value
+        if url.include?('https://twitter.com/')
+          twitter_id = url.gsub('https://twitter.com/intent/user?screen_name=', '')
+        end
       end
-      users
+      users << {id: id, twitter_id: twitter_id, name: name, image: image}
+    end
+    users
   end
 
   def owners
+    puts "get owners : #{title}"
+
     begin
       owners = []
-      event_doc.css('.owner_list li a').each do |owner|
-        id = owner.attribute('href').value
-        name = owner.css('img').attribute('alt').value
-        image = owner.css('img').attribute('src').value
-        owners << {id: id, name: name, image: image}
+      owner = participation_doc.css('.concerned_area > .common_table > tbody').first
+      if !owner.nil? # イベント参加者ページがある場合
+        owner.css('tr').each do |user|
+          user_info = user.css('.user_info')
+          url = user_info.css('.image_link').attribute('href').value
+          id = url.gsub('https://connpass.com/user/', '').gsub('/open/', '');
+          twitter_id = ''
+          name = user_info.css('.display_name > a').text
+          image = user_info.css('.image_link > img').attribute('src').value
+          user.css('.social > a').each do |social|
+            url = social.attribute('href')
+            if url.include?('twitter')
+              twitter_id = url.gsub('https://twitter.com/intent/user?screen_name=', '')
+            end
+          end
+          owners << {id: id, twitter_id: twitter_id, name: name, image: image}
+        end
+      else # イベント参加者ページがない場合
+        # TODO メソッド化 イベントページから参加者を取得するメソッド
+        # TODO メソッド化 ユーザIDからtwitteridを取得するメソッド
+        event_doc.css('.owner_list > li > .image_link').each do |user|
+          url = user.attribute('href').value
+          id = url.gsub('https://connpass.com/user/', '').gsub('/open/', '')
+          twitter_id = '' # TODO twitterをユーザページから取得する
+          img = user.css('img')
+          name = img.attribute('alt').value
+          image = img.attribute('src').value
+          owners << {id: id, twitter_id: twitter_id, name: name, image: image}
+        end
       end
       owners
-    rescue
-      puts "no owners event:#{title} / #{group_url} / #{event_id}"
-      []
     end
   end
 
@@ -237,23 +253,21 @@ class DoorkeeperEvent < Event
 
   def owners
     owners = []
-    group_doc.css('div.with-gutter > div.row > div > div.user-profile > div.user-profile-details').each do |owner|
+    group_doc.css('.with-gutter > .row > div > .user-profile > .user-profile-details').each do |owner|
       id = ''
-      name = owner.css('img').attribute('alt').value
+      name = owner.css('.user-name').text
+      id = name # social登録していない人は名前を使う
+      twitter_id = ''
       image = owner.css('img').attribute('src').value
-      begin
-        owner.css('div.user-social > a.external-profile-link').each do |social|
-          url = social.attribute('href').value
-          if url.include?('twitter')
-            id = url.gsub('http://twitter.com/', '')
-            name = social.attribute('title').value # twitterの表示名を優先
-            break
-          end
+      owner.css('.user-social > .external-profile-link').each do |social|
+        url = social.attribute('href').value
+        if url.include?('twitter')
+          twitter_id = url.gsub('http://twitter.com/', '')
+          id = twitter_id
+          break
         end
-      rescue
-        puts "owners unregistered social#{name}"
       end
-      owners << {id: id, name: name, image: image}
+      owners << {id: id, twitter_id: twitter_id, name: name, image: image}
     end
     owners
   end

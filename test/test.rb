@@ -71,6 +71,11 @@ class ConnpassTest < Test::Unit::TestCase
     assert_equal(shule[:image], 'https://connpass-tokyo.s3.amazonaws.com/thumbs/b9/93/b99305b6784e742244868ddd5acc8646.png')
 
     assert_equal(event.owners.count, 4)
+    kuu = event.users.select {|user| user[:id] == 'Kuxumarin'}.first
+    assert_equal(kuu[:id], 'Kuxumarin')
+    assert_equal(kuu[:twitter_id], 'Fumiya_Kume')
+    assert_equal(kuu[:name], 'くう@牛奶茶')
+    assert_equal(kuu[:image], 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png')
   end
 end
 
@@ -98,18 +103,19 @@ class DoorkeeperTest < Test::Unit::TestCase
     assert_equal('https://geekbar.doorkeeper.jp/', event.group_url)
     assert_equal('https://dzpp79ucibp5a.cloudfront.net/groups_logos/1995_normal_1380975297_251035_156371434432231_4785187_n.jpg', event.group_logo)
 
-    assert(event.users.count > 0)
+    assert_equal(event.accepted, event.users.count + 3) # 3人アカウント非表示
     shule = event.users.select {|user| user[:id] == 'shule517'}.first
     assert_equal(shule[:id], 'shule517')
     assert_equal(shule[:twitter_id], 'shule517')
     assert_equal(shule[:name], 'シュール')
     assert_equal(shule[:image], 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/295014_original_1464427238_PeerstPlayer_Icon_normal.png')
 
-    # assert(event.owners.count > 0)
-    # shule = event.users.select {|user| user[:name] == 'くう@牛奶茶'}.first
-    # assert_equal(shule[:id], 'Fumiya_Kume')
-    # assert_equal(shule[:name], 'くう@牛奶茶')
-    # assert_equal(shule[:image], 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png')
+    assert_equal(event.owners.count, 1)
+    dominion = event.owners.select {|user| user[:id] == 'Dominion525'}.first
+    assert_equal(dominion[:id], 'Dominion525')
+    assert_equal(dominion[:twitter_id], 'Dominion525')
+    assert_equal(dominion[:name], 'どみにをん525')
+    assert_equal(dominion[:image], 'https://graph.facebook.com/100001033554537/picture')
   end
 end
 
