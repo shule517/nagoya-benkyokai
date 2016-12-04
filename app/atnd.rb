@@ -4,20 +4,11 @@ require_relative './http'
 require_relative './event'
 
 class Atnd
-  # イベントのグループ
-  # イベント参加者一覧
-  # def event_users(event_id)
-  #   url = "http://jxug.connpass.com/event/#{event_id}/participation/#participants"
-  #   doc = Http.get_document(url)
-  #   doc.css('.user_info > a.image_link').map {|link| link.attribute('href').value}
-  # end
-
   def search(keywords, ym = nil)
     search_core(0, keywords, ym)
   end
 
   private
-
   def search_core(start, keywords, ym = nil)
     count = 100
     url = "http://api.atnd.org/events/?keyword_or=#{keywords}&count=#{count}&order=2&start=#{start.to_s}&format=json"

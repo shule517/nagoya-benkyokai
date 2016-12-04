@@ -6,7 +6,6 @@ require_relative '../app/atnd'
 
 module EventInterfaceTest
   def test_implements_interface
-    # assert_respond_to(@event, :data)
     assert_respond_to(@event, :event_id)
     assert_respond_to(@event, :title)
     assert_respond_to(@event, :catch)
@@ -134,19 +133,10 @@ class AtndTest < Test::Unit::TestCase
     events = api.search('エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！')
     event = events.first
     assert_equal('エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！', event.title)
-    #assert_equal('https://atnd.org/event_images/0008/0890/008_original.jpg?1474957731', event.logo)
     assert(event.catch.start_with?('【ATEAM TECHとは】'))
     assert_equal('2016-10-11T20:00:00.000+09:00', event.started_at)
     assert_equal('エイチーム　本社', event.place)
     assert_equal('〒450-6432　名古屋市中村区名駅三丁目28番12号　大名古屋ビルヂング 32F', event.address)
-    #assert_equal('JXUG', event.group_title)
-    #assert_equal(1134, event.group_id)
-    #assert_equal('http://jxug.connpass.com/', event.group_url)
     assert_equal(false, event.limit_over?)
-    #assert_equal('http://twitter.com/ytabuchi', event.owner_twitter_url)
-
-    #users = api.event_users(event.event_id)
-    #assert(users.count > 0)
-    #assert(users.include?('http://connpass.com/user/shule517/'))
   end
 end
