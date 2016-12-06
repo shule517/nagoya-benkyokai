@@ -16,9 +16,8 @@
   </div>
   <div class="col-md-6 col-xs-10 col-md-offset-0 col-xs-offset-1">
     <% if bday == day %>
-    <br>
-    <hr class="style-three">
-    <br>
+    <%#<hr class="style-three">%>
+    <hr class="wave">
     <% else %>
     <% bday = day %>
     <% end %>
@@ -56,7 +55,6 @@ height: 100px;"><br>
       </div>
     </div>
     <div class="event-user col-xs-12">
-      参加者：
       <div style="background-color: #EEEEEE; border-radius: 5px;">
         <div style="padding-left: 10px; padding-top: 5px; padding-bottom: 5px;">
         <% event.owners.each do |user| %>
@@ -69,23 +67,6 @@ height: 100px;"><br>
           <img class="user-icon" src="<%= user[:image] %>" data-toggle="tooltip" title="参加者：<%= user[:name] %>" style="margin-right: 2px; margin-bottom: 2px">
         </a>
         <% end %>
-        </div>
-      </div>
-      <br>
-      <div class="col-xs-12">
-        <div class="user-limit">
-          <h3 style="margin-top: 10px">
-            <p><%= "#{event.accepted}" %></p>
-            <% if event.limit != 0 %>
-            <p><%= "/ #{event.limit}" %></p>
-            <% end %>
-            <p><small>人</small></p>
-          </h3>
-          <% if !event.hash_tag.empty? %>
-          <a href="<%= "https://twitter.com/hashtag/#{event.hash_tag}?f=tweets&vertical=default&src=hash" %>">
-            Twiter: <%= "#{event.hash_tag}" %>
-          </a>
-          <% end %>
         </div>
       </div>
     </div>

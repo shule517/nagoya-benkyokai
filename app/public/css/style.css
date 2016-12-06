@@ -14,6 +14,8 @@ hr.style-three {
     border: 0;
     border-bottom: 1px dashed #ccc;
     background: #999;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 img.owner-icon {
@@ -116,7 +118,7 @@ body {
 .event-detail {
   color: #888888;
   padding-top: 10px;
-  max-height: 90px;
+  max-height: 70px;
   overflow: hidden
 }
 
