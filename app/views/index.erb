@@ -4,7 +4,7 @@
 <% day = "#{event.month}/#{event.day}" %>
 <div class="row">
   <% if bday != day %>
-  <hr class="wave">
+  <hr class="style-two">
   <% end %>
   <div class="col-md-2 col-xs-11 col-xs-offset-1">
     <% if bday != day %>
@@ -17,7 +17,7 @@
   <div class="col-md-6 col-xs-10 col-md-offset-0 col-xs-offset-1">
     <% if bday == day %>
     <%#<hr class="style-three">%>
-    <hr class="wave">
+    <hr class="style-two">
     <% else %>
     <% bday = day %>
     <% end %>
