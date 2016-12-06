@@ -58,12 +58,12 @@ height: 100px;"><br>
       <div style="background-color: #EEEEEE; border-radius: 5px;">
         <div style="padding-left: 10px; padding-top: 5px; padding-bottom: 5px;">
         <% event.owners.each do |user| %>
-        <a href="<%= user[:id] %>">
+        <a href="<%= "https://twitter.com/#{user[:twitter_id]}" %>">
           <img class="owner-icon" src="<%= user[:image] %>" data-toggle="tooltip" title="管理者：<%= user[:name] %>" style="margin-right: 2px; margin-bottom: 2px">
         </a>
         <% end %>
         <% event.users.each do |user| %>
-        <a href="<%= user[:id] %>">
+        <a href="<%= "https://twitter.com/#{user[:twitter_id]}" %>">
           <img class="user-icon" src="<%= user[:image] %>" data-toggle="tooltip" title="参加者：<%= user[:name] %>" style="margin-right: 2px; margin-bottom: 2px">
         </a>
         <% end %>
