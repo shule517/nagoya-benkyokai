@@ -59,6 +59,9 @@ height: 100px;"><br>
     <div class="event-user col-xs-12">
       <div style="background-color: #EEEEEE; border-radius: 5px;">
         <div style="padding-left: 10px; padding-top: 5px; padding-bottom: 5px;">
+        <a href="<%= "https://twitter.com/nagoya_lambda/lists/nagoya-#{event.event_id}/members" %>">
+          <img class="twitter-icon" src="/img/Twitter.png" data-toggle="tooltip" title="ツイッターリスト" style="margin-right: 2px; margin-bottom: 2px">
+        </a>
         <% event.owners.each do |user| %>
         <a href="<%= "https://twitter.com/#{user[:twitter_id]}" %>">
           <img class="owner-icon" src="<%= user[:image] %>" data-toggle="tooltip" title="管理者：<%= user[:name] %>" style="margin-right: 2px; margin-bottom: 2px">
