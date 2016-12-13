@@ -41,7 +41,7 @@ class ConnpassTest < Test::Unit::TestCase
 
   def setup
     api = Connpass.new
-    events = api.search('名古屋', 201611)
+    events = api.search('名古屋', [201611])
     assert(events.count > 0)
     @event = events.first
   end
@@ -93,14 +93,14 @@ class DoorkeeperTest < Test::Unit::TestCase
 
   def setup
     api = Doorkeeper.new
-    events = api.search('リモート開発 de ナイト', 201601)
+    events = api.search('リモート開発 de ナイト', [201601])
     assert(events.count > 0)
     @event = events.first
   end
 
   def test_doorkeeper
     api = Doorkeeper.new
-    events = api.search('リモート開発 de ナイト', 201601)
+    events = api.search('リモート開発 de ナイト', [201601])
     event = events.first
     assert_equal('リモート開発 de ナイト ＠名古屋ギークバー', event.title)
     assert_equal('https://dzpp79ucibp5a.cloudfront.net/events_banners/45257_normal_1463562966_%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%90%E3%83%BC%E3%83%AD%E3%82%B4.png', event.logo)

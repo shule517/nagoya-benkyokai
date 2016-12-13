@@ -54,7 +54,7 @@ class DoorkeeperEvent < Event
         end
         users << {id: id, twitter_id: twitter_id, name: name, image: image}
       end
-      users
+      users.sort_by! {|user| user[:twitter_id]}.reverse
     rescue
       puts "no users event:#{title} / #{group_url} / #{event_id}"
       []
@@ -79,7 +79,7 @@ class DoorkeeperEvent < Event
       end
       owners << {id: id, twitter_id: twitter_id, name: name, image: image}
     end
-    owners
+    owners.sort_by! {|user| user[:twitter_id]}.reverse
   end
 
   private

@@ -34,7 +34,7 @@ img.owner-icon {
   border: 3px #FA7484 solid;
 }
 
-img.owner-icon:hover {
+.clickable > img.owner-icon:hover {
   width: 36px;
   height: 36px;
   border-radius: 20px;
@@ -49,7 +49,7 @@ img.user-icon {
   border: 1px #AAAAAA solid;
 }
 
-img.user-icon:hover {
+.clickable > img.user-icon:hover {
   width: 36px;
   height: 36px;
   border-radius: 20px;

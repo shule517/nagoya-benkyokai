@@ -16,19 +16,8 @@ class AtndEvent < Event
     end
   end
 
-  def group_url
-  end
-
-  def group_id
-  end
-
-  def group_title
-  end
-
-  def group_logo
-  end
-
   def logo
+    'https://atnd.org/images/logo_OR_white.png'
   end
 
   def users
@@ -39,12 +28,24 @@ class AtndEvent < Event
     []
   end
 
+  def group_url
+    nil
+  end
+
+  def group_id
+    nil
+  end
+
+  def group_title
+    nil
+  end
+
+  def group_logo
+    nil
+  end
+
   private
   def event_doc
     @event_doc ||= Shule::Http.get_document(event_url)
-  end
-
-  def user_doc
-    @user_doc ||= Shule::Http.get_document("http://connpass.com/user/#{owner_nickname}")
   end
 end

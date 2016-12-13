@@ -61,7 +61,7 @@ class ConnpassEvent < Event
       end
       users << {id: id, twitter_id: twitter_id, name: name, image: image}
     end
-    users
+    users.sort_by! {|user| user[:twitter_id]}.reverse
   end
 
   def owners
@@ -99,7 +99,7 @@ class ConnpassEvent < Event
           owners << {id: id, twitter_id: twitter_id, name: name, image: image}
         end
       end
-      owners
+      owners.sort_by! {|user| user[:twitter_id]}.reverse
     end
   end
 
