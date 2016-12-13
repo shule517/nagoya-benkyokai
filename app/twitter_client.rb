@@ -13,7 +13,7 @@ class TwitterClient
       puts event
       message = "今日は「#{event.title}」が開催されます！\n#{event.event_url}\nhttps://twitter.com/nagoya_lambda/lists/nagoya-#{event.event_id}/members"
       if event.hash_tag
-        message += "\n#{event.hash_tag}"
+        message += "\n##{event.hash_tag}"
       end
       tweet(message)
     end
