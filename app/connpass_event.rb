@@ -79,7 +79,7 @@ class ConnpassEvent < Event
           name = user_info.css('.display_name > a').text
           image = user_info.css('.image_link > img').attribute('src').value
           user.css('.social > a').each do |social|
-            url = social.attribute('href')
+            url = social.attribute('href').value
             if url.include?('twitter')
               twitter_id = url.gsub('https://twitter.com/intent/user?screen_name=', '')
             end
