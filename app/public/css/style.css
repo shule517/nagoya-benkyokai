@@ -70,7 +70,8 @@ body {
 	font-family: "Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",Meiryo,"メイリオ","ＭＳ Ｐゴシック","MS PGothic",Verdana,sans-serif;
 	font-size: 16px;
 	background: #FFF;
-	border-top: 10px solid #CCC;
+	border-top: 10px solid #FFFFFF;
+	border-bottom: 10px solid #FFFFFF;
 }
 
 /* ------------------------------
@@ -105,7 +106,7 @@ body {
 }
 
 .day {
-  text-align: right;
+  text-align: left;
 }
 
 .event-logo {
