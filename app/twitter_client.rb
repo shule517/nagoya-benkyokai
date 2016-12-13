@@ -4,15 +4,17 @@ require_relative './event_collecter'
 
 class TwitterClient
   def update
-    ym = Time.now.strftime("%Y%m")
+    time = Time.now
+    ym = time.strftime("%Y%m")
     events = EventCollecter.search([ym])
-    today = Time.now.strftime("%Y-%m-%d")
-    events.select! {|event| event.started_at.slice(0, 10) == today}
+    time += 24*60*60
+    tommorow = time.strftime("%Y-%m-%d")
+    events.select! {|event| event.started_at.slice(0, 10) == tommorow}
 
-    puts "events.count:#{events.count} - #{today}"
+    puts "events.count:#{events.count} - #{tommorow}"
     events.each do |event|
       puts event
-      message = "今日は「#{event.title}」が開催されます！\n#{event.event_url}\nhttps://twitter.com/nagoya_lambda/lists/nagoya-#{event.event_id}/members"
+      message = "明日開催される勉強会です！\n#{event.title}\n#{event.event_url}\nhttps://twitter.com/nagoya_lambda/lists/nagoya-#{event.event_id}/members"
       if !event.hash_tag.empty?
         message += "\n##{event.hash_tag}"
       end
