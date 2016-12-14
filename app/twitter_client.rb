@@ -39,6 +39,10 @@ class TwitterClient
     end
   end
 
+  def add_list_member(list_id, user_id)
+    @twitter.add_list_member(list_id, user_id)
+  end
+
   def list(list_id)
     @client.list(list_id)
   end
