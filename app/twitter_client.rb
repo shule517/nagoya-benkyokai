@@ -18,7 +18,7 @@ class TwitterClient
 
   def list_exists?(list_id)
     begin
-      @client.list(list_id)
+      list(list_id)
       return true
     rescue Twitter::Error::NotFound
       return false
@@ -26,7 +26,21 @@ class TwitterClient
   end
 
   def create_list(event_id, description)
-    # @client.create_list(event_id, description: description)
+    if !list_exists?(event_id)
+      @client.create_list(event_id, description: description)
+    else
+      @client.list_update(event_id, description: description)
+    end
+  end
+
+  def destroy_list(event_id)
+    if list_exists?(event_id)
+      @client.destroy_list(event_id)
+    end
+  end
+
+  def list(list_id)
+    @client.list(list_id)
   end
 
   # def update

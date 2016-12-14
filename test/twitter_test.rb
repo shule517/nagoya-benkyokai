@@ -12,9 +12,14 @@ class TwitterTest < Test::Unit::TestCase
   end
 
   def test_create_list
-    # @twitter.list_add_member("test", "shokai")
-    # @twitter.create_list('test', 'description')
-    # assert(true)
+    @twitter.create_list('test', 'description1')
+    assert(@twitter.list_exists?('test'))
+
+    @twitter.create_list('test', 'description2')
+    assert(@twitter.list_exists?('test'))
+
+    @twitter.destroy_list('test')
+    assert(!@twitter.list_exists?('test'))
   end
 
   def test_list_exists
