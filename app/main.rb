@@ -4,7 +4,7 @@ require 'sinatra/reloader'
 require_relative './event_collector'
 
 puts "start"
-collector = EventCollecter.new
+collector = EventCollector.new
 events = collector.search([201612, 201701, 201702])
 
 get '/' do

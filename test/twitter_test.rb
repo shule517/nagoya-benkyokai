@@ -20,6 +20,9 @@ class TwitterTest < Test::Unit::TestCase
     assert(@twitter.list_exists?('test'))
     assert_equal('description2', @twitter.list('test')[:description])
 
+    @twitter.add_list_member('test', 'shule517')
+    # puts @twitter.list_members('test')
+
     @twitter.destroy_list('test')
     assert(!@twitter.list_exists?('test'))
   end

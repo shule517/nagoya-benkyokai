@@ -26,10 +26,14 @@ class TwitterClient
   end
 
   def create_list(event_id, description)
-    if !list_exists?(event_id)
-      @client.create_list(event_id, description: description)
-    else
-      @client.list_update(event_id, description: description)
+    begin
+      if !list_exists?(event_id)
+        @client.create_list(event_id, description: description[0...100])
+      else
+        @client.list_update(event_id, description: description[0...100])
+      end
+    rescue Twitter::Error::Forbidden => e
+      puts "#{e}\nevent_id:#{event_id} description:#{description}"
     end
   end
 
@@ -40,7 +44,11 @@ class TwitterClient
   end
 
   def add_list_member(list_id, user_id)
-    @client.add_list_member(list_id, user_id)
+    begin
+      @client.add_list_member(list_id, user_id)
+    rescue Twitter::Error::Forbidden
+      puts "Error: #{user_id}をリストに追加する権限がありません。"
+    end
   end
 
   def list(list_id)
@@ -54,7 +62,7 @@ class TwitterClient
   # def update
   #   time = Time.now
   #   ym = time.strftime("%Y%m")
-  #   events = EventCollecter.search([ym])
+  #   events = EventCollector.search([ym])
   #   time += 24*60*60
   #   tommorow = time.strftime("%Y-%m-%d")
   #   events.select! {|event| event.started_at.slice(0, 10) == tommorow}
