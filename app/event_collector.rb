@@ -19,7 +19,7 @@ class EventCollector
     end
 
     atnd_events = Atnd.new.search('名古屋', date)
-    ngwords = ["仏教", "クリスマスパーティ", "テロリスト", "国際交流パーティ", "社会人基礎力"]
+    ngwords = ["仏教", "クリスマスパーティ", "テロリスト", "国際交流パーティ", "社会人基礎力", "カウントダウンパーティー", "ARMENIAN SONGS"]
     atnd_events.select! {|event| ngwords.all? {|ngword| !event.title.include?(ngword)} }
     events += atnd_events
 
@@ -65,7 +65,7 @@ class EventCollector
     puts "events.count:#{events.count} - #{tommorow}"
     events.each do |event|
       puts event
-      message = "明日開催される勉強会です！\n#{event.title}\n#{event.event_url}\nhttps://twitter.com/nagoya_lambda/lists/nagoya-#{event.event_id}/members"
+      message = "#{event.year}/#{event.month}/#{event.day}(#{event.wday})に開催される勉強会です！\n#{event.title}\n#{event.event_url}\nhttps://twitter.com/nagoya_lambda/lists/nagoya-#{event.event_id}"
       if !event.hash_tag.empty?
         message += "\n##{event.hash_tag}"
       end
