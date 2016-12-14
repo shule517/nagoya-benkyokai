@@ -1,10 +1,11 @@
 # encoding: utf-8
 require 'sinatra'
 require 'sinatra/reloader'
-require_relative './event_collecter'
+require_relative './event_collector'
 
 puts "start"
-events = EventCollecter.search([201612, 201701, 201702])
+collector = EventCollecter.new
+events = collector.search([201612, 201701, 201702])
 
 get '/' do
   @data = events
@@ -12,7 +13,7 @@ get '/' do
 end
 
 get '/date/:date' do |date|
-  @data = EventCollecter.search(date)
+  @data = collector.search(date)
   erb :index
 end
 

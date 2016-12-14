@@ -1,6 +1,6 @@
 #encoding: utf-8
 require "twitter"
-require_relative './event_collecter'
+require_relative './event_collector'
 
 class TwitterClient
   def initialize
@@ -40,11 +40,15 @@ class TwitterClient
   end
 
   def add_list_member(list_id, user_id)
-    @twitter.add_list_member(list_id, user_id)
+    @client.add_list_member(list_id, user_id)
   end
 
   def list(list_id)
     @client.list(list_id)
+  end
+
+  def list_members(list_id)
+    @client.list_members(list_id)
   end
 
   # def update
