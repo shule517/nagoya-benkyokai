@@ -59,29 +59,6 @@ class TwitterClient
     @client.list_members(list_id)
   end
 
-  # def update
-  #   time = Time.now
-  #   ym = time.strftime("%Y%m")
-  #   events = EventCollector.search([ym])
-  #   time += 24*60*60
-  #   tommorow = time.strftime("%Y-%m-%d")
-  #   events.select! {|event| event.started_at.slice(0, 10) == tommorow}
-
-  #   puts "events.count:#{events.count} - #{tommorow}"
-  #   events.each do |event|
-  #     puts event
-  #     message = "明日開催される勉強会です！\n#{event.title}\n#{event.event_url}\nhttps://twitter.com/nagoya_lambda/lists/nagoya-#{event.event_id}/members"
-  #     if !event.hash_tag.empty?
-  #       message += "\n##{event.hash_tag}"
-  #     end
-  #     tweet(message)
-  #   end
-  # end
-
-  # def add_twitter_list
-  # end
-
-  # private
   def tweet(message)
     @client.update(message)
   end

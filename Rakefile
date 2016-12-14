@@ -1,7 +1,7 @@
 # coding: UTF-8
 
 require 'rake/testtask'
-require_relative './app/twitter_client'
+require_relative './app/event_collector'
 
 task :default => [:test]
 
@@ -12,6 +12,7 @@ Rake::TestTask.new do |test|
 end
 
 task :update do
-  twitter = TwitterClient.new
-  twitter.update
+  collecor = EventCollector.new
+  collecor.update_twitter([201612, 201701, 201702])
+  collecor.update
 end

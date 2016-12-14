@@ -46,11 +46,30 @@ class EventCollector
     users.concat(event.owners)
     users.concat(event.users)
     event_users = users.map {|user| user[:twitter_id]}.select {|id| !id.empty?}
-    twitter_members = @twitter.list_members(event.twitter_list_id).map {|member| member[:screen_name]}
+    twitter_members = @twitter.list_members(event.twitter_list_id).map {|member| member.screen_name}
     add_users = event_users.select {|user| !twitter_members.include?(user)}
 
     add_users.each do |twitter_id|
       @twitter.add_list_member(event.twitter_list_id, twitter_id)
+    end
+  end
+
+  def update
+    time = Time.now
+    ym = time.strftime("%Y%m")
+    events = search([ym])
+    time += 24*60*60
+    tommorow = time.strftime("%Y-%m-%d")
+    events.select! {|event| event.started_at.slice(0, 10) == tommorow}
+
+    puts "events.count:#{events.count} - #{tommorow}"
+    events.each do |event|
+      puts event
+      message = "明日開催される勉強会です！\n#{event.title}\n#{event.event_url}\nhttps://twitter.com/nagoya_lambda/lists/nagoya-#{event.event_id}/members"
+      if !event.hash_tag.empty?
+        message += "\n##{event.hash_tag}"
+      end
+      @twitter.tweet(message)
     end
   end
 end
