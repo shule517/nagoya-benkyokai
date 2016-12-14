@@ -8,6 +8,6 @@ class EventCollectorTest < Test::Unit::TestCase
   end
 
   def test_event
-    @collect.update_twitter([201612, 201701, 201702])
+    @collect.update_twitter([201612])
   end
 end
