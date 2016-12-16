@@ -4,7 +4,7 @@
     <% @data.each do |event| %>
     <% day = "#{event.month}/#{event.day}" %>
     <div class="row" itemscope itemtype="http://schema.org/Event">
-      <% if bday != day %>
+      <% if bday != "" && bday != day %>
       <hr class="style-two">
       <% end %>
       <div class="col-md-2 col-xs-1">
@@ -90,9 +90,7 @@
     </div>
     <% end %>
   </div>
-  <div class="col-md-3 col-xs-0">
-  <a class="twitter-timeline" href="https://twitter.com/nagoya_lambda/lists/nagoya-39118/members">Tweets by TwitterDev</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-  </div>
-  <div class="col-md-! col-xs-0">
+  <div class="col-md-3 col-xs-11">
+    <a class="twitter-timeline" href="https://twitter.com/nagoya_lambda/lists/nagoya-39118/members">Tweets by TwitterDev</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
 </div>
