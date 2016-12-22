@@ -13,7 +13,7 @@
             "type": "Ruby",
             "request": "launch",
             "cwd": "${workspaceRoot}",
-            "program": "${workspaceRoot}/test/test.rb"
+            "program": "${workspaceRoot}/test/collector_test.rb"
         },
         {
             "name": "Listen for rdebug-ide",
