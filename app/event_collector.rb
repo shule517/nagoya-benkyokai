@@ -28,7 +28,9 @@ class EventCollector
     today = Time.now.strftime("%Y-%m-%d")
     puts "today:#{today}"
     events.select! {|event| event.started_at >= today}
-    events.sort_by! {|event| event.started_at}
+    events.sort_by! do |event|
+      [event.month, event.day, event.users.length]
+    end
   end
 
   def update_twitter(date)

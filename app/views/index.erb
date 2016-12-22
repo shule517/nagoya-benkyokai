@@ -26,7 +26,7 @@
         <div class="event-left col-xs-2" itemprop="startDate" content="<%= "#{event.year}-#{event.month}-#{event.day}" %>">
           <a href="<%= event.event_url %>">
             <p class="resizeimage">
-              <img itemprop="image" class="event-logo shadow" src="<%= event.logo %>" style="  object-fit: contain; width: 110px; height: 100px;"><br>
+              <img itemprop="image" class="event-logo" src="<%= event.logo %>" style="  object-fit: contain; width: 110px; height: 100px;"><br>
             </p>
           </a>
           <div class="event-place">
@@ -95,6 +95,6 @@
   <div class="col-md-0 col-xs-1">
   </div>
   <div class="col-md-3 col-xs-10">
-    <a class="twitter-timeline" href="https://twitter.com/nagoya_lambda/lists/nagoya-39118/members">Tweets by TwitterDev</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <a class="twitter-timeline" href="<%= "https://twitter.com/nagoya_lambda/lists/nagoya-#{@data.first.event_id}/members" %>">Tweets by TwitterDev</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
 </div>
