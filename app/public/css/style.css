@@ -94,6 +94,7 @@ body {
 　　イベント
 ------------------------------ */
 .event {
+  border-left: 1px solid #DDDDDD
 }
 
 .event-left {
@@ -107,7 +108,7 @@ body {
 }
 
 .day {
-  text-align: right;
+  text-align: center;
 }
 
 /*.event-logo {
