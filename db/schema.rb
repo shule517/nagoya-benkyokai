@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204151743) do
+ActiveRecord::Schema.define(version: 20161224143014) do
 
   create_table "events", force: :cascade do |t|
     t.string   "event_id"
@@ -38,6 +38,19 @@ ActiveRecord::Schema.define(version: 20161204151743) do
     t.string   "group_logo"
     t.string   "logo"
     t.datetime "created_at",  null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "connpass_id"
+    t.string   "atnd_id"
+    t.string   "twitter_id"
+    t.string   "facebook_id"
+    t.string   "github_id"
+    t.string   "linkedin_id"
+    t.string   "name"
+    t.string   "image_url"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
