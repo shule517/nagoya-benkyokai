@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20161225142151) do
   create_table "event_users", force: :cascade do |t|
     t.integer  "event_id",   null: false
     t.integer  "user_id",    null: false
-    t.boolean  "owner",      null: false
+    t.boolean  "owner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_event_users_on_event_id"
