@@ -1,9 +1,9 @@
 #coding: utf-8
 require 'uri'
 require_relative "./http"
-require_relative './event'
+require_relative './event_base'
 
-class DoorkeeperEvent < Event
+class DoorkeeperEvent < EventBase
   def source
     'doorkeeper'
   end

@@ -2,7 +2,7 @@
 require 'uri'
 require_relative "./http"
 
-class Event
+class EventBase
   public
   attr_reader :event_id,
     :title,
@@ -24,15 +24,15 @@ class Event
     :year,
     :month,
     :day,
-    :wday
+    :wday,
+    :event_type
 
   private
   attr_reader :data,
     :owner_id,
     :owner_nickname,
     :owner_twitter_id,
-    :series,
-    :event_type
+    :series
 
   public
   def initialize(data)

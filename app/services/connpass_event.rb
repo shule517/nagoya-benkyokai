@@ -1,9 +1,9 @@
 #coding: utf-8
 require 'uri'
 require_relative "./http"
-require_relative './event'
+require_relative './event_base'
 
-class ConnpassEvent < Event
+class ConnpassEvent < EventBase
   def source
     'connpass'
   end
