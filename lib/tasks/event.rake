@@ -33,20 +33,6 @@ namespace :event do
       puts "event:#{event.title}"
       event.users.each do |user|
         puts "user: #{user[:id]}"
-        # user = User.new(connpass_id: user[:id], twitter_id: user[:twitter_id], name: user[:name], image_url: user[:image])
-        # record.owner = false
-        # event_user = user.event_users[0]
-        # event_user.owner = false
-        # event_user.save
-
-        # p "record.event_users"
-        # p record.event_users
-        # p "record: #{record}"
-        # p record
-        # p "record.users: #{record.users}"
-        # puts "record.owner: #{record.owner}"
-        # record.save
-        # data.users.create(connpass_id: user[:id], twitter_id: user[:twitter_id], name: user[:name], image_url: user[:image], owner: false)
         record.users.create(connpass_id: user[:id], twitter_id: user[:twitter_id], name: user[:name], image_url: user[:image])
       end
     end
