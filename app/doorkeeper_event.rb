@@ -1,5 +1,6 @@
 #coding: utf-8
 require 'uri'
+require 'sanitize'
 require_relative "./http"
 require_relative './event'
 
@@ -9,7 +10,7 @@ class DoorkeeperEvent < Event
   end
 
   def catch
-    description.gsub(/<\/?[^>]*>/, "")
+    Sanitize.clean(description)
   end
 
   def group_url

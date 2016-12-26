@@ -5,6 +5,7 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     backports (3.6.8)
     buftok (0.2.0)
+    crass (1.0.2)
     domain_name (0.5.20161129)
       unf (>= 0.0.5, < 1.0.0)
     equalizer (0.0.11)
@@ -29,6 +30,8 @@ GEM
       mini_portile2 (~> 2.1.0)
     nokogiri (1.6.8.1-x64-mingw32)
       mini_portile2 (~> 2.1.0)
+    nokogumbo (1.4.10)
+      nokogiri
     power_assert (0.3.1)
     public_suffix (2.0.4)
     rack (1.6.5)
@@ -39,6 +42,10 @@ GEM
     rake (11.3.0)
     ruby-debug-ide (0.6.0)
       rake (>= 0.8.1)
+    sanitize (4.4.0)
+      crass (~> 1.0.2)
+      nokogiri (>= 1.4.4)
+      nokogumbo (~> 1.4.1)
     simple_oauth (0.3.1)
     sinatra (1.4.7)
       rack (~> 1.5)
@@ -78,6 +85,7 @@ DEPENDENCIES
   nokogiri
   rake
   ruby-debug-ide
+  sanitize
   sinatra
   sinatra-contrib
   test-unit
