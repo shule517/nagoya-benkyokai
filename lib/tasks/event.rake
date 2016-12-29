@@ -31,9 +31,19 @@ namespace :event do
         group_logo: event.group_logo,
         logo: event.logo)
       puts "event:#{event.title}"
+
+      event.owners.each do |user|
+        puts "owner: #{user[:id]}"
+        record.users.create(connpass_id: user[:id], twitter_id: user[:twitter_id], name: user[:name], image_url: user[:image])
+        record.event_users.build(:owner => true)
+        record.save
+      end
+
       event.users.each do |user|
         puts "user: #{user[:id]}"
         record.users.create(connpass_id: user[:id], twitter_id: user[:twitter_id], name: user[:name], image_url: user[:image])
+        record.event_users.build(:owner => false)
+        record.save
       end
     end
   end

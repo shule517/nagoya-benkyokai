@@ -68,6 +68,15 @@
               <img class="twitter-icon" src="/img/Twitter.png" data-toggle="tooltip" title="ツイッターリスト" style="margin-right: 2px; margin-bottom: 2px">
             </a>
             <% event.users.each do |user| %>
+              <% if !user.twitter_id.empty?  %>
+            <a class="clickable" href="<%= "https://twitter.com/#{user.twitter_id}" %>">
+              <% end %>
+              <img class="owner-icon" src="<%= user.image_url %>" data-toggle="tooltip" title="管理者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
+              <% if !user.twitter_id.empty?  %>
+            </a>
+              <% end %>
+            <% end %>
+            <% event.users.each do |user| %>
               <% if !user[:twitter_id].empty?  %>
             <a class="clickable" href="<%= "https://twitter.com/#{user.twitter_id}" %>">
               <% end %>
@@ -86,6 +95,6 @@
   <div class="col-md-0 col-xs-1">
   </div>
   <div class="col-md-3 col-xs-10">
-    <a class="twitter-timeline" href="<%= "https://twitter.com/nagoya_lambda/lists/nagoya-#{@events.select{|event| event.users.size > 0}.first.event_id}/members" %>">Tweets by TwitterDev</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <%#<a class="twitter-timeline" href="<%= "https://twitter.com/nagoya_lambda/lists/nagoya-#{@events.select{|event| event.users.size > 0}.first.event_id}/members" %>">Tweets by TwitterDev</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>%>
   </div>
 </div>
