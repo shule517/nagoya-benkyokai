@@ -61,6 +61,10 @@ GEM
       multipart-post (>= 1.2, < 3)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    hirb (0.7.3)
+    hirb-unicode (0.0.5)
+      hirb (~> 0.5)
+      unicode-display_width (~> 0.1.1)
     http (2.1.0)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -167,6 +171,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2-x64-mingw32)
+    unicode-display_width (0.1.1)
     web-console (3.4.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -182,6 +187,8 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
+  hirb
+  hirb-unicode
   jbuilder (~> 2.5)
   jquery-rails
   pg
