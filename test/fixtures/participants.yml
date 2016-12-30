@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event: one
+  user: one
+  owner: false
+
+two:
+  event: two
+  user: two
+  owner: false
