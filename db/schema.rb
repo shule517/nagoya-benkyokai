@@ -12,16 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20161230030406) do
 
-  create_table "event_users", force: :cascade do |t|
-    t.integer  "event_id",   null: false
-    t.integer  "user_id",    null: false
-    t.boolean  "owner"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_event_users_on_event_id"
-    t.index ["user_id"], name: "index_event_users_on_user_id"
-  end
-
   create_table "events", force: :cascade do |t|
     t.string   "event_id"
     t.string   "title"
