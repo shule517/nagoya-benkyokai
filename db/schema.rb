@@ -54,9 +54,9 @@ ActiveRecord::Schema.define(version: 20161230030406) do
   create_table "participants", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "user_id"
-    t.boolean  "owner"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "owner",      default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["event_id"], name: "index_participants_on_event_id"
     t.index ["user_id"], name: "index_participants_on_user_id"
   end
