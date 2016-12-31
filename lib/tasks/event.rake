@@ -6,7 +6,7 @@ namespace :event do
     events = collector.search(['201612'])
     events.each do |event|
       puts event.title
-      record = Event.create(event_id: event.event_id,
+      event_record = Event.new(event_id: event.event_id,
         title: event.title,
         catch: event.catch,
         description: event.description,
@@ -34,17 +34,19 @@ namespace :event do
 
       event.owners.each do |user|
         puts "owner: #{user[:id]}"
-        record.users.create(connpass_id: user[:id], twitter_id: user[:twitter_id], name: user[:name], image_url: user[:image])
-        record.event_users.build(:owner => true)
-        record.save
+        event_record.users << User.create(connpass_id: user[:id], twitter_id: user[:twitter_id], name: user[:name], image_url: user[:image])
+      end
+
+      event_record.participants.each do |participant|
+        participant.owner = true
       end
 
       event.users.each do |user|
         puts "user: #{user[:id]}"
-        record.users.create(connpass_id: user[:id], twitter_id: user[:twitter_id], name: user[:name], image_url: user[:image])
-        record.event_users.build(:owner => false)
-        record.save
+        event_record.users << User.create(connpass_id: user[:id], twitter_id: user[:twitter_id], name: user[:name], image_url: user[:image])
       end
+
+      event_record.save
     end
   end
 end

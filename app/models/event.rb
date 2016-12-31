@@ -1,7 +1,7 @@
 #encoding: utf-8
 class Event < ApplicationRecord
-  has_many :event_users
-  has_many :users, through: :event_users
+  has_many :participants
+  has_many :users, through: :participants
 
   def year
     started_at[0...4].to_i
