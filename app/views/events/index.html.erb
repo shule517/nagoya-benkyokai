@@ -67,7 +67,7 @@
             <a href="<%= "https://twitter.com/nagoya_lambda/lists/nagoya-#{event.event_id}" %>">
               <img class="twitter-icon" src="/img/Twitter.png" data-toggle="tooltip" title="ツイッターリスト" style="margin-right: 2px; margin-bottom: 2px">
             </a>
-            <% event.users.each do |user| %>
+            <% event.owners.each do |user| %>
               <% if !user.twitter_id.empty?  %>
             <a class="clickable" href="<%= "https://twitter.com/#{user.twitter_id}" %>">
               <% end %>

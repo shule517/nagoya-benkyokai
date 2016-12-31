@@ -1,7 +1,12 @@
 #encoding: utf-8
 class Event < ApplicationRecord
   has_many :participants
-  has_many :users, through: :participants
+
+  has_many :participant_owners, -> {where(owner: true)}, class_name: 'Participant'
+  has_many :owners, through: :participant_owners, source: :user
+
+  has_many :participant_users, -> {where(owner: false)}, class_name: 'Participant'
+  has_many :users, through: :participant_users, source: :user
 
   def year
     started_at[0...4].to_i
