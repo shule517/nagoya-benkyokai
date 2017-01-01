@@ -35,6 +35,13 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'user7', User.find_atnd('', '', 'facebook2').name
   end
 
+  test "find_doorkeeper" do
+    assert_equal 'user9', User.find_doorkeeper('twitter3', '', '').name
+    assert_equal 'user10', User.find_doorkeeper('', 'facebook3', '').name
+    assert_equal 'user11', User.find_doorkeeper('', '', 'github3').name
+    assert_equal 'user12', User.find_doorkeeper('', '', '', 'linkedin3').name
+  end
+
   test "find_social" do
     assert_equal 'user9', User.find_social('twitter3', '', '').name
     assert_equal 'user10', User.find_social('', 'facebook3', '').name

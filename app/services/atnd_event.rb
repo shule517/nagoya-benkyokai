@@ -5,7 +5,7 @@ require_relative './event_base'
 
 class AtndEvent < EventBase
   def source
-    'ATND'
+    'atnd'
   end
 
   def catch
