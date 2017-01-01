@@ -44,7 +44,7 @@ class DoorkeeperEvent < EventBase
         id = user.css('div.user-name').children.text
         twitter_id = ''
         name = user.css('div.user-name').children.text
-        image = user.css('img').attribute('src').value
+        image_url = user.css('img').attribute('src').value
         user.css('div.user-social > a.external-profile-link').each do |social|
           url = social.attribute('href').value
           if url.include?('twitter')
@@ -53,9 +53,9 @@ class DoorkeeperEvent < EventBase
             break
           end
         end
-        users << DoorkeeperUser.new({twitter_id: twitter_id, name: name, image: image})
+        users << DoorkeeperUser.new({twitter_id: twitter_id, name: name, image_url: image_url})
       end
-      users.sort_by! {|user| user[:twitter_id]}.reverse
+      users.sort_by! {|user| user.twitter_id}.reverse
     rescue
       puts "no users event:#{title} / #{group_url} / #{event_id}"
       []
@@ -69,7 +69,7 @@ class DoorkeeperEvent < EventBase
       name = owner.css('.user-name').text
       id = name # social登録していない人は名前を使う
       twitter_id = ''
-      image = owner.css('img').attribute('src').value
+      image_url = owner.css('img').attribute('src').value
       owner.css('.user-social > .external-profile-link').each do |social|
         url = social.attribute('href').value
         if url.include?('twitter')
@@ -78,7 +78,7 @@ class DoorkeeperEvent < EventBase
           break
         end
       end
-      owners << DoorkeeperUser.new({twitter_id: twitter_id, name: name, image: image})
+      owners << DoorkeeperUser.new({twitter_id: twitter_id, name: name, image_url: image_url})
     end
     owners.sort_by! {|user| user.twitter_id}.reverse
   end

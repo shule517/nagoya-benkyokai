@@ -52,7 +52,7 @@ class ConnpassEvent < EventBase
       id = user.attribute('href').value.gsub('https://connpass.com/user/', '').gsub('/', '')
       twitter_id = ''
       name = user.css('img').attribute('alt').value
-      image = user.css('img').attribute('src').value
+      image_url = user.css('img').attribute('src').value
 
       line.css('td.social > a').each do |social|
         url = social.attribute('href').value
@@ -60,7 +60,7 @@ class ConnpassEvent < EventBase
           twitter_id = url.gsub('https://twitter.com/intent/user?screen_name=', '')
         end
       end
-      users << ConnpassUser.new({connpass_id: id, twitter_id: twitter_id, name: name, image: image})
+      users << ConnpassUser.new({connpass_id: id, twitter_id: twitter_id, name: name, image_url: image_url})
     end
     users.sort_by! {|user| user.twitter_id}.reverse
   end
@@ -78,14 +78,14 @@ class ConnpassEvent < EventBase
           id = url.gsub('https://connpass.com/user/', '').gsub('/open/', '');
           twitter_id = ''
           name = user_info.css('.display_name > a').text
-          image = user_info.css('.image_link > img').attribute('src').value
+          image_url = user_info.css('.image_link > img').attribute('src').value
           user.css('.social > a').each do |social|
             url = social.attribute('href').value
             if url.include?('twitter')
               twitter_id = url.gsub('https://twitter.com/intent/user?screen_name=', '')
             end
           end
-          owners << ConnpassUser.new({connpass_id: id, twitter_id: twitter_id, name: name, image: image})
+          owners << ConnpassUser.new({connpass_id: id, twitter_id: twitter_id, name: name, image_url: image_url})
         end
       else # イベント参加者ページがない場合
         # TODO メソッド化 イベントページから参加者を取得するメソッド
@@ -96,8 +96,8 @@ class ConnpassEvent < EventBase
           twitter_id = '' # TODO twitterをユーザページから取得する
           img = user.css('img')
           name = img.attribute('alt').value
-          image = img.attribute('src').value
-          owners << ConnpassUser.new({connpass_id: id, twitter_id: twitter_id, name: name, image: image})
+          image_url = img.attribute('src').value
+          owners << ConnpassUser.new({connpass_id: id, twitter_id: twitter_id, name: name, image_url: image_url})
         end
       end
       owners.sort_by! {|user| user.twitter_id}.reverse
