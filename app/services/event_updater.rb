@@ -8,8 +8,8 @@ class EventUpdater
       puts "event:#{event.title}"
 
       event.owners.each do |user|
-        puts "owner: #{user[:id]}"
-        user_record = User.find_or_create_by(connpass_id: user[:id], twitter_id: user[:twitter_id], name: user[:name], image_url: user[:image])
+        puts "owner: #{user.name}"
+        user_record = user.find_or_create_by
         if !event_record.participant_users.exists?(user_record)
           event_record.participant_users << user_record
         end
@@ -20,8 +20,8 @@ class EventUpdater
       end
 
       event.users.each do |user|
-        puts "user: #{user[:id]}"
-        user_record = User.find_or_create_by(connpass_id: user[:id], twitter_id: user[:twitter_id], name: user[:name], image_url: user[:image])
+        puts "user: #{user.name}"
+        user_record = user.find_or_create_by
         if !event_record.participant_users.exists?(user_record)
           event_record.participant_users << user_record
         end

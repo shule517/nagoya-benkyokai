@@ -2,6 +2,7 @@
 require 'uri'
 require_relative "./http"
 require_relative './event_base'
+require_relative './connpass_user'
 
 class ConnpassEvent < EventBase
   def source
@@ -59,9 +60,9 @@ class ConnpassEvent < EventBase
           twitter_id = url.gsub('https://twitter.com/intent/user?screen_name=', '')
         end
       end
-      users << {id: id, twitter_id: twitter_id, name: name, image: image}
+      users << ConnpassUser.new({connpass_id: id, twitter_id: twitter_id, name: name, image: image})
     end
-    users.sort_by! {|user| user[:twitter_id]}.reverse
+    users.sort_by! {|user| user.twitter_id}.reverse
   end
 
   def owners
@@ -84,7 +85,7 @@ class ConnpassEvent < EventBase
               twitter_id = url.gsub('https://twitter.com/intent/user?screen_name=', '')
             end
           end
-          owners << {id: id, twitter_id: twitter_id, name: name, image: image}
+          owners << ConnpassUser.new({connpass_id: id, twitter_id: twitter_id, name: name, image: image})
         end
       else # イベント参加者ページがない場合
         # TODO メソッド化 イベントページから参加者を取得するメソッド
@@ -96,10 +97,10 @@ class ConnpassEvent < EventBase
           img = user.css('img')
           name = img.attribute('alt').value
           image = img.attribute('src').value
-          owners << {id: id, twitter_id: twitter_id, name: name, image: image}
+          owners << ConnpassUser.new({connpass_id: id, twitter_id: twitter_id, name: name, image: image})
         end
       end
-      owners.sort_by! {|user| user[:twitter_id]}.reverse
+      owners.sort_by! {|user| user.twitter_id}.reverse
     end
   end
 

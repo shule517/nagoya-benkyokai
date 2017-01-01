@@ -2,6 +2,7 @@
 require 'uri'
 require_relative "./http"
 require_relative './event_base'
+require_relative './doorkeeper_user'
 
 class DoorkeeperEvent < EventBase
   def source
@@ -52,7 +53,7 @@ class DoorkeeperEvent < EventBase
             break
           end
         end
-        users << {id: id, twitter_id: twitter_id, name: name, image: image}
+        users << DoorkeeperUser.new({twitter_id: twitter_id, name: name, image: image})
       end
       users.sort_by! {|user| user[:twitter_id]}.reverse
     rescue
@@ -77,9 +78,9 @@ class DoorkeeperEvent < EventBase
           break
         end
       end
-      owners << {id: id, twitter_id: twitter_id, name: name, image: image}
+      owners << DoorkeeperUser.new({twitter_id: twitter_id, name: name, image: image})
     end
-    owners.sort_by! {|user| user[:twitter_id]}.reverse
+    owners.sort_by! {|user| user.twitter_id}.reverse
   end
 
   private
