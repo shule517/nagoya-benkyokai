@@ -66,6 +66,33 @@ class EventBase
     @wday = %w(日 月 火 水 木 金 土)[d.wday]
   end
 
+  def find_or_initialize_by
+    Event.find_or_initialize_by(event_id: event_id,
+              title: title,
+              catch: catch,
+              description: description,
+              event_url: event_url,
+              started_at: started_at,
+              ended_at: ended_at,
+              url: url,
+              address: address,
+              place: place,
+              lat: lat,
+              lon: lon,
+              limit: limit,
+              accepted: accepted,
+              waiting: waiting,
+              update_time: updated_at,
+              hash_tag: hash_tag,
+              place_enc: place_enc,
+              source: source,
+              group_url: group_url,
+              group_id: group_id,
+              group_title: group_title,
+              group_logo: group_logo,
+              logo: logo)
+  end
+
   def place_enc
     URI.escape(place)
   end
