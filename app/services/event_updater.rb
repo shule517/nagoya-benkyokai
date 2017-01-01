@@ -9,7 +9,10 @@ class EventUpdater
 
       event.owners.each do |user|
         puts "owner: #{user[:id]}"
-        event_record.participant_users << User.find_or_create_by(connpass_id: user[:id], twitter_id: user[:twitter_id], name: user[:name], image_url: user[:image])
+        user_record = User.find_or_create_by(connpass_id: user[:id], twitter_id: user[:twitter_id], name: user[:name], image_url: user[:image])
+        if !event_record.participant_users.exists?(user_record)
+          event_record.participant_users << user_record
+        end
       end
 
       event_record.participants.each do |participant|
@@ -18,7 +21,10 @@ class EventUpdater
 
       event.users.each do |user|
         puts "user: #{user[:id]}"
-        event_record.participant_users << User.find_or_create_by(connpass_id: user[:id], twitter_id: user[:twitter_id], name: user[:name], image_url: user[:image])
+        user_record = User.find_or_create_by(connpass_id: user[:id], twitter_id: user[:twitter_id], name: user[:name], image_url: user[:image])
+        if !event_record.participant_users.exists?(user_record)
+          event_record.participant_users << user_record
+        end
       end
 
       event_record.save
