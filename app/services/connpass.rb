@@ -5,7 +5,7 @@ require_relative './connpass_event'
 
 class Connpass
   def search(keywords, ym_list = [])
-    search_core(0, keywords, ym_list)
+    search_core(1, keywords, ym_list)
   end
 
   private
@@ -23,7 +23,7 @@ class Connpass
     events = result[:events].map {|event| ConnpassEvent.new(event)}
 
     if next_start < results_available
-      events + search_core(next_start, keywords, ym)
+      events + search_core(next_start, keywords, ym_list)
     else
       events
     end
