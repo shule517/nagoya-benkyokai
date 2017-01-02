@@ -20,6 +20,7 @@ class UserTest < ActiveSupport::TestCase
     User.create(name: 'user10', twitter_id: '', facebook_id: 'facebook3', github_id: '', linkedin_id: '')
     User.create(name: 'user11', twitter_id: '', facebook_id: '', github_id: 'github3', linkedin_id: '')
     User.create(name: 'user12', twitter_id: '', facebook_id: '', github_id: '', linkedin_id: 'linkedin3')
+    User.create(name: 'user13', twitter_id: '', facebook_id: '', github_id: '', linkedin_id: '')
   end
 
   test "find_connpass" do
@@ -36,10 +37,11 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "find_doorkeeper" do
-    assert_equal 'user9', User.find_doorkeeper('twitter3', '', '').name
-    assert_equal 'user10', User.find_doorkeeper('', 'facebook3', '').name
-    assert_equal 'user11', User.find_doorkeeper('', '', 'github3').name
-    assert_equal 'user12', User.find_doorkeeper('', '', '', 'linkedin3').name
+    assert_equal 'user9', User.find_doorkeeper('twitter3', '', '', '').name
+    assert_equal 'user10', User.find_doorkeeper('', 'facebook3', '', '').name
+    assert_equal 'user11', User.find_doorkeeper('', '', 'github3', '', '').name
+    assert_equal 'user12', User.find_doorkeeper('', '', '', 'linkedin3', '').name
+    assert_equal 'user13', User.find_doorkeeper('', '', '', '', 'user13').name
   end
 
   test "find_social" do

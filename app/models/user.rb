@@ -14,8 +14,10 @@ class User < ApplicationRecord
     find_social(twitter_id, facebook_id)
   end
 
-  def self.find_doorkeeper(twitter_id = nil, facebook_id = nil, github_id = nil, linkedin_id = nil)
-    find_social(twitter_id, facebook_id, github_id, linkedin_id)
+  def self.find_doorkeeper(twitter_id = nil, facebook_id = nil, github_id = nil, linkedin_id = nil, name = nil)
+    user = find_social(twitter_id, facebook_id, github_id, linkedin_id)
+    return user if user
+    User.find_by(name: name)
   end
 
   def self.find_social(twitter_id = nil, facebook_id = nil, github_id = nil, linkedin_id = nil)
