@@ -41,25 +41,14 @@ class DoorkeeperEvent < EventBase
     begin
       users = []
       participation_doc.css('.user-profile-details').each do |user|
-        twitter_id = ''
-        facebook_id = ''
-        github_id = ''
-        linkedin_id = ''
+        social_ids = {}
         name = user.css('div.user-name').children.text
         image_url = user.css('img').attribute('src').value
         user.css('div.user-social > a.external-profile-link').each do |social|
           url = social.attribute('href').value
-          if url.include?('http://twitter.com/')
-            twitter_id = url.gsub('http://twitter.com/', '')
-          elsif url.include?('https://www.facebook.com/app_scoped_user_id/')
-            facebook_id = url.gsub('https://www.facebook.com/app_scoped_user_id/', '')
-          elsif url.include?('https://github.com/')
-            github_id = url.gsub('https://github.com/', '')
-          elsif url.include?('http://www.linkedin.com/in/')
-            linkedin_id = url.gsub('http://www.linkedin.com/in/', '')
-          end
+          get_social_id(url, social_ids)
         end
-        users << DoorkeeperUser.new({twitter_id: twitter_id, facebook_id: facebook_id, github_id: github_id, linkedin_id: linkedin_id, name: name, image_url: image_url})
+        users << DoorkeeperUser.new({twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], linkedin_id: social_ids[:linkedin_id], name: name, image_url: image_url})
       end
       users.sort_by! {|user| user.twitter_id}.reverse
     rescue
@@ -72,26 +61,37 @@ class DoorkeeperEvent < EventBase
     owners = []
     group_doc.css('.with-gutter > .row > div > .user-profile > .user-profile-details').each do |owner|
       name = owner.css('.user-name').text
-      twitter_id = ''
-      facebook_id = ''
-      github_id = ''
-      linkedin_id = ''
+      social_ids = {}
       image_url = owner.css('img').attribute('src').value
       owner.css('.user-social > .external-profile-link').each do |social|
         url = social.attribute('href').value
-        if url.include?('http://twitter.com/')
-          twitter_id = url.gsub('http://twitter.com/', '')
-        elsif url.include?('https://www.facebook.com/app_scoped_user_id/')
-          facebook_id = url.gsub('https://www.facebook.com/app_scoped_user_id/', '')
-        elsif url.include?('https://github.com/')
-          github_id = url.gsub('https://github.com/', '')
-        elsif url.include?('http://www.linkedin.com/in/')
-          linkedin_id = url.gsub('http://www.linkedin.com/in/', '')
-        end
+        get_social_id(url, social_ids)
       end
-      owners << DoorkeeperUser.new({twitter_id: twitter_id, facebook_id: facebook_id, github_id: github_id, linkedin_id: linkedin_id, name: name, image_url: image_url})
+      owners << DoorkeeperUser.new({twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], linkedin_id: social_ids[:linkedin_id], name: name, image_url: image_url})
     end
     owners.sort_by! {|user| user.twitter_id}.reverse
+  end
+
+  def get_social_id(url, social_ids)
+    if url.include?('http://twitter.com/')
+      social_ids[:twitter_id] = url.gsub('http://twitter.com/', '')
+    elsif url.include?('https://www.facebook.com/app_scoped_user_id/')
+      social_ids[:facebook_id] = url.gsub('https://www.facebook.com/app_scoped_user_id/', '')
+    elsif url.include?('http://www.facebook.com/profile.php?id=')
+      social_ids[:facebook_id] = url.gsub('http://www.facebook.com/profile.php?id=', '')
+    elsif url.include?('https://www.facebook.com/')
+      social_ids[:facebook_id] = url.gsub('https://www.facebook.com/', '')
+    elsif url.include?('https://github.com/')
+      social_ids[:github_id] = url.gsub('https://github.com/', '')
+    elsif url.include?('http://www.linkedin.com/in/')
+      social_ids[:linkedin_id] = url.gsub('http://www.linkedin.com/in/', '')
+    elsif url.include?('https://www.linkedin.com/in/')
+      social_ids[:linkedin_id] = url.gsub('https://www.linkedin.com/in/', '')
+    elsif url.include?('http://www.linkedin.com/pub/')
+      social_ids[:linkedin_id] = url.gsub('http://www.linkedin.com/pub/', '')
+    else
+      puts "x doorkeeper : #{url}"
+    end
   end
 
   private
