@@ -1,3 +1,4 @@
+# encoding: utf-8
 class EventUpdater
   def self.call
     collector = EventCollector.new
