@@ -14,11 +14,8 @@ class EventUpdater
         user_record = user.find_or_create_by
         if !event_record.participant_users.exists?(user_record)
           event_record.participant_users << user_record
+          event_record.participants.select{|participant| participant.user_id == user_record.id}.first.owner = true
         end
-      end
-
-      event_record.participants.each do |participant|
-        participant.owner = true
       end
 
       event.users.each do |user|
