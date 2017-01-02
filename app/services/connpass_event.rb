@@ -97,7 +97,9 @@ class ConnpassEvent < EventBase
         end
       end
       owners.sort_by! {|user| user.twitter_id}.reverse
+    rescue
     end
+    owners
   end
 
   private

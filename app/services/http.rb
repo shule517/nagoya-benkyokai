@@ -8,12 +8,18 @@ module Shule
   class Http
     class << self
       def get_document(url)
-        charset = nil
-        html = open(url) do |f|
-          charset = f.charset
-          f.read
+        begin
+          charset = nil
+          puts "open(#{url})"
+          html = open(url) do |f|
+            charset = f.charset
+            f.read
+          end
+          Nokogiri::HTML.parse(html, charset)
+        rescue
+          puts "error: get_document(#{url})"
+          Nokogiri::HTML("")
         end
-        Nokogiri::HTML.parse(html, charset)
       end
 
       def get_json(url)

@@ -18,12 +18,12 @@ class Atnd
     result = Shule::Http.get_json(url)
 
     results_returned = result[:results_returned]
-    results_start = result[:results_start]
+    results_start = result[:results_start].to_i
     next_start = results_start + results_returned
     events = result[:events].map {|event| AtndEvent.new(event[:event])}
 
-    if next_start >= count
-      events + search_core(next_start, keywords, ym)
+    if results_returned >= count
+      events + search_core(next_start, keywords, ym_list)
     else
       events
     end
