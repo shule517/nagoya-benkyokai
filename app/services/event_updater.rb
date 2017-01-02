@@ -5,7 +5,6 @@ class EventUpdater
     period = ["201701", "201702", "201703"]
     events = collector.search(period)
     events.each do |event|
-      puts event.title
       event_record = event.find_or_initialize_by
       puts "event:#{event.title}"
 

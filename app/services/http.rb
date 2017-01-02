@@ -17,6 +17,7 @@ module Shule
       end
 
       def get_json(url)
+        puts "get_json: #{url}"
         url_escape = URI.escape(url)
         self.get_json_core(url_escape)
       end
