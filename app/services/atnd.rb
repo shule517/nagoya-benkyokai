@@ -11,7 +11,7 @@ class Atnd
   private
   def search_core(start, keywords, ym_list = [])
     count = 100
-    url = "http://api.atnd.org/events/?keyword_or=#{keywords}&count=#{count}&order=2&start=#{start.to_s}&format=json"
+    url = "http://api.atnd.org/events/?keyword_or=#{keywords.join(',')}&count=#{count}&order=2&start=#{start.to_s}&format=json"
     ym_list.each do |ym|
       url += "&ym=#{ym}"
     end

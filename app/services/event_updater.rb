@@ -1,7 +1,8 @@
 class EventUpdater
   def self.call
     collector = EventCollector.new
-    events = collector.search(['201612', '201701', '201702'])
+    period = ["201701", "201702", "201703"]
+    events = collector.search(period)
     events.each do |event|
       puts event.title
       event_record = event.find_or_initialize_by
