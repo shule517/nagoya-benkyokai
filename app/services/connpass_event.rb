@@ -51,16 +51,22 @@ class ConnpassEvent < EventBase
 
       id = user.attribute('href').value.gsub('https://connpass.com/user/', '').gsub('/', '')
       twitter_id = ''
+      facebook_id = ''
+      github_id = ''
       name = user.css('img').attribute('alt').value
       image_url = user.css('img').attribute('src').value
 
       line.css('td.social > a').each do |social|
         url = social.attribute('href').value
-        if url.include?('https://twitter.com/')
+        if url.include?('https://twitter.com/intent/user?screen_name=')
           twitter_id = url.gsub('https://twitter.com/intent/user?screen_name=', '')
+        elsif url.include?('https://www.facebook.com/app_scoped_user_id/')
+          facebook_id = url.gsub('https://www.facebook.com/app_scoped_user_id/', '')
+        elsif url.include?('https://github.com/')
+          github_id = url.gsub('https://github.com/', '')
         end
       end
-      users << ConnpassUser.new({connpass_id: id, twitter_id: twitter_id, name: name, image_url: image_url})
+      users << ConnpassUser.new({connpass_id: id, twitter_id: twitter_id, facebook_id: facebook_id, github_id: github_id, name: name, image_url: image_url})
     end
     users.sort_by! {|user| user.twitter_id}.reverse
   end
@@ -77,15 +83,21 @@ class ConnpassEvent < EventBase
           url = user_info.css('.image_link').attribute('href').value
           id = url.gsub('https://connpass.com/user/', '').gsub('/open/', '');
           twitter_id = ''
+          facebook_id = ''
+          github_id = ''
           name = user_info.css('.display_name > a').text
           image_url = user_info.css('.image_link > img').attribute('src').value
           user.css('.social > a').each do |social|
             url = social.attribute('href').value
-            if url.include?('twitter')
+            if url.include?('https://twitter.com/intent/user?screen_name=')
               twitter_id = url.gsub('https://twitter.com/intent/user?screen_name=', '')
+            elsif url.include?('https://www.facebook.com/app_scoped_user_id/')
+              facebook_id = url.gsub('https://www.facebook.com/app_scoped_user_id/', '')
+            elsif url.include?('https://github.com/')
+              github_id = url.gsub('https://github.com/', '')
             end
           end
-          owners << ConnpassUser.new({connpass_id: id, twitter_id: twitter_id, name: name, image_url: image_url})
+          owners << ConnpassUser.new({connpass_id: id, twitter_id: twitter_id, facebook_id: facebook_id, github_id: github_id, name: name, image_url: image_url})
         end
       else # イベント参加者ページがない場合
         # TODO メソッド化 イベントページから参加者を取得するメソッド

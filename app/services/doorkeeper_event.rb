@@ -41,19 +41,25 @@ class DoorkeeperEvent < EventBase
     begin
       users = []
       participation_doc.css('.user-profile-details').each do |user|
-        id = user.css('div.user-name').children.text
         twitter_id = ''
+        facebook_id = ''
+        github_id = ''
+        linkedin_id = ''
         name = user.css('div.user-name').children.text
         image_url = user.css('img').attribute('src').value
         user.css('div.user-social > a.external-profile-link').each do |social|
           url = social.attribute('href').value
-          if url.include?('twitter')
+          if url.include?('http://twitter.com/')
             twitter_id = url.gsub('http://twitter.com/', '')
-            id = twitter_id
-            break
+          elsif url.include?('https://www.facebook.com/app_scoped_user_id/')
+            facebook_id = url.gsub('https://www.facebook.com/app_scoped_user_id/', '')
+          elsif url.include?('https://github.com/')
+            github_id = url.gsub('https://github.com/', '')
+          elsif url.include?('http://www.linkedin.com/in/')
+            linkedin_id = url.gsub('http://www.linkedin.com/in/', '')
           end
         end
-        users << DoorkeeperUser.new({twitter_id: twitter_id, name: name, image_url: image_url})
+        users << DoorkeeperUser.new({twitter_id: twitter_id, facebook_id: facebook_id, github_id: github_id, linkedin_id: linkedin_id, name: name, image_url: image_url})
       end
       users.sort_by! {|user| user.twitter_id}.reverse
     rescue
@@ -65,20 +71,25 @@ class DoorkeeperEvent < EventBase
   def owners
     owners = []
     group_doc.css('.with-gutter > .row > div > .user-profile > .user-profile-details').each do |owner|
-      id = ''
       name = owner.css('.user-name').text
-      id = name # social登録していない人は名前を使う
       twitter_id = ''
+      facebook_id = ''
+      github_id = ''
+      linkedin_id = ''
       image_url = owner.css('img').attribute('src').value
       owner.css('.user-social > .external-profile-link').each do |social|
         url = social.attribute('href').value
-        if url.include?('twitter')
+        if url.include?('http://twitter.com/')
           twitter_id = url.gsub('http://twitter.com/', '')
-          id = twitter_id
-          break
+        elsif url.include?('https://www.facebook.com/app_scoped_user_id/')
+          facebook_id = url.gsub('https://www.facebook.com/app_scoped_user_id/', '')
+        elsif url.include?('https://github.com/')
+          github_id = url.gsub('https://github.com/', '')
+        elsif url.include?('http://www.linkedin.com/in/')
+          linkedin_id = url.gsub('http://www.linkedin.com/in/', '')
         end
       end
-      owners << DoorkeeperUser.new({twitter_id: twitter_id, name: name, image_url: image_url})
+      owners << DoorkeeperUser.new({twitter_id: twitter_id, facebook_id: facebook_id, github_id: github_id, linkedin_id: linkedin_id, name: name, image_url: image_url})
     end
     owners.sort_by! {|user| user.twitter_id}.reverse
   end
