@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'twitter'
+gem 'test-unit'
 
 group :development, :test do
   gem 'hirb'         # モデルの出力結果を表形式で表示するGem
