@@ -25,16 +25,12 @@ class DoorkeeperEvent < EventBase
     @group_title ||= event_doc.css('//meta[property="og:site_name"]/@content').to_s
   end
 
-  def group_logo
-    @group_logo ||= event_doc.css('//meta[property="og:image"]/@content').to_s
+  def logo
+    @logo ||= event_doc.css('//meta[property="og:image"]/@content').to_s
   end
 
-  def logo
-    begin
-      @logo ||= event_doc.css('div.event-banner-image > img').attribute('src').value
-    rescue
-      @logo = group_logo
-    end
+  def group_logo
+    @group_logo ||= event_doc.css('div.group-info-logo > a > img').attribute('src').value
   end
 
   def users
