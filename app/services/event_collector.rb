@@ -20,7 +20,7 @@ class EventCollector
     end
 
     atnd_events = Atnd.new.search(keywords, date)
-    ngwords = ["仏教", "クリスマスパーティ", "テロリスト", "国際交流パーティ", "社会人基礎力", "カウントダウンパーティー", "ARMENIAN SONGS", "ブッダ"]
+    ngwords = ["仏教", "クリスマスパーティ", "テロリスト", "国際交流パーティ", "社会人基礎力", "カウントダウンパーティー", "ARMENIAN SONGS", "ブッダ", "BrightWoman", "幸せの種まき"]
     atnd_events.select! {|event| ngwords.all? {|ngword| !event.title.include?(ngword)} }
     events += atnd_events
 
@@ -31,6 +31,7 @@ class EventCollector
     today = Time.now.strftime("%Y-%m-%d")
     puts "today:#{today}"
     events.select! {|event| event.started_at >= today}
+    events = events.group_by {|event| event.event_id }.map {|event| event[1].first}
     events.sort_by! {|event| event.started_at}
   end
 
@@ -48,7 +49,7 @@ class EventCollector
     users = []
     users.concat(event.owners)
     users.concat(event.users)
-    event_users = users.map {|user| user[:twitter_id]}.select {|id| !id.empty?}
+    event_users = users.map {|user| user.twitter_id}.select {|id| !id.empty?}
     twitter_members = @twitter.list_members(event.twitter_list_id).map {|member| member.screen_name}
     add_users = event_users.select {|user| !twitter_members.include?(user)}
 
