@@ -1,13 +1,9 @@
-#encoding: utf-8
+# encoding: utf-8
 require 'test/unit'
 require_relative '../app/twitter_client'
 
 class TwitterTest < Test::Unit::TestCase
   def setup
-    # api = Connpass.new
-    # events = api.search('名古屋', [201611])
-    # assert(events.count > 0)
-    # @event = events.first
     @twitter = TwitterClient.new
   end
 
@@ -21,7 +17,6 @@ class TwitterTest < Test::Unit::TestCase
     assert_equal('description2', @twitter.list('test').description)
 
     @twitter.add_list_member('test', 'shule517')
-    # puts @twitter.list_members('test')
 
     @twitter.destroy_list('test')
     assert(!@twitter.list_exists?('test'))

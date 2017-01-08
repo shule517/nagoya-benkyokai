@@ -1,9 +1,10 @@
-#coding: utf-8
+# encoding: utf-8
 require 'uri'
 require_relative "./http"
-require_relative './event'
+require_relative './event_base'
+require_relative './connpass_user'
 
-class ConnpassEvent < Event
+class ConnpassEvent < EventBase
   def source
     'connpass'
   end
@@ -49,19 +50,17 @@ class ConnpassEvent < Event
       return [] if user.empty? # 参加者がいない場合
 
       id = user.attribute('href').value.gsub('https://connpass.com/user/', '').gsub('/', '')
-      twitter_id = ''
+      social_ids = {}
       name = user.css('img').attribute('alt').value
-      image = user.css('img').attribute('src').value
+      image_url = user.css('img').attribute('src').value
 
       line.css('td.social > a').each do |social|
         url = social.attribute('href').value
-        if url.include?('https://twitter.com/')
-          twitter_id = url.gsub('https://twitter.com/intent/user?screen_name=', '')
-        end
+        get_social_id(url, social_ids)
       end
-      users << {id: id, twitter_id: twitter_id, name: name, image: image}
+      users << ConnpassUser.new({connpass_id: id, twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], name: name, image_url: image_url})
     end
-    users.sort_by! {|user| user[:twitter_id]}.reverse
+    users.sort_by! {|user| user.twitter_id}.reverse
   end
 
   def owners
@@ -75,16 +74,14 @@ class ConnpassEvent < Event
           user_info = user.css('.user_info')
           url = user_info.css('.image_link').attribute('href').value
           id = url.gsub('https://connpass.com/user/', '').gsub('/open/', '');
-          twitter_id = ''
+          social_ids = {}
           name = user_info.css('.display_name > a').text
-          image = user_info.css('.image_link > img').attribute('src').value
+          image_url = user_info.css('.image_link > img').attribute('src').value
           user.css('.social > a').each do |social|
             url = social.attribute('href').value
-            if url.include?('twitter')
-              twitter_id = url.gsub('https://twitter.com/intent/user?screen_name=', '')
-            end
+            get_social_id(url, social_ids)
           end
-          owners << {id: id, twitter_id: twitter_id, name: name, image: image}
+          owners << ConnpassUser.new({connpass_id: id, twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], name: name, image_url: image_url})
         end
       else # イベント参加者ページがない場合
         # TODO メソッド化 イベントページから参加者を取得するメソッド
@@ -95,15 +92,29 @@ class ConnpassEvent < Event
           twitter_id = '' # TODO twitterをユーザページから取得する
           img = user.css('img')
           name = img.attribute('alt').value
-          image = img.attribute('src').value
-          owners << {id: id, twitter_id: twitter_id, name: name, image: image}
+          image_url = img.attribute('src').value
+          owners << ConnpassUser.new({connpass_id: id, twitter_id: twitter_id, name: name, image_url: image_url})
         end
       end
-      owners.sort_by! {|user| user[:twitter_id]}.reverse
+      owners.sort_by! {|user| user.twitter_id}.reverse
+    rescue
     end
+    owners
   end
 
   private
+  def get_social_id(url, social_ids)
+    if url.include?('https://twitter.com/intent/user?screen_name=')
+      social_ids[:twitter_id] = url.gsub('https://twitter.com/intent/user?screen_name=', '')
+    elsif url.include?('https://www.facebook.com/app_scoped_user_id/')
+      social_ids[:facebook_id] = url.gsub('https://www.facebook.com/app_scoped_user_id/', '')
+    elsif url.include?('https://github.com/')
+      social_ids[:github_id] = url.gsub('https://github.com/', '')
+    else
+      puts "x connpass : #{url}"
+    end
+  end
+
   def participation_doc
     begin
       if group_url.nil?

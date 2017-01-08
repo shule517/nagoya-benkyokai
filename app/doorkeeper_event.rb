@@ -1,16 +1,16 @@
-#coding: utf-8
+# encoding: utf-8
 require 'uri'
-require 'sanitize'
 require_relative "./http"
-require_relative './event'
+require_relative './event_base'
+require_relative './doorkeeper_user'
 
-class DoorkeeperEvent < Event
+class DoorkeeperEvent < EventBase
   def source
     'doorkeeper'
   end
 
   def catch
-    Sanitize.clean(description)
+    description.gsub(/<\/?[^>]*>/, "")
   end
 
   def group_url
@@ -25,37 +25,28 @@ class DoorkeeperEvent < Event
     @group_title ||= event_doc.css('//meta[property="og:site_name"]/@content').to_s
   end
 
-  def group_logo
-    @group_logo ||= event_doc.css('//meta[property="og:image"]/@content').to_s
+  def logo
+    @logo ||= event_doc.css('//meta[property="og:image"]/@content').to_s
   end
 
-  def logo
-    begin
-      @logo ||= event_doc.css('div.event-banner-image > img').attribute('src').value
-    rescue
-      @logo = group_logo
-    end
+  def group_logo
+    @group_logo ||= event_doc.css('div.group-info-logo > a > img').attribute('src').value
   end
 
   def users
     begin
       users = []
       participation_doc.css('.user-profile-details').each do |user|
-        id = user.css('div.user-name').children.text
-        twitter_id = ''
+        social_ids = {}
         name = user.css('div.user-name').children.text
-        image = user.css('img').attribute('src').value
+        image_url = user.css('img').attribute('src').value
         user.css('div.user-social > a.external-profile-link').each do |social|
           url = social.attribute('href').value
-          if url.include?('twitter')
-            twitter_id = url.gsub('http://twitter.com/', '')
-            id = twitter_id
-            break
-          end
+          get_social_id(url, social_ids)
         end
-        users << {id: id, twitter_id: twitter_id, name: name, image: image}
+        users << DoorkeeperUser.new({twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], linkedin_id: social_ids[:linkedin_id], name: name, image_url: image_url})
       end
-      users.sort_by! {|user| user[:twitter_id]}.reverse
+      users.sort_by! {|user| user.twitter_id}.reverse
     rescue
       puts "no users event:#{title} / #{group_url} / #{event_id}"
       []
@@ -65,25 +56,41 @@ class DoorkeeperEvent < Event
   def owners
     owners = []
     group_doc.css('.with-gutter > .row > div > .user-profile > .user-profile-details').each do |owner|
-      id = ''
       name = owner.css('.user-name').text
-      id = name # social登録していない人は名前を使う
-      twitter_id = ''
-      image = owner.css('img').attribute('src').value
+      social_ids = {}
+      image_url = owner.css('img').attribute('src').value
       owner.css('.user-social > .external-profile-link').each do |social|
         url = social.attribute('href').value
-        if url.include?('twitter')
-          twitter_id = url.gsub('http://twitter.com/', '')
-          id = twitter_id
-          break
-        end
+        get_social_id(url, social_ids)
       end
-      owners << {id: id, twitter_id: twitter_id, name: name, image: image}
+      owners << DoorkeeperUser.new({twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], linkedin_id: social_ids[:linkedin_id], name: name, image_url: image_url})
     end
-    owners.sort_by! {|user| user[:twitter_id]}.reverse
+    owners.sort_by! {|user| user.twitter_id}.reverse
   end
 
   private
+  def get_social_id(url, social_ids)
+    if url.include?('http://twitter.com/')
+      social_ids[:twitter_id] = url.gsub('http://twitter.com/', '')
+    elsif url.include?('https://www.facebook.com/app_scoped_user_id/')
+      social_ids[:facebook_id] = url.gsub('https://www.facebook.com/app_scoped_user_id/', '')
+    elsif url.include?('http://www.facebook.com/profile.php?id=')
+      social_ids[:facebook_id] = url.gsub('http://www.facebook.com/profile.php?id=', '')
+    elsif url.include?('https://www.facebook.com/')
+      social_ids[:facebook_id] = url.gsub('https://www.facebook.com/', '')
+    elsif url.include?('https://github.com/')
+      social_ids[:github_id] = url.gsub('https://github.com/', '')
+    elsif url.include?('http://www.linkedin.com/in/')
+      social_ids[:linkedin_id] = url.gsub('http://www.linkedin.com/in/', '')
+    elsif url.include?('https://www.linkedin.com/in/')
+      social_ids[:linkedin_id] = url.gsub('https://www.linkedin.com/in/', '')
+    elsif url.include?('http://www.linkedin.com/pub/')
+      social_ids[:linkedin_id] = url.gsub('http://www.linkedin.com/pub/', '')
+    else
+      puts "x doorkeeper : #{url}"
+    end
+  end
+
   def group_doc
     @group_doc ||= Shule::Http.get_document("#{group_url}/members")
   end

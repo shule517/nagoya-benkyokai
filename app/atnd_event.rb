@@ -1,11 +1,11 @@
-#coding: utf-8
+# encoding: utf-8
 require 'uri'
 require_relative "./http"
-require_relative './event'
+require_relative './event_base'
 
-class AtndEvent < Event
+class AtndEvent < EventBase
   def source
-    'ATND'
+    'atnd'
   end
 
   def catch
