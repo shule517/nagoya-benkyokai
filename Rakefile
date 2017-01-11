@@ -13,6 +13,15 @@ end
 
 task :update do
   collecor = EventCollector.new
-  collecor.update_twitter([201612, 201701, 201702])
-  collecor.update
+  begin
+    collecor.update_twitter([201701, 201702, 201703])
+  rescue => e
+    p e
+  end
+
+  begin
+    collecor.update
+  rescue => e
+    p e
+  end
 end
