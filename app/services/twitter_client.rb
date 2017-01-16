@@ -16,7 +16,12 @@ class TwitterClient
     end
   end
 
+  def lists
+    @client.lists
+  end
+
   def list_exists?(list_id)
+    puts "list_exists?(#{list_id})"
     begin
       list(list_id)
       return true
@@ -26,6 +31,7 @@ class TwitterClient
   end
 
   def create_list(event_id, description)
+    puts "create_list(#{event_id}, #{description})"
     begin
       if !list_exists?(event_id)
         @client.create_list(event_id, description: description[0...100])
@@ -38,12 +44,14 @@ class TwitterClient
   end
 
   def destroy_list(event_id)
+    puts "destroy_list(#{event_id})"
     if list_exists?(event_id)
       @client.destroy_list(event_id)
     end
   end
 
   def add_list_member(list_id, user_id)
+    puts "add_list_member(#{list_id}, #{user_id})"
     begin
       @client.add_list_member(list_id, user_id)
     rescue Twitter::Error::Forbidden
@@ -52,11 +60,18 @@ class TwitterClient
   end
 
   def list(list_id)
+    puts "list(#{list_id})"
     @client.list(list_id)
   end
 
   def list_members(list_id)
-    @client.list_members(list_id)
+    puts "list_members(#{list_id})"
+    begin
+      @client.list_members(list_id)
+    rescue => e
+      p e
+      []
+    end
   end
 
   def tweet(message)
