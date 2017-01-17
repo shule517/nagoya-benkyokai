@@ -1,14 +1,8 @@
 # encoding: utf-8
 class EventTweet
   class << self
-    def call
-      puts "tweet"
-      @twitter = TwitterClient.new
-      tweet_new
-      tweet_tomorrow
-    end
-
     def tweet_new
+      @twitter = TwitterClient.new
       events = Event.where('tweeted_new = ?', false)
       events.each do |event|
         @twitter.tweet("[新着] " + tweet_message(event))
@@ -18,6 +12,7 @@ class EventTweet
     end
 
     def tweet_tomorrow
+      @twitter = TwitterClient.new
       time = Time.now + (24*60*60)*2
       tomorrow = time.strftime("%Y-%m-%d")
       puts "tomorrow: #{tomorrow}"
