@@ -1,27 +1,6 @@
-# coding: UTF-8
+# Add your own tasks in files placed in lib/tasks ending in .rake,
+# for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
-require 'rake/testtask'
-require_relative './app/event_collector'
+require_relative 'config/application'
 
-task :default => [:test]
-
-Rake::TestTask.new do |test|
-  # テスト対象ファイルの指定
-  test.test_files = Dir[ 'test/**/*test.rb' ]
-  test.verbose = true
-end
-
-task :update do
-  collecor = EventCollector.new
-  begin
-    collecor.update_twitter([201701, 201702, 201703])
-  rescue => e
-    p e
-  end
-
-  begin
-    collecor.update
-  rescue => e
-    p e
-  end
-end
+Rails.application.load_tasks

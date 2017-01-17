@@ -1,0 +1,55 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_id: MyString
+  title: MyString
+  catch: MyString
+  description: MyString
+  event_url: MyString
+  started_at: MyString
+  ended_at: MyString
+  url: MyString
+  address: MyString
+  place: MyString
+  lat: MyString
+  lon: MyString
+  limit: MyString
+  accepted: MyString
+  waiting: MyString
+  updated_at: MyString
+  hash_tag: MyString
+  place_enc: MyString
+  source: MyString
+  catch: MyString
+  group_url: MyString
+  group_id: MyString
+  group_title: MyString
+  group_logo: MyString
+  logo: MyString
+
+two:
+  event_id: MyString
+  title: MyString
+  catch: MyString
+  description: MyString
+  event_url: MyString
+  started_at: MyString
+  ended_at: MyString
+  url: MyString
+  address: MyString
+  place: MyString
+  lat: MyString
+  lon: MyString
+  limit: MyString
+  accepted: MyString
+  waiting: MyString
+  updated_at: MyString
+  hash_tag: MyString
+  place_enc: MyString
+  source: MyString
+  catch: MyString
+  group_url: MyString
+  group_id: MyString
+  group_title: MyString
+  group_logo: MyString
+  logo: MyString
