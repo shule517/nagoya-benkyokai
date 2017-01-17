@@ -21,7 +21,7 @@ class EventCollector
     end
 
     atnd_events = Atnd.new.search(keywords, date)
-    ngwords = ["仏教", "クリスマスパーティ", "テロリスト", "国際交流パーティ", "社会人基礎力", "カウントダウンパーティー", "ARMENIAN SONGS", "ブッダ", "BrightWoman", "幸せの種まき"]
+    ngwords = ["仏教", "クリスマスパーティ", "テロリスト", "国際交流パーティ", "社会人基礎力", "カウントダウンパーティー", "ARMENIAN SONGS", "ブッダ", "BrightWoman", "幸せの種まき", "オシャレな古城", "受講料", "mana×comu"]
     atnd_events.select! {|event| ngwords.all? {|ngword| !event.title.include?(ngword)} }
     events += atnd_events
 
