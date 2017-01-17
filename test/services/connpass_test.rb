@@ -40,7 +40,6 @@ class ConnpassTest < Test::Unit::TestCase
     kuu = event.users.select {|user| user.connpass_id == 'Kuxumarin'}.first
     assert_equal(kuu.connpass_id, 'Kuxumarin')
     assert_equal(kuu.twitter_id, 'Fumiya_Kume')
-    assert_equal(kuu.name, 'くう@牛奶茶')
     assert_equal(kuu.image_url, 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png')
   end
 
