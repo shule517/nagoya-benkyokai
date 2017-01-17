@@ -4,4 +4,9 @@ namespace :event do
   task :update => :environment do
     EventUpdater.call
   end
+
+  desc "イベント情報をツイート"
+  task :tweet => :environment do
+    EventTweet.call
+  end
 end
