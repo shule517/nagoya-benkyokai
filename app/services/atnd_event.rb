@@ -17,7 +17,7 @@ class AtndEvent < EventBase
   end
 
   def logo
-    'https://atnd.org/images/logo_OR_white.png'
+    @logo ||= 'https://atnd.org' + event_doc.css('.events-show-img > img').attribute('data-original')
   end
 
   def users

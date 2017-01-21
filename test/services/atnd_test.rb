@@ -1,6 +1,7 @@
 # encoding: utf-8
 require 'test/unit'
-require 'atnd'
+require_relative '../../app/services/atnd'
+require_relative '../../app/services/http'
 require_relative './event_interface'
 
 class AtndTest < Test::Unit::TestCase
@@ -23,5 +24,6 @@ class AtndTest < Test::Unit::TestCase
     assert_equal('エイチーム　本社', event.place)
     assert_equal('〒450-6432　名古屋市中村区名駅三丁目28番12号　大名古屋ビルヂング 32F', event.address)
     assert_equal(false, event.limit_over?)
+    assert_equal('https://atnd.org/event_images/0008/0890/008_original.jpg?1474957731', event.logo)
   end
 end
