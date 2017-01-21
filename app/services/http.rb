@@ -3,6 +3,8 @@ require 'net/http'
 require 'uri'
 require 'open-uri'
 require 'json'
+require 'open_uri_redirections'
+require 'openssl'
 
 module Shule
   class Http
@@ -11,12 +13,13 @@ module Shule
         begin
           charset = nil
           puts "open(#{url})"
-          html = open(url) do |f|
+          html = open(url, :allow_redirections => :safe, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE) do |f|
             charset = f.charset
             f.read
           end
           Nokogiri::HTML.parse(html, charset)
-        rescue
+        rescue => e
+          p e
           puts "error: get_document(#{url})"
           Nokogiri::HTML("")
         end

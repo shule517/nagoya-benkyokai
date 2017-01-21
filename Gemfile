@@ -41,6 +41,8 @@ gem 'pry-rails'  # rails console(もしくは、rails c)でirbの代わりにpry
 gem 'pry-doc'    # methodを表示
 gem 'pry-byebug' # デバッグを実施
 
+gem 'open_uri_redirections'
+
 group :development, :test do
   gem 'ruby-debug-ide'
   gem 'debase'
