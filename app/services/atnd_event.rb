@@ -17,7 +17,15 @@ class AtndEvent < EventBase
   end
 
   def logo
-    @logo ||= 'https://atnd.org' + event_doc.css('.events-show-img > img').attribute('data-original')
+    @logo ||= get_logo
+  end
+
+  def get_logo
+    # event_doc.css('.events-show-img > img').each do |img|
+    #   logo = 'https://atnd.org' + img.attribute('data-original')
+    #   return logo
+    # end
+    return '/img/atnd.jpg'
   end
 
   def users
