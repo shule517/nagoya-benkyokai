@@ -25,7 +25,7 @@ class AtndEvent < EventBase
     #   logo = 'https://atnd.org' + img.attribute('data-original')
     #   return logo
     # end
-    return '/img/atnd.jpg'
+    return '/img/atnd.png'
   end
 
   def users
