@@ -6,6 +6,7 @@ class EventTweet
       events = Event.where('tweeted_new = ?', false)
       events.each do |event|
         message = tweet_message(event)
+        message = message[0, 100]
         puts "tweet - #{message}"
         begin
           @twitter.tweet("[新着] " + message)
@@ -25,6 +26,7 @@ class EventTweet
       events = Event.where('started_at < ? and tweeted_tomorrow = ?', tomorrow, false)
       events.each do |event|
         messge = "[明日] " + tweet_message(event)
+        message = message[0, 100]
         puts "tweet - #{messge}"
         begin
           @twitter.tweet(messge)
