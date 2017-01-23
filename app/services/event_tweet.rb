@@ -6,7 +6,6 @@ class EventTweet
       events = Event.where('tweeted_new = ?', false)
       events.each do |event|
         message = tweet_message(event)
-        message = message[0, 100]
         puts "tweet - #{message}"
         begin
           @twitter.tweet("[新着] " + message)
@@ -26,7 +25,6 @@ class EventTweet
       events = Event.where('started_at < ? and tweeted_tomorrow = ?', tomorrow, false)
       events.each do |event|
         messge = "[明日] " + tweet_message(event)
-        message = message[0, 100]
         puts "tweet - #{messge}"
         begin
           @twitter.tweet(messge)
@@ -38,7 +36,7 @@ class EventTweet
     end
 
     def tweet_message(event)
-      message = "#{event.year}/#{event.month}/#{event.day}(#{event.wday})に開催される勉強会です！\n#{event.title}\n\nイベントページ：#{event.event_url}\nツイッターリスト：https://twitter.com/nagoya_lambda/lists/nagoya-#{event.event_id}"
+      message = "#{event.year}/#{event.month}/#{event.day}(#{event.wday})に開催される勉強会です！\n#{event.title[0, 70]}\n\nイベントページ：#{event.event_url}\nツイッターリスト：https://twitter.com/nagoya_lambda/lists/nagoya-#{event.event_id}"
       if !event.hash_tag.empty?
         message += "\n##{event.hash_tag}"
       end
