@@ -21,10 +21,10 @@ class AtndEvent < EventBase
   end
 
   def get_logo
-    # event_doc.css('.events-show-img > img').each do |img|
-    #   logo = 'https://atnd.org' + img.attribute('data-original')
-    #   return logo
-    # end
+    event_doc.css('.events-show-img > img').each do |img|
+      logo = 'https://atnd.org' + img.attribute('data-original')
+      return logo
+    end
     return '/img/atnd.png'
   end
 
@@ -54,6 +54,6 @@ class AtndEvent < EventBase
 
   private
   def event_doc
-    @event_doc ||= Shule::Http.get_document(event_url)
+    @event_doc ||= Shule::Http.get_document(event_url, false)
   end
 end

@@ -9,13 +9,20 @@ require 'openssl'
 module Shule
   class Http
     class << self
-      def get_document(url)
+      def get_document(url, ssl_mode = true)
         begin
           charset = nil
           puts "open(#{url})"
-          html = open(url, :allow_redirections => :safe) do |f|
-            charset = f.charset
-            f.read
+          if ssl_mode
+            html = open(url) do |f|
+              charset = f.charset
+              f.read
+            end
+          else
+            html = open(url, :allow_redirections => :safe, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE) do |f|
+              charset = f.charset
+              f.read
+            end
           end
           Nokogiri::HTML.parse(html, charset)
         rescue => e
