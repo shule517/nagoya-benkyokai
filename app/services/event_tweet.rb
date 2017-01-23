@@ -5,8 +5,9 @@ class EventTweet
       @twitter = TwitterClient.new
       events = Event.where('tweeted_new = ?', false)
       events.each do |event|
-        @twitter.tweet("[新着] " + tweet_message(event))
-        puts "tweet - #{event.title}"
+        message = tweet_message(event)
+        puts "tweet - #{message}"
+        @twitter.tweet("[新着] " + message)
         event.update(tweeted_new: true)
       end
     end
@@ -19,8 +20,9 @@ class EventTweet
 
       events = Event.where('started_at < ? and tweeted_tomorrow = ?', tomorrow, false)
       events.each do |event|
-        @twitter.tweet("[明日] " + tweet_message(event))
-        puts "tweet - #{event.title}"
+        messge = "[明日] " + tweet_message(event)
+        puts "tweet - #{messge}"
+        @twitter.tweet(messge)
         event.update(tweeted_tomorrow: true)
       end
     end
