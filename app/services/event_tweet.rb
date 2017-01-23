@@ -7,8 +7,12 @@ class EventTweet
       events.each do |event|
         message = tweet_message(event)
         puts "tweet - #{message}"
-        @twitter.tweet("[新着] " + message)
-        event.update(tweeted_new: true)
+        begin
+          @twitter.tweet("[新着] " + message)
+          event.update(tweeted_new: true)
+        rescue => e
+          puts e
+        end
       end
     end
 
@@ -22,8 +26,12 @@ class EventTweet
       events.each do |event|
         messge = "[明日] " + tweet_message(event)
         puts "tweet - #{messge}"
-        @twitter.tweet(messge)
-        event.update(tweeted_tomorrow: true)
+        begin
+          @twitter.tweet(messge)
+          event.update(tweeted_tomorrow: true)
+        rescue => e
+          puts e
+        end
       end
     end
 
