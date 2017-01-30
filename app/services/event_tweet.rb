@@ -1,4 +1,6 @@
 # encoding: utf-8
+require 'slack'
+
 class EventTweet
   class << self
     def tweet_new
@@ -11,6 +13,7 @@ class EventTweet
           @twitter.tweet("[新着] " + message)
           event.update(tweeted_new: true)
         rescue => e
+          Slack.chat_postMessage text: "`#{e}`\n#{message}", username: "lambda", channel: "#lambda-error"
           puts e
         end
       end
@@ -24,12 +27,13 @@ class EventTweet
 
       events = Event.where('started_at < ? and tweeted_tomorrow = ?', tomorrow, false)
       events.each do |event|
-        messge = "[明日] " + tweet_message(event)
-        puts "tweet - #{messge}"
+        message = "[明日] " + tweet_message(event)
+        puts "tweet - #{message}"
         begin
-          @twitter.tweet(messge)
+          @twitter.tweet(message)
           event.update(tweeted_tomorrow: true)
         rescue => e
+          Slack.chat_postMessage text: "`#{e}`\n#{message}", username: "lambda", channel: "#lambda-error"
           puts e
         end
       end
