@@ -42,6 +42,7 @@ gem 'pry-doc'    # methodを表示
 gem 'pry-byebug' # デバッグを実施
 
 gem 'open_uri_redirections'
+gem 'slack-api'
 
 group :development, :test do
   gem 'ruby-debug-ide'
