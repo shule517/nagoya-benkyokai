@@ -7,7 +7,7 @@ class DeleteTwitterList
     date = time.strftime("%Y-%m-%d")
     events = Event.where("ended_at < '#{date}'").select(:event_id)
     events.each do |event|
-      @twitter.destroy_list(event.event_id)
+      @twitter.destroy_list("nagoya-#{event.event_id}")
     end
   end
 end
