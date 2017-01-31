@@ -5,15 +5,15 @@ require_relative './event_collector'
 class TwitterClient
   def initialize
     @client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = "BrgZWFqqRtEWhexY9iEVNUJmv"
-      config.consumer_secret     = "B9IUnDFDVNtPRRvw5oYSiqI5WTH7SEj0vgAz6w06Xhaxnz8knI"
-      config.access_token        = "803579039843614722-QYlrM8Xo51LsR537tOs4g17UyNopiJ2"
-      config.access_token_secret = "jh8nwfMrhsy5RBAmwR6t2pNtn2svHhaBUN3jx3RncGfwg"
-      # config.consumer_key        = ENV['CONSUMER_KEY']
-      # config.consumer_secret     = ENV['CONSUMER_SECRET']
-      # config.access_token        = ENV['ACCESS_TOKEN']
-      # config.access_token_secret = ENV['ACCESS_TOKEN_SECRET']
+      config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
+      config.consumer_secret     = ENV['TWITTER_CONSUMER_SECRET']
+      config.access_token        = ENV['TWITTER_ACCESS_TOKEN']
+      config.access_token_secret = ENV['TWITTER_ACCESS_TOKEN_SECRET']
     end
+  end
+
+  def client
+    @client
   end
 
   def lists
