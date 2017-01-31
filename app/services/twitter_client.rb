@@ -44,8 +44,8 @@ class TwitterClient
   end
 
   def destroy_list(event_id)
-    puts "destroy_list(#{event_id})"
     if list_exists?(event_id)
+      puts "destroy_list(#{event_id})"
       @client.destroy_list(event_id)
     end
   end
