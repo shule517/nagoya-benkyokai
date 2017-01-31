@@ -27,4 +27,12 @@ namespace :event do
     EventTweet.tweet_tomorrow
     Slack.chat_postMessage text: 'event:tweet end', username: "lambda", channel: "#lambda-log"
   end
+
+  desc "終わった勉強会のツイッターリストを削除する"
+  task :delete_list => :environment do
+    Slack.chat_postMessage text: 'event:tweet start', username: "lambda", channel: "#lambda-log"
+    DeleteTwitterList.call
+    Slack.chat_postMessage text: 'event:tweet end', username: "lambda", channel: "#lambda-log"
+  end
+  
 end
