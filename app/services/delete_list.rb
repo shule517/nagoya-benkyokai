@@ -7,5 +7,4 @@ twitter.lists.each do |list|
     puts list.name
     twitter.destroy_list(list.id)
   end
-  # twitter.destroy_list(list.name)
 end
