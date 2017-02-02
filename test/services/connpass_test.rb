@@ -1,6 +1,6 @@
 # encoding: utf-8
 require 'test/unit'
-require 'connpass'
+require './app/services/connpass'
 require_relative './event_interface'
 
 class ConnpassTest < Test::Unit::TestCase

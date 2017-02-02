@@ -1,6 +1,6 @@
 # encoding: utf-8
 require 'test/unit'
-require 'doorkeeper'
+require './app/services/doorkeeper'
 require_relative './event_interface'
 
 class DoorkeeperTest < Test::Unit::TestCase

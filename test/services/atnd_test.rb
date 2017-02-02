@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'test/unit'
-require_relative '../../app/services/atnd'
-require_relative '../../app/services/http'
+require './app/services/atnd'
+require './app/services/http'
 require_relative './event_interface'
 
 class AtndTest < Test::Unit::TestCase

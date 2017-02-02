@@ -1,6 +1,6 @@
 # encoding: utf-8
 require 'test/unit'
-require 'twitter_client'
+require './app/services/twitter_client'
 
 class TwitterTest < Test::Unit::TestCase
   def setup
@@ -20,10 +20,5 @@ class TwitterTest < Test::Unit::TestCase
 
     @twitter.destroy_list('test')
     assert(!@twitter.list_exists?('test'))
-  end
-
-  def test_list_exists
-    assert(!@twitter.list_exists?('nagoya-99999'))
-    assert(@twitter.list_exists?('nagoya-39118'))
   end
 end
