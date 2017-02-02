@@ -1,0 +1,7 @@
+{
+    "version": "0.1.0",
+    "command": "debug-rails",
+    "isShellCommand": true,
+    "args": ["${file}"],
+    "showOutput": "always"
+}
