@@ -1,5 +1,5 @@
 #encoding: utf-8
-require "twitter"
+require 'twitter'
 require_relative './event_collector'
 
 class TwitterClient
