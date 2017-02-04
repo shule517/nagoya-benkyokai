@@ -10,7 +10,7 @@ class DoorkeeperEvent < EventBase
   end
 
   def catch
-    description.gsub(/<\/?[^>]*>/, "")
+    description.gsub(/<\/?[^>]*>/, '')
   end
 
   def group_url

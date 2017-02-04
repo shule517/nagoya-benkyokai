@@ -1,6 +1,6 @@
 # encoding: utf-8
 require 'uri'
-require_relative "./http"
+require_relative './http'
 require_relative './event_base'
 
 class AtndEvent < EventBase
@@ -10,9 +10,9 @@ class AtndEvent < EventBase
 
   def catch
     if @catch != ''
-      @catch + '<br>' + @description.gsub(/<\/?[^>]*>/, "")
+      @catch + '<br>' + @description.gsub(/<\/?[^>]*>/, '')
     else
-      @description.gsub(/<\/?[^>]*>/, "")
+      @description.gsub(/<\/?[^>]*>/, '')
     end
   end
 

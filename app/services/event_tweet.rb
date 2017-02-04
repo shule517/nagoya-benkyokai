@@ -40,7 +40,7 @@ class EventTweet
     end
 
     def tweet_message(event)
-      title = ""
+      title = ''
       event.title.split(/[[:space:]]/).each do |str|
         title += str if (title.size + str.size) < 40
       end

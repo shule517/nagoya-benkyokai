@@ -11,9 +11,9 @@ class ConnpassEvent < EventBase
 
   def catch
     if @catch != ''
-      @catch + '<br>' + @description.gsub(/<\/?[^>]*>/, "")
+      @catch + '<br>' + @description.gsub(/<\/?[^>]*>/, '')
     else
-      @description.gsub(/<\/?[^>]*>/, "")
+      @description.gsub(/<\/?[^>]*>/, '')
     end
   end
 
@@ -124,7 +124,7 @@ private
       end
       @participation_doc ||= Shule::Http.get_document("#{url}/event/#{event_id}/participation/#participants")
     rescue
-      Nokogiri::HTML("")
+      Nokogiri::HTML('')
     end
   end
 

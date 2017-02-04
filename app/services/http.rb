@@ -28,7 +28,7 @@ module Shule
         rescue => e
           p e
           puts "error: get_document(#{url})"
-          Nokogiri::HTML("")
+          Nokogiri::HTML('')
         end
       end
 
