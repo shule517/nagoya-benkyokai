@@ -1,4 +1,3 @@
-#encoding: utf-8
 class Event < ApplicationRecord
   has_many :participants
   has_many :participant_users, through: :participants, source: :user
