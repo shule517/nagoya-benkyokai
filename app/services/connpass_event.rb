@@ -58,7 +58,7 @@ class ConnpassEvent < EventBase
         url = social.attribute('href').value
         get_social_id(url, social_ids)
       end
-      users << ConnpassUser.new({connpass_id: id, twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], name: name, image_url: image_url})
+      users << ConnpassUser.new(connpass_id: id, twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], name: name, image_url: image_url)
     end
     users.sort_by! { |user| user.twitter_id }.reverse
   end
@@ -81,7 +81,7 @@ class ConnpassEvent < EventBase
             url = social.attribute('href').value
             get_social_id(url, social_ids)
           end
-          owners << ConnpassUser.new({connpass_id: id, twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], name: name, image_url: image_url})
+          owners << ConnpassUser.new(connpass_id: id, twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], name: name, image_url: image_url)
         end
       else # イベント参加者ページがない場合
         # TODO メソッド化 イベントページから参加者を取得するメソッド
@@ -93,7 +93,7 @@ class ConnpassEvent < EventBase
           img = user.css('img')
           name = img.attribute('alt').value
           image_url = img.attribute('src').value
-          owners << ConnpassUser.new({connpass_id: id, twitter_id: twitter_id, name: name, image_url: image_url})
+          owners << ConnpassUser.new(connpass_id: id, twitter_id: twitter_id, name: name, image_url: image_url)
         end
       end
       owners.sort_by! { |user| user.twitter_id }.reverse
