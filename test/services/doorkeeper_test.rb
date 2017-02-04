@@ -1,4 +1,3 @@
-# encoding: utf-8
 require 'test/unit'
 require './app/services/doorkeeper'
 require_relative './event_interface'

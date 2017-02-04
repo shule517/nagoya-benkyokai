@@ -1,4 +1,3 @@
-# encoding: utf-8
 class EventUpdater
   class << self
     def call

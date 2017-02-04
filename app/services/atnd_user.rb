@@ -1,4 +1,3 @@
-# encoding: utf-8
 require_relative './user_base'
 
 class AtndUser < UserBase

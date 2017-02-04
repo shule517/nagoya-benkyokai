@@ -1,4 +1,3 @@
-# encoding: utf-8
 require 'uri'
 require_relative './http'
 require_relative './event_base'
