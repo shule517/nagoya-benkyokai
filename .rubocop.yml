@@ -3,14 +3,13 @@ AllCops:
   # RuboCop has a bunch of cops enabled by default. This setting tells RuboCop
   # to ignore them, so only the ones explicitly set in this file are enabled.
   DisabledByDefault: true
-  Exclude:
-    - '**/templates/**/*'
-    - '**/vendor/**/*'
-    - 'actionpack/lib/action_dispatch/journey/parser.rb'
   Include:
     - '**/Rakefile'
     - '**/config.ru'
   Exclude:
+    - '**/templates/**/*'
+    - '**/vendor/**/*'
+    - 'actionpack/lib/action_dispatch/journey/parser.rb'
     - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'
