@@ -35,7 +35,7 @@ class EventUpdater
           user_record = user.find_or_create_by
           if !event_record.participant_users.exists?(user_record)
             event_record.participant_users << user_record
-            event_record.participants.select{ |participant| participant.user_id == user_record.id }.first.owner = true
+            event_record.participants.select { |participant| participant.user_id == user_record.id }.first.owner = true
           end
         end
 
@@ -54,7 +54,7 @@ class EventUpdater
     def update_event_to_twitter(event, lists)
       description = "#{event.year}/#{event.month}/#{event.day}(#{event.wday}) #{event.title} #{event.url}"
 
-      if !lists.any?{ |list| list.name == event.twitter_list_id }
+      if !lists.any? { |list| list.name == event.twitter_list_id }
         puts "crate list: #{description}"
         @twitter.create_list(event.twitter_list_id, description)
       else
