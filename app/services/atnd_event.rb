@@ -52,7 +52,7 @@ class AtndEvent < EventBase
     nil
   end
 
-  private
+private
   def event_doc
     @event_doc ||= Shule::Http.get_document(event_url, false)
   end

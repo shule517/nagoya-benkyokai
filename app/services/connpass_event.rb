@@ -102,7 +102,7 @@ class ConnpassEvent < EventBase
     owners
   end
 
-  private
+private
   def get_social_id(url, social_ids)
     if url.include?('https://twitter.com/intent/user?screen_name=')
       social_ids[:twitter_id] = url.gsub('https://twitter.com/intent/user?screen_name=', '')

@@ -27,7 +27,7 @@ class EventBase
     :wday,
     :event_type
 
-  private
+private
   attr_reader :data,
     :owner_id,
     :owner_nickname,
