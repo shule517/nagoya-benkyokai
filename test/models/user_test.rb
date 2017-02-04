@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-
   def setup
     #connpass
     User.create(name: 'user1', connpass_id: '1', twitter_id: '', facebook_id: '', github_id: '', linkedin_id: '')
@@ -23,20 +22,20 @@ class UserTest < ActiveSupport::TestCase
     User.create(name: 'user13', twitter_id: '', facebook_id: '', github_id: '', linkedin_id: '')
   end
 
-  test "find_connpass" do
+  test 'find_connpass' do
     assert_equal 'user1', User.find_connpass('1', '', '', '').name
     assert_equal 'user2', User.find_connpass('', 'twitter1', '', '').name
     assert_equal 'user3', User.find_connpass('', '', 'facebook1', '').name
     assert_equal 'user4', User.find_connpass('', '', '', 'github1').name
   end
 
-  test "find_atnd" do
+  test 'find_atnd' do
     assert_equal 'user5', User.find_atnd('1', '', '').name
     assert_equal 'user6', User.find_atnd('', 'twitter2', '').name
     assert_equal 'user7', User.find_atnd('', '', 'facebook2').name
   end
 
-  test "find_doorkeeper" do
+  test 'find_doorkeeper' do
     assert_equal 'user9', User.find_doorkeeper('twitter3', '', '', '').name
     assert_equal 'user10', User.find_doorkeeper('', 'facebook3', '', '').name
     assert_equal 'user11', User.find_doorkeeper('', '', 'github3', '', '').name
@@ -44,7 +43,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal 'user13', User.find_doorkeeper('', '', '', '', 'user13').name
   end
 
-  test "find_social" do
+  test 'find_social' do
     assert_equal 'user9', User.find_social('twitter3', '', '').name
     assert_equal 'user10', User.find_social('', 'facebook3', '').name
     assert_equal 'user11', User.find_social('', '', 'github3').name
