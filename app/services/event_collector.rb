@@ -1,4 +1,3 @@
-#encoding: utf-8
 require_relative './connpass'
 require_relative './doorkeeper'
 require_relative './atnd'

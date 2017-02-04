@@ -1,4 +1,3 @@
-#encoding: utf-8
 class UserBase
   attr_reader :connpass_id,
     :atnd_id,

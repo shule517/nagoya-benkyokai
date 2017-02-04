@@ -1,4 +1,3 @@
-require_relative './twitter_client'
 class DeleteTwitterList
   def self.call
     @twitter = TwitterClient.new
