@@ -19,7 +19,7 @@ private
     events = result.map { |event| DoorkeeperEvent.new(event[:event]) }
 
     if events.count == 20
-      events + search_core(start+1, keyword, ym)
+      events + search_core(start + 1, keyword, ym)
     else
       events
     end

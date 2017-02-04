@@ -10,10 +10,10 @@ class EventTweet
         message = tweet_message(event)
         puts "tweet - #{message}"
         begin
-          @twitter.tweet("[新着] " + message)
+          @twitter.tweet('[新着] ' + message)
           event.update(tweeted_new: true)
         rescue => e
-          Slack.chat_postMessage text: "`#{e}`\n#{message}", username: "lambda", channel: "#lambda-error"
+          Slack.chat_postMessage text: "`#{e}`\n#{message}", username: 'lambda', channel: '#lambda-error'
           puts e
         end
       end
@@ -21,19 +21,19 @@ class EventTweet
 
     def tweet_tomorrow
       @twitter = TwitterClient.new
-      time = Time.now + (24*60*60)*2
-      tomorrow = time.strftime("%Y-%m-%d")
+      time = Time.now + (24 * 60 * 60) * 2
+      tomorrow = time.strftime('%Y-%m-%d')
       puts "tomorrow: #{tomorrow}"
 
       events = Event.where('started_at < ? and tweeted_tomorrow = ?', tomorrow, false)
       events.each do |event|
-        message = "[明日] " + tweet_message(event)
+        message = '[明日] ' + tweet_message(event)
         puts "tweet - #{message}"
         begin
           @twitter.tweet(message)
           event.update(tweeted_tomorrow: true)
         rescue => e
-          Slack.chat_postMessage text: "`#{e}`\n#{message}", username: "lambda", channel: "#lambda-error"
+          Slack.chat_postMessage text: "`#{e}`\n#{message}", username: 'lambda', channel: '#lambda-error'
           puts e
         end
       end

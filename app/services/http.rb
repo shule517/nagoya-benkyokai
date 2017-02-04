@@ -56,11 +56,11 @@ module Shule
             warn "redirected to #{location}"
             get_json_core(location, limit - 1)
           else
-            puts [uri.to_s, response.value].join(" : ")
+            puts [uri.to_s, response.value].join(' : ')
             # handle error
           end
         rescue => e
-          puts [uri.to_s, e.class, e].join(" : ")
+          puts [uri.to_s, e.class, e].join(' : ')
           # handle error
         end
       end
