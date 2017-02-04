@@ -20,7 +20,7 @@ class Atnd
     results_returned = result[:results_returned]
     results_start = result[:results_start].to_i
     next_start = results_start + results_returned
-    events = result[:events].map {|event| AtndEvent.new(event[:event])}
+    events = result[:events].map { |event| AtndEvent.new(event[:event]) }
 
     if results_returned >= count
       events + search_core(next_start, keywords, ym_list)

@@ -12,7 +12,7 @@ class DeleteTwitterList
     events.each do |event|
       puts event.event_id
       list_name = "nagoya-#{event.event_id}"
-      if lists.any?{|list| list.name == list_name}
+      if lists.any?{ |list| list.name == list_name }
         @twitter.destroy_list(list_name)
       end
     end

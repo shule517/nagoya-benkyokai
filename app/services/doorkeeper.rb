@@ -16,7 +16,7 @@ class Doorkeeper
   def search_core(start, keyword, ym)
     url = "https://api.doorkeeper.jp/events/?q=#{keyword}&sort=starts_at#{ym.nil? ? "" : "&since=#{ym}01000000"}&page=#{start.to_s}"
     result = Shule::Http.get_json(url)
-    events = result.map {|event| DoorkeeperEvent.new(event[:event])}
+    events = result.map { |event| DoorkeeperEvent.new(event[:event]) }
 
     if events.count == 20
       events + search_core(start+1, keyword, ym)

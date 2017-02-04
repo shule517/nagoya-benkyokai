@@ -60,7 +60,7 @@ class ConnpassEvent < EventBase
       end
       users << ConnpassUser.new({connpass_id: id, twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], name: name, image_url: image_url})
     end
-    users.sort_by! {|user| user.twitter_id}.reverse
+    users.sort_by! { |user| user.twitter_id }.reverse
   end
 
   def owners
@@ -96,7 +96,7 @@ class ConnpassEvent < EventBase
           owners << ConnpassUser.new({connpass_id: id, twitter_id: twitter_id, name: name, image_url: image_url})
         end
       end
-      owners.sort_by! {|user| user.twitter_id}.reverse
+      owners.sort_by! { |user| user.twitter_id }.reverse
     rescue
     end
     owners

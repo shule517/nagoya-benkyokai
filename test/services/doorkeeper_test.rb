@@ -28,13 +28,13 @@ class DoorkeeperTest < Test::Unit::TestCase
     assert_equal('https://dzpp79ucibp5a.cloudfront.net/groups_logos/1995_normal_1380975297_251035_156371434432231_4785187_n.jpg', event.group_logo)
 
     assert_equal(event.accepted, event.users.count + 3) # 3人アカウント非表示
-    shule = event.users.select {|user| user.twitter_id == 'shule517'}.first
+    shule = event.users.select { |user| user.twitter_id == 'shule517' }.first
     assert_equal(shule.twitter_id, 'shule517')
     assert_equal(shule.name, 'シュール')
     assert_equal(shule.image_url, 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/295014_original_1464427238_PeerstPlayer_Icon_normal.png')
 
     assert_equal(event.owners.count, 1)
-    dominion = event.owners.select {|user| user.twitter_id == 'Dominion525'}.first
+    dominion = event.owners.select { |user| user.twitter_id == 'Dominion525' }.first
     assert_equal(dominion.twitter_id, 'Dominion525')
     assert_equal(dominion.name, 'どみにをん525')
     assert_equal(dominion.image_url, 'https://graph.facebook.com/100001033554537/picture')

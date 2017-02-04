@@ -46,7 +46,7 @@ class DoorkeeperEvent < EventBase
         end
         users << DoorkeeperUser.new({twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], linkedin_id: social_ids[:linkedin_id], name: name, image_url: image_url})
       end
-      users.sort_by! {|user| user.twitter_id}.reverse
+      users.sort_by! { |user| user.twitter_id }.reverse
     rescue
       puts "no users event:#{title} / #{group_url} / #{event_id}"
       []
@@ -65,7 +65,7 @@ class DoorkeeperEvent < EventBase
       end
       owners << DoorkeeperUser.new({twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], linkedin_id: social_ids[:linkedin_id], name: name, image_url: image_url})
     end
-    owners.sort_by! {|user| user.twitter_id}.reverse
+    owners.sort_by! { |user| user.twitter_id }.reverse
   end
 
   private

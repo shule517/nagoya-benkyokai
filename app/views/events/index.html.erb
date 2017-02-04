@@ -95,7 +95,7 @@
   <div class="col-md-0 col-xs-1">
   </div>
   <div class="col-md-3 col-xs-10">
-    <% twitter_event_id = @events.select{|event| event.participants.size > 0}.first.event_id %>
+    <% twitter_event_id = @events.select{ |event| event.participants.size > 0 }.first.event_id %>
     <a class="twitter-timeline" href="<%= "https://twitter.com/nagoya_lambda/lists/nagoya-#{twitter_event_id}/members" %>">Tweets by TwitterDev</a>
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>

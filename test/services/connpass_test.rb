@@ -30,14 +30,14 @@ class ConnpassTest < Test::Unit::TestCase
     assert_equal(true, event.limit_over?)
 
     assert_equal(event.accepted, event.users.count)
-    shule = event.users.select {|user| user.connpass_id == 'shule517'}.first
+    shule = event.users.select { |user| user.connpass_id == 'shule517' }.first
     assert_equal(shule.connpass_id, 'shule517')
     assert_equal(shule.twitter_id, 'shule517')
     assert_equal(shule.name, 'シュール')
     assert_equal(shule.image_url, 'https://connpass-tokyo.s3.amazonaws.com/thumbs/b9/93/b99305b6784e742244868ddd5acc8646.png')
 
     assert_equal(event.owners.count, 4)
-    kuu = event.users.select {|user| user.connpass_id == 'Kuxumarin'}.first
+    kuu = event.users.select { |user| user.connpass_id == 'Kuxumarin' }.first
     assert_equal(kuu.connpass_id, 'Kuxumarin')
     assert_equal(kuu.twitter_id, 'Fumiya_Kume')
     assert_equal(kuu.image_url, 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png')
