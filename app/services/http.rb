@@ -19,7 +19,7 @@ module Shule
               f.read
             end
           else
-            html = open(url, :allow_redirections => :safe, :ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE) do |f|
+            html = open(url, allow_redirections: :safe, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE) do |f|
               charset = f.charset
               f.read
             end
@@ -50,7 +50,7 @@ module Shule
           case response
           when Net::HTTPSuccess
             json = response.body
-            JSON.parse(json, {:symbolize_names => true})
+            JSON.parse(json, symbolize_names: true)
           when Net::HTTPRedirection
             location = response['location']
             warn "redirected to #{location}"
