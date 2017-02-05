@@ -30,7 +30,12 @@ class TwitterClient
   def create_list(event_id, description)
     puts "create_list(#{event_id}, #{description})"
     if !list_exists?(event_id)
-      @client.create_list(event_id, description: description[0...100])
+      debug_mode = ENV['TWITTER_DEBUG_MODE']
+      if debug_mode.nil? || !debug_mode
+        @client.create_list(event_id, description: description[0...100], mode: 'private')
+      else
+        @client.create_list(event_id, description: description[0...100], mode: 'public')
+      end
     else
       @client.list_update(event_id, description: description[0...100])
     end
