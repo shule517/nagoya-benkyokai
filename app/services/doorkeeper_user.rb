@@ -9,6 +9,7 @@ class DoorkeeperUser < UserBase
       result.github_id = github_id      if github_id.present?
       result.linkedin_id = linkedin_id  if linkedin_id.present?
       result.name = name                if name.present?
+      result.image_url = image_url      if image_url.present? && image_url !~ /secure\.gravatar\.com/
       result.save
       return result
     else
