@@ -29,11 +29,9 @@ class ConnpassEvent < EventBase
   end
 
   def group_logo
-    begin
-      @group_logo ||= event_doc.css('.event_group_area > div.group_inner > div > a').attribute('style').value.match(%r{url\((.*)\)})[1]
-    rescue
-      ''
-    end
+    @group_logo ||= event_doc.css('.event_group_area > div.group_inner > div > a').attribute('style').value.match(%r{url\((.*)\)})[1]
+  rescue
+    ''
   end
 
   def logo
@@ -115,16 +113,14 @@ private
   end
 
   def participation_doc
-    begin
-      if group_url.nil?
-        url = 'https://connpass.com'
-      else
-        url = group_url
-      end
-      @participation_doc ||= Shule::Http.get_document("#{url}/event/#{event_id}/participation/#participants")
-    rescue
-      Nokogiri::HTML('')
+    if group_url.nil?
+      url = 'https://connpass.com'
+    else
+      url = group_url
     end
+    @participation_doc ||= Shule::Http.get_document("#{url}/event/#{event_id}/participation/#participants")
+  rescue
+    Nokogiri::HTML('')
   end
 
   def event_doc

@@ -33,23 +33,21 @@ class DoorkeeperEvent < EventBase
   end
 
   def users
-    begin
-      users = []
-      participation_doc.css('.user-profile-details').each do |user|
-        social_ids = {}
-        name = user.css('div.user-name').children.text
-        image_url = user.css('img').attribute('src').value
-        user.css('div.user-social > a.external-profile-link').each do |social|
-          url = social.attribute('href').value
-          get_social_id(url, social_ids)
-        end
-        users << DoorkeeperUser.new(twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], linkedin_id: social_ids[:linkedin_id], name: name, image_url: image_url)
+    users = []
+    participation_doc.css('.user-profile-details').each do |user|
+      social_ids = {}
+      name = user.css('div.user-name').children.text
+      image_url = user.css('img').attribute('src').value
+      user.css('div.user-social > a.external-profile-link').each do |social|
+        url = social.attribute('href').value
+        get_social_id(url, social_ids)
       end
-      users.sort_by! { |user| user.twitter_id }.reverse
-    rescue
-      puts "no users event:#{title} / #{group_url} / #{event_id}"
-      []
+      users << DoorkeeperUser.new(twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], linkedin_id: social_ids[:linkedin_id], name: name, image_url: image_url)
     end
+    users.sort_by! { |user| user.twitter_id }.reverse
+  rescue
+    puts "no users event:#{title} / #{group_url} / #{event_id}"
+    []
   end
 
   def owners
