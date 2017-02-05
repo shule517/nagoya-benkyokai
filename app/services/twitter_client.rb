@@ -1,4 +1,3 @@
-#encoding: utf-8
 require 'twitter'
 require_relative './event_collector'
 
