@@ -27,17 +27,23 @@ class TwitterClient
     return false
   end
 
+  def mode
+    @mode ||= begin
+      debug_mode = ENV['TWITTER_DEBUG_MODE']
+      if debug_mode == 'false'
+        'public'
+      else
+        'private'
+      end
+    end
+  end
+
   def create_list(event_id, description)
     puts "create_list(#{event_id}, #{description})"
     if !list_exists?(event_id)
-      debug_mode = ENV['TWITTER_DEBUG_MODE']
-      if debug_mode.nil? || !debug_mode
-        @client.create_list(event_id, description: description[0...100], mode: 'private')
-      else
-        @client.create_list(event_id, description: description[0...100], mode: 'public')
-      end
+      @client.create_list(event_id, description: description[0...100], mode: mode)
     else
-      @client.list_update(event_id, description: description[0...100])
+      @client.list_update(event_id, description: description[0...100], mode: mode)
     end
   rescue Twitter::Error::Forbidden => e
     puts "#{e}\nevent_id:#{event_id} description:#{description}"
