@@ -43,6 +43,7 @@ gem 'pry-byebug' # デバッグを実施
 
 gem 'open_uri_redirections'
 gem 'slack-api'
+gem 'google-analytics-rails'
 
 group :development, :test do
   gem 'ruby-debug-ide'
