@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  has_many :participants
+  has_many :participants, dependent: :destroy
   has_many :participant_users, through: :participants, source: :user
 
   has_many :owners_participant, -> { where(owner: true) }, class_name: 'Participant'
