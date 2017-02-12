@@ -47,4 +47,10 @@ class TwitterTest < Test::Unit::TestCase
     list_name = @twitter.create_list_name('3月25日のCoderDojo天白ーーーメンターさん対象')
     assert_equal('-3月25日のCoderDojo天白ーーーメンター', list_name)
   end
+
+  test 'ツイッターリスト名にtwitterが含まれる場合' do
+    list = @twitter.create_list('豊橋開催／Twitterのビジネス活用セミナー', '詳細：豊橋開催／Twitterのビジネス活用セミナー')
+    assert_equal('豊橋開催／', list.name) # TODO もうちょっといい感じにしたい
+    @twitter.destroy_list(list.slug)
+  end
 end

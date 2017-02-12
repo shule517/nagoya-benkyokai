@@ -50,6 +50,7 @@ class TwitterClient
   end
 
   def create_list_name(title)
+    title.gsub!(/twitter/i, 'ツイッター')
     title.gsub!(/[[:space:]]+/, ' ')
     title.gsub!(/[\/]+/, '/')
     title.gsub!(/[:]+/, '')
