@@ -118,7 +118,7 @@ class TwitterClient
   def update_list(uri, title, description)
     list_name = create_list_name(title)
     description = create_list_desc(description)
-    puts "update_list(list_name:#{list_name}, description:#{description})"
+    puts "update_list(uri:#{uri}, list_name:#{list_name}, description:#{description})"
     @client.list_update(uri, name: list_name, description: description, mode: mode)
   rescue Twitter::Error::Forbidden => e
     puts "#{e}\nlist_name:#{list_name} description:#{description}"
@@ -142,6 +142,8 @@ class TwitterClient
     @client.add_list_members(list_id, users)
   rescue Twitter::Error::Forbidden
     puts "Error: #{users}をリストに追加する権限がありません。"
+  rescue => e
+    p e
   end
 
   def list(list_id)
