@@ -96,7 +96,7 @@
   </div>
   <div class="col-md-3 col-xs-10">
     <% twitter_list_url = @events.select{ |event| event.participants.size > 0 }.first.twitter_list_url %>
-    <% twitter_list_url = twitter_list_url.gsub('nagoya_lambda/', 'nagoya_lambda/lists') %>
+    <% twitter_list_url = twitter_list_url.gsub('nagoya_lambda/', 'nagoya_lambda/lists/') %>
     <a class="twitter-timeline" href="<%= "#{twitter_list_url}/members" %>">Tweets by TwitterDev</a>
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
