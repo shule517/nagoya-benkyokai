@@ -45,7 +45,7 @@ class EventTweet
       end
       title = event.title[0..40] if title.empty?
 
-      message = "#{event.year}/#{event.month}/#{event.day}(#{event.wday})に開催される勉強会です！\n#{title}\n\nイベントページ：#{event.event_url}\nツイッターリスト：https://twitter.com/nagoya_lambda/lists/nagoya-#{event.event_id}"
+      message = "#{event.year}/#{event.month}/#{event.day}(#{event.wday})に開催される勉強会です！\n#{title}\n\nイベントページ：#{event.event_url}\nツイッターリスト：#{event.twitter_list_url}"
       if !event.hash_tag.empty?
         message += "\n##{event.hash_tag}"
       end
