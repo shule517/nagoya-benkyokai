@@ -117,11 +117,11 @@ private
 
   def participation_doc
     if group_url.nil?
-      url = 'https://connpass.com'
+      url = 'https://connpass.com/'
     else
       url = group_url
     end
-    @participation_doc ||= Shule::Http.get_document("#{url}/event/#{event_id}/participation/#participants")
+    @participation_doc ||= Shule::Http.get_document("#{url}event/#{event_id}/participation/#participants")
   rescue
     Nokogiri::HTML('')
   end

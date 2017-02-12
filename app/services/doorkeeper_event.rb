@@ -89,11 +89,11 @@ private
   end
 
   def group_doc
-    @group_doc ||= Shule::Http.get_document("#{group_url}/members")
+    @group_doc ||= Shule::Http.get_document("#{group_url}members")
   end
 
   def participation_doc
-    @participation_doc ||= Shule::Http.get_document("#{group_url}/events/#{event_id}/participants")
+    @participation_doc ||= Shule::Http.get_document("#{group_url}events/#{event_id}/participants")
   end
 
   def event_doc
