@@ -4,20 +4,42 @@ require './app/services/twitter_client'
 class TwitterTest < Test::Unit::TestCase
   def setup
     @twitter = TwitterClient.new
+    @list_name = create_twitter_list
   end
 
-  def test_create_list
-    @twitter.create_list('test', 'description1')
-    assert(@twitter.list_exists?('test'))
-    assert_equal('description1', @twitter.list('test').description)
+  def shutdown
+    destroy_twitter_list
+  end
 
-    @twitter.create_list('test', 'description2')
-    assert(@twitter.list_exists?('test'))
-    assert_equal('description2', @twitter.list('test').description)
+  def create_twitter_list
+    now = Time.now.strftime('%Y%m%d-%H%M%S')
+    list_name = "test-#{now}"
+    description = "今日は#{now}。 テストだよ。"
+    list = @twitter.create_list(list_name, description)
+    assert(@twitter.list_exists?(list.name))
+    assert_equal(list_name, list.name)
+    assert_equal(description, list.description)
+    list_name
+  end
 
-    @twitter.add_list_member('test', 'shule517')
+  def destroy_twitter_list
+    @twitter.destroy_list(@list_name)
+    assert(!@twitter.list_exists?(@list_name))
+  end
 
-    @twitter.destroy_list('test')
-    assert(!@twitter.list_exists?('test'))
+  test 'ツイッターリストにメンバーを追加' do
+    user_id = 'shule517'
+    @twitter.add_list_member(@list_name, user_id)
+    members = @twitter.list_members(@list_name)
+    assert(@twitter.list_members(@list_name).any? { |v| v.screen_name == user_id})
+  end
+
+  test 'ツイッターリストを更新' do
+    title = 'ついったーりすと名＠日本語'
+    description = 'ついったーしょうさい＠日本語'
+    list = @twitter.update_list(@list_name, title, description)
+    assert_equal(title, list.name)
+    assert_equal(description, list.description)
+    @list_name = list.name
   end
 end

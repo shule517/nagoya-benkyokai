@@ -38,22 +38,95 @@ class TwitterClient
     end
   end
 
-  def create_list(event_id, description)
-    puts "create_list(#{event_id}, #{description})"
-    if !list_exists?(event_id)
-      @client.create_list(event_id, description: description[0...100], mode: mode)
-    else
-      @client.list_update(event_id, description: description[0...100], mode: mode)
+  def check_list_name(title)
+    return false if title.size > 25
+    return false if title.bytesize > 55
+    return false if title =~ (/\A[0-9]/)
+    return true
+  end
+
+  def trim(str)
+    str.gsub(/\bin$/, '').gsub(/[・【「\[（(＠@～:：\. ]+$/, '').strip
+  end
+
+  def create_list_name(title)
+    title.gsub!(/[[:space:]]+/, ' ')
+    title.gsub!(/[\/]+/, '/')
+    title.gsub!(/[:]+/, '')
+    if title =~ /\A[0-9]/
+      title = '-' + title
     end
+    words = title.split(/\b/)
+    name = ''
+    words.each do |word|
+      if check_list_name(name + word)
+        name += word
+      else
+        break
+      end
+    end
+    if name.empty?
+      title.each_char do |char|
+        if check_list_name(name + char)
+          name += char
+        else
+          return trim(name)
+        end
+      end
+    end
+    trim(name)
+  end
+
+  def check_list_desc(desc)
+    return false if desc.size > 100
+    return false if desc.bytesize > 255
+    return true
+  end
+
+  def create_list_desc(desc)
+    desc.gsub(/[[:space:]]+/, ' ')
+    words = desc.split(/\b/)
+    name = ''
+    words.each do |word|
+      if check_list_desc(name + word)
+        name += word
+      else
+        break
+      end
+    end
+    if name.empty?
+      desc.each_char do |char|
+        if check_list_desc(name + char)
+          name += char
+        else
+          return name
+        end
+      end
+    end
+    name
+  end
+
+  def create_list(title, description)
+    title = create_list_name(title)
+    description = create_list_desc(description)
+    puts "create_list(title:#{title}, description:#{description})"
+    @client.create_list(title, description: description, mode: mode)
   rescue Twitter::Error::Forbidden => e
-    puts "#{e}\nevent_id:#{event_id} description:#{description}"
+    puts "#{e}\ntitle:#{title} description:#{description}"
+  end
+
+  def update_list(uri, title, description)
+    list_name = create_list_name(title)
+    description = create_list_desc(description)
+    puts "update_list(list_name:#{list_name}, description:#{description})"
+    @client.list_update(uri, name: list_name, description: description, mode: mode)
+  rescue Twitter::Error::Forbidden => e
+    puts "#{e}\nlist_name:#{list_name} description:#{description}"
   end
 
   def destroy_list(event_id)
-    if list_exists?(event_id)
-      puts "destroy_list(#{event_id})"
-      @client.destroy_list(event_id)
-    end
+    puts "destroy_list(#{event_id})"
+    @client.destroy_list(event_id)
   end
 
   def add_list_member(list_id, user_id)
@@ -61,6 +134,14 @@ class TwitterClient
     @client.add_list_member(list_id, user_id)
   rescue Twitter::Error::Forbidden
     puts "Error: #{user_id}をリストに追加する権限がありません。"
+  end
+
+  def add_list_members(list_id, users)
+    return if users.empty?
+    puts "add_list_members(#{list_id}, #{users})"
+    @client.add_list_members(list_id, users)
+  rescue Twitter::Error::Forbidden
+    puts "Error: #{users}をリストに追加する権限がありません。"
   end
 
   def list(list_id)
