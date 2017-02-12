@@ -65,8 +65,8 @@ class TwitterClient
         break
       end
     end
-    if name.empty?
-      title.each_char do |char|
+    if name.length <= 3
+      title[name.length..(title.length - name.length)].each_char do |char|
         if check_list_name(name + char)
           name += char
         else
