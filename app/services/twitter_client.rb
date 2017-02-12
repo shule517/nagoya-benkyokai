@@ -122,7 +122,9 @@ class TwitterClient
     puts "update_list(uri:#{uri}, list_name:#{list_name}, description:#{description})"
     @client.list_update(uri, name: list_name, description: description, mode: mode)
   rescue Twitter::Error::Forbidden => e
-    puts "#{e}\nlist_name:#{list_name} description:#{description}"
+    puts "#{e}\nuri:#{uri} list_name:#{list_name} description:#{description}"
+  rescue => e
+    puts "#{e}\nuri:#{uri} list_name:#{list_name} description:#{description}"
   end
 
   def destroy_list(event_id)

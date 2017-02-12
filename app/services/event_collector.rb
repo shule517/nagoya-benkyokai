@@ -34,23 +34,4 @@ class EventCollector
     events = events.group_by { |event| event.event_id }.map { |event| event[1].first }
     events.sort_by! { |event| event.started_at }
   end
-
-  def update
-    time = Time.now
-    ym = time.strftime('%Y%m')
-    events = search([ym])
-    time += 24 * 60 * 60
-    tommorow = time.strftime('%Y-%m-%d')
-    events.select! { |event| event.started_at.slice(0, 10) == tommorow }
-
-    puts "events.count:#{events.count} - #{tommorow}"
-    events.each do |event|
-      puts event
-      message = "#{event.year}/#{event.month}/#{event.day}(#{event.wday})に開催される勉強会です！\n#{event.title}\n#{event.event_url}\nhttps://twitter.com/nagoya_lambda/lists/nagoya-#{event.event_id}"
-      if !event.hash_tag.empty?
-        message += "\n##{event.hash_tag}"
-      end
-      @twitter.tweet(message)
-    end
-  end
 end
