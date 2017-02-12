@@ -7,7 +7,10 @@ class EventUpdater
 
       @twitter = TwitterClient.new
       lists = @twitter.lists
-      Event.all.each do |event|
+
+      today = Time.now.strftime('%Y-%m-%d')
+      events = Event.all.where(['started_at > ?', today]).order(:started_at)
+      events.each do |event|
         update_event_to_twitter(event, lists)
       end
     end
@@ -53,15 +56,15 @@ class EventUpdater
     def update_event_to_twitter(event, lists)
       description = "#{event.year}/#{event.month}/#{event.day}(#{event.wday}) #{event.title} #{event.url}"
 
-      if !lists.any? { |list| list.uri.to_s == event.twitter_list_url }
-        puts "crate list: #{description}"
-        list = @twitter.create_list(event.title, description)
+      if lists.any? { |list| list.uri.to_s == event.twitter_list_url } || @twitter.list_exists?(event.twitter_list_url)
+        puts "update list: #{description}"
+        list = @twitter.update_list(event.twitter_list_url, event.title, description)
         event.twitter_list_name = list.name
         event.twitter_list_url = list.uri
         event.save
       else
-        puts "update list: #{description}"
-        list = @twitter.update_list(event.twitter_list_url, event.title, description)
+        puts "crate list: #{description}"
+        list = @twitter.create_list(event.title, description)
         event.twitter_list_name = list.name
         event.twitter_list_url = list.uri
         event.save
