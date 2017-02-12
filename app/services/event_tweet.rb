@@ -44,8 +44,9 @@ class EventTweet
         title += str if (title.size + str.size) < 40
       end
       title = event.title[0..40] if title.empty?
+      twitter_list_url = event.twitter_list_url.gsub('nagoya_lambda/', 'nagoya_lambda/lists/')
 
-      message = "#{event.year}/#{event.month}/#{event.day}(#{event.wday})に開催される勉強会です！\n#{title}\n\nイベントページ：#{event.event_url}\nツイッターリスト：#{event.twitter_list_url}"
+      message = "#{event.year}/#{event.month}/#{event.day}(#{event.wday})に開催される勉強会です！\n#{title}\n\nイベントページ：#{event.event_url}\nツイッターリスト：#{twitter_list_url}"
       if !event.hash_tag.empty?
         message += "\n##{event.hash_tag}"
       end
