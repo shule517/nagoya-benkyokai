@@ -96,7 +96,7 @@
   </div>
   <div class="col-md-3 col-xs-10">
     <% twitter_list_url = @events.select{ |event| event.participants.size > 0 }.first.twitter_list_url %>
-    <a class="twitter-timeline" href="<%= "https://twitter.com/shule517_dev/lists/list1/members" %>">Tweets by TwitterDev</a>
+    <a class="twitter-timeline" href="<%= "#{twitter_list_url}" %>">Tweets by TwitterDev</a>
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
 </div>
