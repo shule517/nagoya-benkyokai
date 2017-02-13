@@ -45,6 +45,9 @@ gem 'open_uri_redirections'
 gem 'slack-api'
 gem 'google-analytics-rails'
 
+gem 'exception_notification', github: 'smartinez87/exception_notification'
+gem 'slack-notifier'
+
 group :development, :test do
   gem 'ruby-debug-ide'
   gem 'debase'
