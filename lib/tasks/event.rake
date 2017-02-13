@@ -15,10 +15,17 @@ namespace :event do
     Slack.chat_postMessage text: "event:init end", username: "lambda", channel: "#lambda-log"
   end
 
-  desc "イベント情報を更新"
+  desc "イベント情報を更新(DB+twitter)"
   task update: :environment do
     Slack.chat_postMessage text: "event:update start", username: "lambda", channel: "#lambda-log"
     EventUpdater.call
+    Slack.chat_postMessage text: "event:update end", username: "lambda", channel: "#lambda-log"
+  end
+
+  desc "イベント情報を更新(DB)"
+  task update_db: :environment do
+    Slack.chat_postMessage text: "event:update start", username: "lambda", channel: "#lambda-log"
+    EventUpdater.update(ENV['date'])
     Slack.chat_postMessage text: "event:update end", username: "lambda", channel: "#lambda-log"
   end
 

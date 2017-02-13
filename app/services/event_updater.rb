@@ -15,6 +15,12 @@ class EventUpdater
       end
     end
 
+    def update(yyyymm)
+      collector = EventCollector.new
+      events = collector.search([yyyymm])
+      update_db(events)
+    end
+
   private
     def collect_period
       now = Time.now
