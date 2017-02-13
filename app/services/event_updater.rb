@@ -17,7 +17,7 @@ class EventUpdater
 
     def update(yyyymm)
       collector = EventCollector.new
-      events = collector.search([yyyymm])
+      events = collector.search([yyyymm], false)
       update_db(events)
     end
 

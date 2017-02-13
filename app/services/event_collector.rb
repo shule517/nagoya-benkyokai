@@ -8,7 +8,7 @@ class EventCollector
     @twitter = TwitterClient.new
   end
 
-  def search(date)
+  def search(date, after_today = true)
     puts "collect date: #{date}"
     apis = []
     apis << Connpass.new
@@ -30,7 +30,9 @@ class EventCollector
     events.select! { |event| places.any? { |place| event.address.include?(place) } && !ng_places.any? { |ng_place| event.address.include?(ng_place) } }
     today = Time.now.strftime('%Y-%m-%d')
     puts "today:#{today}"
-    events.select! { |event| event.started_at >= today }
+    if after_today
+      events.select! { |event| event.started_at >= today }
+    end
     events = events.group_by { |event| event.event_id }.map { |event| event[1].first }
     events.sort_by! { |event| event.started_at }
   end
