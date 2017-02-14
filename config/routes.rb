@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get 'owner'
       get 'user'
       get 'rank'
+      get 'amazon'
     end
   end
   root 'events#index'

@@ -49,4 +49,9 @@ class EventsController < ApplicationController
   def rank
     @events = Participant.all.group(:event_id).count.sort_by{|k,v|v}.reverse.map{|k,v|Event.find(k)}
   end
+
+  def amazon
+    users = Participant.where(event_id: 231).group_by{|v|v.user_id}.map{|k,v|k}
+    @events = Participant.where(user_id: users).group_by{|v|v.event_id}.map{|k,v|[Event.where(id: k).first, v.count, Event.where(id: k).first.started_at]}.sort_by{|k,v|v}.reverse.select{|v|v[2] > '2017-02-15'}.map{|v|v[0]}
+  end
 end
