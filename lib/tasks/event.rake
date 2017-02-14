@@ -21,6 +21,7 @@ namespace :event do
       Slack.chat_postMessage text: "event:update start", username: "lambda", channel: "#lambda-log"
       EventUpdater.call
     rescue => e
+      p e
       Slack.chat_postMessage text: "event:update #{e}", username: "lambda", channel: "#lambda-error"
     ensure
       Slack.chat_postMessage text: "event:update end", username: "lambda", channel: "#lambda-log"
@@ -33,6 +34,7 @@ namespace :event do
       Slack.chat_postMessage text: "event:update start", username: "lambda", channel: "#lambda-log"
       EventUpdater.update(ENV['date'])
     rescue => e
+      p e
       Slack.chat_postMessage text: "event:update_db #{e}", username: "lambda", channel: "#lambda-error"
     ensure
       Slack.chat_postMessage text: "event:update end", username: "lambda", channel: "#lambda-log"
@@ -45,6 +47,7 @@ namespace :event do
       Slack.chat_postMessage text: "event:tweet start", username: "lambda", channel: "#lambda-log"
       EventTweet.tweet_tomorrow
     rescue => e
+      p e
       Slack.chat_postMessage text: "event:tweet #{e}", username: "lambda", channel: "#lambda-error"
     ensure
       Slack.chat_postMessage text: "event:tweet end", username: "lambda", channel: "#lambda-log"
@@ -57,6 +60,7 @@ namespace :event do
       Slack.chat_postMessage text: "event:tweet start", username: "lambda", channel: "#lambda-log"
       DeleteTwitterList.call
     rescue => e
+      p e
       Slack.chat_postMessage text: "event:delete_list #{e}", username: "lambda", channel: "#lambda-error"
     ensure
       Slack.chat_postMessage text: "event:tweet end", username: "lambda", channel: "#lambda-log"
