@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     # groups = groups.select{|group| !ng.include?(group[0])}
     @events = []
     groups.each do |group|
-      @events += Event.where(group_id: group[0])
+      @events += Event.where(group_id: group[0]).order(:started_at)
     end
   end
 
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
     p groups
     @events = []
     groups.each do |group|
-      @events += Event.where(place: group[0])
+      @events += Event.where(place: group[0]).order(:started_at)
     end
   end
 
@@ -34,7 +34,7 @@ class EventsController < ApplicationController
     owners = Participant.where(owner: true).group(:user_id).count.sort_by{|k,v| v}.reverse
     @events = []
     owners.each do |owner|
-      @events += Participant.where(user_id: owner[0], owner: true).map{|v| [User.find(owner[0]), v.event] }
+      @events += Participant.where(user_id: owner[0], owner: true).order(:event_id).map{|v| [User.find(owner[0]), v.event] }
     end
   end
 
@@ -42,7 +42,15 @@ class EventsController < ApplicationController
     users = Participant.where(owner: false).group(:user_id).count.sort_by{|k,v| v}.reverse
     @events = []
     users.each do |user|
-      @events += Participant.where(user_id: user[0], owner: false).map{|v| [User.find(user[0]), v.event] }
+      @events += Participant.where(user_id: user[0], owner: false).order(:event_id).map{|v| [User.find(user[0]), v.event] }
+    end
+  end
+
+  def rank
+    users = Participant.where(owner: false).group(:user_id).count.sort_by{|k,v| v}.reverse
+    @events = []
+    users.each do |user|
+      @events += Participant.where(user_id: user[0], owner: false).order(:started_at).map{|v| [User.find(user[0]), v.event] }
     end
   end
 end
