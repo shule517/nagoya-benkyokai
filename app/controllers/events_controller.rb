@@ -44,6 +44,4 @@ class EventsController < ApplicationController
       @events += Participant.where(user_id: user[0], owner: false).map{|v| [User.find(user[0]), v.event] }
     end
   end
-
-  end
 end
