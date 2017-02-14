@@ -8,6 +8,7 @@ class EventsController < ApplicationController
         event.twitter_list_url = event.twitter_list_url.gsub('nagoya_lambda/', 'nagoya_lambda/lists/')
       end
     end
+  end
 
   def group
     groups = Event.group(:group_id).count.sort_by{|k,v| v}.reverse.select{|v| !v[0].nil?}
