@@ -47,10 +47,6 @@ class EventsController < ApplicationController
   end
 
   def rank
-    users = Participant.where(owner: false).group(:user_id).count.sort_by{|k,v| v}.reverse
-    @events = []
-    users.each do |user|
-      @events += Participant.where(user_id: user[0], owner: false).order(:started_at).map{|v| [User.find(user[0]), v.event] }
-    end
+    @events = Participant.all.group(:event_id).count.sort_by{|k,v|v}.reverse.map{|k,v|Event.find(k)}
   end
 end

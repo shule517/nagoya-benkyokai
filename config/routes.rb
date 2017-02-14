@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get 'place'
       get 'owner'
       get 'user'
+      get 'rank'
     end
   end
   root 'events#index'
