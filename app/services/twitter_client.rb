@@ -54,7 +54,7 @@ class TwitterClient
     title.gsub!(/[[:space:]]+/, ' ')
     title.gsub!(/[\/]+/, '/')
     title.gsub!(/[:]+/, '')
-    if title =~ /\A[0-9]/
+    if title =~ /^[0-9]/
       title = '-' + title
     end
     words = title.split(/\b/)
