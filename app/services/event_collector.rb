@@ -20,7 +20,7 @@ class EventCollector
     end
 
     atnd_events = Atnd.new.search(keywords, date)
-    ngwords = ['仏教', 'クリスマスパーティ', 'テロリスト', '国際交流パーティ', '社会人基礎力', 'カウントダウンパーティー', 'ARMENIAN SONGS', 'ブッダ', 'BrightWoman', '幸せの種まき', '幸せの花', 'ブランディング', 'オシャレな古城', '受講料', 'mana×comu', '投資', '心理学', 'ヨガ', 'ガン', 'ボランティア', '病', 'ベジタリアン', 'ピアノ', '幸せ']
+    ngwords = ['仏教', 'クリスマスパーティ', 'テロリスト', '国際交流パーティ', '社会人基礎力', 'カウントダウンパーティー', 'ARMENIAN SONGS', 'ブッダ', 'BrightWoman', '幸せの種まき', '幸せの花', 'ブランディング', 'オシャレな古城', '受講料', 'mana×comu', '投資', '心理学', 'ヨガ', 'ガン', 'ボランティア', '病', 'ベジタリアン', 'ピアノ', '幸せ', 'Hearthstone', 'ゆかりオフ']
     atnd_events.select! { |event| ngwords.all? { |ngword| !event.title.include?(ngword) } }
     events += atnd_events
 
