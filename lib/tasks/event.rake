@@ -17,29 +17,49 @@ namespace :event do
 
   desc "イベント情報を更新(DB+twitter)"
   task update: :environment do
-    Slack.chat_postMessage text: "event:update start", username: "lambda", channel: "#lambda-log"
-    EventUpdater.call
-    Slack.chat_postMessage text: "event:update end", username: "lambda", channel: "#lambda-log"
+    begin
+      Slack.chat_postMessage text: "event:update start", username: "lambda", channel: "#lambda-log"
+      EventUpdater.call
+    rescue => e
+      Slack.chat_postMessage text: "event:update #{e}", username: "lambda", channel: "#lambda-error"
+    ensure
+      Slack.chat_postMessage text: "event:update end", username: "lambda", channel: "#lambda-log"
+    end
   end
 
   desc "イベント情報を更新(DB)"
   task update_db: :environment do
-    Slack.chat_postMessage text: "event:update start", username: "lambda", channel: "#lambda-log"
-    EventUpdater.update(ENV['date'])
-    Slack.chat_postMessage text: "event:update end", username: "lambda", channel: "#lambda-log"
+    begin
+      Slack.chat_postMessage text: "event:update start", username: "lambda", channel: "#lambda-log"
+      EventUpdater.update(ENV['date'])
+    rescue => e
+      Slack.chat_postMessage text: "event:update_db #{e}", username: "lambda", channel: "#lambda-error"
+    ensure
+      Slack.chat_postMessage text: "event:update end", username: "lambda", channel: "#lambda-log"
+    end
   end
 
   desc "明日開かれるイベントをツイート"
   task tweet: :environment do
-    Slack.chat_postMessage text: "event:tweet start", username: "lambda", channel: "#lambda-log"
-    EventTweet.tweet_tomorrow
-    Slack.chat_postMessage text: "event:tweet end", username: "lambda", channel: "#lambda-log"
+    begin
+      Slack.chat_postMessage text: "event:tweet start", username: "lambda", channel: "#lambda-log"
+      EventTweet.tweet_tomorrow
+    rescue => e
+      Slack.chat_postMessage text: "event:tweet #{e}", username: "lambda", channel: "#lambda-error"
+    ensure
+      Slack.chat_postMessage text: "event:tweet end", username: "lambda", channel: "#lambda-log"
+    end
   end
 
   desc "終わった勉強会のツイッターリストを削除する"
   task delete_list: :environment do
-    Slack.chat_postMessage text: "event:tweet start", username: "lambda", channel: "#lambda-log"
-    DeleteTwitterList.call
-    Slack.chat_postMessage text: "event:tweet end", username: "lambda", channel: "#lambda-log"
+    begin
+      Slack.chat_postMessage text: "event:tweet start", username: "lambda", channel: "#lambda-log"
+      DeleteTwitterList.call
+    rescue => e
+      Slack.chat_postMessage text: "event:delete_list #{e}", username: "lambda", channel: "#lambda-error"
+    ensure
+      Slack.chat_postMessage text: "event:tweet end", username: "lambda", channel: "#lambda-log"
+    end
   end
 end
