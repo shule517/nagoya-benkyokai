@@ -59,4 +59,12 @@ class ConnpassTest < Test::Unit::TestCase
     event = events.first
     assert_equal('第5回 JPSPS SharePoint/Office365名古屋分科勉強会 at GeekBar', event.title)
   end
+
+  def test_PythonTokai
+    # Python東海の参加者数が0である問題を解決
+    api = Connpass.new
+    events = api.search(['Python東海 第32回勉強会'])
+    users = events.first.users
+    assert_equal(16, users.count)
+  end
 end

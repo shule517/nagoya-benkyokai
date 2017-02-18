@@ -119,7 +119,7 @@ private
     if group_url.nil?
       url = 'https://connpass.com/'
     else
-      url = group_url
+      url = "https://#{URI.parse(group_url).host}/"
     end
     @participation_doc ||= Shule::Http.get_document("#{url}event/#{event_id}/participation/#participants")
   rescue
