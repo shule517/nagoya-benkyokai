@@ -53,4 +53,11 @@ class TwitterTest < Test::Unit::TestCase
     assert_equal('豊橋開催／', list.name) # TODO もうちょっといい感じにしたい
     @twitter.destroy_list(list.slug)
   end
+
+  test 'ツイッターリスト名の作成' do
+    list_name = @twitter.create_list_name('2月19日勉強会名')
+    assert(list_name.start_with?('-'))
+    list_name = @twitter.create_list_name(' 2月19日勉強会名')
+    assert(list_name.start_with?('-'))
+  end
 end
