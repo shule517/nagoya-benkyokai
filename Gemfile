@@ -48,6 +48,9 @@ gem 'google-analytics-rails'
 gem 'exception_notification', github: 'smartinez87/exception_notification'
 gem 'slack-notifier'
 
+# ExecJS::ProgramError TypeErrorの対応
+gem 'coffee-script-source', '1.8.0'
+
 group :development, :test do
   gem 'ruby-debug-ide'
   gem 'debase'
