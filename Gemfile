@@ -54,8 +54,8 @@ gem 'coffee-script-source', '1.8.0'
 group :development, :test do
   gem 'ruby-debug-ide'
   gem 'debase'
-  gem 'rspec-rails', '~> 3.1.0'
-  gem 'factory_girl_rails', '~> 4.4.1'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :development, :test do
