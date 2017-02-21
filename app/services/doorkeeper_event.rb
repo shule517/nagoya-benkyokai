@@ -29,7 +29,7 @@ class DoorkeeperEvent < EventBase
   end
 
   def group_logo
-    @group_logo ||= event_doc.css('div.group-info-logo > a > img').attribute('src').value
+    @group_logo ||= event_doc.css('div.community-profile-picture > a > img').attribute('src').value
   end
 
   def users
