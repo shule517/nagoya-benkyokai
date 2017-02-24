@@ -32,7 +32,7 @@ module Shule
       def get_json(url)
         puts "get_json: #{url}"
         url_escape = URI.escape(url)
-        self.get_json_core(url_escape)
+        Hashie::Mash.new(self.get_json_core(url_escape))
       end
 
       def get_json_core(url, limit = 10)
