@@ -1,5 +1,3 @@
-require_relative './twitter_client'
-
 twitter = TwitterClient.new
 
 twitter.lists.each do |list|
