@@ -20,11 +20,13 @@ private
         raise
       end
       events = result.map { |event| DoorkeeperEvent.new(event[:event]) }
-    rescue
-      puts 'sleep(301)'
-      sleep(301)
-      puts 'retry'
-      retry
+    rescue => e
+      puts e
+      raise
+      # puts 'sleep(301)'
+      # sleep(301)
+      # puts 'retry'
+      # retry
     end
 
     if events.count == 20
