@@ -88,6 +88,7 @@ GEM
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     google-analytics-rails (1.1.0)
+    hashie (3.5.4)
     hirb (0.7.3)
     hirb-unicode (0.0.5)
       hirb (~> 0.5)
@@ -269,6 +270,7 @@ DEPENDENCIES
   exception_notification!
   factory_girl_rails
   google-analytics-rails
+  hashie
   hirb
   hirb-unicode
   jbuilder (~> 2.5)
