@@ -7,3 +7,4 @@ bundler_args: --deployment
 cache: bundler
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate
+  - rspec
