@@ -6,10 +6,7 @@ class AtndApi
     result = Shule::Http.get_json(url)
     events = result[:events].map { |hash| Hashie::Mash.new(hash) }
     next_start = result[:results_returned] + result[:results_start].to_i
-    if result[:results_returned] >= COUNT
-      events + search(keywords, ym_list, next_start)
-    else
-      events
-    end
+    return events + search(keywords, ym_list, next_start) if result[:results_returned] >= COUNT
+    events
   end
 end

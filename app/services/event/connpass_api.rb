@@ -5,10 +5,7 @@ class ConnpassApi
     result = Shule::Http.get_json(url)
     events = result[:events].map { |hash| Hashie::Mash.new(hash) }
     next_start = result[:results_returned] + start
-    if next_start < result[:results_available]
-      events + search(keywords, ym_list, next_start)
-    else
-      events
-    end
+    return events + search(keywords, ym_list, next_start) if next_start < result[:results_available]
+    events
   end
 end
