@@ -50,7 +50,7 @@ module Shule
         when Net::HTTPRedirection
           location = response['location']
           warn "redirected to #{location}"
-          get_json_core(location, limit - 1)
+          get_json_core(location, limit - 1, header)
         else
           puts [uri.to_s, response.value].join(' : ')
           # handle error
