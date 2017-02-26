@@ -13,4 +13,8 @@ describe DoorkeeperApi do
     result = api.search(['名古屋'], ['201610', '201611', '201612'])
     expect(result.count).to eq 72
   end
+  it '検索キーワードが複数の場合' do
+    result = api.search(['名古屋', '愛知'], ['201701'])
+    expect(result.count).to eq 30
+  end
 end
