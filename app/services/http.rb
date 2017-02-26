@@ -29,19 +29,19 @@ module Shule
         Nokogiri::HTML('')
       end
 
-      def get_json(url)
+      def get_json(url, header = nil)
         puts "get_json: #{url}"
         url_escape = URI.escape(url)
-        self.get_json_core(url_escape)
+        self.get_json_core(url_escape, 10, header)
       end
 
-      def get_json_core(url, limit = 10)
+      def get_json_core(url, limit, header)
         raise ArgumentError, 'too many HTTP redirects' if limit == 0
         uri = URI.parse(url)
         response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
           http.open_timeout = 5
           http.read_timeout = 10
-          http.get(uri.request_uri)
+          http.get(uri.request_uri, header)
         end
         case response
         when Net::HTTPSuccess
