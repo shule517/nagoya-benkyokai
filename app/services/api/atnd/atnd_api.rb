@@ -1,20 +1,23 @@
 module Api
   module Atnd
     class AtndApi
-      COUNT = 100
+      SEARCH_MAX_COUNT = 100
       def search(keyword: [], ym: [], start: 0)
-        keyword_option = keyword.empty? ? '' : "&keyword_or=#{Array(keyword).join(',')}"
-        ym_option = Array(ym).map { |ym| "&ym=#{ym}" }.join
-        url = "http://api.atnd.org/events/?count=#{COUNT}&order=2&start=#{start + 1}&format=json#{keyword_option}#{ym_option}"
-
+        url = request_url(Array(keyword), Array(ym), start)
         result = Shule::Http.get_json(url)
         events = result[:events].map { |hash| AtndEvent.new(hash) }
-        next_start = result[:results_returned] + result[:results_start].to_i
-        if result[:results_returned] >= COUNT
+        next_start = result[:results_start].to_i + result[:results_returned]
+        if result[:results_returned] >= SEARCH_MAX_COUNT
           events + search(keyword: keyword, ym: ym, start: next_start) 
         else
           events
         end
+      end
+
+      def request_url(keywords, ym_list, start)
+        keyword_option = keywords.empty? ? '' : "&keyword_or=#{keywords.join(',')}"
+        ym_option = ym_list.map { |ym| "&ym=#{ym}" }.join
+        "http://api.atnd.org/events/?count=#{SEARCH_MAX_COUNT}&order=2&format=json#{keyword_option}#{ym_option}&start=#{start + 1}"
       end
     end
   end
