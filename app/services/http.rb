@@ -7,6 +7,8 @@ require 'openssl'
 
 module Shule
   class Http
+    class ToomanyRequests < StandardError
+    end
     class << self
       def get_document(url, ssl_mode = true)
         charset = nil
@@ -32,7 +34,7 @@ module Shule
       def get_json(url, header = nil)
         puts "get_json: #{url}"
         url_escape = URI.escape(url)
-        self.get_json_core(url_escape, 10, header)
+        get_json_core(url_escape, 10, header)
       end
 
       def get_json_core(url, limit, header)
@@ -51,13 +53,14 @@ module Shule
           location = response['location']
           warn "redirected to #{location}"
           get_json_core(location, limit - 1, header)
+        when Net::HTTPTooManyRequests
+          puts [response.value, uri.to_s].join(' : ')
+          raise ToomanyRequests
         else
-          puts [uri.to_s, response.value].join(' : ')
+          puts [response.value, uri.to_s].join(' : ')
+          raise
           # handle error
         end
-      rescue => e
-        puts [uri.to_s, e.class, e].join(' : ')
-        # handle error
       end
     end
   end
