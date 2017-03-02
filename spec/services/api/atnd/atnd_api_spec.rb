@@ -14,4 +14,8 @@ describe AtndApi do
     result = api.search(keyword: '名古屋', ym: ['201608', '201609', '201610', '201611', '201612', '201701'])
     expect(result.count).to be > 200
   end
+  it 'イベントIDを指定した場合' do
+    result = api.search(event_id: 81945)
+    expect(result.count).to eq 1
+  end
 end

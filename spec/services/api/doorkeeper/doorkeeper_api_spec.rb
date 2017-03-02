@@ -18,4 +18,8 @@ describe DoorkeeperApi do
     result = api.search(keyword: ['名古屋', '愛知'], ym: '201701')
     expect(result.count).to be > 1
   end
+  it 'イベントIDを指定した場合' do
+    result = api.search(event_id: 45257)
+    expect(result.count).to eq 1
+  end
 end

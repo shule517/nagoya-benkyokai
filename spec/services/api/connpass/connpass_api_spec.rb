@@ -14,4 +14,8 @@ describe ConnpassApi do
     result = api.search(keyword: ['愛知', '名古屋'], ym: ['201610', '201611', '201612', '201701'])
     expect(result.count).to be >= 200
   end
+  it 'イベントIDを指定した場合' do
+    result = api.search(event_id: 30152)
+    expect(result.count).to eq 1
+  end
 end
