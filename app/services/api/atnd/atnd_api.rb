@@ -8,16 +8,16 @@ module Api
         events = result[:events].map { |hash| AtndEvent.new(hash) }
         next_start = result[:results_start].to_i + result[:results_returned]
         if result[:results_returned] >= SEARCH_MAX_COUNT
-          events + search(keyword: keyword, ym: ym, start: next_start) 
+          events + search(keyword: keyword, ym: ym, start: next_start)
         else
           events
         end
       end
 
       def request_url(keywords, ym_list, event_id, start)
-        keyword_option = keywords.blank? ? '' : "&keyword_or=#{keywords.join(',')}"
+        keyword_option = "&keyword_or=#{keywords.join(',')}" if keywords.present?
         ym_option = ym_list.map { |ym| "&ym=#{ym}" }.join
-        event_id_option = event_id.blank? ? '' : "&event_id=#{event_id}"
+        event_id_option = "&event_id=#{event_id}" if event_id.present?
         "http://api.atnd.org/events/?count=#{SEARCH_MAX_COUNT}&order=2&format=json#{keyword_option}#{ym_option}#{event_id_option}&start=#{start}"
       end
     end

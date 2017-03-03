@@ -15,9 +15,9 @@ module Api
       end
 
       def request_url(keywords, ym_list, event_id, start)
-        keyword_option = keywords.blank? ? '' : "&keyword_or=#{keywords.join(',')}"
+        keyword_option = "&keyword_or=#{keywords.join(',')}" if keywords.present?
         ym_option = ym_list.map { |ym| "&ym=#{ym}" }.join
-        event_id_option = event_id.blank? ? '' : "&event_id=#{event_id}"
+        event_id_option = "&event_id=#{event_id}" if event_id.present?
         "https://connpass.com/api/v1/event/?count=#{SEARCH_MAX_COUNT}&order=2#{keyword_option}#{ym_option}#{event_id_option}&start=#{start + 1}"
       end
     end

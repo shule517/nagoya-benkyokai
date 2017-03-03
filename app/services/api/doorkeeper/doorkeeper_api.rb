@@ -27,10 +27,10 @@ module Api
         if event_id.present?
           "https://api.doorkeeper.jp/events/#{event_id}"
         else
-          keyword_option = keywords.blank? ? '' : "&q=#{keywords}"
-          since_option = ym_list.blank? ? '' : "&since=#{ym_list.first}01000000"
-          until_option = ym_list.blank? ? '' : "&until=#{ym_list.last}31235959"
-          event_id_option = event_id.blank? ? '' : "&event_id=#{event_id}"
+          keyword_option = "&q=#{keywords}" if keywords.present?
+          since_option = "&since=#{ym_list.first}01000000" if ym_list.present?
+          until_option = "&until=#{ym_list.last}31235959" if ym_list.present?
+          event_id_option = "&event_id=#{event_id}" if event_id.present?
           "https://api.doorkeeper.jp/events/?sort=starts_at#{keyword_option}#{since_option}#{until_option}#{event_id_option}&page=#{start}"
         end
       end
