@@ -2,6 +2,11 @@ module Api
   module Connpass
     class ConnpassApi
       SEARCH_MAX_COUNT = 100
+
+      def find(keyword: nil, ym: nil, event_id: '')
+        search(keyword: keyword, ym: ym, event_id: event_id).first
+      end
+
       def search(keyword: nil, ym: nil, event_id: '', start: 0)
         url = request_url(Array(keyword), Array(ym), event_id, start)
         result = Shule::Http.get_json(url)

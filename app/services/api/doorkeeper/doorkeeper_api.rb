@@ -2,6 +2,11 @@ module Api
   module Doorkeeper
     class DoorkeeperApi
       SEARCH_MAX_COUNT = 20
+
+      def find(keyword: [], ym: [], event_id: '')
+        search(keyword: keyword, ym: ym, event_id: event_id).first
+      end
+
       def search(keyword: [], ym: [], event_id: '')
         keywords = Array(keyword)
         ym_list = Array(ym).sort!
@@ -11,7 +16,7 @@ module Api
       def search_core(keywords, ym_list, event_id, start = 1)
         url = request_url(keywords, ym_list, event_id, start)
         result = Shule::Http.get_json(url, Authorization: "Bearer #{ENV['DOORKEEPER_TOKEN']}")
-        return [result[:event]] if result.class == Hash
+        return [DoorkeeperEvent.new(result[:event])] if result.class == Hash
         events = result.map { |hash| DoorkeeperEvent.new(hash[:event]) }
         if events.count >= SEARCH_MAX_COUNT
           events + search_core(keywords, ym_list, event_id, start + 1)
