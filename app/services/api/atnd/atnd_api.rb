@@ -1,29 +1,37 @@
 module Api
   module Atnd
     class AtndApi
-      SEARCH_MAX_COUNT = 100
-
       def find(keyword: [], ym: [], event_id: '')
-        search(keyword: keyword, ym: ym, event_id: event_id).first
+        search_core(Array(keyword), Array(ym), event_id).first
       end
 
-      def search(keyword: [], ym: [], event_id: '', start: 1)
-        url = request_url(Array(keyword), Array(ym), event_id, start)
+      def search(keyword: [], ym: [], event_id: '')
+        search_core(Array(keyword), Array(ym), event_id)
+      end
+
+      private
+
+      SEARCH_MAX_COUNT = 100
+      def search_core(keywords, ym_list, event_id, start = 1)
+        url = request_url(keywords, ym_list, event_id, start)
         result = Shule::Http.get_json(url)
         events = result[:events].map { |hash| AtndEvent.new(hash[:event]) }
         next_start = result[:results_start].to_i + result[:results_returned]
-        if result[:results_returned] >= SEARCH_MAX_COUNT
-          events + search(keyword: keyword, ym: ym, start: next_start)
+        continue = result[:results_returned] >= SEARCH_MAX_COUNT
+
+        if continue
+          events + search_core(keywords, ym_list, event_id, next_start)
         else
           events
         end
       end
 
       def request_url(keywords, ym_list, event_id, start)
-        keyword_option = "&keyword_or=#{keywords.join(',')}" if keywords.present?
-        ym_option = ym_list.map { |ym| "&ym=#{ym}" }.join
-        event_id_option = "&event_id=#{event_id}" if event_id.present?
-        "http://api.atnd.org/events/?count=#{SEARCH_MAX_COUNT}&order=2&format=json#{keyword_option}#{ym_option}#{event_id_option}&start=#{start}"
+        "http://api.atnd.org/events/?count=#{SEARCH_MAX_COUNT}&order=2&format=json&start=#{start}".tap do |url|
+          url << "&keyword_or=#{keywords.join(',')}" if keywords.present?
+          url << ym_list.map { |ym| "&ym=#{ym}" }.join
+          url << "&event_id=#{event_id}" if event_id.present?
+        end
       end
     end
   end
