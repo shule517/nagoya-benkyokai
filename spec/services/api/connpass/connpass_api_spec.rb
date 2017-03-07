@@ -67,20 +67,13 @@ describe ConnpassApi do
 
     context 'Python東海の参加者数が0である問題を解決' do
       let(:event) { api.find(keyword: 'Python東海 第32回勉強会') }
-      it { expect(event.users.count).to eq 16 }
+      it { expect(event.users.count).to eq event.accepted }
     end
 
-  # def test_wine
-  #   # 参加者が足りていない場合
-  #   api = Connpass.new
-  #   events = api.search(['オンザロード'])
-  #   events = events.select { |event| event.title =~ /チョコ/ }
-  #   event = events.first
-  #   users = event.users
-  #   assert_equal(event.accepted, users.count)
-  #   assert_equal(event.owners.count, 1)
-  # end
+    context 'チョコ meets ワインの参加者数が足りてない問題を解決' do
+      let(:event) { api.find(event_id: 51037) }
+      it { expect(event.users.count).to eq event.accepted }
+      it { expect(event.owners.count).to eq 1 }
+    end
   end
-
-
 end
