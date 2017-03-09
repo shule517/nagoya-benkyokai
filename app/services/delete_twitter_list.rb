@@ -12,7 +12,11 @@ class DeleteTwitterList
       list_name = event.twitter_list_name
       puts "delete #{list_name}"
       if lists.any? { |list| list.name == list_name }
-        @twitter.destroy_list(list_name)
+        begin
+          @twitter.destroy_list(list_name)
+        rescue => e
+          puts e
+        end
       end
     end
   end
