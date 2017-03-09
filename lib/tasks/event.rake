@@ -22,7 +22,8 @@ namespace :event do
       EventUpdater.call
     rescue => e
       p e
-      Slack.chat_postMessage text: "event:update #{e}", username: "lambda", channel: "#lambda-error"
+      backtrace = e.backtrace.join("\n")
+      Slack.chat_postMessage text: "event:update #{e}\n#{backtrace}", username: "lambda", channel: "#lambda-error"
     ensure
       Slack.chat_postMessage text: "event:update end", username: "lambda", channel: "#lambda-log"
     end
@@ -35,7 +36,8 @@ namespace :event do
       EventUpdater.update(ENV['date'])
     rescue => e
       p e
-      Slack.chat_postMessage text: "event:update_db #{e}", username: "lambda", channel: "#lambda-error"
+      backtrace = e.backtrace.join("\n")
+      Slack.chat_postMessage text: "event:update_db #{e}\n#{backtrace}", username: "lambda", channel: "#lambda-error"
     ensure
       Slack.chat_postMessage text: "event:update end", username: "lambda", channel: "#lambda-log"
     end
@@ -48,7 +50,8 @@ namespace :event do
       EventTweet.tweet_tomorrow
     rescue => e
       p e
-      Slack.chat_postMessage text: "event:tweet #{e}", username: "lambda", channel: "#lambda-error"
+      backtrace = e.backtrace.join("\n")
+      Slack.chat_postMessage text: "event:tweet #{e}\n#{backtrace}", username: "lambda", channel: "#lambda-error"
     ensure
       Slack.chat_postMessage text: "event:tweet end", username: "lambda", channel: "#lambda-log"
     end
@@ -61,7 +64,8 @@ namespace :event do
       DeleteTwitterList.call
     rescue => e
       p e
-      Slack.chat_postMessage text: "event:delete_list #{e}", username: "lambda", channel: "#lambda-error"
+      backtrace = e.backtrace.join("\n")
+      Slack.chat_postMessage text: "event:delete_list #{e}\n#{backtrace}", username: "lambda", channel: "#lambda-error"
     ensure
       Slack.chat_postMessage text: "event:tweet end", username: "lambda", channel: "#lambda-log"
     end
