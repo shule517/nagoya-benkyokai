@@ -7,10 +7,10 @@ class DeleteTwitterList
     time -= (24 * 60 * 60) * 7 # 1週間前
     date = time.strftime('%Y-%m-%d')
 
-    events = Event.where("ended_at < '#{date}'").select(:event_id)
+    events = Event.where("ended_at < '#{date}'").select(:twitter_list_name)
     events.each do |event|
-      puts event.event_id
-      list_name = "nagoya-#{event.event_id}"
+      list_name = event.twitter_list_name
+      puts "delete #{list_name}"
       if lists.any? { |list| list.name == list_name }
         @twitter.destroy_list(list_name)
       end
