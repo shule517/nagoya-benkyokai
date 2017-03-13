@@ -8,8 +8,7 @@ module Api
 
       def logo
         event_doc.css('.events-show-img > img').each do |img|
-          logo = 'https://atnd.org' + img.attribute('data-original')
-          return logo
+          return 'https://atnd.org' + img.attribute('data-original')
         end
         return '/img/atnd.png'
       end
@@ -37,8 +36,8 @@ module Api
           a = user.css('a')
           name = a.text
           id = a.attribute('href').value.gsub('/users/', '')
-          social_ids = get_social_id(id)
-          users << AtndUser.new(atnd_id: id, twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], name: name, image_url: image_url)
+          twitter_id, facebook_id = get_social_id(id)
+          users << AtndUser.new(atnd_id: id, twitter_id: twitter_id, facebook_id: facebook_id, name: name, image_url: image_url)
         end
         users.sort_by! { |user| user.twitter_id }.reverse
       end
@@ -59,8 +58,8 @@ module Api
         end
 
         id = owner_info.attribute('href').value.gsub('/users/', '')
-        social_ids = get_social_id(id)
-        owners << AtndUser.new(atnd_id: id, twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: nil, linkedin_id: nil, name: event.owner_nickname, image_url: image_url)
+        twitter_id, facebook_id = get_social_id(id)
+        owners << AtndUser.new(atnd_id: id, twitter_id: twitter_id, facebook_id: facebook_id, github_id: nil, linkedin_id: nil, name: event.owner_nickname, image_url: image_url)
       end
 
       private
@@ -72,11 +71,9 @@ module Api
         users_show_info = user_doc.css('#users-show-info')
         twitter_id = users_show_info.css('dl:nth-child(2) dd a').text
         facebook_id = users_show_info.css('dl:nth-child(3) dd').text
-
         twitter_id = nil if twitter_id == '-'
         facebook_id = nil if facebook_id == '-'
-
-        { twitter_id: twitter_id, facebook_id: facebook_id }
+        [twitter_id, facebook_id]
       end
 
       def event_doc
