@@ -37,7 +37,7 @@ describe ConnpassScraping do
   end
 
   context 'JPSPSが表示されない問題を解決' do
-    let(:event) { api.find(keyword: 'JPSPS') }
+    let(:event) { api.find(keyword: '第5回 JPSPS') }
     it { expect(event.title).to eq '第5回 JPSPS SharePoint/Office365名古屋分科勉強会 at GeekBar' }
   end
 
