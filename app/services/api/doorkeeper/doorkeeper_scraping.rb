@@ -1,11 +1,6 @@
 module Api
   module Doorkeeper
-    class DoorkeeperScraping
-      attr_reader :event
-      def initialize(event)
-        @event = event
-      end
-
+    module DoorkeeperScraping
       def group_url
         event_doc.css('//meta[property="og:url"]/@content').to_s.gsub(/events.*/, '')
       end
@@ -32,11 +27,14 @@ module Api
             url = social.attribute('href').value
             get_social_id(url, social_ids)
           end
-          users << DoorkeeperUser.new(twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], linkedin_id: social_ids[:linkedin_id], name: name, image_url: image_url)
+
+          user_info = { name: name, image_url: image_url }
+          user_info.merge!(social_ids)
+          users << DoorkeeperUser.new(user_info)
         end
         users.sort_by! { |user| user.twitter_id }.reverse
       rescue
-        puts "no users event:#{title} / #{group_url} / #{event.id}"
+        puts "no users event:#{title} / #{group_url} / #{self.id}"
         []
       end
 
@@ -50,7 +48,10 @@ module Api
             url = social.attribute('href').value
             get_social_id(url, social_ids)
           end
-          owners << DoorkeeperUser.new(twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], linkedin_id: social_ids[:linkedin_id], name: name, image_url: image_url)
+
+          user_info = { name: name, image_url: image_url }
+          user_info.merge!(social_ids)
+          owners << DoorkeeperUser.new(user_info)
         end
         owners.sort_by! { |user| user.twitter_id }.reverse
       end
@@ -84,11 +85,11 @@ module Api
       end
 
       def participation_doc
-        @participation_doc ||= Shule::Http.get_document("#{group_url}events/#{event.id}/participants")
+        @participation_doc ||= Shule::Http.get_document("#{group_url}events/#{self.id}/participants")
       end
 
       def event_doc
-        @event_doc ||= Shule::Http.get_document(event.public_url)
+        @event_doc ||= Shule::Http.get_document(self.public_url)
       end
     end
   end

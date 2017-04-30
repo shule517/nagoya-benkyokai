@@ -1,11 +1,6 @@
 module Api
   module Connpass
-    class ConnpassScraping
-      attr_reader :event
-      def initialize(event)
-        @event = event
-      end
-
+    module ConnpassScraping
       def logo
         @logo ||= event_doc.css('//meta[property="og:image"]/@content').to_s
       end
@@ -17,23 +12,25 @@ module Api
       end
 
       def users
-        puts "get users : #{event.title}"
+        puts "get users : #{self.title}"
 
         users = []
         participation_doc.css('.applicant_area > .participation_table_area > .common_table > tbody > tr').each do |line|
           user = line.css('.user > .user_info > .image_link')
           return [] if user.empty? # 参加者がいない場合
 
-          id = user.attribute('href').value.gsub('https://connpass.com/user/', '').gsub('/', '')
           social_ids = {}
-          name = user.css('img').attribute('alt').value
-          image_url = user.css('img').attribute('src').value
-
           line.css('td.social > a').each do |social|
             url = social.attribute('href').value
             get_social_id(url, social_ids)
           end
-          users << ConnpassUser.new(connpass_id: id, twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], name: name, image_url: image_url)
+          id = user.attribute('href').value.gsub('https://connpass.com/user/', '').gsub('/', '')
+          name = user.css('img').attribute('alt').value
+          image_url = user.css('img').attribute('src').value
+
+          user_info = { connpass_id: id, name: name, image_url: image_url }
+          user_info.merge!(social_ids)
+          users << ConnpassUser.new(user_info)
         end
         users.sort_by! { |user| user.twitter_id }.reverse
       rescue => e
@@ -42,24 +39,27 @@ module Api
       end
 
       def owners
-        puts "get owners : #{event.title}"
+        puts "get owners : #{self.title}"
 
         begin
           owners = []
           owner = participation_doc.css('.concerned_area > .common_table > tbody').first
-          if !owner.nil? # イベント参加者ページがある場合
+          unless owner.nil? # イベント参加者ページがある場合
             owner.css('tr').each do |user|
               user_info = user.css('.user_info')
               url = user_info.css('.image_link').attribute('href').value
-              id = url.gsub('https://connpass.com/user/', '').gsub('/open/', '');
               social_ids = {}
-              name = user_info.css('.display_name > a').text
-              image_url = user_info.css('.image_link > img').attribute('src').value
               user.css('.social > a').each do |social|
                 url = social.attribute('href').value
                 get_social_id(url, social_ids)
               end
-              owners << ConnpassUser.new(connpass_id: id, twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], name: name, image_url: image_url)
+              id = url.gsub('https://connpass.com/user/', '').gsub('/open/', '');
+              name = user_info.css('.display_name > a').text
+              image_url = user_info.css('.image_link > img').attribute('src').value
+
+              user_info = { connpass_id: id, name: name, image_url: image_url }
+              user_info.merge!(social_ids)
+              owners << ConnpassUser.new(user_info)
             end
           else # イベント参加者ページがない場合
             # TODO メソッド化 イベントページから参加者を取得するメソッド
@@ -97,16 +97,16 @@ module Api
       end
 
       def event_doc
-        @event_doc ||= Shule::Http.get_document(event.event_url)
+        @event_doc ||= Shule::Http.get_document(self.event_url)
       end
 
       def participation_doc
-        if @event[:group_url]
-          url = "https://#{URI.parse(@event.group_url).host}/"
+        if group_url
+          url = "https://#{URI.parse(self.group_url).host}/"
         else
           url = 'https://connpass.com/'
         end
-        @participation_doc ||= Shule::Http.get_document("#{url}event/#{@event.event_id}/participation/#participants")
+        @participation_doc ||= Shule::Http.get_document("#{url}event/#{self.event_id}/participation/#participants")
       rescue
         Nokogiri::HTML('')
       end

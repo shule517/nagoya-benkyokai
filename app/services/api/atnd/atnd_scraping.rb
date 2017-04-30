@@ -1,22 +1,17 @@
 module Api
   module Atnd
-    class AtndScraping
-      attr_reader :event
-      def initialize(event)
-        @event = event
-      end
-
+    module AtndScraping
       def logo
         event_doc.css('.events-show-img > img').each do |img|
           return 'https://atnd.org' + img.attribute('data-original')
         end
-        return '/img/atnd.png'
+        '/img/atnd.png'
       end
 
       def catch
-        desc = event.description.gsub(/<\/?[^>]*>/, '')
-        if event.catch?
-          "#{event.catch}<br>#{desc}"
+        desc = self.description.gsub(/<\/?[^>]*>/, '')
+        if self.catch?
+          "#{self.catch}<br>#{desc}"
         else
           desc
         end
@@ -30,14 +25,16 @@ module Api
           if img.nil?
             image_url = 'https://atnd.org/images/icon/default_latent.png'
           else
-            image_url = img.value
-            image_url = 'https:' + image_url if image_url !~ /https/
+            image_url = "https:#{img.value}" if img.value !~ /https/
           end
+
           a = user.css('a')
-          name = a.text
           id = a.attribute('href').value.gsub('/users/', '')
-          twitter_id, facebook_id = get_social_id(id)
-          users << AtndUser.new(atnd_id: id, twitter_id: twitter_id, facebook_id: facebook_id, name: name, image_url: image_url)
+          name = a.text
+
+          user_info = { atnd_id: id, name: name, image_url: image_url }
+          user_info.merge!(get_social_id(id))
+          users << AtndUser.new(user_info)
         end
         users.sort_by! { |user| user.twitter_id }.reverse
       end
@@ -52,14 +49,15 @@ module Api
 
         image_url = ''
         if src == '/images/icon/default_latent.png'
-          image_url = 'https://atnd.org' + src
+          image_url = "https://atnd.org#{src}"
         else
-          image_url = 'https:' + src
+          image_url = "https:#{src}"
         end
 
         id = owner_info.attribute('href').value.gsub('/users/', '')
-        twitter_id, facebook_id = get_social_id(id)
-        owners << AtndUser.new(atnd_id: id, twitter_id: twitter_id, facebook_id: facebook_id, github_id: nil, linkedin_id: nil, name: event.owner_nickname, image_url: image_url)
+        user_info = { atnd_id: id, name: self.owner_nickname, image_url: image_url }
+        user_info.merge!(get_social_id(id))
+        owners << AtndUser.new(user_info)
       end
 
       private
@@ -73,11 +71,11 @@ module Api
         facebook_id = users_show_info.css('dl:nth-child(3) dd').text
         twitter_id = nil if twitter_id == '-'
         facebook_id = nil if facebook_id == '-'
-        [twitter_id, facebook_id]
+        { twitter_id: twitter_id, facebook_id: facebook_id, github_id: nil, linkedin_id: nil }
       end
 
       def event_doc
-        @event_doc ||= Shule::Http.get_document(event.event_url, false)
+        @event_doc ||= Shule::Http.get_document(self.event_url, false)
       end
     end
   end

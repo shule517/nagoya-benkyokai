@@ -1,24 +1,10 @@
 module Api
   module Connpass
     class ConnpassEvent < Hashie::Mash
-      def connpass
-        @connpass ||= ConnpassScraping.new(self)
-      end
+      include ConnpassScraping
 
-      def logo
-        @logo ||= connpass.logo
-      end
-
-      def group_logo
-        @group_logo ||= connpass.group_logo
-      end
-
-      def users
-        @users ||= connpass.users
-      end
-
-      def owners
-        @owners ||= connpass.owners
+      def series
+        self[:series] || { url: nil, group_id: nil, group_title: nil }
       end
 
       def group_url

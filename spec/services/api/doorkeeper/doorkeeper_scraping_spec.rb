@@ -4,17 +4,35 @@ describe DoorkeeperScraping do
   let(:api) { DoorkeeperApi }
   describe 'リモート開発 de ナイト' do
     let(:event) { api.find(keyword: 'リモート開発 de ナイト', ym: '201606') }
-    it { expect(event.title).to eq 'リモート開発 de ナイト ＠名古屋ギークバー' }
-    it { expect(event.logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/events_banners/45257_normal_1463562966_%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%90%E3%83%BC%E3%83%AD%E3%82%B4.png' }
-    it { expect(event.started_at).to eq Date.parse('2016-06-13T10:30:00.000Z') }
-    it { expect(event.place).to eq 'Club Adriana' }
-    it { expect(event.address).to eq '名古屋市中区葵1-27-37シティハイツ1F' }
-    it { expect(event.group_title).to eq '名古屋ギークバー' }
-    it { expect(event.group_id).to eq 1995 }
-    it { expect(event.group_url).to eq 'https://geekbar.doorkeeper.jp/' }
-    it { expect(event.group_logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/groups_logos/1995_normal_1380975297_251035_156371434432231_4785187_n.jpg' }
+    it 'タイトルが取得できること' do
+      expect(event.title).to eq 'リモート開発 de ナイト ＠名古屋ギークバー'
+    end
+    it 'ロゴ画像のURLが取得できること' do
+      expect(event.logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/events_banners/45257_normal_1463562966_%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%90%E3%83%BC%E3%83%AD%E3%82%B4.png'
+    end
+    it '開催日時が取得できること' do
+      expect(event.started_at).to eq Date.parse('2016-06-13T10:30:00.000Z')
+    end
+    it '開催場所が取得できること' do
+      expect(event.place).to eq 'Club Adriana'
+    end
+    it '開催場所の住所が取得できること' do
+      expect(event.address).to eq '名古屋市中区葵1-27-37シティハイツ1F'
+    end
+    it 'グループ名が取得できること' do
+      expect(event.group_title).to eq '名古屋ギークバー'
+    end
+    it 'グループIDが取得できること' do
+      expect(event.group_id).to eq 1995
+    end
+    it 'グループページのURLが取得できること' do
+      expect(event.group_url).to eq 'https://geekbar.doorkeeper.jp/'
+    end
+    it 'グループのロゴ画像URLが取得できること' do
+      expect(event.group_logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/groups_logos/1995_normal_1380975297_251035_156371434432231_4785187_n.jpg'
+    end
 
-    describe '参加者情報が取得できること' do
+    describe '参加者の情報が取得できること' do
       let(:shule) { event.users.select { |user| user.twitter_id == 'shule517' }.first }
       it {
         expect(event.users.count + 3).to eq event.accepted # 3人アカウント非表示
@@ -24,7 +42,7 @@ describe DoorkeeperScraping do
       }
     end
 
-    describe '管理者情報が取得できること' do
+    describe '管理者の情報が取得できること' do
       let (:dominion)  { event.owners.select { |user| user.twitter_id == 'Dominion525' }.first }
       it {
         expect(event.owners.count).to eq 1
