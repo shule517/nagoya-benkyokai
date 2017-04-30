@@ -1,7 +1,7 @@
 require 'rails_helper'
 include Api::Doorkeeper
 describe DoorkeeperScraping do
-  let(:api) { DoorkeeperApi.new }
+  let(:api) { DoorkeeperApi }
   describe 'リモート開発 de ナイト' do
     let(:event) { api.find(keyword: 'リモート開発 de ナイト', ym: '201606') }
     it { expect(event.title).to eq 'リモート開発 de ナイト ＠名古屋ギークバー' }

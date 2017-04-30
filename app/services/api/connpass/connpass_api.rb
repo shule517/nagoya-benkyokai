@@ -1,32 +1,49 @@
 module Api
   module Connpass
     class ConnpassApi
-      def find(keyword: nil, ym: nil, event_id: '')
-        search_core(Array(keyword), Array(ym), event_id).first
+      attr_reader :keywords, :ym_list, :event_id
+      def initialize(keyword: nil, ym: nil, event_id: nil)
+        @keywords = Array(keyword)
+        @ym_list = Array(ym)
+        @event_id = event_id
       end
 
-      def search(keyword: nil, ym: nil, event_id: '')
-        search_core(Array(keyword), Array(ym), event_id)
+      class << self
+        def find(args)
+          new(args).find
+        end
+
+        def search(args)
+          new(args).search
+        end
+      end
+
+      def find
+        search_core.first
+      end
+
+      def search
+        search_core
       end
 
       private
 
       SEARCH_MAX_COUNT = 100
-      def search_core(keywords, ym_list, event_id, start = 0)
-        url = request_url(keywords, ym_list, event_id, start)
+      def search_core(start = 0)
+        url = request_url(start)
         result = Shule::Http.get_json(url)
         events = result[:events].map { |hash| ConnpassEvent.new(hash) }
         next_start = result[:results_returned] + start
         continue = result[:results_available] > next_start
 
         if continue
-          events + search_core(keywords, ym_list, event_id, next_start)
+          events + search_core(next_start)
         else
           events
         end
       end
 
-      def request_url(keywords, ym_list, event_id, start)
+      def request_url(start)
         "https://connpass.com/api/v1/event/?count=#{SEARCH_MAX_COUNT}&order=2&start=#{start + 1}".tap do |url|
           url << "&keyword_or=#{keywords.join(',')}" if keywords.present?
           url << "&event_id=#{event_id}" if event_id.present?

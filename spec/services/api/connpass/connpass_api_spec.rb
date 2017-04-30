@@ -1,7 +1,7 @@
 require 'rails_helper'
 include Api::Connpass
 describe ConnpassApi do
-  let(:api) { ConnpassApi.new }
+  let(:api) { ConnpassApi }
   it '１ページ(１００件以内)の場合' do
     events = api.search(keyword: '名古屋', ym: '201701')
     expect(events.count).to be < 100

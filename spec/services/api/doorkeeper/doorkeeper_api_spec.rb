@@ -1,7 +1,7 @@
 require 'rails_helper'
 include Api::Doorkeeper
 describe DoorkeeperApi do
-  let(:api) { DoorkeeperApi.new }
+  let(:api) { DoorkeeperApi }
   it '１ページ(２０件以内)の場合' do
     events = api.search(keyword: '豊橋', ym: '201701')
     expect(events.count).to be < 20

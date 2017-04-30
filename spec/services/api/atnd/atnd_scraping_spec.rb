@@ -1,7 +1,7 @@
 require 'rails_helper'
 include Api::Atnd
 describe AtndScraping do
-  let(:api) { AtndApi.new }
+  let(:api) { AtndApi }
   context 'エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！' do
     let(:event) { api.find(keyword: 'エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！') }
     it { expect(event.title).to eq 'エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！' }

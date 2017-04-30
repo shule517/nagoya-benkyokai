@@ -1,26 +1,43 @@
 module Api
   module Doorkeeper
     class DoorkeeperApi
-      def find(keyword: [], ym: [], event_id: '')
-        search_core(Array(keyword), Array(ym).sort!, event_id).first
+      attr_reader :keywords, :ym_list, :event_id
+      def initialize(keyword: [], ym: [], event_id: nil)
+        @keywords = Array(keyword)
+        @ym_list = Array(ym)
+        @event_id = event_id
       end
 
-      def search(keyword: [], ym: [], event_id: '')
-        search_core(Array(keyword), Array(ym).sort!, event_id)
+      class << self
+        def find(args)
+          new(args).find
+        end
+
+        def search(args)
+          new(args).search
+        end
+      end
+
+      def find
+        search_core.first
+      end
+
+      def search
+        search_core
       end
 
       private
 
       SEARCH_MAX_COUNT = 20
-      def search_core(keywords, ym_list, event_id, start = 0)
-        url = request_url(keywords, ym_list, event_id, start)
+      def search_core(start = 0)
+        url = request_url(start)
         result = Shule::Http.get_json(url, Authorization: "Bearer #{ENV['DOORKEEPER_TOKEN']}")
         return [DoorkeeperEvent.new(result[:event])] if result.class == Hash
         events = result.map { |hash| DoorkeeperEvent.new(hash[:event]) }
         continue = events.count >= SEARCH_MAX_COUNT
 
         if continue
-          events + search_core(keywords, ym_list, event_id, start + 1)
+          events + search_core(start + 1)
         else
           events
         end
@@ -29,7 +46,7 @@ module Api
         raise
       end
 
-      def request_url(keywords, ym_list, event_id, start)
+      def request_url(start)
         if event_id.present?
           "https://api.doorkeeper.jp/events/#{event_id}"
         else

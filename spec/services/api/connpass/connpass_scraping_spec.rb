@@ -1,7 +1,7 @@
 require 'rails_helper'
 include Api::Connpass
 describe ConnpassScraping do
-  let(:api) { ConnpassApi.new }
+  let(:api) { ConnpassApi }
   context 'JXUGC #14 Xamarinの場合' do
     let(:event) { api.find(event_id: 30152) }
     it { expect(event.title).to eq 'JXUGC #14 Xamarin ハンズオン 名古屋大会' }
@@ -37,7 +37,7 @@ describe ConnpassScraping do
   end
 
   context 'JPSPSが表示されない問題を解決' do
-    let(:event) { api.find(keyword: 'JPSPS') }
+    let(:event) { api.find(keyword: '第5回 JPSPS') }
     it { expect(event.title).to eq '第5回 JPSPS SharePoint/Office365名古屋分科勉強会 at GeekBar' }
   end
 

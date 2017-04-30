@@ -1,7 +1,7 @@
 require 'rails_helper'
 include Api::Atnd
 describe AtndApi do
-  let(:api) { AtndApi.new }
+  let(:api) { AtndApi }
   it '１ページ(１００件以内)の場合' do
     events = api.search(keyword: '名古屋', ym: '201701')
     expect(events.count).to be < 100
