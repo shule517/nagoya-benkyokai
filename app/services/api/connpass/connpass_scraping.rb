@@ -19,14 +19,15 @@ module Api
           user = line.css('.user > .user_info > .image_link')
           return [] if user.empty? # 参加者がいない場合
 
+          id = user.attribute('href').value.gsub('https://connpass.com/user/', '').gsub('/', '')
+          name = user.css('img').attribute('alt').value
+          image_url = user.css('img').attribute('src').value
+
           social_ids = {}
           line.css('td.social > a').each do |social|
             url = social.attribute('href').value
             get_social_id(url, social_ids)
           end
-          id = user.attribute('href').value.gsub('https://connpass.com/user/', '').gsub('/', '')
-          name = user.css('img').attribute('alt').value
-          image_url = user.css('img').attribute('src').value
 
           user_info = { connpass_id: id, name: name, image_url: image_url }
           user_info.merge!(social_ids)
@@ -48,14 +49,16 @@ module Api
             owner.css('tr').each do |user|
               user_info = user.css('.user_info')
               url = user_info.css('.image_link').attribute('href').value
+
+              id = url.gsub('https://connpass.com/user/', '').gsub('/open/', '');
+              name = user_info.css('.display_name > a').text
+              image_url = user_info.css('.image_link > img').attribute('src').value
+
               social_ids = {}
               user.css('.social > a').each do |social|
                 url = social.attribute('href').value
                 get_social_id(url, social_ids)
               end
-              id = url.gsub('https://connpass.com/user/', '').gsub('/open/', '');
-              name = user_info.css('.display_name > a').text
-              image_url = user_info.css('.image_link > img').attribute('src').value
 
               user_info = { connpass_id: id, name: name, image_url: image_url }
               user_info.merge!(social_ids)

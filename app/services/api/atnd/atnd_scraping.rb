@@ -18,8 +18,11 @@ module Api
       end
 
       def users
-        users = []
-        event_doc.css('#members-join ol li span').each do |user|
+        event_doc.css('#members-join ol li span').map do |user|
+          a = user.css('a')
+          id = a.attribute('href').value.gsub('/users/', '')
+          name = a.text
+
           img = user.css('img').attribute('data-original')
           image_url = ''
           if img.nil?
@@ -28,36 +31,30 @@ module Api
             image_url = "https:#{img.value}" if img.value !~ /https/
           end
 
-          a = user.css('a')
-          id = a.attribute('href').value.gsub('/users/', '')
-          name = a.text
-
           user_info = { atnd_id: id, name: name, image_url: image_url }
           user_info.merge!(get_social_id(id))
-          users << AtndUser.new(user_info)
-        end
-        users.sort_by! { |user| user.twitter_id }.reverse
+          AtndUser.new(user_info)
+        end.sort_by { |user| user.twitter_id }.reverse
       end
 
       def owners
-        owner_info = event_doc.css('#user-id')
-        return [] if owner_info.empty?
+        event_doc.css('#user-id').map do |owner_info|
+          id = owner_info.attribute('href').value.gsub('/users/', '')
 
-        owners = []
-        image = event_doc.css('.events-show-info img')
-        src = image.attribute('src').value
+          image = event_doc.css('.events-show-info img')
+          src = image.attribute('src').value
 
-        image_url = ''
-        if src == '/images/icon/default_latent.png'
-          image_url = "https://atnd.org#{src}"
-        else
-          image_url = "https:#{src}"
-        end
+          image_url = ''
+          if src == '/images/icon/default_latent.png'
+            image_url = "https://atnd.org#{src}"
+          else
+            image_url = "https:#{src}"
+          end
 
-        id = owner_info.attribute('href').value.gsub('/users/', '')
-        user_info = { atnd_id: id, name: self.owner_nickname, image_url: image_url }
-        user_info.merge!(get_social_id(id))
-        owners << AtndUser.new(user_info)
+          user_info = { atnd_id: id, name: self.owner_nickname, image_url: image_url }
+          user_info.merge!(get_social_id(id))
+          AtndUser.new(user_info)
+        end.sort_by { |user| user.twitter_id }.reverse
       end
 
       private

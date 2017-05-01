@@ -20,9 +20,10 @@ module Api
       def users
         users = []
         participation_doc.css('.user-profile-details').each do |user|
-          social_ids = {}
           name = user.css('div.user-name').children.text
           image_url = user.css('img').attribute('src').value
+
+          social_ids = {}
           user.css('div.user-social > a.external-profile-link').each do |social|
             url = social.attribute('href').value
             get_social_id(url, social_ids)
@@ -42,8 +43,9 @@ module Api
         owners = []
         group_doc.css('.with-gutter > .row > div > .user-profile > .user-profile-details').each do |owner|
           name = owner.css('.user-name').text
-          social_ids = {twitter_id: nil, facebook_id: nil, github_id: nil, linkedin_id: nil}
           image_url = owner.css('img').attribute('src').value
+
+          social_ids = { twitter_id: nil, facebook_id: nil, github_id: nil, linkedin_id: nil }
           owner.css('.user-social > .external-profile-link').each do |social|
             url = social.attribute('href').value
             get_social_id(url, social_ids)
