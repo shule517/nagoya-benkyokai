@@ -51,7 +51,7 @@ module Api
           "https://api.doorkeeper.jp/events/#{event_id}"
         else
           "https://api.doorkeeper.jp/events/?sort=starts_at&page=#{start}".tap do |url|
-            url << "&q=#{keywords}" if keywords.present?
+            url << "&q=#{keywords.join('|')}" if keywords.present?
             url << "&since=#{ym_list.first}01000000" if ym_list.present?
             url << "&until=#{ym_list.last}31235959" if ym_list.present?
           end
