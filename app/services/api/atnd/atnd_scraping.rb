@@ -18,7 +18,7 @@ module Api
       end
 
       def users
-        event_doc.css('#members-join ol li span').map do |user|
+        event_doc.css('#members-join ol li span').map { |user|
           a = user.css('a')
           id = a.attribute('href').value.gsub('/users/', '')
           name = a.text
@@ -34,11 +34,11 @@ module Api
           user_info = { atnd_id: id, name: name, image_url: image_url }
           user_info.merge!(get_social_id(id))
           AtndUser.new(user_info)
-        end.sort_by { |user| user.twitter_id }.reverse
+        }.sort_by { |user| user.twitter_id }.reverse
       end
 
       def owners
-        event_doc.css('#user-id').map do |owner_info|
+        event_doc.css('#user-id').map { |owner_info|
           id = owner_info.attribute('href').value.gsub('/users/', '')
 
           image = event_doc.css('.events-show-info img')
@@ -54,7 +54,7 @@ module Api
           user_info = { atnd_id: id, name: self.owner_nickname, image_url: image_url }
           user_info.merge!(get_social_id(id))
           AtndUser.new(user_info)
-        end.sort_by { |user| user.twitter_id }.reverse
+        }.sort_by { |user| user.twitter_id }.reverse
       end
 
       private
