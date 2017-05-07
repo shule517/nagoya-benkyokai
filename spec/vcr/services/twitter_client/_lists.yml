@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/lists/list.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/6.1.0
+      Authorization:
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="9d73326c6161c198d0eea11d7d1a6944",
+        oauth_signature="g7hfVumhRyp9XpNxuQ%2FXjoERnkA%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1494148379", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 503
+      message: Service Temporarily Unavailable
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '76'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sun, 07 May 2017 09:13:00 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Sun, 07 May 2017 09:13:00 GMT
+      Pragma:
+      - no-cache
+      Retry-After:
+      - '1'
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A149414837985350768; Domain=.twitter.com; Path=/; Expires=Tue,
+        07-May-2019 09:13:00 UTC
+      - lang=ja; Path=/
+      Status:
+      - 503 Service Unavailable
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read-write
+      X-Connection-Hash:
+      - e6f4a90ffe5914bc588ad6073787dc86
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Response-Time:
+      - '725'
+      X-Transaction:
+      - 000ce2b0000f0514
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"message":"Over capacity","code":130}]}'
+    http_version: 
+  recorded_at: Sun, 07 May 2017 09:13:00 GMT
+recorded_with: VCR 3.0.3

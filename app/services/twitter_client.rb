@@ -135,19 +135,15 @@ class TwitterClient
 
   def add_list_member(list_id, user_id)
     puts "add_list_member(#{list_id}, #{user_id})"
-    @client.add_list_member(list_id, user_id)
+    case user_id
+    when String
+      @client.add_list_member(list_id, user_id)
+    when Array
+      return if user_id.empty?
+      @client.add_list_members(list_id, user_id)
+    end
   rescue Twitter::Error::Forbidden
     puts "Error: #{user_id}をリストに追加する権限がありません。"
-  end
-
-  def add_list_members(list_id, users)
-    return if users.empty?
-    puts "add_list_members(#{list_id}, #{users})"
-    @client.add_list_members(list_id, users)
-  rescue Twitter::Error::Forbidden
-    puts "Error: #{users}をリストに追加する権限がありません。"
-  rescue => e
-    p e
   end
 
   def list(list_id)
