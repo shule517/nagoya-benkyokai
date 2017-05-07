@@ -54,16 +54,16 @@ gem 'rspec'
 gem 'coffee-script-source', '1.8.0'
 
 group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platform: :mri
+  gem 'rubocop', platform: :mri
+
   gem 'ruby-debug-ide'
   gem 'debase'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
-end
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
-  gem 'rubocop', platform: :mri
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do
