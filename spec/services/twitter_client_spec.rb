@@ -28,7 +28,7 @@ describe TwitterClient, type: :request do
       expect(updated_list.id).to eq list.id
     end
 
-    it 'リストIDを指定して、リストが取得できること', vcr: '#list'  do
+    it 'リストIDを指定して、リストが取得できること', vcr: '#list' do
       list = client.create_list(name, description)
       expect(client.list(list.id).name).to eq name
     end
@@ -51,9 +51,9 @@ describe TwitterClient, type: :request do
       expect(client.list_exists?(list.id)).to eq false
     end
 
-    # it 'リストの一覧が取得できること', vcr: '#lists' do
-    #   expect(client.lists.size).to be > 0
-    # end
+    it 'リストの一覧が取得できること', vcr: '#lists' do
+      expect(client.lists.size).to be > 0
+    end
 
     describe 'リストメンバー' do
       context '権限がある場合' do
@@ -84,7 +84,7 @@ describe TwitterClient, type: :request do
           expect(members.to_a.size).to eq 0
         end
 
-        it '登録者が複数の場合', vcr: '#list_members-two_members'  do
+        it '登録者が複数の場合', vcr: '#list_members-two_members' do
           list = client.create_list(name, description)
           client.add_list_member(list.id, ['shule517', 'nagoya_lambda'])
           members = client.list_members(list.id)

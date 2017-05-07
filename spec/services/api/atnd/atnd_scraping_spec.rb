@@ -1,35 +1,22 @@
 require 'rails_helper'
 include Api::Atnd
-describe AtndScraping do
+
+describe AtndScraping, type: :request do
   let(:api) { AtndApi }
   context 'エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！' do
     let(:event) { api.find(keyword: 'エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！') }
-    it 'タイトルが取得できること' do
+    it 'イベント情報が取得できること', vcr: '#find-event' do
       expect(event.title).to eq 'エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！'
-    end
-    it 'キャッチが取得できること' do
       expect(event.catch).to start_with '【ATEAM TECHとは】'
-    end
-    it '開始日時が取得できること' do
       expect(event.started_at).to eq Date.parse('2016-10-11T20:00:00.000+09:00')
-    end
-    it '開催場所が取得できること' do
       expect(event.place).to eq 'エイチーム　本社'
-    end
-    it '開催場所の住所が取得できること' do
       expect(event.address).to eq '〒450-6432　名古屋市中村区名駅三丁目28番12号　大名古屋ビルヂング 32F'
-    end
-    it '定員オーバーしたか取得できること' do
       expect(event.limit_over?).to eq false
-    end
-    it 'ロゴ画像のURLが取得できること' do
       expect(event.logo).to eq 'https://atnd.org/event_images/0008/0890/008_original.jpg?1474957731'
-    end
-    it '参加人数が取得できること' do
       expect(event.users.count).to eq event.accepted
     end
 
-    describe '参加者の情報が取得できること' do
+    describe '参加者の情報が取得できること', vcr: '#find-users' do
       let(:atnd_user) { event.users.select { |user| user.atnd_id == '259586' }.first }
       it '全てのSNS情報が取得できること' do
         expect(atnd_user.atnd_id).to eq '259586'
@@ -49,7 +36,7 @@ describe AtndScraping do
       end
     end
 
-    describe '主催者の情報が取得できること' do
+    describe '主催者の情報が取得できること', vcr: '#find-owners' do
       let(:owners) { event.owners }
       let(:ateam) { owners.select { |user| user.atnd_id == '224579' }.first }
       it {
@@ -63,7 +50,7 @@ describe AtndScraping do
     end
   end
 
-  context '管理者の画像がない場合' do
+  context '管理者の画像がない場合', vcr: '#find-RFC' do
     let(:event) { api.find(keyword: 'RFC 読書会 - RFC 1034 第1回') }
     let(:owners) { event.owners }
     let(:tss) { owners.select { |user| user.atnd_id == '10209' }.first }
@@ -77,7 +64,7 @@ describe AtndScraping do
     }
   end
 
-  context '管理者がいない場合' do
+  context '管理者がいない場合', vcr: '#find-HULFT' do
     let(:event) { api.find(keyword: 'HULFT勉強会 in 名古屋') }
     let(:owners) { event.owners }
     it { expect(owners.count).to eq 0 }
