@@ -2,6 +2,7 @@ module Api
   module Connpass
     class ConnpassEvent < Hashie::Mash
       include ConnpassScraping
+      include EventFind
 
       def series
         self[:series] || { url: nil, group_id: nil, group_title: nil }

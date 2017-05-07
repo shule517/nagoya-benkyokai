@@ -1,4 +1,10 @@
 class EventCollector
+  class << self
+    def search(*args)
+      new.search(*args)
+    end
+  end
+
   def search(date, after_today = true)
     puts "collect date: #{date}"
 

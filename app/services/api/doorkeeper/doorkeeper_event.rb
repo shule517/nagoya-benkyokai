@@ -2,6 +2,7 @@ module Api
   module Doorkeeper
     class DoorkeeperEvent < Hashie::Mash
       include DoorkeeperScraping
+      include EventFind
 
       def group_id
         self[:group]

@@ -1,8 +1,7 @@
 class EventUpdater
   class << self
     def call
-      collector = EventCollector.new
-      events = collector.search(collect_period)
+      events = EventCollector.search(collect_period)
       update_db(events)
 
       @twitter = TwitterClient.new
@@ -16,22 +15,18 @@ class EventUpdater
     end
 
     def update(yyyymm)
-      collector = EventCollector.new
-      events = collector.search([yyyymm], false)
+      events = EventCollector.search([yyyymm], false)
       update_db(events)
     end
 
-  private
     def collect_period
       now = Time.now
       day = 24 * 60 * 60
       month = 30 * day
-
-      period = []
-      period << (now).strftime('%Y%m')
-      period << (now + 1 * month).strftime('%Y%m')
-      period << (now + 2 * month).strftime('%Y%m')
+      3.times.map { |i| (now + i * month).strftime('%Y%m') }
     end
+
+    private
 
     def update_db(events)
       events.each do |event|
@@ -82,7 +77,7 @@ class EventUpdater
       event_users = users.map { |user| user.twitter_id }.select { |id| !id.empty? }
       twitter_members = @twitter.list_members(event.twitter_list_url).map { |member| member.screen_name }
       add_users = event_users.select { |user| !twitter_members.include?(user) }
-      @twitter.add_list_members(event.twitter_list_url, add_users)
+      @twitter.add_list_member(event.twitter_list_url, add_users)
     end
   end
 end
