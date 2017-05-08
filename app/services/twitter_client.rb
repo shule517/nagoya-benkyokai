@@ -15,8 +15,17 @@ class TwitterClient
     @client
   end
 
-  def lists
-    @client.lists
+  def lists(option = {})
+    lists = []
+    next_cursor = -1
+    4.times.flat_map {
+      owned_lists = @client.owned_lists(cursor: next_cursor, count: 250)
+      next_cursor = owned_lists.attrs[:next_cursor]
+      p next_cursor
+      break if next_cursor == 0
+      lists = [*lists, *owned_lists.attrs[:lists]]
+    }
+    lists
   end
 
   def list_exists?(list_id)
