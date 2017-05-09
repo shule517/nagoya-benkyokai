@@ -4,7 +4,7 @@ module Api
       event = Event.find_by(event_id: event_id)
       if event
         event.title = title
-        event.catch = catch
+        event.catch = self.catch
         event.description = description
         event.event_url = event_url
         event.started_at = started_at

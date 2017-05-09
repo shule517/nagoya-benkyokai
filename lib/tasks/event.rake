@@ -1,5 +1,6 @@
 # encoding: utf-8
 require "slack"
+require './app/services/http.rb'
 
 namespace :event do
   desc "初期化"
