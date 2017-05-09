@@ -41,6 +41,8 @@ gem 'pry-rails'  # rails console(もしくは、rails c)でirbの代わりにpry
 gem 'pry-doc'    # methodを表示
 gem 'pry-byebug' # デバッグを実施
 
+gem 'openssl'
+gem 'json'
 gem 'open_uri_redirections'
 gem 'slack-api'
 gem 'google-analytics-rails'
