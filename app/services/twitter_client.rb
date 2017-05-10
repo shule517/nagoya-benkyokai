@@ -22,8 +22,8 @@ class TwitterClient
       owned_lists = @client.owned_lists(cursor: next_cursor, count: 250)
       next_cursor = owned_lists.attrs[:next_cursor]
       p next_cursor
-      break if next_cursor == 0
       lists = [*lists, *owned_lists.attrs[:lists]]
+      break if next_cursor == 0
     }
     lists
   end
