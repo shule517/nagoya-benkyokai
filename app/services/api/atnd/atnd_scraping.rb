@@ -8,15 +8,6 @@ module Api
         '/img/atnd.png'
       end
 
-      def catch
-        desc = self.description.gsub(/<\/?[^>]*>/, '')
-        if self.catch?
-          "#{self.catch}<br>#{desc}"
-        else
-          desc
-        end
-      end
-
       def users
         event_doc.css('#members-join ol li span').map { |user|
           a = user.css('a')
