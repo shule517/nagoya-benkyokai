@@ -6,6 +6,7 @@ describe ConnpassScraping, type: :request do
   context 'JXUGC #14 Xamarinの場合' do
     let(:event) { api.find(event_id: 30152) }
     it 'イベント情報が取得できること', vcr: '#find-event' do
+      expect(event.source).to eq 'connpass'
       expect(event.title).to eq 'JXUGC #14 Xamarin ハンズオン 名古屋大会'
       expect(event.logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/d7/3c/d73cccc993bb52bffbc0b65bc4c10d38.png'
       expect(event.catch).to start_with 'にゃごやでも話題の Xamarin を触ってみよう！<br>こんにちは。エクセルソフトの田淵です。 今話題の Xamarin を名古屋でも触ってみましょう！'

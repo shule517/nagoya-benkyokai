@@ -4,6 +4,10 @@ module Api
       include ConnpassScraping
       include EventFind
 
+      def source
+        'connpass'
+      end
+
       def catch
         return "#{self[:catch]}<br>#{description}" if self[:catch].present?
         description

@@ -4,6 +4,10 @@ module Api
       include AtndScraping
       include EventFind
 
+      def source
+        'ATND'
+      end
+
       def catch
         return "#{self[:catch]}<br>#{description}" if self[:catch].present?
         description
