@@ -37,4 +37,11 @@ describe DoorkeeperScraping, type: :request do
       }
     end
   end
+
+  describe '#catch', vcr: '#catch' do
+    let(:event) { api.find(event_id: 60104) }
+    it 'キャッチコピーが取得できること' do
+      expect(event.catch).to start_with '「Scratch Day &amp; Hour of Code in 豊橋」を全国のCoderDojoに合わせて開催します。今回はScratchやTickle（iPadを使用）、Scratch制御のリモコンカー等のワークショップを行います。'
+    end
+  end
 end

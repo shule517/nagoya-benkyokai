@@ -4,6 +4,10 @@ module Api
       include DoorkeeperScraping
       include EventFind
 
+      def catch
+        self[:description].gsub(/<\/?[^>]*>/, '').gsub(/\n+/, ' ')
+      end
+
       def group_id
         self[:group]
       end
