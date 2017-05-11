@@ -4,6 +4,15 @@ module Api
       include ConnpassScraping
       include EventFind
 
+      def catch
+        return "#{self[:catch]}<br>#{description}" unless self[:catch].empty?
+        description
+      end
+
+      def description
+        self[:description].gsub(/<\/?[^>]*>/, '').gsub(/\n+/, ' ')
+      end
+
       def series
         self[:series] || { url: nil, group_id: nil, group_title: nil }
       end
