@@ -5,7 +5,7 @@ module Api
       include EventFind
 
       def catch
-        return "#{self[:catch]}<br>#{description}" unless self[:catch].empty?
+        return "#{self[:catch]}<br>#{description}" if self[:catch].present?
         description
       end
 

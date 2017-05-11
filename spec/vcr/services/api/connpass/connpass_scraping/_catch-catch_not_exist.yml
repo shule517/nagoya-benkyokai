@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://connpass.com/api/v1/event/?count=100&event_id=55925&order=2&start=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=300
+      Content-Language:
+      - ja
+      Content-Type:
+      - text/json; charset=utf-8
+      Date:
+      - Thu, 11 May 2017 13:52:47 GMT
+      Expires:
+      - Thu, 11 May 2017 13:57:47 GMT
+      Last-Modified:
+      - Thu, 11 May 2017 13:52:47 GMT
+      Server:
+      - nginx
+      Vary:
+      - Accept-Language, Cookie
+      X-Frame-Options:
+      - DENY
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"results_returned": 1, "events": [{"event_url": "https://connpass.com/event/55925/",
+        "event_type": "participation", "owner_nickname": "t6s", "series": null, "updated_at":
+        "2017-04-24T01:12:36+09:00", "lat": "35.174358500000", "started_at": "2017-05-11T18:30:00+09:00",
+        "hash_tag": "\u5de8\u5927\u57fa\u6570\u52c9\u5f37\u4f1a", "title": "\u907a\u4f1d\u7684\u6709\u9650\u96c6\u5408\u52c9\u5f37\u4f1a
+        7", "event_id": 55925, "lon": "136.882490900000", "waiting": 0, "limit": null,
+        "owner_id": 6542, "owner_display_name": "t6s", "description": "<h5>\u6982\u8981</h5>\n<p>HF\u3068\u6709\u9650\u306e\u4e16\u754c\u3092\u52c9\u5f37\u3057\u307e\u3057\u3087\u3046\u3002\n\u7b2c7\u56de\u306f[1]\u306eIV.5.9\u3001\u7b2c\u4e00\u4e0d\u5b8c\u5168\u6027\u5b9a\u7406\u306e\u3042\u305f\u308a\u3092\u8aad\u307f\u307e\u3059.</p>\n<p>\u4e88\u7fd2\u4e0d\u8981</p>\n<hr>\n<h5>\u8a08\u753b</h5>\n<div
+        class=\"codehilite\"><pre><span class=\"n\">I</span><span class=\"err\">\u7ae0</span>\n<span
+        class=\"n\">p</span><span class=\"mf\">.107</span> <span class=\"n\">HF</span><span
+        class=\"err\">\u306e\u5b9a\u7fa9</span>\n<span class=\"n\">p</span><span class=\"mf\">.119</span>
+        <span class=\"err\">\u30c7\u30fc\u30bf\u69cb\u9020\u306e\u4f8b</span>\n\n<span
+        class=\"n\">II</span><span class=\"err\">\u7ae0</span>\n<span class=\"n\">II</span><span
+        class=\"mf\">.17</span> <span class=\"err\">\u0394</span><span class=\"mi\">0</span>\n<span
+        class=\"n\">II</span><span class=\"mf\">.17.21</span> <span class=\"err\">\u03a3</span><span
+        class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"err\">\u03a0</span><span
+        class=\"mi\">1</span>\n<span class=\"n\">II</span><span class=\"mf\">.18</span>
+        <span class=\"n\">CST</span>\n\n<span class=\"n\">III</span><span class=\"err\">\u7ae0</span>\n<span
+        class=\"n\">III</span> <span class=\"n\">pp</span><span class=\"mf\">.273</span><span
+        class=\"o\">-</span> <span class=\"err\">\u6709\u9650\u4e3b\u7fa9</span>\n\n<span
+        class=\"n\">IV</span><span class=\"err\">\u7ae0</span>\n<span class=\"n\">IV</span>
+        <span class=\"n\">pp</span><span class=\"mf\">.289</span><span class=\"o\">-</span>
+        <span class=\"p\">(</span><span class=\"err\">\u03c9</span><span class=\"o\">|</span>
+        <span class=\"n\">HF</span><span class=\"p\">)</span><span class=\"err\">\u4e0a</span><span
+        class=\"p\">(</span><span class=\"err\">\u0394</span><span class=\"mi\">0</span><span
+        class=\"o\">|</span><span class=\"err\">\u0394</span><span class=\"mi\">1</span><span
+        class=\"p\">)</span>\n<span class=\"n\">IV</span><span class=\"mf\">.3.1</span>
+        <span class=\"n\">HF</span><span class=\"err\">\u3067\u306e\u6c7a\u5b9a\u53ef\u80fd\u6027</span><span
+        class=\"p\">,</span> <span class=\"err\">\u8a08\u7b97\u53ef\u80fd\u6027</span>\n<span
+        class=\"n\">IV</span><span class=\"mf\">.3</span> <span class=\"n\">pp</span><span
+        class=\"mf\">.313</span><span class=\"o\">-</span> <span class=\"err\">\u69cb\u6587\u306e</span><span
+        class=\"n\">encoding</span>\n\n<span class=\"p\">...</span> <span class=\"p\">(</span><span
+        class=\"err\">\u3053\u306e\u8fba\u672a\u5b9a</span><span class=\"p\">;</span>
+        <span class=\"p\">[</span><span class=\"mi\">2</span><span class=\"p\">]</span><span
+        class=\"err\">\u3082\u53c2\u7167\u3057\u3064\u3064\u3084\u308b</span><span
+        class=\"p\">)</span>\n\n<span class=\"n\">IV</span><span class=\"mf\">.5.32</span>
+        <span class=\"err\">\u7b2c\u4e8c\u4e0d\u5b8c\u5168\u6027</span>\n</pre></div>\n\n\n<hr>\n<p>\u6559\u79d1\u66f8</p>\n<ul>\n<li>[1]
+        <a href=\"https://www.nippyo.co.jp/shop/book/7176.html\" rel=\"nofollow\">https://www.nippyo.co.jp/shop/book/7176.html</a></li>\n</ul>\n<p>\u53c2\u8003\u66f8</p>\n<ul>\n<li>[2]
+        <a href=\"https://www.amazon.co.jp/Incompleteness-Land-Sets-Studies-Logic/dp/1904987346\"
+        rel=\"nofollow\">https://www.amazon.co.jp/Incompleteness-Land-Sets-Studies-Logic/dp/1904987346</a></li>\n</ul>",
+        "address": "\u611b\u77e5\u770c\u540d\u53e4\u5c4b\u5e02\u4e2d\u6751\u533a\u540d\u99c52\u4e01\u76ee35\u756a22\u53f7
+        \u30e1\u30d3\u30a6\u30b9\u540d\u53e4\u5c4b\u30d3\u30eb2\u968e", "catch": "",
+        "accepted": 5, "ended_at": "2017-05-11T21:00:00+09:00", "place": "Misoca"}],
+        "results_start": 1, "results_available": 1}'
+    http_version: 
+  recorded_at: Thu, 11 May 2017 13:52:46 GMT
+recorded_with: VCR 3.0.3
