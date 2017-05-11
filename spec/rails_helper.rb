@@ -1,10 +1,10 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-ENV["RAILS_ENV"] ||= 'test'
+ENV['RAILS_ENV'] ||= 'test'
 require 'spec_helper'
-require File.expand_path("../../config/environment", __FILE__)
+require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'hashie'
-Dir[Rails.root.join("./app/services/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join('./app/services/**/*.rb')].each { |f| require f }
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/vcr'

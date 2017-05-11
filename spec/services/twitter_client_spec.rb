@@ -4,11 +4,11 @@ describe TwitterClient, type: :request do
   let(:client) { TwitterClient.new }
 
   it 'tweetできること', vcr: '#tweet' do
-    expect{ client.tweet('テスト') }.not_to raise_error
+    expect { client.tweet('テスト') }.not_to raise_error
   end
 
   describe 'リスト機能' do
-    let(:name) { "テスト" }
+    let(:name) { 'テスト' }
     let(:description) { '詳細説明だよ' }
 
     it 'リストが作成できること', vcr: '#create_list' do
