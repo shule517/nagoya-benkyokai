@@ -19,22 +19,18 @@ describe DoorkeeperScraping, type: :request do
 
     describe '参加者の情報が取得できること', vcr: '#find-users' do
       let(:shule) { event.users.select { |user| user.twitter_id == 'shule517' }.first }
-      it {
-        expect(event.users.count + 3).to eq event.accepted # 3人アカウント非表示
-        expect(shule.twitter_id).to eq 'shule517'
-        expect(shule.name).to eq 'シュール'
-        expect(shule.image_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/295014_original_1464427238_PeerstPlayer_Icon_normal.png'
-      }
+      it { expect(event.users.count + 3).to eq event.accepted } # 3人アカウント非表示
+      it { expect(shule.twitter_id).to eq 'shule517' }
+      it { expect(shule.name).to eq 'シュール' }
+      it { expect(shule.image_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/295014_original_1464427238_PeerstPlayer_Icon_normal.png' }
     end
 
     describe '管理者の情報が取得できること', vcr: '#find-owners' do
       let (:dominion)  { event.owners.select { |user| user.twitter_id == 'Dominion525' }.first }
-      it {
-        expect(event.owners.count).to eq 1
-        expect(dominion.twitter_id).to eq 'Dominion525'
-        expect(dominion.name).to eq 'どみにをん525'
-        expect(dominion.image_url).to eq 'https://graph.facebook.com/100001033554537/picture'
-      }
+      it { expect(event.owners.count).to eq 1 }
+      it { expect(dominion.twitter_id).to eq 'Dominion525' }
+      it { expect(dominion.name).to eq 'どみにをん525' }
+      it { expect(dominion.image_url).to eq 'https://graph.facebook.com/100001033554537/picture' }
     end
   end
 

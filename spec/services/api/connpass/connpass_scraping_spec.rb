@@ -40,6 +40,7 @@ describe ConnpassScraping, type: :request do
     it '参加者人数が取得できること' do
       expect(event.users.count).to eq event.accepted
     end
+
     it '主催者人数が取得できること' do
       expect(event.owners.count).to eq 1
     end
@@ -64,6 +65,7 @@ describe ConnpassScraping, type: :request do
     it '参加者人数が取得できること' do
       expect(event.users.count).to eq event.accepted
     end
+
     it '主催者人数が取得できること' do
       expect(event.owners.count).to eq 1
     end
