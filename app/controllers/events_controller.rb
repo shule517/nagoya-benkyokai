@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   def index
-    today = Time.now.strftime('%Y-%m-%d')
-    @events = Event.all.where(['started_at > ?', today]).order(:started_at)
+    today = Date.today.strftime
+    @events = Event.where(['started_at >= ?', today]).order(:started_at)
 
     @events.each do |event|
       if event.twitter_list_url
