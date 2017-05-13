@@ -14,4 +14,11 @@ describe EventCollector, type: :request do
     expect(classes).to include Api::Doorkeeper::DoorkeeperEvent
     expect(classes).to include Api::Atnd::AtndEvent
   end
+
+  it '５月の場合', vcr: '#search-201705' do
+    events = EventCollector.new.search(['201705'], false)
+    titles = events.map { |event| event.title }
+    expect(titles).to include '公開アップルップル社内勉強会 Vol.36' # Doorkeeper 2017-05-15
+    expect(titles).to include 'WellHashアンベール（お披露目）会＠名古屋ギークバー' # Doorkeeper 2017-05-15
+  end
 end
