@@ -1,0 +1,139 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: channel=%23lambda-log&text=event%3Atweet+start&token=xoxp-49827793543-51205615330-136715415287-4212f7726c2149283e5adbeb6f40ead8&username=lambda
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Slack Ruby Gem 1.5.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '166'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Date:
+      - Sat, 13 May 2017 06:57:54 GMT
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Pragma:
+      - no-cache
+      Referrer-Policy:
+      - no-referrer
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Vary:
+      - Accept-Encoding
+      X-Accepted-Oauth-Scopes:
+      - chat:write:bot,post
+      X-Content-Type-Options:
+      - nosniff
+      X-Oauth-Scopes:
+      - identify,read,post,client,apps
+      X-Slack-Backend:
+      - h
+      X-Slack-Req-Id:
+      - e3fcf483-d9d3-4544-baf2-5b85828ea025
+      X-Xss-Protection:
+      - '0'
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 171d3bd7ed02f868a62075a1caaa7993.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - BIRpptOEVf81DAWEuRUx82vG1JJwa5jR04TUsDbI9GLbQVcQZNMEoQ==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":true,"channel":"C3XRKQJ9Z","ts":"1494658674.321887","message":{"text":"event:tweet
+        start","username":"lambda","bot_id":"B3Z9C1G0G","type":"message","subtype":"bot_message","ts":"1494658674.321887"}}'
+    http_version: 
+  recorded_at: Sat, 13 May 2017 06:57:54 GMT
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: channel=%23lambda-log&text=event%3Atweet+end&token=xoxp-49827793543-51205615330-136715415287-4212f7726c2149283e5adbeb6f40ead8&username=lambda
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Slack Ruby Gem 1.5.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '165'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Date:
+      - Sat, 13 May 2017 06:57:55 GMT
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Pragma:
+      - no-cache
+      Referrer-Policy:
+      - no-referrer
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Vary:
+      - Accept-Encoding
+      X-Accepted-Oauth-Scopes:
+      - chat:write:bot,post
+      X-Content-Type-Options:
+      - nosniff
+      X-Oauth-Scopes:
+      - identify,read,post,client,apps
+      X-Slack-Backend:
+      - h
+      X-Slack-Req-Id:
+      - 3937e56a-5736-432c-947f-a9068d000876
+      X-Xss-Protection:
+      - '0'
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 4075ea0e2edefc2872b6d4d46995143d.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - SsUKZIcG7tO_8Buk2qY3edKFWb6jKPHgqdgilyq_qmQP60ev7_GHSQ==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":true,"channel":"C3XRKQJ9Z","ts":"1494658675.321936","message":{"text":"event:tweet
+        end","username":"lambda","bot_id":"B3Z9C1G0G","type":"message","subtype":"bot_message","ts":"1494658675.321936"}}'
+    http_version: 
+  recorded_at: Sat, 13 May 2017 06:57:55 GMT
+recorded_with: VCR 3.0.3

@@ -19,4 +19,18 @@ describe 'rake', type: :request do
       expect { @rake[task].invoke }.not_to raise_error
     end
   end
+
+  describe 'event:tweet' do
+    let(:task) { 'event:tweet' }
+    it 'エラーが発生しないこと', vcr: 'event:tweet' do
+      expect { @rake[task].invoke }.not_to raise_error
+    end
+  end
+
+  describe 'event:delete_list' do
+    let(:task) { 'event:delete_list' }
+    it 'エラーが発生しないこと', vcr: 'event:delete_list' do
+      expect { @rake[task].invoke }.not_to raise_error
+    end
+  end
 end
