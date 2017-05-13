@@ -29,7 +29,7 @@ module Api
       private
 
       SEARCH_MAX_COUNT = 20
-      def search_core(start = 0)
+      def search_core(start = 1)
         url = request_url(start)
         result = Shule::Http.get_json(url, Authorization: "Bearer #{ENV['DOORKEEPER_TOKEN']}")
         return [DoorkeeperEvent.new(result[:event])] if result.class == Hash

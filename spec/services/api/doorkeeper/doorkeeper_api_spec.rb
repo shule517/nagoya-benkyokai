@@ -6,16 +6,19 @@ describe DoorkeeperApi, type: :request do
   it '１ページ(２０件以内)の場合', vcr: '#search-1page' do
     events = api.search(keyword: '豊橋', ym: '201701')
     expect(events.count).to be < 20
+    expect(events.uniq.size).to eq events.size
   end
 
   it '２ページ(４０件以内)の場合', vcr: '#search-2page' do
     events = api.search(keyword: '愛知', ym: ['201612', '201701'])
     expect(events.count).to be > 20
+    expect(events.uniq.size).to eq events.size
   end
 
   it '３ページ(６０件以内)の場合', vcr: '#search-3page' do
     events = api.search(keyword: '名古屋', ym: ['201610', '201611', '201612'])
     expect(events.count).to be > 40
+    expect(events.uniq.size).to eq events.size
   end
 
   it '検索キーワードが複数の場合', vcr: '#search-keywords' do
