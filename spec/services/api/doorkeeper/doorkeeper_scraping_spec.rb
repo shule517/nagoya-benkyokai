@@ -4,9 +4,10 @@ include Api::Doorkeeper
 describe DoorkeeperScraping, type: :request do
   let(:api) { DoorkeeperApi }
   describe 'リモート開発 de ナイト' do
-    let(:event) { api.find(keyword: 'リモート開発 de ナイト', ym: '201606') }
+    let(:event) { api.find(event_id: 45257) }
     it 'イベント情報が取得できること', vcr: '#find-event' do
       expect(event.source).to eq 'Doorkeeper'
+      expect(event.event_id).to eq 45257
       expect(event.title).to eq 'リモート開発 de ナイト ＠名古屋ギークバー'
       expect(event.logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/events_banners/45257_normal_1463562966_%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%90%E3%83%BC%E3%83%AD%E3%82%B4.png'
       expect(event.started_at).to eq Date.parse('2016-06-13T10:30:00.000Z')

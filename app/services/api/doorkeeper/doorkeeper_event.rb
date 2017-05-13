@@ -8,6 +8,10 @@ module Api
         'Doorkeeper'
       end
 
+      def event_id
+        self[:id]
+      end
+
       def catch
         self[:description].gsub(/<\/?[^>]*>/, '').gsub(/\n+/, ' ')
       end
