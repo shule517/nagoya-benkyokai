@@ -1,8 +1,5 @@
-class EventUpdater
+class UpdateTwitterListService
   def call
-    events = EventCollector.search(collect_period)
-    update_db(events)
-
     @twitter = TwitterClient.new
     lists = @twitter.lists
 
@@ -15,12 +12,39 @@ class EventUpdater
 
   private
 
-  def collect_period
-    now = Time.now
-    day = 24 * 60 * 60
-    month = 30 * day
-    3.times.map { |i| (now + i * month).strftime('%Y%m') }
+  def update_event_to_twitter(event, lists)
+    description = "#{event.year}/#{event.month}/#{event.day}(#{event.wday}) #{event.title} #{event.url}"
+
+    if lists.any? { |list| list[:uri] == event.twitter_list_url } || event.twitter_list_url && @twitter.list_exists?(event.twitter_list_url)
+      puts "update list: #{description}"
+      list = @twitter.update_list(event.twitter_list_url, event.title, description)
+      event.twitter_list_name = list.name
+      event.twitter_list_url = list.uri
+      event.save
+    else
+      puts "crate list: #{description}"
+      list = @twitter.create_list(event.title, description)
+      event.twitter_list_name = list.name
+      event.twitter_list_url = list.uri
+      event.save
+    end
+
+    users = []
+    users.concat(event.owners)
+    users.concat(event.users)
+    event_users = users.map { |user| user.twitter_id }.select { |id| !id.empty? }
+    twitter_members = @twitter.list_members(event.twitter_list_url).map { |member| member.screen_name }
+    add_users = event_users.select { |user| !twitter_members.include?(user) }
+    @twitter.add_list_member(event.twitter_list_url, add_users)
   end
+end
+
+class UpdateEventService
+  def call(events)
+    update_db(events)
+  end
+
+  private
 
   def update_db(events)
     events.each do |event|
@@ -47,30 +71,19 @@ class EventUpdater
       event_record.save
     end
   end
+end
 
-  def update_event_to_twitter(event, lists)
-    description = "#{event.year}/#{event.month}/#{event.day}(#{event.wday}) #{event.title} #{event.url}"
+class EventUpdater
+  def call
+    events = EventCollector.search(collect_period)
+    UpdateEventService.new.call(events)
+    UpdateTwitterListService.new.call
+  end
 
-    if lists.any? { |list| list[:uri] == event.twitter_list_url } || event.twitter_list_url && @twitter.list_exists?(event.twitter_list_url)
-      puts "update list: #{description}"
-      list = @twitter.update_list(event.twitter_list_url, event.title, description)
-      event.twitter_list_name = list.name
-      event.twitter_list_url = list.uri
-      event.save
-    else
-      puts "crate list: #{description}"
-      list = @twitter.create_list(event.title, description)
-      event.twitter_list_name = list.name
-      event.twitter_list_url = list.uri
-      event.save
-    end
-
-    users = []
-    users.concat(event.owners)
-    users.concat(event.users)
-    event_users = users.map { |user| user.twitter_id }.select { |id| !id.empty? }
-    twitter_members = @twitter.list_members(event.twitter_list_url).map { |member| member.screen_name }
-    add_users = event_users.select { |user| !twitter_members.include?(user) }
-    @twitter.add_list_member(event.twitter_list_url, add_users)
+  def collect_period
+    now = Time.now
+    day = 24 * 60 * 60
+    month = 30 * day
+    3.times.map { |i| (now + i * month).strftime('%Y%m') }
   end
 end
