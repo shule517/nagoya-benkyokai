@@ -12,6 +12,10 @@ module Api
         self[:id]
       end
 
+      def event_url
+        self[:public_url]
+      end
+
       def catch
         self[:description].gsub(/<\/?[^>]*>/, '').gsub(/\n+/, ' ')
       end

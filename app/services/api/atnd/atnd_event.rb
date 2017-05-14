@@ -8,6 +8,10 @@ module Api
         'ATND'
       end
 
+      def event_url
+        self[:event_url].gsub('http://', 'https://')
+      end
+
       def catch
         return "#{self[:catch]}<br>#{description}" if self[:catch].present?
         description

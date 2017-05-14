@@ -8,6 +8,7 @@ describe AtndScraping, type: :request do
     it 'イベント情報の取得できること', vcr: '#find-event' do
       expect(event.source).to eq 'ATND'
       expect(event.event_id).to eq 81945
+      expect(event.event_url).to eq 'https://atnd.org/events/81945'
       expect(event.title).to eq 'エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！'
       expect(event.catch).to start_with '【ATEAM TECHとは】 ゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。'
       expect(event.started_at).to eq Date.parse('2016-10-11T20:00:00.000+09:00')
