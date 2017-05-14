@@ -1,7 +1,7 @@
 require 'uri'
 require_relative './http'
 require_relative './event_base'
-require_relative './connpass_user'
+# require_relative './connpass_user'
 
 class ConnpassEvent < EventBase
   def source

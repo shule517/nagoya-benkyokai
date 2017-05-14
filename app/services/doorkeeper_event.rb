@@ -1,7 +1,7 @@
 require 'uri'
 require_relative './http'
 require_relative './event_base'
-require_relative './doorkeeper_user'
+# require_relative './doorkeeper_user'
 
 class DoorkeeperEvent < EventBase
   def source

@@ -1,7 +1,7 @@
 require 'uri'
 require_relative './http'
 require_relative './event_base'
-require_relative './atnd_user'
+# require_relative './atnd_user'
 
 class AtndEvent < EventBase
   def source

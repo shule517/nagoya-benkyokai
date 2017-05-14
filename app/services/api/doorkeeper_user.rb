@@ -1,4 +1,4 @@
-require_relative './user_base'
+require './app/services/api/user_base'
 
 class DoorkeeperUser < UserBase
   def find_or_create_by
