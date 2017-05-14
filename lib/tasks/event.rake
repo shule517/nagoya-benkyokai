@@ -20,7 +20,7 @@ namespace :event do
   task update: :environment do
     begin
       Slack.chat_postMessage text: "event:update start", username: "lambda", channel: "#lambda-log"
-      EventUpdater.call
+      EventUpdater.new.call
     rescue => e
       p e
       backtrace = e.backtrace.join("\n")
