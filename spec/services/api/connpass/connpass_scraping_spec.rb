@@ -3,33 +3,34 @@ include Api::Connpass
 
 describe ConnpassScraping, type: :request do
   let(:api) { ConnpassApi }
-  context 'JXUGC #14 Xamarinの場合' do
+  describe 'JXUGC #14 Xamarinの場合' do
     let(:event) { api.find(event_id: 30152) }
-    it 'イベント情報が取得できること', vcr: '#find-event' do
-      expect(event.source).to eq 'connpass'
-      expect(event.event_id).to eq 30152
-      expect(event.event_url).to eq 'https://jxug.connpass.com/event/30152/'
-      expect(event.title).to eq 'JXUGC #14 Xamarin ハンズオン 名古屋大会'
-      expect(event.logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/d7/3c/d73cccc993bb52bffbc0b65bc4c10d38.png'
-      expect(event.catch).to start_with 'にゃごやでも話題の Xamarin を触ってみよう！<br>こんにちは。エクセルソフトの田淵です。 今話題の Xamarin を名古屋でも触ってみましょう！'
-      expect(event.started_at).to eq Date.parse('2016-05-15T13:00:00+09:00')
-      expect(event.place).to eq '熱田生涯学習センター'
-      expect(event.address).to eq '熱田区熱田西町2-13'
-      expect(event.group_title).to eq 'JXUG'
-      expect(event.group_id).to eq 1134
-      expect(event.group_url).to eq 'https://jxug.connpass.com/'
-      expect(event.group_logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/c9/d3/c9d379a73fa278df5fae314abd0d227a.png'
-      expect(event.limit_over?).to eq true
-      expect(event.accepted).to eq event.users.count
+    describe 'イベント情報が取得できること', vcr: '#find-event' do
+      it { expect(event.source).to eq 'connpass' }
+      it { expect(event.event_id).to eq 30152 }
+      it { expect(event.event_url).to eq 'https://jxug.connpass.com/event/30152/' }
+      it { expect(event.title).to eq 'JXUGC #14 Xamarin ハンズオン 名古屋大会' }
+      it { expect(event.logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/d7/3c/d73cccc993bb52bffbc0b65bc4c10d38.png' }
+      it { expect(event.catch).to start_with 'にゃごやでも話題の Xamarin を触ってみよう！<br>こんにちは。エクセルソフトの田淵です。 今話題の Xamarin を名古屋でも触ってみましょう！' }
+      it { expect(event.started_at).to eq Date.parse('2016-05-15T13:00:00+09:00') }
+      it { expect(event.place).to eq '熱田生涯学習センター' }
+      it { expect(event.address).to eq '熱田区熱田西町2-13' }
+      it { expect(event.group_title).to eq 'JXUG' }
+      it { expect(event.group_id).to eq 1134 }
+      it { expect(event.group_url).to eq 'https://jxug.connpass.com/' }
+      it { expect(event.group_logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/c9/d3/c9d379a73fa278df5fae314abd0d227a.png' }
+      it { expect(event.limit_over?).to eq true }
+      it { expect(event.accepted).to eq event.users.count }
     end
 
     describe '参加者の情報が取得できること', vcr: '#find-users' do
+      it { expect(event.owners.count).to eq 4 }
+
       let(:shule) { event.users.select { |user| user.connpass_id == 'shule517' }.first }
       it { expect(shule.connpass_id).to eq 'shule517' }
       it { expect(shule.twitter_id).to eq 'shule517' }
       it { expect(shule.name).to eq 'シュール' }
       it { expect(shule.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/b9/93/b99305b6784e742244868ddd5acc8646.png' }
-      it { expect(event.owners.count).to eq 4 }
 
       let(:kuu) { event.users.select { |user| user.connpass_id == 'Kuxumarin' }.first }
       it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
