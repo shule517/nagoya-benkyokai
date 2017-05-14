@@ -62,7 +62,7 @@ namespace :event do
   task delete_list: :environment do
     begin
       Slack.chat_postMessage text: "event:tweet start", username: "lambda", channel: "#lambda-log"
-      DeleteTwitterList.call
+      ClearTwitterListService.new.call
     rescue => e
       p e
       backtrace = e.backtrace.join("\n")
