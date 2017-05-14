@@ -1,3 +1,4 @@
+# 開催終了から一週間経ったイベントのツイッターリストを削除する
 class ClearTwitterListService
   def call
     @twitter = TwitterClient.new

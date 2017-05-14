@@ -1,3 +1,4 @@
+# DBの情報を元にツイッターリストを更新する
 class UpdateTwitterListService
   def call
     @twitter = TwitterClient.new

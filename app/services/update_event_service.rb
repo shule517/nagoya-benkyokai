@@ -1,3 +1,4 @@
+# イベント情報をDBへ登録する
 class UpdateEventService
   def call(events)
     events.each do |event|
