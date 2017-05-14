@@ -66,6 +66,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'webmock'
   gem 'vcr'
+  gem 'database_cleaner'
 end
 
 group :development do

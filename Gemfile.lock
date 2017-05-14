@@ -65,6 +65,7 @@ GEM
     concurrent-ruby (1.0.5)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
+    database_cleaner (1.6.1)
     debase (0.2.1)
       debase-ruby_core_source
     debase-ruby_core_source (0.9.9)
@@ -283,6 +284,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
   coffee-script-source (= 1.8.0)
+  database_cleaner
   debase
   exception_notification!
   factory_girl_rails
