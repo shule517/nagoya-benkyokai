@@ -5,7 +5,7 @@ class UpdateTwitterListService
     lists = @twitter.lists
 
     today = Date.today.strftime
-    events = Event.all.where(['started_at >= ?', today]).order(:started_at)
+    events = Event.all.where('started_at >= ?', today).order(:started_at)
     events.each do |event|
       update_event_to_twitter(event, lists)
     end
@@ -14,7 +14,7 @@ class UpdateTwitterListService
   private
 
   def update_event_to_twitter(event, lists)
-    description = "#{event.year}/#{event.month}/#{event.day}(#{event.wday}) #{event.title} #{event.url}"
+    description = "#{event.year}/#{event.month}/#{event.day}(#{event.wday}) #{event.title}"
 
     if lists.any? { |list| list[:uri] == event.twitter_list_url } || event.twitter_list_url && @twitter.list_exists?(event.twitter_list_url)
       puts "update list: #{description}"
