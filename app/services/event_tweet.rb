@@ -23,7 +23,7 @@ module Tweetable
   end
 end
 
-class TweetTomorrowService
+class TweetTomorrowEventService
   include Tweetable
 
   def call
@@ -48,7 +48,7 @@ class TweetTomorrowService
   end
 end
 
-class TweetNewService
+class TweetNewEventService
   include Tweetable
 
   def call
@@ -72,11 +72,11 @@ end
 class EventTweet
   class << self
     def tweet_new
-      TweetNewService.new.call
+      TweetNewEventService.new.call
     end
 
     def tweet_tomorrow
-      TweetTomorrowService.new.call
+      TweetTomorrowEventService.new.call
     end
   end
 end

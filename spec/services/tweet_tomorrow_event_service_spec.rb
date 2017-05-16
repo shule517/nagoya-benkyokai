@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe TweetTomorrowService, type: :request do
+describe TweetTomorrowEventService, type: :request do
   let(:twitter) { TwitterClient.new }
   it '明日開かれる勉強会のツイートができること', vcr: 'tomorrow' do
     events = [Api::Atnd::AtndApi.find(event_id: 81945)]
@@ -16,7 +16,7 @@ describe TweetTomorrowService, type: :request do
 
     event = Event.first
     expect(event.tweeted_tomorrow).to eq false
-    TweetTomorrowService.new.call # 明日の勉強会のツイート
+    TweetTomorrowEventService.new.call # 明日の勉強会のツイート
     event = Event.first
     expect(event.tweeted_tomorrow).to eq true
   end
