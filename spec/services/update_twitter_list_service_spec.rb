@@ -1,55 +1,53 @@
 require 'rails_helper'
 
 describe UpdateTwitterListService, type: :request do
-  let(:twitter) { TwitterClient.new }
-  it 'リストを作成すること', vcr: 'create' do
-    events = [Api::Atnd::AtndApi.find(event_id: 81945)]
-    UpdateEventService.new.call(events) # Eventレコードを作成
+  def event
+    Event.first
+  end
 
+  def set_event(param)
     event = Event.first
-    event.started_at = Time.now
+    param.each do |k, v|
+      eval("event.#{k} = '#{v}'")
+    end
     event.save
+  end
 
-    UpdateTwitterListService.new.call # リストを作成
+  def twitter_url
+    event.twitter_list_url
+  end
 
-    url = Event.first.twitter_list_url
-    expect(twitter.list_exists?(url)).to eq true
+  def list
+    twitter.list(twitter_url)
+  end
 
-    list = twitter.list(url)
+  let(:twitter) { TwitterClient.new }
+  let(:events) { [Api::Atnd::AtndApi.find(event_id: 81945)] }
+  it 'リストを作成すること', vcr: 'create' do
+    UpdateEventService.new.call(events)
+    set_event(started_at: Time.now)
+
+    UpdateTwitterListService.new.call
+    expect(twitter.list_exists?(twitter_url)).to eq true
     expect(list.name).to eq 'エイチームの開発勉強会『ATEAM TECH』'
-    expect(list.description).to eq '2017/5/15(月) エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！'
+    expect(list.description).to eq '2017/5/16(火) エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！'
     expect(list.member_count).to eq 6
   end
 
   it 'リストの更新ができること', vcr: 'update' do
-    events = [Api::Atnd::AtndApi.find(event_id: 81945)]
-    UpdateEventService.new.call(events) # Eventレコードを作成
+    UpdateEventService.new.call(events)
+    set_event(started_at: Time.now)
 
-    event = Event.first
-    event.started_at = Time.now
-    event.save
-
-    UpdateTwitterListService.new.call # リストを作成
-
-    url = Event.first.twitter_list_url
-    expect(twitter.list_exists?(url)).to eq true
-
-    list = twitter.list(url)
+    UpdateTwitterListService.new.call
+    expect(twitter.list_exists?(twitter_url)).to eq true
     expect(list.name).to eq 'エイチームの開発勉強会『ATEAM TECH』'
-    expect(list.description).to eq '2017/5/15(月) エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！'
+    expect(list.description).to eq '2017/5/16(火) エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！'
     expect(list.member_count).to eq 6
 
-    event = Event.first
-    event.title = '更新『ATEAM TECH』'
-    event.started_at = Time.now
-    event.save
-
-    UpdateTwitterListService.new.call # リストを更新
-
-    url = Event.first.twitter_list_url
-    list = twitter.list(url)
+    set_event(title: '更新『ATEAM TECH』', started_at: Time.now)
+    UpdateTwitterListService.new.call
     expect(list.name).to eq '更新『ATEAM TECH』'
-    expect(list.description).to eq '2017/5/15(月) 更新『ATEAM TECH』'
+    expect(list.description).to eq '2017/5/16(火) 更新『ATEAM TECH』'
     expect(list.member_count).to eq 6
   end
 end

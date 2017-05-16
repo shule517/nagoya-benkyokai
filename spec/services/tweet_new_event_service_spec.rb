@@ -1,23 +1,29 @@
 require 'rails_helper'
 
 describe TweetNewEventService, type: :request do
-  let(:twitter) { TwitterClient.new }
-  it '新着ツイートができること', vcr: 'new' do
-    events = [Api::Atnd::AtndApi.find(event_id: 81945)]
-    UpdateEventService.new.call(events) # Eventレコードを作成
-
+  def set_event(param)
     event = Event.first
-    event.started_at = Time.now
-    event.ended_at = 6.day.ago
+    param.each do |k, v|
+      eval("event.#{k} = '#{v}'")
+    end
     event.save
+  end
 
-    UpdateTwitterListService.new.call # リストを作成
-    expect(twitter.list_exists?(Event.first.twitter_list_url)).to eq true
+  def event
+    Event.first
+  end
 
-    event = Event.first
+  let(:twitter) { TwitterClient.new }
+  let(:events) { events = [Api::Atnd::AtndApi.find(event_id: 81945)] }
+  it '新着ツイートができること', vcr: 'new' do
+    UpdateEventService.new.call(events)
+    set_event(started_at: Time.now)
+
+    UpdateTwitterListService.new.call
+    expect(twitter.list_exists?(event.twitter_list_url)).to eq true
     expect(event.tweeted_new).to eq false
-    TweetNewEventService.new.call # 新着ツイート
-    event = Event.first
+
+    TweetNewEventService.new.call
     expect(event.tweeted_new).to eq true
   end
 end
