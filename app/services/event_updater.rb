@@ -1,6 +1,6 @@
 class EventUpdater
   def call
-    events = EventCollector.search(collect_period)
+    events = SearchEventService.new.call(collect_period)
     UpdateEventService.new.call(events)
     UpdateTwitterListService.new.call
   end

@@ -1,6 +1,3 @@
-require 'twitter'
-require_relative './event_collector'
-
 class TwitterClient
   attr_reader :client
   def initialize

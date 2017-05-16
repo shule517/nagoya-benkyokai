@@ -1,8 +1,6 @@
-class EventCollector
-  class << self
-    def search(*args)
-      new.search(*args)
-    end
+class SearchEventService
+  def call(date, after_today = true)
+    search(date, after_today)
   end
 
   def search(date, after_today = true)
