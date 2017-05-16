@@ -5,6 +5,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'hashie'
 Dir[Rails.root.join('./app/services/**/*.rb')].each { |f| require f }
+require './spec/services/event_helper'
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/vcr'

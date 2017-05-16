@@ -1,25 +1,7 @@
 require 'rails_helper'
 
 describe UpdateTwitterListService, type: :request do
-  def event
-    Event.first
-  end
-
-  def set_event(param)
-    event = Event.first
-    param.each do |k, v|
-      eval("event.#{k} = '#{v}'")
-    end
-    event.save
-  end
-
-  def twitter_url
-    event.twitter_list_url
-  end
-
-  def list
-    twitter.list(twitter_url)
-  end
+  include EventHelper
 
   let(:twitter) { TwitterClient.new }
   let(:events) { [Api::Atnd::AtndApi.find(event_id: 81945)] }

@@ -1,13 +1,7 @@
 require 'rails_helper'
 
 describe ClearTwitterListService, type: :request do
-  def set_event(param)
-    event = Event.first
-    param.each do |k, v|
-      eval("event.#{k} = '#{v}'")
-    end
-    event.save
-  end
+  include EventHelper
 
   let(:twitter) { TwitterClient.new }
   let(:events) { [Api::Atnd::AtndApi.find(event_id: 81945)] }
