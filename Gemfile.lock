@@ -130,6 +130,7 @@ GEM
     multi_json (1.12.1)
     multipart-post (2.0.0)
     naught (1.1.0)
+    newrelic_rpm (4.1.0.333)
     nio4r (2.0.0)
     nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
@@ -295,6 +296,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   json
+  newrelic_rpm
   open_uri_redirections
   openssl
   pg

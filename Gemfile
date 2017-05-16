@@ -51,6 +51,7 @@ gem 'exception_notification', github: 'smartinez87/exception_notification'
 gem 'slack-notifier'
 gem 'hashie'
 gem 'rspec'
+gem 'newrelic_rpm'
 
 # ExecJS::ProgramError TypeErrorの対応
 gem 'coffee-script-source', '1.8.0'
