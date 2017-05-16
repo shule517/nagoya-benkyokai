@@ -2,6 +2,7 @@ require 'twitter'
 require_relative './event_collector'
 
 class TwitterClient
+  attr_reader :client
   def initialize
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV['TWITTER_CONSUMER_KEY']
@@ -11,15 +12,11 @@ class TwitterClient
     end
   end
 
-  def client
-    @client
-  end
-
   def lists(option = {})
     lists = []
     next_cursor = -1
     4.times.flat_map {
-      owned_lists = @client.owned_lists(cursor: next_cursor, count: 250)
+      owned_lists = client.owned_lists(cursor: next_cursor, count: 250)
       next_cursor = owned_lists.attrs[:next_cursor]
       p next_cursor
       lists = [*lists, *owned_lists.attrs[:lists]]
@@ -121,7 +118,7 @@ class TwitterClient
     title = create_list_name(title)
     description = create_list_desc(description)
     puts "create_list(title:#{title}, description:#{description})"
-    @client.create_list(title, description: description, mode: mode)
+    client.create_list(title, description: description, mode: mode)
   rescue Twitter::Error::Forbidden => e
     puts "#{e}\ntitle:#{title} description:#{description}"
   end
@@ -130,7 +127,7 @@ class TwitterClient
     list_name = create_list_name(title)
     description = create_list_desc(description)
     puts "update_list(uri:#{uri}, list_name:#{list_name}, description:#{description})"
-    @client.list_update(uri, name: list_name, description: description, mode: mode)
+    client.list_update(uri, name: list_name, description: description, mode: mode)
   rescue Twitter::Error::Forbidden => e
     puts "#{e}\nuri:#{uri} list_name:#{list_name} description:#{description}"
   rescue => e
@@ -139,17 +136,17 @@ class TwitterClient
 
   def destroy_list(event_id)
     puts "destroy_list(#{event_id})"
-    @client.destroy_list(event_id)
+    client.destroy_list(event_id)
   end
 
   def add_list_member(list_id, user_id)
     puts "add_list_member(#{list_id}, #{user_id})"
     case user_id
     when String
-      @client.add_list_member(list_id, user_id)
+      client.add_list_member(list_id, user_id)
     when Array
       return if user_id.empty?
-      @client.add_list_members(list_id, user_id)
+      client.add_list_members(list_id, user_id)
     end
   rescue Twitter::Error::Forbidden
     puts "Error: #{user_id}をリストに追加する権限がありません。"
@@ -157,18 +154,18 @@ class TwitterClient
 
   def list(list_id)
     puts "list(#{list_id})"
-    @client.list(list_id)
+    client.list(list_id)
   end
 
   def list_members(list_id)
     puts "list_members(#{list_id})"
-    @client.list_members(list_id)
+    client.list_members(list_id)
   rescue => e
     p e
     []
   end
 
   def tweet(message)
-    @client.update(message)
+    client.update(message)
   end
 end
