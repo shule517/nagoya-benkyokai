@@ -1,74 +1,64 @@
 # encoding: utf-8
-require "slack"
+require 'slack'
 require './app/services/http.rb'
 
+module Notifiable
+  def notify(task)
+    begin
+      Slack.chat_postMessage text: "#{task} start", channel: '#test-log', username: 'lambda'
+      yield
+    rescue => e
+      backtrace = e.backtrace.join("\n")
+      Slack.chat_postMessage text: "#{task} #{e}\n#{backtrace}", channel: '#test-error', username: 'lambda'
+    ensure
+      Slack.chat_postMessage text: "#{task} end", channel: '#test-log', username: 'lambda'
+    end
+  end
+end
+
 namespace :event do
-  desc "初期化"
+  desc '初期化'
   task init: :environment do
-    Slack.chat_postMessage text: "event:init start", username: "lambda", channel: "#lambda-log"
-    EventUpdater.call
-
-    time = Time.now
-    time += 24 * 60 * 60
-    tommorow = time.strftime("%Y-%m-%d")
-    Event.all.update_all(tweeted_new: true)
-    Event.all.where("started_at < ?", tommorow).update_all(tweeted_tomorrow: true)
-    Slack.chat_postMessage text: "event:init end", username: "lambda", channel: "#lambda-log"
+    include Notifiable
+    notify('event:init') do
+      EventUpdater.call
+      time = Time.now
+      time += 24 * 60 * 60
+      tommorow = time.strftime('%Y-%m-%d')
+      Event.all.update_all(tweeted_new: true)
+      Event.all.where('started_at < ?', tommorow).update_all(tweeted_tomorrow: true)
+    end
   end
 
-  desc "イベント情報を更新(DB+twitter)"
+  desc 'イベント情報を更新(DB+twitter)'
   task update: :environment do
-    begin
-      Slack.chat_postMessage text: "event:update start", username: "lambda", channel: "#lambda-log"
+    include Notifiable
+    notify('event:update') do
       EventUpdater.new.call
-    rescue => e
-      p e
-      backtrace = e.backtrace.join("\n")
-      Slack.chat_postMessage text: "event:update #{e}\n#{backtrace}", username: "lambda", channel: "#lambda-error"
-    ensure
-      Slack.chat_postMessage text: "event:update end", username: "lambda", channel: "#lambda-log"
     end
   end
 
-  desc "イベント情報を更新(DB)"
+  desc 'イベント情報を更新(DB)'
   task update_db: :environment do
-    begin
-      Slack.chat_postMessage text: "event:update start", username: "lambda", channel: "#lambda-log"
+    include Notifiable
+    notify('event:update_db') do
       EventUpdater.update(ENV['date'])
-    rescue => e
-      p e
-      backtrace = e.backtrace.join("\n")
-      Slack.chat_postMessage text: "event:update_db #{e}\n#{backtrace}", username: "lambda", channel: "#lambda-error"
-    ensure
-      Slack.chat_postMessage text: "event:update end", username: "lambda", channel: "#lambda-log"
     end
   end
 
-  desc "明日開かれるイベントをツイート"
+  desc '明日開かれるイベントをツイート'
   task tweet: :environment do
-    begin
-      Slack.chat_postMessage text: "event:tweet start", username: "lambda", channel: "#lambda-log"
+    include Notifiable
+    notify('event:tweet') do
       EventTweet.tweet_tomorrow
-    rescue => e
-      p e
-      backtrace = e.backtrace.join("\n")
-      Slack.chat_postMessage text: "event:tweet #{e}\n#{backtrace}", username: "lambda", channel: "#lambda-error"
-    ensure
-      Slack.chat_postMessage text: "event:tweet end", username: "lambda", channel: "#lambda-log"
     end
   end
 
-  desc "終わった勉強会のツイッターリストを削除する"
+  desc '終わった勉強会のツイッターリストを削除する'
   task delete_list: :environment do
-    begin
-      Slack.chat_postMessage text: "event:tweet start", username: "lambda", channel: "#lambda-log"
+    include Notifiable
+    notify('event:delete_list') do
       ClearTwitterListService.new.call
-    rescue => e
-      p e
-      backtrace = e.backtrace.join("\n")
-      Slack.chat_postMessage text: "event:delete_list #{e}\n#{backtrace}", username: "lambda", channel: "#lambda-error"
-    ensure
-      Slack.chat_postMessage text: "event:tweet end", username: "lambda", channel: "#lambda-log"
     end
   end
 end

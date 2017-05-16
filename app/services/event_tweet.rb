@@ -41,7 +41,7 @@ class TweetTomorrowEventService
         event.update(tweeted_tomorrow: true)
       rescue => e
         backtrace = e.backtrace.join("\n")
-        Slack.chat_postMessage text: "`#{e}\n#{backtrace}`\n#{message}\nevent-id:#{event.event_id}", username: 'lambda', channel: '#lambda-error'
+        Slack.chat_postMessage text: "`#{e}\n#{backtrace}`\n#{message}\nevent-id:#{event.event_id}", username: 'lambda', channel: '#test-error'
         puts e
       end
     end
@@ -62,7 +62,7 @@ class TweetNewEventService
         event.update(tweeted_new: true)
       rescue => e
         backtrace = e.backtrace.join("\n")
-        Slack.chat_postMessage text: "`#{e}\n#{message}\n#{backtrace}`\nevent-id:#{event.event_id}", username: 'lambda', channel: '#lambda-error'
+        Slack.chat_postMessage text: "`#{e}\n#{message}\n#{backtrace}`\nevent-id:#{event.event_id}", username: 'lambda', channel: '#test-error'
         puts e
       end
     end
