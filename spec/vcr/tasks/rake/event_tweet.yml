@@ -23,7 +23,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '165'
+      - '164'
       Connection:
       - keep-alive
       Access-Control-Allow-Origin:
@@ -31,7 +31,7 @@ http_interactions:
       Cache-Control:
       - private, no-cache, no-store, must-revalidate
       Date:
-      - Wed, 17 May 2017 15:53:43 GMT
+      - Wed, 17 May 2017 17:05:44 GMT
       Expires:
       - Mon, 26 Jul 1997 05:00:00 GMT
       Pragma:
@@ -53,21 +53,21 @@ http_interactions:
       X-Slack-Backend:
       - h
       X-Slack-Req-Id:
-      - 7749cb5f-c2ce-48d2-8ed2-db0e49a2986a
+      - 0d6fbb58-4acb-401e-ac58-cb4768948eb5
       X-Xss-Protection:
       - '0'
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 e73f6e68e88d27c02fd149c087c724ba.cloudfront.net (CloudFront)
+      - 1.1 5cd53da5e433a0817805869e972f81a3.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - 3UaFcD0UBmER7de9srp_gRq5aXqH4pSF1uCuHayIy19WDRD-inyJYA==
+      - n14dqVKqSpK7txBFl0QOrFm3eCztHcriLXpKNt6G3-bjOD1VIiZCcg==
     body:
       encoding: ASCII-8BIT
-      string: '{"ok":true,"channel":"C5E6H0Y8L","ts":"1495036423.771421","message":{"text":"event:tweet
-        start","username":"lambda","bot_id":"B3Z9C1G0G","type":"message","subtype":"bot_message","ts":"1495036423.771421"}}'
+      string: '{"ok":true,"channel":"C5E6H0Y8L","ts":"1495040744.402409","message":{"text":"event:tweet
+        start","username":"lambda","bot_id":"B3Z9C1G0G","type":"message","subtype":"bot_message","ts":"1495040744.402409"}}'
     http_version: 
-  recorded_at: Wed, 17 May 2017 15:53:43 GMT
+  recorded_at: Wed, 17 May 2017 17:05:44 GMT
 - request:
     method: post
     uri: https://slack.com/api/chat.postMessage
@@ -91,7 +91,7 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '164'
+      - '163'
       Connection:
       - keep-alive
       Access-Control-Allow-Origin:
@@ -99,7 +99,7 @@ http_interactions:
       Cache-Control:
       - private, no-cache, no-store, must-revalidate
       Date:
-      - Wed, 17 May 2017 15:53:44 GMT
+      - Wed, 17 May 2017 17:05:44 GMT
       Expires:
       - Mon, 26 Jul 1997 05:00:00 GMT
       Pragma:
@@ -121,19 +121,19 @@ http_interactions:
       X-Slack-Backend:
       - h
       X-Slack-Req-Id:
-      - b4f646cc-6619-4523-bb13-d1a25a79063c
+      - 740e53a0-92ca-4d6e-8d6e-ae87b9be7c97
       X-Xss-Protection:
       - '0'
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 d10ffdbff9008173a16a31e2f6c02dff.cloudfront.net (CloudFront)
+      - 1.1 d6f98d2db857c32baf937a1afb4b1b6c.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - XPiYjeH2fRA-zEXpX0jMoSOzOeMKx5WkGeO3CGKSXA5swJmaTPkJvg==
+      - 51gReREK3g6UF20AMiS3fr5pKdZGx-pcAdrRvqN4yyzNSTx3gfuKtg==
     body:
       encoding: ASCII-8BIT
-      string: '{"ok":true,"channel":"C5E6H0Y8L","ts":"1495036424.771641","message":{"text":"event:tweet
-        end","username":"lambda","bot_id":"B3Z9C1G0G","type":"message","subtype":"bot_message","ts":"1495036424.771641"}}'
+      string: '{"ok":true,"channel":"C5E6H0Y8L","ts":"1495040744.402567","message":{"text":"event:tweet
+        end","username":"lambda","bot_id":"B3Z9C1G0G","type":"message","subtype":"bot_message","ts":"1495040744.402567"}}'
     http_version: 
-  recorded_at: Wed, 17 May 2017 15:53:44 GMT
+  recorded_at: Wed, 17 May 2017 17:05:44 GMT
 recorded_with: VCR 3.0.3
