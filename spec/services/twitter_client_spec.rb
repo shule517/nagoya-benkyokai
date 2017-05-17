@@ -18,6 +18,10 @@ describe TwitterClient, type: :request do
       expect(list.id).to be > 0
     end
 
+    it 'リスト１０００件の状態でリストを作成する', vcr: '#create_list_ng' do
+      expect { client.create_list(name, description) }.to raise_error TooManyLists
+    end
+
     it 'リストが更新できること', vcr: '#update_list' do
       list = client.create_list(name, description)
       updated_name = "更新:#{name}"

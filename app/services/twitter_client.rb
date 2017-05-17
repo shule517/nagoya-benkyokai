@@ -1,3 +1,6 @@
+class TooManyLists < StandardError
+end
+
 class TwitterClient
   attr_reader :client
   def initialize
@@ -118,6 +121,7 @@ class TwitterClient
     client.create_list(title, description: description, mode: mode)
   rescue Twitter::Error::Forbidden => e
     puts "#{e}\ntitle:#{title} description:#{description}"
+    raise TooManyLists if e.to_s.include?('This user has too many lists.')
   end
 
   def update_list(uri, title, description)

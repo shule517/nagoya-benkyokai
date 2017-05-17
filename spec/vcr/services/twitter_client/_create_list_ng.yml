@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.twitter.com/1.1/lists/create.json
+    body:
+      encoding: UTF-8
+      string: description=%E8%A9%B3%E7%B4%B0%E8%AA%AC%E6%98%8E%E3%81%A0%E3%82%88&mode=private&name=%E3%83%86%E3%82%B9%E3%83%88
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/6.1.0
+      Authorization:
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="88ae565b0b09a949159b3c5508125316",
+        oauth_signature="dXyhvXvPW98i7kofwH0Mwt%2FlOFg%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1495025450", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Wed, 17 May 2017 12:50:50 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Wed, 17 May 2017 12:50:50 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A149502545086660582; Domain=.twitter.com; Path=/; Expires=Fri,
+        17-May-2019 12:50:50 UTC
+      - lang=ja; Path=/
+      Status:
+      - 403 Forbidden
+      Strict-Transport-Security:
+      - max-age=631138519
+      Transfer-Encoding:
+      - chunked
+      X-Access-Level:
+      - read-write
+      X-Connection-Hash:
+      - 414871c3e4aca282af21a3563699a747
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Response-Time:
+      - '158'
+      X-Transaction:
+      - 005c8c95004964ab
+      X-Tsa-Request-Body-Time:
+      - '0'
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"code":85,"message":"The list failed validation: This user
+        has too many lists."}]}'
+    http_version: 
+  recorded_at: Wed, 17 May 2017 12:50:50 GMT
+recorded_with: VCR 3.0.3
