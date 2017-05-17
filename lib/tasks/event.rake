@@ -50,7 +50,7 @@ namespace :event do
   task tweet: :environment do
     include Notifiable
     notify('event:tweet') do
-      EventTweet.tweet_tomorrow
+      TweetTomorrowEventService.new.call
     end
   end
 

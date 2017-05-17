@@ -40,7 +40,7 @@ class TweetTomorrowEventService
         @twitter.tweet(message)
         event.update(tweeted_tomorrow: true)
       rescue => e
-        Slack.chat_postMessage text: "`#{e}`\n#{message}\nevent-id:#{event.event_id}", username: 'lambda', channel: '#test-error'
+        Slack.chat_postMessage text: "#{e}\n#{message}\nevent-id:#{event.event_id}", username: 'lambda', channel: '#test-error'
         puts e
       end
     end
@@ -60,22 +60,9 @@ class TweetNewEventService
         @twitter.tweet('[新着] ' + message)
         event.update(tweeted_new: true)
       rescue => e
-        backtrace = e.backtrace.join("\n")
-        Slack.chat_postMessage text: "`#{e}\n#{message}\n#{backtrace}`\nevent-id:#{event.event_id}", username: 'lambda', channel: '#test-error'
+        Slack.chat_postMessage text: "#{e}\n#{message}\nevent-id:#{event.event_id}", username: 'lambda', channel: '#test-error'
         puts e
       end
-    end
-  end
-end
-
-class EventTweet
-  class << self
-    def tweet_new
-      TweetNewEventService.new.call
-    end
-
-    def tweet_tomorrow
-      TweetTomorrowEventService.new.call
     end
   end
 end
