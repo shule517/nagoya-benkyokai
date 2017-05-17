@@ -48,17 +48,6 @@ class UpdateTwitterList
     event.twitter_list_name = created_list.name
     event.twitter_list_url = created_list.uri
     event.save
-  rescue => e
-    Slack.chat_postMessage text: "title: #{event.title}", channel: '#test-error', username: 'lambda'
-    Slack.chat_postMessage text: "description: #{description}", channel: '#test-error', username: 'lambda'
-
-    message = local_variables.map { |v|
-      name = v.to_s
-      value = eval("#{v}")
-      "#{name}: #{value}"
-    }.join("¥n")
-    Slack.chat_postMessage text: message, channel: '#test-error', username: 'lambda'
-    throw
   end
 
   def description
