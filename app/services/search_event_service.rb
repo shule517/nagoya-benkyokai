@@ -6,6 +6,8 @@ class SearchEventService
     search
   end
 
+  private
+
   def search
     # Connpass,Doorkeeperのイベントは全て勉強会として扱う
     apis = [Api::Connpass::ConnpassApi, Api::Doorkeeper::DoorkeeperApi]
@@ -16,18 +18,11 @@ class SearchEventService
     atnd_events.select! { |event| benkyokai?(event) }
     events = [*events, *atnd_events]
 
-    if after_today
-      today = Time.now.strftime('%Y-%m-%d')
-      events.select! { |event| event.started_at >= Date.today }
-      puts "today:#{today}"
-    end
-
+    events.select! { |event| event.started_at >= Date.today } if after_today
     events.select! { |event| aichi?(event) }
     events = events.group_by(&:event_id).map { |event| event[1].first }
     events.sort_by! { |event| event.started_at }
   end
-
-  private
 
   def aichi?(event)
     # 愛知の市町村が含まれて、愛知外の市町村が含まれないこと
