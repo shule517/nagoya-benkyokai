@@ -17,32 +17,11 @@ module Notifiable
 end
 
 namespace :event do
-  desc '初期化'
-  task init: :environment do
-    include Notifiable
-    notify('event:init') do
-      EventUpdater.call
-      time = Time.now
-      time += 24 * 60 * 60
-      tommorow = time.strftime('%Y-%m-%d')
-      Event.all.update_all(tweeted_new: true)
-      Event.all.where('started_at < ?', tommorow).update_all(tweeted_tomorrow: true)
-    end
-  end
-
-  desc 'イベント情報を更新(DB+twitter)'
+  desc 'イベント情報を更新'
   task update: :environment do
     include Notifiable
     notify('event:update') do
       EventUpdater.new.call
-    end
-  end
-
-  desc 'イベント情報を更新(DB)'
-  task update_db: :environment do
-    include Notifiable
-    notify('event:update_db') do
-      EventUpdater.update(ENV['date'])
     end
   end
 
@@ -72,6 +51,17 @@ namespace :twitter do
       twitter.lists.each do |list|
         twitter.destroy_list(list[:id])
       end
+    end
+  end
+
+  desc '新着・明日ツイートのエラー解除'
+  task error_clear: :environment do
+    include Notifiable
+    notify('twitter:error_clear') do
+      # 新着ツイートは全て完了したことにする
+      Event.all.update_all(tweeted_new: true)
+      # 明日ツイートは全て完了したことにする
+      Event.where('started_at < ?', Date.tomorrow).update_all(tweeted_tomorrow: true)
     end
   end
 end
