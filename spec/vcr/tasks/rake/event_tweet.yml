@@ -5,75 +5,7 @@ http_interactions:
     uri: https://slack.com/api/chat.postMessage
     body:
       encoding: UTF-8
-      string: channel=%23lambda-log&text=event%3Atweet+start&token=xoxp-49827793543-51205615330-136715415287-4212f7726c2149283e5adbeb6f40ead8&username=lambda
-    headers:
-      Accept:
-      - application/json; charset=utf-8
-      User-Agent:
-      - Slack Ruby Gem 1.5.0
-      Content-Type:
-      - application/x-www-form-urlencoded
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Type:
-      - application/json; charset=utf-8
-      Content-Length:
-      - '166'
-      Connection:
-      - keep-alive
-      Access-Control-Allow-Origin:
-      - "*"
-      Cache-Control:
-      - private, no-cache, no-store, must-revalidate
-      Date:
-      - Sat, 13 May 2017 06:57:54 GMT
-      Expires:
-      - Mon, 26 Jul 1997 05:00:00 GMT
-      Pragma:
-      - no-cache
-      Referrer-Policy:
-      - no-referrer
-      Server:
-      - Apache
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains; preload
-      Vary:
-      - Accept-Encoding
-      X-Accepted-Oauth-Scopes:
-      - chat:write:bot,post
-      X-Content-Type-Options:
-      - nosniff
-      X-Oauth-Scopes:
-      - identify,read,post,client,apps
-      X-Slack-Backend:
-      - h
-      X-Slack-Req-Id:
-      - e3fcf483-d9d3-4544-baf2-5b85828ea025
-      X-Xss-Protection:
-      - '0'
-      X-Cache:
-      - Miss from cloudfront
-      Via:
-      - 1.1 171d3bd7ed02f868a62075a1caaa7993.cloudfront.net (CloudFront)
-      X-Amz-Cf-Id:
-      - BIRpptOEVf81DAWEuRUx82vG1JJwa5jR04TUsDbI9GLbQVcQZNMEoQ==
-    body:
-      encoding: ASCII-8BIT
-      string: '{"ok":true,"channel":"C3XRKQJ9Z","ts":"1494658674.321887","message":{"text":"event:tweet
-        start","username":"lambda","bot_id":"B3Z9C1G0G","type":"message","subtype":"bot_message","ts":"1494658674.321887"}}'
-    http_version: 
-  recorded_at: Sat, 13 May 2017 06:57:54 GMT
-- request:
-    method: post
-    uri: https://slack.com/api/chat.postMessage
-    body:
-      encoding: UTF-8
-      string: channel=%23lambda-log&text=event%3Atweet+end&token=xoxp-49827793543-51205615330-136715415287-4212f7726c2149283e5adbeb6f40ead8&username=lambda
+      string: channel=%23test-log&text=event%3Atweet+start&token=xoxp-49827793543-51205615330-136715415287-4212f7726c2149283e5adbeb6f40ead8&username=lambda
     headers:
       Accept:
       - application/json; charset=utf-8
@@ -99,7 +31,7 @@ http_interactions:
       Cache-Control:
       - private, no-cache, no-store, must-revalidate
       Date:
-      - Sat, 13 May 2017 06:57:55 GMT
+      - Wed, 17 May 2017 15:53:43 GMT
       Expires:
       - Mon, 26 Jul 1997 05:00:00 GMT
       Pragma:
@@ -121,19 +53,87 @@ http_interactions:
       X-Slack-Backend:
       - h
       X-Slack-Req-Id:
-      - 3937e56a-5736-432c-947f-a9068d000876
+      - 7749cb5f-c2ce-48d2-8ed2-db0e49a2986a
       X-Xss-Protection:
       - '0'
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 4075ea0e2edefc2872b6d4d46995143d.cloudfront.net (CloudFront)
+      - 1.1 e73f6e68e88d27c02fd149c087c724ba.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - SsUKZIcG7tO_8Buk2qY3edKFWb6jKPHgqdgilyq_qmQP60ev7_GHSQ==
+      - 3UaFcD0UBmER7de9srp_gRq5aXqH4pSF1uCuHayIy19WDRD-inyJYA==
     body:
       encoding: ASCII-8BIT
-      string: '{"ok":true,"channel":"C3XRKQJ9Z","ts":"1494658675.321936","message":{"text":"event:tweet
-        end","username":"lambda","bot_id":"B3Z9C1G0G","type":"message","subtype":"bot_message","ts":"1494658675.321936"}}'
+      string: '{"ok":true,"channel":"C5E6H0Y8L","ts":"1495036423.771421","message":{"text":"event:tweet
+        start","username":"lambda","bot_id":"B3Z9C1G0G","type":"message","subtype":"bot_message","ts":"1495036423.771421"}}'
     http_version: 
-  recorded_at: Sat, 13 May 2017 06:57:55 GMT
+  recorded_at: Wed, 17 May 2017 15:53:43 GMT
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: channel=%23test-log&text=event%3Atweet+end&token=xoxp-49827793543-51205615330-136715415287-4212f7726c2149283e5adbeb6f40ead8&username=lambda
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Slack Ruby Gem 1.5.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '164'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Date:
+      - Wed, 17 May 2017 15:53:44 GMT
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Pragma:
+      - no-cache
+      Referrer-Policy:
+      - no-referrer
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Vary:
+      - Accept-Encoding
+      X-Accepted-Oauth-Scopes:
+      - chat:write:bot,post
+      X-Content-Type-Options:
+      - nosniff
+      X-Oauth-Scopes:
+      - identify,read,post,client,apps
+      X-Slack-Backend:
+      - h
+      X-Slack-Req-Id:
+      - b4f646cc-6619-4523-bb13-d1a25a79063c
+      X-Xss-Protection:
+      - '0'
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 d10ffdbff9008173a16a31e2f6c02dff.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - XPiYjeH2fRA-zEXpX0jMoSOzOeMKx5WkGeO3CGKSXA5swJmaTPkJvg==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":true,"channel":"C5E6H0Y8L","ts":"1495036424.771641","message":{"text":"event:tweet
+        end","username":"lambda","bot_id":"B3Z9C1G0G","type":"message","subtype":"bot_message","ts":"1495036424.771641"}}'
+    http_version: 
+  recorded_at: Wed, 17 May 2017 15:53:44 GMT
 recorded_with: VCR 3.0.3
