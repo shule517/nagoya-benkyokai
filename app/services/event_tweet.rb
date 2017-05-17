@@ -40,8 +40,7 @@ class TweetTomorrowEventService
         @twitter.tweet(message)
         event.update(tweeted_tomorrow: true)
       rescue => e
-        backtrace = e.backtrace.join("\n")
-        Slack.chat_postMessage text: "`#{e}\n#{backtrace}`\n#{message}\nevent-id:#{event.event_id}", username: 'lambda', channel: '#test-error'
+        Slack.chat_postMessage text: "`#{e}`\n#{message}\nevent-id:#{event.event_id}", username: 'lambda', channel: '#test-error'
         puts e
       end
     end
