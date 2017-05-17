@@ -57,7 +57,7 @@ namespace :twitter do
   desc '新着・明日ツイートのエラー解除'
   task error_clear: :environment do
     include Notifiable
-    notify('twitter:error_clear') do
+    notify('twitter:clear_error') do
       # 新着ツイートは全て完了したことにする
       Event.all.update_all(tweeted_new: true)
       # 明日ツイートは全て完了したことにする
