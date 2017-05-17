@@ -1,17 +1,18 @@
 class SearchEventService
-  def call(date, after_today = true)
-    search(date, after_today)
+  attr_reader :search_condition, :after_today
+  def call(search_condition, after_today = true)
+    @search_condition = search_condition.merge(keyword: keywords)
+    @after_today = after_today
+    search
   end
 
-  def search(date, after_today = true)
-    puts "collect date: #{date}"
-
+  def search
     # Connpass,Doorkeeperのイベントは全て勉強会として扱う
     apis = [Api::Connpass::ConnpassApi, Api::Doorkeeper::DoorkeeperApi]
-    events = apis.flat_map { |api| api.search(keyword: keywords, ym: date) }
+    events = apis.flat_map { |api| api.search(search_condition) }
 
     # Atndは勉強会以外のイベントもあるため、NGワードでしぼる
-    atnd_events = Api::Atnd::AtndApi.search(keyword: keywords, ym: date)
+    atnd_events = Api::Atnd::AtndApi.search(search_condition)
     atnd_events.select! { |event| ng_word?(event) }
     events = [*events, *atnd_events]
 
