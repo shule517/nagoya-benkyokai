@@ -1,4 +1,3 @@
-# encoding: utf-8
 require 'slack'
 require './app/services/http.rb'
 
