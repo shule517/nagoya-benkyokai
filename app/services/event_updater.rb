@@ -2,10 +2,10 @@ require 'tweet_event_service'
 
 class EventUpdater
   def call
-    SearchEventService.new.call(ym: collect_period).each do |event|
-      StoreEventService.new.call(event)
+    SearchEventService.new.call(ym: collect_period).each do |target_event|
+      event = StoreEventService.new.call(target_event)
+      UpdateTwitterListService.new.call(event)
     end
-    UpdateTwitterListService.new.call
     TweetNewEventService.new.call
   end
 

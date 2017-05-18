@@ -31,7 +31,7 @@ http_interactions:
       Cache-Control:
       - private, no-cache, no-store, must-revalidate
       Date:
-      - Wed, 17 May 2017 17:05:44 GMT
+      - Thu, 18 May 2017 14:30:55 GMT
       Expires:
       - Mon, 26 Jul 1997 05:00:00 GMT
       Pragma:
@@ -53,21 +53,21 @@ http_interactions:
       X-Slack-Backend:
       - h
       X-Slack-Req-Id:
-      - 0d6fbb58-4acb-401e-ac58-cb4768948eb5
+      - 673eda8f-23bc-4e52-b2f3-b6be134952f1
       X-Xss-Protection:
       - '0'
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 5cd53da5e433a0817805869e972f81a3.cloudfront.net (CloudFront)
+      - 1.1 65e1aa7b9d77422183e6aae2f76ec31c.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - n14dqVKqSpK7txBFl0QOrFm3eCztHcriLXpKNt6G3-bjOD1VIiZCcg==
+      - CcNZwEyYZQUaYup9A1tm3PHRu19C1UYhSi2FxJpLa-ETyzH0b41qsw==
     body:
       encoding: ASCII-8BIT
-      string: '{"ok":true,"channel":"C5E6H0Y8L","ts":"1495040744.402409","message":{"text":"event:tweet
-        start","username":"lambda","bot_id":"B3Z9C1G0G","type":"message","subtype":"bot_message","ts":"1495040744.402409"}}'
+      string: '{"ok":true,"channel":"C5E6H0Y8L","ts":"1495117855.750794","message":{"text":"event:tweet
+        start","username":"lambda","bot_id":"B3Z9C1G0G","type":"message","subtype":"bot_message","ts":"1495117855.750794"}}'
     http_version: 
-  recorded_at: Wed, 17 May 2017 17:05:44 GMT
+  recorded_at: Thu, 18 May 2017 14:30:56 GMT
 - request:
     method: post
     uri: https://slack.com/api/chat.postMessage
@@ -99,7 +99,7 @@ http_interactions:
       Cache-Control:
       - private, no-cache, no-store, must-revalidate
       Date:
-      - Wed, 17 May 2017 17:05:44 GMT
+      - Thu, 18 May 2017 14:30:55 GMT
       Expires:
       - Mon, 26 Jul 1997 05:00:00 GMT
       Pragma:
@@ -121,19 +121,19 @@ http_interactions:
       X-Slack-Backend:
       - h
       X-Slack-Req-Id:
-      - 740e53a0-92ca-4d6e-8d6e-ae87b9be7c97
+      - 7efc3f1b-9982-4f84-88fe-efeb7426e059
       X-Xss-Protection:
       - '0'
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 d6f98d2db857c32baf937a1afb4b1b6c.cloudfront.net (CloudFront)
+      - 1.1 267da846920abda366cb546e2d1bcf36.cloudfront.net (CloudFront)
       X-Amz-Cf-Id:
-      - 51gReREK3g6UF20AMiS3fr5pKdZGx-pcAdrRvqN4yyzNSTx3gfuKtg==
+      - faFPp4d23YmIALeBPG9OEW6tSCRe2CXIw7mzjo7q0-teYEIrJrEDgA==
     body:
       encoding: ASCII-8BIT
-      string: '{"ok":true,"channel":"C5E6H0Y8L","ts":"1495040744.402567","message":{"text":"event:tweet
-        end","username":"lambda","bot_id":"B3Z9C1G0G","type":"message","subtype":"bot_message","ts":"1495040744.402567"}}'
+      string: '{"ok":true,"channel":"C5E6H0Y8L","ts":"1495117855.750926","message":{"text":"event:tweet
+        end","username":"lambda","bot_id":"B3Z9C1G0G","type":"message","subtype":"bot_message","ts":"1495117855.750926"}}'
     http_version: 
-  recorded_at: Wed, 17 May 2017 17:05:44 GMT
+  recorded_at: Thu, 18 May 2017 14:30:56 GMT
 recorded_with: VCR 3.0.3

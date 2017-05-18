@@ -9,7 +9,7 @@ describe TweetTomorrowEventService, type: :request do
     StoreEventService.new.call(target_event)
     set_event(started_at: 1.day.since, ended_at: 1.day.since)
 
-    UpdateTwitterListService.new.call
+    UpdateTwitterListService.new.call(event)
     expect(twitter.list_exists?(event.twitter_list_url)).to eq true
     expect(event.tweeted_tomorrow).to eq false
 

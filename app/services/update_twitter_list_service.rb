@@ -1,13 +1,10 @@
 # DBの情報を元にツイッターリストを更新する
 class UpdateTwitterListService
-  def call
+  def call(event)
     twitter = TwitterClient.new
     lists = twitter.lists
 
-    events = Event.all.where('started_at >= ?', Date.today.strftime).order(:started_at)
-    events.each do |event|
-      UpdateTwitterList.new.call(event, lists)
-    end
+    UpdateTwitterList.new.call(event, lists)
   end
 end
 
