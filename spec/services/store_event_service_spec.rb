@@ -5,9 +5,9 @@ describe StoreEventService, type: :request do
   # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！
   describe 'atnd' do
     context '新規登録の場合', vcr: 'atnd' do
-      let(:events) { [Api::Atnd::AtndApi.find(event_id: 81945)] }
+      let(:target_event) { Api::Atnd::AtndApi.find(event_id: 81945) }
       let(:event) { Event.first }
-      before { StoreEventService.new.call(events) }
+      before { StoreEventService.new.call(target_event) }
       it {
         # イベント詳細
         expect(event.source).to eq 'ATND'
@@ -46,9 +46,9 @@ describe StoreEventService, type: :request do
   # JXUGC #14 Xamarinの場合
   describe 'connpass' do
     context '新規作成の場合', vcr: 'connpass' do
-      let(:events) { [Api::Connpass::ConnpassApi.find(event_id: 30152)] }
+      let(:target_event) { Api::Connpass::ConnpassApi.find(event_id: 30152) }
       let(:event) { Event.first }
-      before { StoreEventService.new.call(events) }
+      before { StoreEventService.new.call(target_event) }
       it {
         # イベント詳細
         expect(event.source).to eq 'connpass'
@@ -88,9 +88,9 @@ describe StoreEventService, type: :request do
   # リモート開発 de ナイト
   describe 'doorkeeper' do
     context '新規作成の場合', vcr: 'doorkeeper' do
-      let(:events) { [Api::Doorkeeper::DoorkeeperApi.find(event_id: 45257)] }
+      let(:target_event) { Api::Doorkeeper::DoorkeeperApi.find(event_id: 45257) }
       let(:event) { Event.first }
-      before { StoreEventService.new.call(events) }
+      before { StoreEventService.new.call(target_event) }
       it {
         # イベント詳細
         expect(event.source).to eq 'Doorkeeper'

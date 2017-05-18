@@ -1,9 +1,7 @@
 # イベント情報をDBへ登録する
 class StoreEventService
-  def call(events)
-    events.each do |event|
-      update_db(event)
-    end
+  def call(event)
+    update_db(event)
   end
 
   private

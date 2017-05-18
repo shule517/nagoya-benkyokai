@@ -4,9 +4,9 @@ describe UpdateTwitterListService, type: :request do
   include EventHelper
 
   let(:twitter) { TwitterClient.new }
-  let(:events) { [Api::Atnd::AtndApi.find(event_id: 81945)] }
+  let(:target_event) { Api::Atnd::AtndApi.find(event_id: 81945) }
   it 'リストを作成すること', vcr: 'create' do
-    StoreEventService.new.call(events)
+    StoreEventService.new.call(target_event)
     set_event(started_at: Time.now)
 
     UpdateTwitterListService.new.call
@@ -17,7 +17,7 @@ describe UpdateTwitterListService, type: :request do
   end
 
   it 'リストの更新ができること', vcr: 'update' do
-    StoreEventService.new.call(events)
+    StoreEventService.new.call(target_event)
     set_event(started_at: Time.now)
 
     UpdateTwitterListService.new.call
