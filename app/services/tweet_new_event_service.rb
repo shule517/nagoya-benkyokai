@@ -1,12 +1,12 @@
 class TweetNewEventService
   def call
-    @twitter = TwitterClient.new
+    twitter = TwitterClient.new
     events = Event.where('tweeted_new = ?', false)
     events.each do |event|
-      message = tweet_message(event)
+      message = '[新着] ' + tweet_message(event)
       puts "tweet - #{message}"
       begin
-        @twitter.tweet('[新着] ' + message)
+        twitter.tweet(message)
         event.update(tweeted_new: true)
       rescue => e
         Slack.chat_postMessage text: "#{e}\n#{message}\nevent-id:#{event.event_id}", username: 'lambda', channel: '#test-error'

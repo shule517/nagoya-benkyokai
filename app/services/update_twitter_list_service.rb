@@ -1,23 +1,17 @@
 # DBの情報を元にツイッターリストを更新する
 class UpdateTwitterListService
+  attr_reader :event, :twitter
   def call(event)
-    twitter = TwitterClient.new
-    lists = twitter.lists
-
-    UpdateTwitterList.new.call(event, lists)
-  end
-end
-
-class UpdateTwitterList
-  attr_reader :event, :lists, :twitter
-  def call(event, lists)
     @twitter = TwitterClient.new
     @event = event
-    @lists = lists
     update_twitter_list
   end
 
   private
+
+  def lists
+    @@lists ||= twitter.lists
+  end
 
   def update_twitter_list
     if lists.any? { |list| list[:uri] == event.twitter_list_url }
