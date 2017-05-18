@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-describe UpdateEventService, type: :request do
+describe StoreEventService, type: :request do
 
   # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！
   describe 'atnd' do
     context '新規登録の場合', vcr: 'atnd' do
       let(:events) { [Api::Atnd::AtndApi.find(event_id: 81945)] }
       let(:event) { Event.first }
-      before { UpdateEventService.new.call(events) }
+      before { StoreEventService.new.call(events) }
       it {
         # イベント詳細
         expect(event.source).to eq 'ATND'
@@ -48,7 +48,7 @@ describe UpdateEventService, type: :request do
     context '新規作成の場合', vcr: 'connpass' do
       let(:events) { [Api::Connpass::ConnpassApi.find(event_id: 30152)] }
       let(:event) { Event.first }
-      before { UpdateEventService.new.call(events) }
+      before { StoreEventService.new.call(events) }
       it {
         # イベント詳細
         expect(event.source).to eq 'connpass'
@@ -90,7 +90,7 @@ describe UpdateEventService, type: :request do
     context '新規作成の場合', vcr: 'doorkeeper' do
       let(:events) { [Api::Doorkeeper::DoorkeeperApi.find(event_id: 45257)] }
       let(:event) { Event.first }
-      before { UpdateEventService.new.call(events) }
+      before { StoreEventService.new.call(events) }
       it {
         # イベント詳細
         expect(event.source).to eq 'Doorkeeper'

@@ -6,7 +6,7 @@ describe TweetNewEventService, type: :request do
   let(:twitter) { TwitterClient.new }
   let(:events) { events = [Api::Atnd::AtndApi.find(event_id: 81945)] }
   it '新着ツイートができること', vcr: 'new' do
-    UpdateEventService.new.call(events)
+    StoreEventService.new.call(events)
     set_event(started_at: Time.now)
 
     UpdateTwitterListService.new.call

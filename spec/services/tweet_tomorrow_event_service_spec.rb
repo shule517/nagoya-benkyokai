@@ -6,7 +6,7 @@ describe TweetTomorrowEventService, type: :request do
   let(:twitter) { TwitterClient.new }
   let(:events) { [Api::Atnd::AtndApi.find(event_id: 81945)] }
   it '明日開かれる勉強会のツイートができること', vcr: 'tomorrow' do
-    UpdateEventService.new.call(events) # Eventレコードを作成
+    StoreEventService.new.call(events) # Eventレコードを作成
     set_event(started_at: 1.day.since, ended_at: 1.day.since)
 
     UpdateTwitterListService.new.call # リストを作成

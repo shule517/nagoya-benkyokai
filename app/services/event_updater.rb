@@ -3,7 +3,7 @@ require 'tweet_event_service'
 class EventUpdater
   def call
     events = SearchEventService.new.call(ym: collect_period)
-    UpdateEventService.new.call(events)
+    StoreEventService.new.call(events)
     UpdateTwitterListService.new.call
     TweetNewEventService.new.call
   end
