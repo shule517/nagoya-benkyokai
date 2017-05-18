@@ -6,8 +6,7 @@ describe StoreEventService, type: :request do
   describe 'atnd' do
     context '新規登録の場合', vcr: 'atnd' do
       let(:target_event) { Api::Atnd::AtndApi.find(event_id: 81945) }
-      let(:event) { Event.first }
-      before { StoreEventService.new.call(target_event) }
+      let(:event) { StoreEventService.new.call(target_event) }
       it {
         # イベント詳細
         expect(event.source).to eq 'ATND'
@@ -47,8 +46,7 @@ describe StoreEventService, type: :request do
   describe 'connpass' do
     context '新規作成の場合', vcr: 'connpass' do
       let(:target_event) { Api::Connpass::ConnpassApi.find(event_id: 30152) }
-      let(:event) { Event.first }
-      before { StoreEventService.new.call(target_event) }
+      let(:event) { StoreEventService.new.call(target_event) }
       it {
         # イベント詳細
         expect(event.source).to eq 'connpass'
@@ -89,8 +87,7 @@ describe StoreEventService, type: :request do
   describe 'doorkeeper' do
     context '新規作成の場合', vcr: 'doorkeeper' do
       let(:target_event) { Api::Doorkeeper::DoorkeeperApi.find(event_id: 45257) }
-      let(:event) { Event.first }
-      before { StoreEventService.new.call(target_event) }
+      let(:event) { StoreEventService.new.call(target_event) }
       it {
         # イベント詳細
         expect(event.source).to eq 'Doorkeeper'
