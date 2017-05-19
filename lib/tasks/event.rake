@@ -20,7 +20,7 @@ namespace :event do
   task update: :environment do
     include Notifiable
     notify('event:update') do
-      EventUpdater.new.call
+      UpdateEventService.new.call
     end
   end
 
