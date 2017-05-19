@@ -9,7 +9,7 @@ module Api
         result.twitter_id = twitter_id   if twitter_id.present?
         result.facebook_id = facebook_id if facebook_id.present?
         result.github_id = github_id     if github_id.present?
-        result.image_url = image_url      if image_url.present? && image_url !~ /user_no_image/
+        result.image_url = image_url     if image_url.present? && image_url !~ /user_no_image/
         result.save
         return result
       else
