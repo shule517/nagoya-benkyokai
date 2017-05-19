@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: channel=%23test-error&text=TwitterCient.add_list_member%28list_id%3A+%2C+user_id%3A+%29%0ARuntimeError%0A%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0430%2Fapp%2Fservices%2Ftwitter_client.rb%3A174%3Ain+%60add_list_member%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0430%2Fspec%2Fservices%2Ftwitter_client_spec.rb%3A26%3Ain+%60block+%284+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-expectations-3.6.0%2Flib%2Frspec%2Fmatchers%2Fbuilt_in%2Fraise_error.rb%3A52%3Ain+%60matches%3F%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-expectations-3.6.0%2Flib%2Frspec%2Fexpectations%2Fhandler.rb%3A50%3Ain+%60block+in+handle_matcher%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-expectations-3.6.0%2Flib%2Frspec%2Fexpectations%2Fhandler.rb%3A27%3Ain+%60with_matcher%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-expectations-3.6.0%2Flib%2Frspec%2Fexpectations%2Fhandler.rb%3A48%3Ain+%60handle_matcher%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-expectations-3.6.0%2Flib%2Frspec%2Fexpectations%2Fexpectation_target.rb%3A65%3Ain+%60to%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-expectations-3.6.0%2Flib%2Frspec%2Fexpectations%2Fexpectation_target.rb%3A101%3Ain+%60to%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0430%2Fspec%2Fservices%2Ftwitter_client_spec.rb%3A26%3Ain+%60block+%283+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A254%3Ain+%60instance_exec%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A254%3Ain+%60block+in+run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A500%3Ain+%60block+in+with_around_and_singleton_context_hooks%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A457%3Ain+%60block+in+with_around_example_hooks%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fhooks.rb%3A464%3Ain+%60block+in+run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fhooks.rb%3A604%3Ain+%60block+in+run_around_example_hooks_for%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A342%3Ain+%60call%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-rails-3.6.0%2Flib%2Frspec%2Frails%2Fadapters.rb%3A127%3Ain+%60block+%282+levels%29+in+%3Cmodule%3AMinitestLifecycleAdapter%3E%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A447%3Ain+%60instance_exec%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A447%3Ain+%60instance_exec%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fhooks.rb%3A375%3Ain+%60execute_with%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fhooks.rb%3A606%3Ain+%60block+%282+levels%29+in+run_around_example_hooks_for%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A342%3Ain+%60call%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0430%2Fspec%2Fspec_helper.rb%3A27%3Ain+%60block+%283+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Fvcr-3.0.3%2Flib%2Fvcr%2Futil%2Fvariable_args_block_caller.rb%3A9%3Ain+%60call_block%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Fvcr-3.0.3%2Flib%2Fvcr.rb%3A189%3Ain+%60use_cassette%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0430%2Fspec%2Fspec_helper.rb%3A26%3Ain+%60block+%282+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A447%3Ain+%60instance_exec%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A447%3Ain+%60instance_exec%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fhooks.rb%3A375%3Ain+%60execute_with%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fhooks.rb%3A606%3Ain+%60block+%282+levels%29+in+run_around_example_hooks_for%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A342%3Ain+%60call%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fhooks.rb%3A607%3Ain+%60run_around_example_hooks_for%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fhooks.rb%3A464%3Ain+%60run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A457%3Ain+%60with_around_example_hooks%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A500%3Ain+%60with_around_and_singleton_context_hooks%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A251%3Ain+%60run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample_group.rb%3A627%3Ain+%60block+in+run_examples%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample_group.rb%3A623%3Ain+%60map%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample_group.rb%3A623%3Ain+%60run_examples%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample_group.rb%3A589%3Ain+%60run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample_group.rb%3A590%3Ain+%60block+in+run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample_group.rb%3A590%3Ain+%60map%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample_group.rb%3A590%3Ain+%60run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Frunner.rb%3A118%3Ain+%60block+%283+levels%29+in+run_specs%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Frunner.rb%3A118%3Ain+%60map%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Frunner.rb%3A118%3Ain+%60block+%282+levels%29+in+run_specs%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fconfiguration.rb%3A1894%3Ain+%60with_suite_hooks%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Frunner.rb%3A113%3Ain+%60block+in+run_specs%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Freporter.rb%3A79%3Ain+%60report%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Frunner.rb%3A112%3Ain+%60run_specs%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Frunner.rb%3A87%3Ain+%60run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Frunner.rb%3A71%3Ain+%60run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Frunner.rb%3A45%3Ain+%60invoke%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Fexe%2Frspec%3A4%3Ain+%60%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Fbin%2Frspec%3A22%3Ain+%60load%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Fbin%2Frspec%3A22%3Ain+%60%3Cmain%3E%27&token=xoxp-49827793543-51205615330-136715415287-4212f7726c2149283e5adbeb6f40ead8&username=lambda
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Slack Ruby Gem 1.5.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '576'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Date:
+      - Fri, 19 May 2017 13:21:22 GMT
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Pragma:
+      - no-cache
+      Referrer-Policy:
+      - no-referrer
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Vary:
+      - Accept-Encoding
+      X-Accepted-Oauth-Scopes:
+      - chat:write:bot,post
+      X-Content-Type-Options:
+      - nosniff
+      X-Oauth-Scopes:
+      - identify,read,post,client,apps
+      X-Slack-Backend:
+      - h
+      X-Slack-Req-Id:
+      - 05c9343c-d2ae-4d5e-a528-75f26d3d4fbc
+      X-Xss-Protection:
+      - '0'
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 8afc3f299389b6df1d38dfe8a5520639.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - x1g6mc_YaxOmCrHJ4YdKN111eIbrTsUyiozWj_wekutcSZmuunSPFA==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":true,"channel":"C5EV5AFFZ","ts":"1495200082.807120","message":{"text":"\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/hooks.rb:606:in
+        `block (2 levels) in run_around_example_hooks_for''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/example.rb:342:in
+        `call''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/hooks.rb:607:in
+        `run_around_example_hooks_for''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/hooks.rb:464:in
+        `run''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/example.rb:457:in
+        `with_around_example_hooks''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/example.rb:500:in
+        `with_around_and_singleton_context_hooks''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/example.rb:251:in
+        `run''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/example_group.rb:627:in
+        `block in run_examples''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/example_group.rb:623:in
+        `map''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/example_group.rb:623:in
+        `run_examples''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/example_group.rb:589:in
+        `run''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/example_group.rb:590:in
+        `block in run''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/example_group.rb:590:in
+        `map''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/example_group.rb:590:in
+        `run''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/runner.rb:118:in
+        `block (3 levels) in run_specs''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/runner.rb:118:in
+        `map''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/runner.rb:118:in
+        `block (2 levels) in run_specs''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/configuration.rb:1894:in
+        `with_suite_hooks''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/runner.rb:113:in
+        `block in run_specs''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/reporter.rb:79:in
+        `report''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/runner.rb:112:in
+        `run_specs''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/runner.rb:87:in
+        `run''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/runner.rb:71:in
+        `run''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/runner.rb:45:in
+        `invoke''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/exe\/rspec:4:in
+        `&lt;top (required)&gt;''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/bin\/rspec:22:in
+        `load''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/bin\/rspec:22:in `&lt;main&gt;''","username":"lambda","bot_id":"B3Z9C1G0G","is_auto_split":true,"attachments":null,"type":"message","subtype":"bot_message","ts":"1495200082.807120"}}'
+    http_version: 
+  recorded_at: Fri, 19 May 2017 13:21:22 GMT
+recorded_with: VCR 3.0.3

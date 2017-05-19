@@ -3,8 +3,47 @@ require 'rails_helper'
 describe TwitterClient, type: :request do
   let(:client) { TwitterClient.new }
 
-  it 'tweetできること', vcr: '#tweet' do
-    expect { client.tweet('テスト') }.not_to raise_error
+  describe '#notify Slackに通知されること' do
+    it '#tweet', vcr: '#notify-tweet' do
+      expect { client.tweet(nil) }.to raise_error Twitter::Error::Forbidden
+    end
+    it '#list_exists?', vcr: '#notify-list_exists?' do
+      expect { client.list_exists?(nil) }.to raise_error Twitter::Error::BadRequest
+    end
+    it '#create_list', vcr: '#notify-create_list' do
+      expect { client.create_list(nil, nil) }.to raise_error NoMethodError
+    end
+    it '#list', vcr: '#notify-list' do
+      expect { client.list(nil) }.to raise_error Twitter::Error::BadRequest
+    end
+    it '#lists', vcr: '#notify-lists' do
+      expect { client.lists(nil) }.to raise_error TypeError
+    end
+    it '#update_list', vcr: '#notify-update_list' do
+      expect { client.update_list(nil, nil, nil) }.to raise_error NoMethodError
+    end
+    it '#destroy_list', vcr: '#notify-destroy_list' do
+      expect { client.destroy_list(nil) }.to raise_error Twitter::Error::BadRequest
+    end
+    it '#add_list_member', vcr: '#notify-add_list_member' do
+      expect { client.add_list_member(nil, nil) }.to raise_error RuntimeError
+    end
+    it '#list_members', vcr: '#notify-list_members' do
+      expect { client.list_members(nil) }.to raise_error Twitter::Error::BadRequest
+    end
+  end
+
+  describe '#tweet' do
+    context '140文字以内の場合' do
+      it 'tweetできること', vcr: '#tweet' do
+        expect { client.tweet('テスト') }.not_to raise_error
+      end
+    end
+    context '140文字を超えた場合' do
+      it 'tweetできること', vcr: '#tweet-140over' do
+        expect { client.tweet('12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890X') }.to raise_error Tweet140OverError
+      end
+    end
   end
 
   describe 'リスト機能' do
@@ -18,8 +57,8 @@ describe TwitterClient, type: :request do
       expect(list.id).to be > 0
     end
 
-    it 'リスト１０００件の状態でリストを作成する', vcr: '#create_list_ng' do
-      expect { client.create_list(name, description) }.to raise_error TooManyLists
+    it 'リスト1000件の状態でリストを作成する', vcr: '#create_list_ng' do
+      expect { client.create_list(name, description) }.to raise_error TooManyListsError
     end
 
     it 'リストが更新できること', vcr: '#update_list' do

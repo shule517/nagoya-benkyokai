@@ -1,0 +1,232 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/account/verify_credentials.json?skip_status=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/6.1.0
+      Authorization:
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="3bcddb388f25a2480905a2b866ef3134",
+        oauth_signature="kDWceuTkt%2FphoeYrCvovqhXy8Do%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1495198693", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Fri, 19 May 2017 12:58:13 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Fri, 19 May 2017 12:58:13 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A149519869375450342; Domain=.twitter.com; Path=/; Expires=Sun,
+        19-May-2019 12:58:13 UTC
+      - lang=ja; Path=/
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=631138519
+      Transfer-Encoding:
+      - chunked
+      X-Access-Level:
+      - read-write
+      X-Connection-Hash:
+      - aaa648fd3e1fffebe5c65744dce6fe78
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '75'
+      X-Rate-Limit-Remaining:
+      - '73'
+      X-Rate-Limit-Reset:
+      - '1495199270'
+      X-Response-Time:
+      - '187'
+      X-Transaction:
+      - 0000ee1d00fdff47
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      - BouncerExempt
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":825641644863033345,"id_str":"825641644863033345","name":"\u30b7\u30e5\u30fc\u30eb(\u958b\u767a\u7528)","screen_name":"shule517_dev","location":"\u306a\u3054\u3084","description":"@shule517\u306e\u958b\u767a\u7528\u30a2\u30ab\u30a6\u30f3\u30c8\u3067\u3059\uff01","url":"https:\/\/t.co\/75FLedYlUR","entities":{"url":{"urls":[{"url":"https:\/\/t.co\/75FLedYlUR","expanded_url":"http:\/\/nagoya-benkyokai.com","display_url":"nagoya-benkyokai.com","indices":[0,23]}]},"description":{"urls":[]}},"protected":true,"followers_count":1,"friends_count":0,"listed_count":0,"created_at":"Sun
+        Jan 29 09:48:02 +0000 2017","favourites_count":14,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":558,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/825642834816487425\/8Hl3jym8_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/825642834816487425\/8Hl3jym8_normal.jpg","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
+    http_version: 
+  recorded_at: Fri, 19 May 2017 12:58:14 GMT
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/lists/show.json?owner_id=825641644863033345
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/6.1.0
+      Authorization:
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="7e160d196d75316fae786701342c4e0e",
+        oauth_signature="pypONgCavE3FgISKT7MaqxPy2bw%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1495198694", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Fri, 19 May 2017 12:58:14 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Fri, 19 May 2017 12:58:14 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A149519869405140998; Domain=.twitter.com; Path=/; Expires=Sun,
+        19-May-2019 12:58:14 UTC
+      - lang=ja; Path=/
+      Status:
+      - 400 Bad Request
+      Strict-Transport-Security:
+      - max-age=631138519
+      Transfer-Encoding:
+      - chunked
+      X-Access-Level:
+      - read-write
+      X-Connection-Hash:
+      - d5edd5d698b8bb08eead240a17ff7a02
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '75'
+      X-Rate-Limit-Remaining:
+      - '73'
+      X-Rate-Limit-Reset:
+      - '1495199270'
+      X-Response-Time:
+      - '109'
+      X-Transaction:
+      - 00ebde5300c94a66
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"code":112,"message":"You must specify either a list ID
+        or a slug and owner."}]}'
+    http_version: 
+  recorded_at: Fri, 19 May 2017 12:58:14 GMT
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: channel=%23test-error&text=TwitterCient.list_exists%3F%28list_id%3A+%29%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Ftwitter-6.1.0%2Flib%2Ftwitter%2Frest%2Fresponse%2Fraise_error.rb%3A13%3Ain+%60on_complete%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Ffaraday-0.11.0%2Flib%2Ffaraday%2Fresponse.rb%3A9%3Ain+%60block+in+call%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Ffaraday-0.11.0%2Flib%2Ffaraday%2Fresponse.rb%3A61%3Ain+%60on_complete%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Ffaraday-0.11.0%2Flib%2Ffaraday%2Fresponse.rb%3A8%3Ain+%60call%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Ffaraday-0.11.0%2Flib%2Ffaraday%2Frequest%2Furl_encoded.rb%3A15%3Ain+%60call%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Ffaraday-0.11.0%2Flib%2Ffaraday%2Frequest%2Fmultipart.rb%3A14%3Ain+%60call%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Ftwitter-6.1.0%2Flib%2Ftwitter%2Frest%2Frequest%2Fmultipart_with_file.rb%3A21%3Ain+%60call%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Ffaraday-0.11.0%2Flib%2Ffaraday%2Frack_builder.rb%3A139%3Ain+%60build_response%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Ffaraday-0.11.0%2Flib%2Ffaraday%2Fconnection.rb%3A377%3Ain+%60run_request%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Ffaraday-0.11.0%2Flib%2Ffaraday%2Fconnection.rb%3A140%3Ain+%60get%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Ftwitter-6.1.0%2Flib%2Ftwitter%2Frest%2Frequest.rb%3A33%3Ain+%60perform%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Ftwitter-6.1.0%2Flib%2Ftwitter%2Frest%2Futils.rb%3A50%3Ain+%60perform_request%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Ftwitter-6.1.0%2Flib%2Ftwitter%2Frest%2Futils.rb%3A72%3Ain+%60perform_request_with_object%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Ftwitter-6.1.0%2Flib%2Ftwitter%2Frest%2Flists.rb%3A423%3Ain+%60list_from_response%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Ftwitter-6.1.0%2Flib%2Ftwitter%2Frest%2Flists.rb%3A352%3Ain+%60list%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0430%2Fapp%2Fservices%2Ftwitter_client.rb%3A41%3Ain+%60list_exists%3F%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0430%2Fspec%2Fservices%2Ftwitter_client_spec.rb%3A11%3Ain+%60block+%284+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-expectations-3.6.0%2Flib%2Frspec%2Fmatchers%2Fbuilt_in%2Fraise_error.rb%3A52%3Ain+%60matches%3F%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-expectations-3.6.0%2Flib%2Frspec%2Fexpectations%2Fhandler.rb%3A50%3Ain+%60block+in+handle_matcher%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-expectations-3.6.0%2Flib%2Frspec%2Fexpectations%2Fhandler.rb%3A27%3Ain+%60with_matcher%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-expectations-3.6.0%2Flib%2Frspec%2Fexpectations%2Fhandler.rb%3A48%3Ain+%60handle_matcher%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-expectations-3.6.0%2Flib%2Frspec%2Fexpectations%2Fexpectation_target.rb%3A65%3Ain+%60to%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-expectations-3.6.0%2Flib%2Frspec%2Fexpectations%2Fexpectation_target.rb%3A101%3Ain+%60to%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0430%2Fspec%2Fservices%2Ftwitter_client_spec.rb%3A11%3Ain+%60block+%283+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A254%3Ain+%60instance_exec%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A254%3Ain+%60block+in+run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A500%3Ain+%60block+in+with_around_and_singleton_context_hooks%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A457%3Ain+%60block+in+with_around_example_hooks%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fhooks.rb%3A464%3Ain+%60block+in+run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fhooks.rb%3A604%3Ain+%60block+in+run_around_example_hooks_for%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A342%3Ain+%60call%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-rails-3.6.0%2Flib%2Frspec%2Frails%2Fadapters.rb%3A127%3Ain+%60block+%282+levels%29+in+%3Cmodule%3AMinitestLifecycleAdapter%3E%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A447%3Ain+%60instance_exec%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A447%3Ain+%60instance_exec%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fhooks.rb%3A375%3Ain+%60execute_with%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fhooks.rb%3A606%3Ain+%60block+%282+levels%29+in+run_around_example_hooks_for%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A342%3Ain+%60call%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0430%2Fspec%2Fspec_helper.rb%3A27%3Ain+%60block+%283+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Fvcr-3.0.3%2Flib%2Fvcr%2Futil%2Fvariable_args_block_caller.rb%3A9%3Ain+%60call_block%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Fvcr-3.0.3%2Flib%2Fvcr.rb%3A189%3Ain+%60use_cassette%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0430%2Fspec%2Fspec_helper.rb%3A26%3Ain+%60block+%282+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A447%3Ain+%60instance_exec%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A447%3Ain+%60instance_exec%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fhooks.rb%3A375%3Ain+%60execute_with%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fhooks.rb%3A606%3Ain+%60block+%282+levels%29+in+run_around_example_hooks_for%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A342%3Ain+%60call%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fhooks.rb%3A607%3Ain+%60run_around_example_hooks_for%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fhooks.rb%3A464%3Ain+%60run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A457%3Ain+%60with_around_example_hooks%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A500%3Ain+%60with_around_and_singleton_context_hooks%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample.rb%3A251%3Ain+%60run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample_group.rb%3A627%3Ain+%60block+in+run_examples%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample_group.rb%3A623%3Ain+%60map%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample_group.rb%3A623%3Ain+%60run_examples%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample_group.rb%3A589%3Ain+%60run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample_group.rb%3A590%3Ain+%60block+in+run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample_group.rb%3A590%3Ain+%60map%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fexample_group.rb%3A590%3Ain+%60run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Frunner.rb%3A118%3Ain+%60block+%283+levels%29+in+run_specs%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Frunner.rb%3A118%3Ain+%60map%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Frunner.rb%3A118%3Ain+%60block+%282+levels%29+in+run_specs%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Fconfiguration.rb%3A1894%3Ain+%60with_suite_hooks%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Frunner.rb%3A113%3Ain+%60block+in+run_specs%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Freporter.rb%3A79%3Ain+%60report%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Frunner.rb%3A112%3Ain+%60run_specs%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Frunner.rb%3A87%3Ain+%60run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Frunner.rb%3A71%3Ain+%60run%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Flib%2Frspec%2Fcore%2Frunner.rb%3A45%3Ain+%60invoke%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Flib%2Fruby%2Fgems%2F2.4.0%2Fgems%2Frspec-core-3.6.0%2Fexe%2Frspec%3A4%3Ain+%60%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Fbin%2Frspec%3A22%3Ain+%60load%27%0A%2FUsers%2Fshule%2F.rbenv%2Fversions%2F2.4.1%2Fbin%2Frspec%3A22%3Ain+%60%3Cmain%3E%27&token=xoxp-49827793543-51205615330-136715415287-4212f7726c2149283e5adbeb6f40ead8&username=lambda
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Slack Ruby Gem 1.5.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '395'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Date:
+      - Fri, 19 May 2017 12:58:14 GMT
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Pragma:
+      - no-cache
+      Referrer-Policy:
+      - no-referrer
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Vary:
+      - Accept-Encoding
+      X-Accepted-Oauth-Scopes:
+      - chat:write:bot,post
+      X-Content-Type-Options:
+      - nosniff
+      X-Oauth-Scopes:
+      - identify,read,post,client,apps
+      X-Slack-Backend:
+      - h
+      X-Slack-Req-Id:
+      - 8aeef78f-8617-49a3-b112-56bc7d1b749f
+      X-Xss-Protection:
+      - '0'
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 1e448f21c935951f1833e4702551e3b3.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - OPOOgv1RUSvvoFj2VSJh1WvHFngyUh-m_b34CaCw3bSwwqrtZBMNow==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":true,"channel":"C5EV5AFFZ","ts":"1495198694.297225","message":{"text":"\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/configuration.rb:1894:in
+        `with_suite_hooks''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/runner.rb:113:in
+        `block in run_specs''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/reporter.rb:79:in
+        `report''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/runner.rb:112:in
+        `run_specs''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/runner.rb:87:in
+        `run''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/runner.rb:71:in
+        `run''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/lib\/rspec\/core\/runner.rb:45:in
+        `invoke''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/lib\/ruby\/gems\/2.4.0\/gems\/rspec-core-3.6.0\/exe\/rspec:4:in
+        `&lt;top (required)&gt;''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/bin\/rspec:22:in
+        `load''\n\/Users\/shule\/.rbenv\/versions\/2.4.1\/bin\/rspec:22:in `&lt;main&gt;''","username":"lambda","bot_id":"B3Z9C1G0G","is_auto_split":true,"attachments":null,"type":"message","subtype":"bot_message","ts":"1495198694.297225"}}'
+    http_version: 
+  recorded_at: Fri, 19 May 2017 12:58:15 GMT
+recorded_with: VCR 3.0.3

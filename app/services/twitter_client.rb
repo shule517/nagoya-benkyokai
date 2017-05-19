@@ -1,4 +1,12 @@
-class TooManyLists < StandardError
+class TooManyListsError < StandardError
+end
+
+class Tweet140OverError < StandardError
+end
+
+def notify(e, text)
+  trace = e.backtrace.join("\n")
+  Slack.chat_postMessage text: "#{text}\n#{e.class}\n#{e.message}\n#{trace}", channel: '#test-error', username: 'lambda'
 end
 
 class TwitterClient
@@ -16,21 +24,27 @@ class TwitterClient
     lists = []
     next_cursor = -1
     4.times.flat_map {
-      owned_lists = client.owned_lists(cursor: next_cursor, count: 250)
+      owned_lists = client.owned_lists({ cursor: next_cursor, count: 250 }.merge(option))
       next_cursor = owned_lists.attrs[:next_cursor]
       p next_cursor
       lists = [*lists, *owned_lists.attrs[:lists]]
       break if next_cursor == 0
     }
     lists
+  rescue => e
+    notify(e, "TwitterCient.lists(option: #{option})")
+    raise
   end
 
   def list_exists?(list_id)
     puts "list_exists?(#{list_id})"
-    list(list_id)
+    client.list(list_id)
     return true
   rescue Twitter::Error::NotFound
     return false
+  rescue => e
+    notify(e, "TwitterCient.list_exists?(list_id: #{list_id})")
+    raise
   end
 
   def mode
@@ -121,7 +135,11 @@ class TwitterClient
     client.create_list(title, description: description, mode: mode)
   rescue Twitter::Error::Forbidden => e
     puts "#{e}\ntitle:#{title} description:#{description}"
-    raise TooManyLists if e.to_s.include?('This user has too many lists.')
+    raise TooManyListsError if e.message == 'The list failed validation: This user has too many lists.'
+    notify(e, "TwitterCient.create_list(title: #{title}, description: #{description})")
+  rescue => e
+    notify(e, "TwitterCient.create_list(title: #{title}, description: #{description})")
+    raise
   end
 
   def update_list(uri, title, description)
@@ -132,41 +150,57 @@ class TwitterClient
   rescue Twitter::Error::Forbidden => e
     puts "#{e}\nuri:#{uri} list_name:#{list_name} description:#{description}"
   rescue => e
-    puts "#{e}\nuri:#{uri} list_name:#{list_name} description:#{description}"
+    notify(e, "TwitterCient.update_list(uri: #{uri}, title: #{title}, description: #{description})")
+    raise
   end
 
   def destroy_list(event_id)
     puts "destroy_list(#{event_id})"
     client.destroy_list(event_id)
+  rescue => e
+    notify(e, "TwitterCient.destroy_list(event_id: #{event_id})")
+    raise
   end
 
   def add_list_member(list_id, user_id)
     puts "add_list_member(#{list_id}, #{user_id})"
     case user_id
     when String
-      client.add_list_member(list_id, user_id)
+      p client.add_list_member(list_id, user_id)
     when Array
       return if user_id.empty?
-      client.add_list_members(list_id, user_id)
+      p client.add_list_members(list_id, user_id)
+    else
+      fail
     end
   rescue Twitter::Error::Forbidden
     puts "Error: #{user_id}をリストに追加する権限がありません。"
+  rescue => e
+    notify(e, "TwitterCient.add_list_member(list_id: #{list_id}, user_id: #{user_id})")
+    raise
   end
 
   def list(list_id)
     puts "list(#{list_id})"
     client.list(list_id)
+  rescue => e
+    notify(e, "TwitterCient.list(list_id: #{list_id})")
+    raise
   end
 
   def list_members(list_id)
     puts "list_members(#{list_id})"
     client.list_members(list_id)
   rescue => e
-    p e
-    []
+    notify(e, "TwitterCient.list_members(list_id: #{list_id})")
+    raise
   end
 
   def tweet(message)
     client.update(message)
+  rescue => e
+    raise Tweet140OverError if e.message == 'Status is over 140 characters.'
+    notify(e, "TwitterCient.tweet(message: #{message})")
+    raise
   end
 end
