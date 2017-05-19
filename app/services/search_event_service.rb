@@ -20,7 +20,6 @@ class SearchEventService
 
     events.select! { |event| event.started_at >= Date.today } if after_today
     events.select! { |event| aichi?(event) }
-    events = events.group_by(&:event_id).map { |event| event[1].first }
     events.sort_by! { |event| event.started_at }
   end
 
