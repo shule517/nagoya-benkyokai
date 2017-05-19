@@ -4,11 +4,6 @@ end
 class Tweet140OverError < StandardError
 end
 
-def notify(e, text)
-  trace = e.backtrace.join("\n")
-  Slack.chat_postMessage text: "#{text}\n#{e.class}\n#{e.message}\n#{trace}", channel: '#test-error', username: 'lambda'
-end
-
 class TwitterClient
   attr_reader :client
   def initialize
@@ -202,5 +197,12 @@ class TwitterClient
     raise Tweet140OverError if e.message == 'Status is over 140 characters.'
     notify(e, "TwitterCient.tweet(message: #{message})")
     raise
+  end
+
+  private
+
+  def notify(e, text)
+    trace = e.backtrace.join("\n")
+    Slack.chat_postMessage text: "#{text}\n#{e.class}\n#{e.message}\n#{trace}", channel: '#test-error', username: 'lambda'
   end
 end
