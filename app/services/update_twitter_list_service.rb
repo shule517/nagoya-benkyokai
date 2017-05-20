@@ -10,11 +10,25 @@ class UpdateTwitterListService
   private
 
   def lists
-    @@lists ||= twitter.lists
+    @lists ||= begin
+      twitter.lists.tap do |lists|
+        lists.each do |list|
+          list[:uri] = "https://twitter.com#{list[:uri]}".gsub('lists/', '')
+        end
+      end
+    end
+  end
+
+  def equal_lists?(list)
+    list[:uri].to_s == event.twitter_list_url
+  end
+
+  def exists_list?
+    lists.any? { |list| equal_lists?(list) }
   end
 
   def update_twitter_list
-    if lists.any? { |list| list[:uri] == event.twitter_list_url }
+    if exists_list?
       update_list
     else
       create_list
@@ -25,8 +39,9 @@ class UpdateTwitterListService
   def update_list
     puts "update list: #{description}"
     updated_list = twitter.update_list(event.twitter_list_url, event.title, description)
-    old_list = lists.find { |list| list[:uri] == event.twitter_list_url }
-    old_list = updated_list
+    old_list = lists.find { |list| equal_lists?(list) }
+    lists.delete(old_list)
+    lists << updated_list
     event.twitter_list_name = updated_list.name
     event.twitter_list_url = updated_list.uri
     event.save

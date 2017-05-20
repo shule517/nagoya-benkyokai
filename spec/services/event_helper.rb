@@ -1,6 +1,5 @@
 module EventHelper
-  def set_event(param)
-    event = Event.first
+  def set_event(event, param)
     param.each do |k, v|
       eval("event.#{k} = '#{v}'")
     end
