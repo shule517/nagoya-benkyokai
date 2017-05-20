@@ -1,8 +1,9 @@
 class UpdateEventService
   def call
+    lists = TwitterClient.new.lists
     SearchEventService.new.call(ym: collect_period).each do |target_event|
       event = StoreEventService.new.call(target_event)
-      UpdateTwitterListService.new.call(event)
+      UpdateTwitterListService.new.call(event, lists)
     end
     TweetNewEventService.new.call
   end

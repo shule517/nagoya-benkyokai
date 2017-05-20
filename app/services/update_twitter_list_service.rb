@@ -1,26 +1,21 @@
 # DBの情報を元にツイッターリストを更新する
 class UpdateTwitterListService
-  attr_reader :event, :twitter
-  def call(event)
+  attr_reader :event, :twitter, :lists
+  def call(event, lists = nil)
     @twitter = TwitterClient.new
     @event = event
+    if lists
+      @lists = lists
+    else
+      @lists = twitter.lists
+    end
     update_twitter_list
   end
 
   private
 
-  def lists
-    @lists ||= begin
-      twitter.lists.tap do |lists|
-        lists.each do |list|
-          list[:uri] = "https://twitter.com#{list[:uri]}".gsub('lists/', '')
-        end
-      end
-    end
-  end
-
   def equal_lists?(list)
-    list[:uri].to_s == event.twitter_list_url
+    event.twitter_list_url&.include?(list[:slug])
   end
 
   def exists_list?
