@@ -7,7 +7,7 @@ describe TweetTomorrowEventService, type: :request do
   let(:target_event) { Api::Atnd::AtndApi.find(event_id: 81945) }
   it '明日開かれる勉強会のツイートができること', vcr: 'tomorrow' do
     StoreEventService.new.call(target_event)
-    set_event(started_at: 1.day.since, ended_at: 1.day.since)
+    set_event(event, started_at: 1.day.since, ended_at: 1.day.since)
 
     UpdateTwitterListService.new.call(event)
     expect(twitter.list_exists?(event.twitter_list_url)).to eq true
