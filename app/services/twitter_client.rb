@@ -1,9 +1,5 @@
-class TooManyListsError < StandardError
-end
-
-class Tweet140OverError < StandardError
-end
-
+class TooManyListsError < StandardError;end
+class Tweet140OverError < StandardError;end
 class TwitterClient
   attr_reader :client
   def initialize
