@@ -7,7 +7,7 @@ module Notifiable
       Slack.chat_postMessage text: "#{task} start", channel: '#test-log', username: 'lambda'
       yield
     rescue => e
-      backtrace = e.backtrace.join("\n")
+      backtrace = e.backtrace.reject { |trace| trace.include?('/app/vendor') || trace.include?('.rbenv') }.join("\n")
       Slack.chat_postMessage text: "#{task} #{e}\n#{backtrace}", channel: '#test-error', username: 'lambda'
     ensure
       Slack.chat_postMessage text: "#{task} end", channel: '#test-log', username: 'lambda'
