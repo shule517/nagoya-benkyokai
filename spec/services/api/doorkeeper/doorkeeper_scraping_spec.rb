@@ -43,4 +43,40 @@ describe DoorkeeperScraping, type: :request do
       expect(event.catch).to start_with '「Scratch Day &amp; Hour of Code in 豊橋」を全国のCoderDojoに合わせて開催します。今回はScratchやTickle（iPadを使用）、Scratch制御のリモコンカー等のワークショップを行います。'
     end
   end
+
+  describe '#catch' do
+    context 'catchが設定されている場合'
+    context 'catchが設定されていない場合'
+  end
+
+  describe '#logo' do
+    context 'logoが設定されている場合'
+    context 'logoが設定されていない場合'
+  end
+
+  describe '#get_social_id' do
+    describe '#twitter_id' do
+      context 'twitter_idが設定されている場合'
+      context 'twitter_idが設定されていない場合' # nilであること
+    end
+    describe '#facebook_id' do
+      context 'facebook_idが設定されている場合'
+      context 'facebook_idが設定されていない場合' # nilであること
+    end
+  end
+
+  describe '#users' do
+    context '画像が設定されている場合'
+    context '画像が設定されていない場合'
+    context 'httpsからはじまる場合'
+    context 'httpsからはじまらない場合'
+    context '参加者がいない場合'
+  end
+
+  describe '#owner' do
+    context 'owner_info.empty?の場合'
+    context '画像が設定されている場合'
+    context '画像が設定されていない場合'
+    context '管理者がいない場合'
+  end
 end

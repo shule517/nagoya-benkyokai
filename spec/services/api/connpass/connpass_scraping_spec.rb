@@ -29,14 +29,105 @@ describe ConnpassScraping, type: :request do
       let(:shule) { event.users.select { |user| user.connpass_id == 'shule517' }.first }
       it { expect(shule.connpass_id).to eq 'shule517' }
       it { expect(shule.twitter_id).to eq 'shule517' }
+      it { expect(shule.facebook_id).to eq '' }
+      it { expect(shule.github_id).to eq 'shule517' }
+      it { expect(shule.linkedin_id).to eq '' }
       it { expect(shule.name).to eq 'シュール' }
       it { expect(shule.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/b9/93/b99305b6784e742244868ddd5acc8646.png' }
 
       let(:kuu) { event.users.select { |user| user.connpass_id == 'Kuxumarin' }.first }
       it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
       it { expect(kuu.twitter_id).to eq 'Fumiya_Kume' }
+      it { expect(kuu.facebook_id).to eq '1524732281184852' }
+      it { expect(kuu.github_id).to eq 'fumiya-kume' }
+      it { expect(kuu.linkedin_id).to eq '' }
       it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
     end
+  end
+
+  describe '#catch' do
+    context 'キャッチコピーが存在する場合', vcr: '#catch-catch_exist' do
+      let(:event) { api.find(event_id: 55649) }
+      it { expect(event.catch).to start_with 'ゼロから作る Deep Learning 読書会＋ハンズオン その2<br>機械学習 名古屋 分科会 機械学習名古屋 勉強会の分科会です。 この分科会では、より理論・実装に重きを置いた勉強をしていきます。' }
+    end
+
+    context 'キャッチコピーが存在しない場合', vcr: '#catch-catch_not_exist' do
+      let(:event) { api.find(event_id: 55925) }
+      it { expect(event.catch).to start_with '概要 HFと有限の世界を勉強しましょう。 第7回は[1]のIV.5.9、第一不完全性定理のあたりを読みます. 予習不要' }
+    end
+  end
+
+  describe '#logo' do
+    context 'logoが設定されている場合'
+    context 'logoが設定されていない場合'
+  end
+
+  describe '#get_social_id' do
+    describe '#twitter_id' do
+      context 'twitter_idが設定されている場合'
+      context 'twitter_idが設定されていない場合' # nilであること
+    end
+    describe '#facebook_id' do
+      context 'facebook_idが設定されている場合'
+      context 'facebook_idが設定されていない場合' # nilであること
+    end
+    describe '#github_id' do
+      context 'github_idが設定されている場合'
+      context 'github_idが設定されていない場合' # nilであること
+    end
+  end
+
+  describe '#participation_doc' do
+    context 'group_url.nilの場合'
+    context 'group_url.nilじゃない場合'
+  end
+
+  describe '#users' do
+    context '画像が設定されている場合'
+    context '画像が設定されていない場合'
+    context 'httpsからはじまる場合'
+    context 'httpsからはじまらない場合'
+    context '参加者がいない場合'
+
+    context '参加者ページがある場合' do
+      # it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
+      # it { expect(kuu.twitter_id).to eq 'Fumiya_Kume' }
+      # it { expect(kuu.facebook_id).to eq '' }
+      # it { expect(kuu.github_id).to eq '' }
+      # it { expect(kuu.linkedin_id).to eq '' }
+      # it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
+    end
+    context '参加者ページがない場合' do
+      # it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
+      # it { expect(kuu.twitter_id).to eq 'Fumiya_Kume' }
+      # it { expect(kuu.facebook_id).to eq '' }
+      # it { expect(kuu.github_id).to eq '' }
+      # it { expect(kuu.linkedin_id).to eq '' }
+      # it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
+    end
+  end
+
+  describe '#owner' do
+    context '参加者ページがある場合' do
+      # it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
+      # it { expect(kuu.twitter_id).to eq 'Fumiya_Kume' }
+      # it { expect(kuu.facebook_id).to eq '' }
+      # it { expect(kuu.github_id).to eq '' }
+      # it { expect(kuu.linkedin_id).to eq '' }
+      # it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
+    end
+    context '参加者ページがない場合' do
+      # it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
+      # it { expect(kuu.twitter_id).to eq 'Fumiya_Kume' }
+      # it { expect(kuu.facebook_id).to eq '' }
+      # it { expect(kuu.github_id).to eq '' }
+      # it { expect(kuu.linkedin_id).to eq '' }
+      # it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
+    end
+    context 'owner_info.empty?の場合'
+    context '画像が設定されている場合'
+    context '画像が設定されていない場合'
+    context '管理者がいない場合'
   end
 
   context 'group_urlがない場合', vcr: '#find-no_group' do
@@ -72,18 +163,6 @@ describe ConnpassScraping, type: :request do
 
     it '主催者人数が取得できること' do
       expect(event.owners.count).to eq 1
-    end
-  end
-
-  describe '#catch' do
-    context 'キャッチコピーが存在する場合', vcr: '#catch-catch_exist' do
-      let(:event) { api.find(event_id: 55649) }
-      it { expect(event.catch).to start_with 'ゼロから作る Deep Learning 読書会＋ハンズオン その2<br>機械学習 名古屋 分科会 機械学習名古屋 勉強会の分科会です。 この分科会では、より理論・実装に重きを置いた勉強をしていきます。' }
-    end
-
-    context 'キャッチコピーが存在しない場合', vcr: '#catch-catch_not_exist' do
-      let(:event) { api.find(event_id: 55925) }
-      it { expect(event.catch).to start_with '概要 HFと有限の世界を勉強しましょう。 第7回は[1]のIV.5.9、第一不完全性定理のあたりを読みます. 予習不要' }
     end
   end
 end

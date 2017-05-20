@@ -91,7 +91,7 @@ module Api
         if url.include?('https://twitter.com/intent/user?screen_name=')
           social_ids[:twitter_id] = url.gsub('https://twitter.com/intent/user?screen_name=', '')
         elsif url.include?('https://www.facebook.com/app_scoped_user_id/')
-          social_ids[:facebook_id] = url.gsub('https://www.facebook.com/app_scoped_user_id/', '')
+          social_ids[:facebook_id] = url.gsub('https://www.facebook.com/app_scoped_user_id/', '').gsub('/', '')
         elsif url.include?('https://github.com/')
           social_ids[:github_id] = url.gsub('https://github.com/', '')
         else
