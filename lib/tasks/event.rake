@@ -45,7 +45,7 @@ namespace :twitter do
   desc 'ツイッターリストを全て削除する'
   task delete_lists: :environment do
     include Notifiable
-    notify('event:delete_list_all') do
+    notify('event:delete_lists') do
       twitter = TwitterClient.new
       twitter.lists.each do |list|
         twitter.destroy_list(list[:id])
