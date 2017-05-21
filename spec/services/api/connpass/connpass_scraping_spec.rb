@@ -73,7 +73,6 @@ describe ConnpassScraping, type: :request do
       let(:event) { api.find(event_id: 55649) }
       it { expect(event.catch).to start_with 'ゼロから作る Deep Learning 読書会＋ハンズオン その2<br>機械学習 名古屋 分科会 機械学習名古屋 勉強会の分科会です。 この分科会では、より理論・実装に重きを置いた勉強をしていきます。' }
     end
-
     context 'キャッチコピーが存在しない場合', vcr: '#catch-catch_not_exist' do
       # 遺伝的有限集合勉強会 7 https://connpass.com/event/55925/
       let(:event) { api.find(event_id: 55925) }
@@ -82,8 +81,21 @@ describe ConnpassScraping, type: :request do
   end
 
   describe '#logo' do
-    context 'logoが設定されている場合'
-    context 'logoが設定されていない場合'
+    let(:logo) { event.logo }
+    context 'logoが設定されている場合' do
+      # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
+      let(:event) { api.find(event_id: 30152) }
+      it '設定されたロゴが取得できること', vcr: '#logo.exist' do
+        expect(logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/d7/3c/d73cccc993bb52bffbc0b65bc4c10d38.png'
+      end
+    end
+    context 'logoが設定されていない場合' do
+      # 遺伝的有限集合勉強会 8 https://connpass.com/event/57258/
+      let(:event) { api.find(event_id: 57258) }
+      it 'connpassのロゴが取得できること', vcr: '#logo.not_exist' do
+        expect(logo).to eq 'https://connpass.com/static/img/468_468.png'
+      end
+    end
   end
 
   describe '#get_social_id' do
