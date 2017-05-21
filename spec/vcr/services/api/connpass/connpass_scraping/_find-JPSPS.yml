@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://connpass.com/api/v1/event/?count=100&keyword_or=%E7%AC%AC5%E5%9B%9E%20JPSPS&order=2&start=1
+    uri: https://connpass.com/api/v1/event/?count=100&event_id=47375&order=2&start=1
     body:
       encoding: US-ASCII
       string: ''
@@ -25,19 +25,19 @@ http_interactions:
       Content-Type:
       - text/json; charset=utf-8
       Date:
-      - Sun, 07 May 2017 11:31:59 GMT
+      - Sun, 21 May 2017 01:52:27 GMT
       Expires:
-      - Sun, 07 May 2017 11:36:59 GMT
+      - Sun, 21 May 2017 01:57:27 GMT
       Last-Modified:
-      - Sun, 07 May 2017 11:31:59 GMT
+      - Sun, 21 May 2017 01:52:27 GMT
       Server:
       - nginx
       Vary:
       - Accept-Language, Cookie
       X-Frame-Options:
       - DENY
-      Content-Length:
-      - '4045'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
@@ -56,5 +56,5 @@ http_interactions:
         "place": "GeekBar NAGOYA\uff08Club Adriana\uff09"}], "results_start": 1, "results_available":
         1}'
     http_version: 
-  recorded_at: Sun, 07 May 2017 11:31:59 GMT
+  recorded_at: Sun, 21 May 2017 01:52:27 GMT
 recorded_with: VCR 3.0.3
