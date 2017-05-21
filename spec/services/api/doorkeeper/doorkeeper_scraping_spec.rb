@@ -50,6 +50,16 @@ describe DoorkeeperScraping, type: :request do
       it { expect(user.name).to eq 'シュール' }
       it { expect(user.image_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/295014_original_1464427238_PeerstPlayer_Icon_normal.png' }
     end
+    describe '#get_social_id' do
+      describe '#twitter_id' do
+        context 'twitter_idが設定されている場合'
+        context 'twitter_idが設定されていない場合' # nilであること
+      end
+      describe '#facebook_id' do
+        context 'facebook_idが設定されている場合'
+        context 'facebook_idが設定されていない場合' # nilであること
+      end
+    end
   end
 
   describe '#owners' do
@@ -75,17 +85,25 @@ describe DoorkeeperScraping, type: :request do
     end
     context '画像が設定されている場合'
     context '画像が設定されていない場合'
+    describe '#get_social_id' do
+      describe '#twitter_id' do
+        context 'twitter_idが設定されている場合'
+        context 'twitter_idが設定されていない場合' # nilであること
+      end
+      describe '#facebook_id' do
+        context 'facebook_idが設定されている場合'
+        context 'facebook_idが設定されていない場合' # nilであること
+      end
+    end
   end
 
   describe '#catch', vcr: '#catch' do
     let(:event) { api.find(event_id: 60104) }
-    it 'キャッチコピーが取得できること' do
-      expect(event.catch).to start_with '「Scratch Day &amp; Hour of Code in 豊橋」を全国のCoderDojoに合わせて開催します。今回はScratchやTickle（iPadを使用）、Scratch制御のリモコンカー等のワークショップを行います。'
+    context 'catchが設定されている場合' do
+      it 'キャッチコピーが取得できること' do
+        expect(event.catch).to start_with '「Scratch Day &amp; Hour of Code in 豊橋」を全国のCoderDojoに合わせて開催します。今回はScratchやTickle（iPadを使用）、Scratch制御のリモコンカー等のワークショップを行います。'
+      end
     end
-  end
-
-  describe '#catch' do
-    context 'catchが設定されている場合'
     context 'catchが設定されていない場合'
   end
 
@@ -114,17 +132,6 @@ describe DoorkeeperScraping, type: :request do
       # 5月26日（金）個別相談会 ＜夜の部＞ https://jimdocafe-hakata.doorkeeper.jp/
       let(:event) { api.find(event_id: 60349) }
       it { expect(event.group_logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/assets/doorkeeper_group_normal-125b448b722fa8c158516cf4b86aafda26b442af55a001418b0eb2acf7117961.gif' }
-    end
-  end
-
-  describe '#get_social_id' do
-    describe '#twitter_id' do
-      context 'twitter_idが設定されている場合'
-      context 'twitter_idが設定されていない場合' # nilであること
-    end
-    describe '#facebook_id' do
-      context 'facebook_idが設定されている場合'
-      context 'facebook_idが設定されていない場合' # nilであること
     end
   end
 end
