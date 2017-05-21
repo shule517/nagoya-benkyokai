@@ -93,7 +93,6 @@ describe ConnpassScraping, type: :request do
 
     context '参加者ページがある場合'
     context '参加者ページがない場合'
-    context 'owner_info.empty?の場合'
     context '管理者がいない場合' # そんな場合あるの？
   end
 
