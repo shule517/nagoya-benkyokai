@@ -54,11 +54,20 @@ describe ConnpassScraping, type: :request do
       it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
     end
 
-    describe '#user.image_url', vcr: '#users.image_url' do
-      context 'ユーザ画像が設定されている場合'
-      context 'ユーザ画面が設定されていない場合'
-      context 'httpsからはじまる場合'
-      context 'httpsからはじまらない場合'
+    describe '#image_url' do
+      let(:image_url) { user.image_url }
+      context 'ユーザ画像が設定されている場合', vcr: '#image_url-exist' do
+        # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
+        let(:event) { api.find(event_id: 30152) }
+        let(:user) { users.select { |user| user.connpass_id == 'shule517' }.first }
+        it { expect(image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/b9/93/b99305b6784e742244868ddd5acc8646.png' }
+      end
+      context 'ユーザ画面が設定されていない場合', vcr: '#image_url-not_exist' do
+        # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
+        let(:event) { api.find(event_id: 30152) }
+        let(:user) { users.select { |user| user.connpass_id == 'h_aka' }.first }
+        it { expect(image_url).to eq 'https://connpass.com/static/img/common/user_no_image.gif' }
+      end
     end
 
     context '参加者がいない場合'
@@ -230,7 +239,6 @@ describe ConnpassScraping, type: :request do
     it '参加者人数が取得できること' do
       expect(event.users.count).to eq event.accepted
     end
-
     it '主催者人数が取得できること' do
       expect(event.owners.count).to eq 1
     end

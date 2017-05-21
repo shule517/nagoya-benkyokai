@@ -68,8 +68,6 @@ describe DoorkeeperScraping, type: :request do
   describe '#users' do
     context '画像が設定されている場合'
     context '画像が設定されていない場合'
-    context 'httpsからはじまる場合'
-    context 'httpsからはじまらない場合'
     context '参加者がいない場合'
   end
 
