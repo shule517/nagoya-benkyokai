@@ -70,22 +70,11 @@ describe ConnpassScraping, type: :request do
       end
     end
 
-    context '参加者がいない場合'
-    context '参加者ページがある場合' do
-      # it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
-      # it { expect(kuu.twitter_id).to eq 'Fumiya_Kume' }
-      # it { expect(kuu.facebook_id).to eq '' }
-      # it { expect(kuu.github_id).to eq '' }
-      # it { expect(kuu.linkedin_id).to eq '' }
-      # it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
-    end
-    context '参加者ページがない場合' do
-      # it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
-      # it { expect(kuu.twitter_id).to eq 'Fumiya_Kume' }
-      # it { expect(kuu.facebook_id).to eq '' }
-      # it { expect(kuu.github_id).to eq '' }
-      # it { expect(kuu.linkedin_id).to eq '' }
-      # it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
+    context '参加者がいない場合', vcr: '#users-nothing' do
+      # よみかきの前にプログラミング！幼児向け無料体験教室 #2 https://cocomue.connpass.com/event/50505/
+      let(:event) { api.find(event_id: 50505) }
+      it { expect(users).to be_empty }
+      it { expect(users.size).to eq 0 }
     end
   end
 
