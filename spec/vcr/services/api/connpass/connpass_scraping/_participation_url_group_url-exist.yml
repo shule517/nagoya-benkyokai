@@ -25,11 +25,11 @@ http_interactions:
       Content-Type:
       - text/json; charset=utf-8
       Date:
-      - Sun, 21 May 2017 13:05:18 GMT
+      - Sun, 21 May 2017 13:14:18 GMT
       Expires:
-      - Sun, 21 May 2017 13:10:18 GMT
+      - Sun, 21 May 2017 13:19:18 GMT
       Last-Modified:
-      - Sun, 21 May 2017 13:05:18 GMT
+      - Sun, 21 May 2017 13:14:18 GMT
       Server:
       - nginx
       Vary:
@@ -55,5 +55,5 @@ http_interactions:
         "place": "\u4f0f\u898b\u99c5\u304b\u3089\u5f92\u6b69\uff11\uff10\u5206"}],
         "results_start": 1, "results_available": 1}'
     http_version: 
-  recorded_at: Sun, 21 May 2017 13:05:20 GMT
+  recorded_at: Sun, 21 May 2017 13:14:19 GMT
 recorded_with: VCR 3.0.3

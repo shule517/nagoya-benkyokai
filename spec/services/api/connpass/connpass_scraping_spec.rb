@@ -46,38 +46,33 @@ describe ConnpassScraping, type: :request do
     # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
     let(:event) { api.find(event_id: 30152) }
     let(:users) { event.users }
-    context 'shuleの場合', vcr: '#users-shule' do
-      let(:shule) { users.select { |user| user.connpass_id == 'shule517' }.first }
-      it { expect(shule.connpass_id).to eq 'shule517' }
-      it { expect(shule.twitter_id).to eq 'shule517' }
-      it { expect(shule.facebook_id).to eq '' }
-      it { expect(shule.github_id).to eq 'shule517' }
-      it { expect(shule.linkedin_id).to eq '' }
-      it { expect(shule.name).to eq 'シュール' }
-      it { expect(shule.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/b9/93/b99305b6784e742244868ddd5acc8646.png' }
-    end
 
-    context 'kuuの場合', vcr: '#users-kuu' do
-      let(:kuu) { users.select { |user| user.connpass_id == 'Kuxumarin' }.first }
-      it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
-      it { expect(kuu.twitter_id).to eq 'Fumiya_Kume' }
-      it { expect(kuu.facebook_id).to eq '1524732281184852' }
-      it { expect(kuu.github_id).to eq 'fumiya-kume' }
-      it { expect(kuu.linkedin_id).to eq '' }
-      it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
+    describe '#get_social_id' do
+      context 'IDが設定されている場合', vcr: '#get_social_id-exist' do
+        let(:user) { users.select { |user| user.connpass_id == 'Kuxumarin' }.first }
+        it { expect(user.twitter_id).to eq 'Fumiya_Kume' }
+        it { expect(user.facebook_id).to eq '1524732281184852' }
+        it { expect(user.github_id).to eq 'fumiya-kume' }
+        it { expect(user.linkedin_id).to be_empty }
+        it { expect(user.name).to eq 'くぅ - kuxu' }
+      end
+      context 'IDが設定されていない場合', vcr: '#get_social_id-not_exist' do
+        let(:user) { users.select { |user| user.connpass_id == 'h_aka' }.first }
+        it { expect(user.twitter_id).to be_empty }
+        it { expect(user.facebook_id).to be_empty }
+        it { expect(user.github_id).to be_empty }
+        it { expect(user.linkedin_id).to be_empty }
+        it { expect(user.name).to eq 'h_aka' }
+      end
     end
 
     describe '#image_url' do
       let(:image_url) { user.image_url }
       context 'ユーザ画像が設定されている場合', vcr: '#image_url-exist' do
-        # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
-        let(:event) { api.find(event_id: 30152) }
         let(:user) { users.select { |user| user.connpass_id == 'shule517' }.first }
         it { expect(image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/b9/93/b99305b6784e742244868ddd5acc8646.png' }
       end
       context 'ユーザ画面が設定されていない場合', vcr: '#image_url-not_exist' do
-        # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
-        let(:event) { api.find(event_id: 30152) }
         let(:user) { users.select { |user| user.connpass_id == 'h_aka' }.first }
         it { expect(image_url).to eq 'https://connpass.com/static/img/common/user_no_image.gif' }
       end
@@ -174,27 +169,6 @@ describe ConnpassScraping, type: :request do
       it 'connpassのロゴが取得できること', vcr: '#logo.not_exist' do
         expect(logo).to eq 'https://connpass.com/static/img/468_468.png'
       end
-    end
-  end
-
-  describe '#get_social_id' do
-    # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
-    let(:event) { api.find(event_id: 30152) }
-    let(:users) { event.users }
-    context 'IDが設定されている場合', vcr: '#get_social_id-exist' do
-      let(:user) { users.select { |user| user.connpass_id == 'Kuxumarin' }.first }
-      it { expect(user.twitter_id).to eq 'Fumiya_Kume' }
-      it { expect(user.facebook_id).to eq '1524732281184852' }
-      it { expect(user.github_id).to eq 'fumiya-kume' }
-      it { expect(user.linkedin_id).to be_empty }
-    end
-    context 'IDが設定されていない場合', vcr: '#get_social_id-not_exist' do
-      # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
-      let(:user) { users.select { |user| user.connpass_id == 'h_aka' }.first }
-      it { expect(user.twitter_id).to be_empty }
-      it { expect(user.facebook_id).to be_empty }
-      it { expect(user.github_id).to be_empty }
-      it { expect(user.linkedin_id).to be_empty }
     end
   end
 
