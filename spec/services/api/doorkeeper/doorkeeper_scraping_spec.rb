@@ -44,20 +44,32 @@ describe DoorkeeperScraping, type: :request do
     let(:users) { event.users }
     context '画像が設定されている場合'
     context '画像が設定されていない場合'
-    describe '参加者の情報が取得できること', vcr: '#users' do
+    describe '参加者の情報が取得できること', vcr: '#user' do
       let(:user) { users.select { |user| user.twitter_id == 'shule517' }.first }
       it { expect(user.twitter_id).to eq 'shule517' }
       it { expect(user.name).to eq 'シュール' }
       it { expect(user.image_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/295014_original_1464427238_PeerstPlayer_Icon_normal.png' }
     end
     describe '#get_social_id' do
-      describe '#twitter_id' do
-        context 'twitter_idが設定されている場合'
-        context 'twitter_idが設定されていない場合' # nilであること
+      context '全てのSNSが登録されているユーザの場合', vcr: '#user-exist' do
+        let(:user) { event.users.select { |user| user.twitter_id == 'kekyo2' }.first }
+        it { expect(user.twitter_id).to eq 'kekyo2' }
+        it { expect(user.facebook_id).to eq '100004903747736' }
+        it { expect(user.github_id).to eq 'kekyo' }
+        it { expect(user.linkedin_id).to eq 'kouji-matsui-71856762' }
+        it { expect(user.name).to eq 'kekyo' }
+        it { expect(user.image_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/64317_original_1484359298_github128.png' }
       end
-      describe '#facebook_id' do
-        context 'facebook_idが設定されている場合'
-        context 'facebook_idが設定されていない場合' # nilであること
+
+      context 'SNSが未登録なユーザの場合', vcr: '#user-not_exist' do
+        let(:user) { event.users.select { |user| user.name == 'Tomoki Sakamiya' }.first }
+        it { expect(user.atnd_id).to eq '' }
+        it { expect(user.twitter_id).to eq '' }
+        it { expect(user.facebook_id).to eq '' }
+        it { expect(user.github_id).to eq '' }
+        it { expect(user.linkedin_id).to eq '' }
+        it { expect(user.name).to eq 'Tomoki Sakamiya' }
+        it { expect(user.image_url).to eq 'https://secure.gravatar.com/avatar/c7102e2634db160be9f59a0029b867b7?s=25&d=mm' }
       end
     end
   end
