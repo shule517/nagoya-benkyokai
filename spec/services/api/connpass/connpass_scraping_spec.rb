@@ -232,4 +232,7 @@ describe ConnpassScraping, type: :request do
       expect(event.owners.count).to eq 1
     end
   end
+
+  context '勉強会が中止された場合'
+  # よみかきの前にプログラミング！幼児向け無料体験教室 #2 https://cocomue.connpass.com/event/50505/
 end
