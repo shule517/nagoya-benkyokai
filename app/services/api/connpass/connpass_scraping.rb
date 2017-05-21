@@ -102,13 +102,13 @@ module Api
         @event_doc ||= Shule::Http.get_document(self.event_url)
       end
 
+      def group_domain
+        return "https://#{URI.parse(self.group_url).host}/" if group_url
+        'https://connpass.com/'
+      end
+
       def participation_url
-        if group_url
-          url = "https://#{URI.parse(self.group_url).host}/"
-        else
-          url = 'https://connpass.com/'
-        end
-        "#{url}event/#{self.event_id}/participation/#participants"
+        "#{group_domain}event/#{self.event_id}/participation/#participants"
       end
 
       def participation_doc
