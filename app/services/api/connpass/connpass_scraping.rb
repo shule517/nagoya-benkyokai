@@ -65,6 +65,7 @@ module Api
               owners << ConnpassUser.new(user_info)
             end
           else # イベント参加者ページがない場合
+            Slack.chat_postMessage text: "イベント参加者ページがない場合:\nparticipation_url:#{participation_url}\nself.event_url:#{self.event_url}", channel: '#test-error', username: 'lambda'
             # TODO メソッド化 イベントページから参加者を取得するメソッド
             # TODO メソッド化 ユーザIDからtwitteridを取得するメソッド
             event_doc.css('.owner_list > li > .image_link').each do |user|
