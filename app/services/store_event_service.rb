@@ -1,12 +1,12 @@
 # イベント情報をDBへ登録する
 class StoreEventService
   def call(event)
-    update(event)
+    store(event)
   end
 
   private
 
-  def update(event)
+  def store(event)
     event_record = event.find_or_initialize_by
     puts "event:#{event.title}"
 
