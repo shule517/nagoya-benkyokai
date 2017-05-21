@@ -24,14 +24,18 @@ describe DoorkeeperScraping, type: :request do
     end
   end
 
-  describe '#users', vcr: '#users' do
-    # リモート開発 de ナイト ＠名古屋ギークバー https://geekbar.doorkeeper.jp/events/45257
-    let(:event) { api.find(event_id: 45257) }
+  describe '#users' do
     let(:users) { event.users }
-    context '参加者がいる場合' do
+    context '参加者がいる場合', vcr: '#users-exist' do
+      # リモート開発 de ナイト ＠名古屋ギークバー https://geekbar.doorkeeper.jp/events/45257
+      let(:event) { api.find(event_id: 45257) }
       it { expect(users.count + 3).to eq event.accepted } # 3人アカウント非表示
     end
-    xcontext '参加者がいない場合'
+    context '参加者がいない場合', vcr: '#users-not_exist' do
+      # 第37回 concrete5 の日 https://concrete5nagoya.doorkeeper.jp/events/59441
+      let(:event) { api.find(event_id: 59441) }
+      it { expect(users.count).to eq 0 }
+    end
   end
 
   describe '#user' do
@@ -86,8 +90,31 @@ describe DoorkeeperScraping, type: :request do
   end
 
   describe '#logo' do
-    context 'logoが設定されている場合'
-    context 'logoが設定されていない場合'
+    context 'logoが設定されている場合', vcr: '#logo-exist' do
+      # リモート開発 de ナイト ＠名古屋ギークバー https://geekbar.doorkeeper.jp/events/45257
+      let(:event) { api.find(event_id: 45257) }
+      it { expect(event.logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/events_banners/45257_normal_1463562966_%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%90%E3%83%BC%E3%83%AD%E3%82%B4.png' }
+    end
+    context 'logoが設定されていない場合', vcr: '#logo-not_exist' do
+      # a-blog cms 勉強会 in 名古屋 2017/05 https://ablogcms-nagoya.doorkeeper.jp/events/59695
+      let(:event) { api.find(event_id: 59695) }
+      it 'イベントロゴが設定されていない場合は、グループロゴが設定されること' do
+        expect(event.logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/groups_logos/7293_normal_1452048885_a.png'
+      end
+    end
+  end
+
+  describe '#group_logo' do
+    context 'グループロゴが設定されている場合', vcr: '#group_logo-exist' do
+      # リモート開発 de ナイト ＠名古屋ギークバー https://geekbar.doorkeeper.jp/events/45257
+      let(:event) { api.find(event_id: 45257) }
+      it { expect(event.group_logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/groups_logos/1995_normal_1380975297_251035_156371434432231_4785187_n.jpg' }
+    end
+    context 'グループロゴが設定されていない場合', vcr: '#group_logo-not_exist' do
+      # 5月26日（金）個別相談会 ＜夜の部＞ https://jimdocafe-hakata.doorkeeper.jp/
+      let(:event) { api.find(event_id: 60349) }
+      it { expect(event.group_logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/assets/doorkeeper_group_normal-125b448b722fa8c158516cf4b86aafda26b442af55a001418b0eb2acf7117961.gif' }
+    end
   end
 
   describe '#get_social_id' do
