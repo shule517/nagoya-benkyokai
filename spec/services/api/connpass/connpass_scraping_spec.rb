@@ -83,6 +83,7 @@ describe ConnpassScraping, type: :request do
     # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
     let(:event) { api.find(event_id: 30152) }
     let(:owners) { event.owners }
+
     it '管理者数が取得できること' do
       expect(owners.count).to eq 4
     end
@@ -98,23 +99,7 @@ describe ConnpassScraping, type: :request do
 
   describe '#owner' do
     let(:owners) { event.owners }
-    context '画像が設定されている場合', vcr: '#owner-image_url_exist' do
-      # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
-      let(:event) { api.find(event_id: 30152) }
-      let(:owner) { owners.select { |owner| owner.connpass_id == 'ytabuchi' }.first }
-      it 'アイコンが取得できること' do
-        expect(owner.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/43/9e/439e3f40da4adc279636f04b71c34b26.png'
-      end
-    end
-    context '画像が設定されていない場合', vcr: '#owner-image_url_not_exist' do
-      # 機械学習 名古屋 分科会 #3 https://machine-learning.connpass.com/event/57609/
-      let(:event) { api.find(event_id: 57609) }
-      let(:owner) { owners.select { |owner| owner.connpass_id == 'kmiwa' }.first }
-      it 'NO IMAGEアイコンが取得できること' do
-        expect(owner.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/f2/58/f2586c61304a16daad06a4b436fbc847.png'
-      end
-    end
-    describe 'social id' do
+    describe '#get_social_id' do
       context 'IDが設定されている場合', vcr: '#owner-social-exist' do
         # 機械学習 名古屋 分科会 #3 https://machine-learning.connpass.com/event/57609/
         let(:event) { api.find(event_id: 57609) }
@@ -137,6 +122,22 @@ describe ConnpassScraping, type: :request do
         it { expect(owner.github_id).to eq '' }
         it { expect(owner.linkedin_id).to eq '' }
         it { expect(owner.image_url).to eq 'https://connpass.com/static/img/common/user_no_image.gif' }
+      end
+    end
+    context '画像が設定されている場合', vcr: '#owner-image_url_exist' do
+      # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
+      let(:event) { api.find(event_id: 30152) }
+      let(:owner) { owners.select { |owner| owner.connpass_id == 'ytabuchi' }.first }
+      it 'アイコンが取得できること' do
+        expect(owner.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/43/9e/439e3f40da4adc279636f04b71c34b26.png'
+      end
+    end
+    context '画像が設定されていない場合', vcr: '#owner-image_url_not_exist' do
+      # 機械学習 名古屋 分科会 #3 https://machine-learning.connpass.com/event/57609/
+      let(:event) { api.find(event_id: 57609) }
+      let(:owner) { owners.select { |owner| owner.connpass_id == 'kmiwa' }.first }
+      it 'NO IMAGEアイコンが取得できること' do
+        expect(owner.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/f2/58/f2586c61304a16daad06a4b436fbc847.png'
       end
     end
   end
