@@ -190,9 +190,19 @@ describe ConnpassScraping, type: :request do
     end
   end
 
-  describe '#participation_doc' do
-    context 'group_url.nilの場合'
-    context 'group_url.nilじゃない場合'
+  describe '#participation_url' do
+    context 'group_urlがない場合', vcr: '#participation_url group_url-exist' do
+      # サブドメイン → connpass.com
+      # ちゅーんさんちでHaskellやると楽しいという会 https://connpass.com/event/46087/
+      let(:event) { api.find(event_id: 46087) }
+      it { expect(event.send(:participation_url)).to eq 'https://connpass.com/event/46087/participation/#participants' }
+    end
+    context 'group_url.nilじゃない場合', vcr: '#participation_url group_url-not_exist' do
+      # ドメイン → jxug.connpass.com
+      # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
+      let(:event) { api.find(event_id: 30152) }
+      it { expect(event.send(:participation_url)).to eq 'https://jxug.connpass.com/event/30152/participation/#participants' }
+    end
   end
 
   context 'group_urlがない場合', vcr: '#find-no_group' do
@@ -201,7 +211,6 @@ describe ConnpassScraping, type: :request do
     it '参加者人数が取得できること' do
       expect(event.users.count).to eq event.accepted
     end
-
     it '主催者人数が取得できること' do
       expect(event.owners.count).to eq 1
     end

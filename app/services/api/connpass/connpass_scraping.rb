@@ -103,13 +103,17 @@ module Api
         @event_doc ||= Shule::Http.get_document(self.event_url)
       end
 
-      def participation_doc
+      def participation_url
         if group_url
           url = "https://#{URI.parse(self.group_url).host}/"
         else
           url = 'https://connpass.com/'
         end
-        @participation_doc ||= Shule::Http.get_document("#{url}event/#{self.event_id}/participation/#participants")
+        "#{url}event/#{self.event_id}/participation/#participants"
+      end
+
+      def participation_doc
+        @participation_doc ||= Shule::Http.get_document(participation_url)
       rescue
         Nokogiri::HTML('')
       end
