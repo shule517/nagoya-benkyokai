@@ -88,16 +88,14 @@ module Api
 
       private
 
+      def remove_word(url, word)
+        url.gsub(word, '') if url.include?(word)
+      end
+
       def get_social_id(url, social_ids)
-        if url.include?('https://twitter.com/intent/user?screen_name=')
-          social_ids[:twitter_id] = url.gsub('https://twitter.com/intent/user?screen_name=', '')
-        elsif url.include?('https://www.facebook.com/app_scoped_user_id/')
-          social_ids[:facebook_id] = url.gsub('https://www.facebook.com/app_scoped_user_id/', '').gsub('/', '')
-        elsif url.include?('https://github.com/')
-          social_ids[:github_id] = url.gsub('https://github.com/', '')
-        else
-          puts "x connpass : #{url}"
-        end
+        social_ids[:twitter_id] ||= remove_word(url, 'https://twitter.com/intent/user?screen_name=')
+        social_ids[:facebook_id] ||= remove_word(url, 'https://www.facebook.com/app_scoped_user_id/')&.gsub('/', '')
+        social_ids[:github_id] ||= remove_word(url, 'https://github.com/')
       end
 
       def event_doc
