@@ -120,7 +120,7 @@ describe ConnpassScraping, type: :request do
       end
     end
     describe 'social id' do
-      context 'IDが設定されている場合', vcr: '#user-social-exist' do
+      context 'IDが設定されている場合', vcr: '#owner-social-exist' do
         # 機械学習 名古屋 分科会 #3 https://machine-learning.connpass.com/event/57609/
         let(:event) { api.find(event_id: 57609) }
         let(:owner) { owners.select { |owner| owner.connpass_id == 'antimon2' }.first }
@@ -132,7 +132,7 @@ describe ConnpassScraping, type: :request do
         it { expect(owner.name).to eq 'antimon2' }
         it { expect(owner.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/77/f0/77f0c8eae4e9e877c1a5681a84e6e3d1.png' }
       end
-      context 'IDが設定されていない場合', vcr: '#user-social-not_exist' do
+      context 'IDが設定されていない場合', vcr: '#owner-social-not_exist' do
         # 【JISTA中部】ITストラテジスト受験ガイド in 名古屋
         let(:event) { api.find(event_id: 55940) }
         let(:owner) { owners.select { |owner| owner.connpass_id == 'yoshihiro_kanada' }.first }
@@ -178,48 +178,23 @@ describe ConnpassScraping, type: :request do
   end
 
   describe '#get_social_id' do
+    # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
+    let(:event) { api.find(event_id: 30152) }
     let(:users) { event.users }
-    describe '#twitter_id' do
-      context 'twitter_idが設定されている場合', vcr: '#get_social_id twitter_id exist' do
-        # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
-        let(:event) { api.find(event_id: 30152) }
-        let(:user) { users.select { |user| user.connpass_id == 'Kuxumarin' }.first }
-        it { expect(user.twitter_id).to eq 'Fumiya_Kume' }
-      end
-      context 'twitter_idが設定されていない場合', vcr: '#get_social_id twitter_id not_exist' do
-        # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
-        let(:event) { api.find(event_id: 30152) }
-        let(:user) { users.select { |user| user.connpass_id == 'h_aka' }.first }
-        it { expect(user.twitter_id).to be_empty }
-      end
+    context 'IDが設定されている場合', vcr: '#get_social_id-exist' do
+      let(:user) { users.select { |user| user.connpass_id == 'Kuxumarin' }.first }
+      it { expect(user.twitter_id).to eq 'Fumiya_Kume' }
+      it { expect(user.facebook_id).to eq '1524732281184852' }
+      it { expect(user.github_id).to eq 'fumiya-kume' }
+      it { expect(user.linkedin_id).to be_empty }
     end
-    describe '#facebook_id' do
-      context 'facebook_idが設定されている場合', vcr: '#get_social_id facebook_id exist' do
-        # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
-        let(:event) { api.find(event_id: 30152) }
-        let(:user) { users.select { |user| user.connpass_id == 'Kuxumarin' }.first }
-        it { expect(user.facebook_id).to eq '1524732281184852' }
-      end
-      context 'facebook_idが設定されていない場合', vcr: '#get_social_id facebook_id not_exist' do
-        # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
-        let(:event) { api.find(event_id: 30152) }
-        let(:user) { users.select { |user| user.connpass_id == 'shule517' }.first }
-        it { expect(user.facebook_id).to be_empty }
-      end
-    end
-    describe '#github_id' do
-      context 'github_idが設定されている場合', vcr: '#get_social_id github_id exist' do
-        # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
-        let(:event) { api.find(event_id: 30152) }
-        let(:user) { users.select { |user| user.connpass_id == 'Kuxumarin' }.first }
-        it { expect(user.github_id).to eq 'fumiya-kume' }
-      end
-      context 'github_idが設定されていない場合', vcr: '#get_social_id github_id not_exist' do
-        # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
-        let(:event) { api.find(event_id: 30152) }
-        let(:user) { users.select { |user| user.connpass_id == 'h_aka' }.first }
-        it { expect(user.github_id).to be_empty }
-      end
+    context 'IDが設定されていない場合', vcr: '#get_social_id-not_exist' do
+      # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
+      let(:user) { users.select { |user| user.connpass_id == 'h_aka' }.first }
+      it { expect(user.twitter_id).to be_empty }
+      it { expect(user.facebook_id).to be_empty }
+      it { expect(user.github_id).to be_empty }
+      it { expect(user.linkedin_id).to be_empty }
     end
   end
 
