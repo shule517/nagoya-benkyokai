@@ -53,6 +53,29 @@ describe ConnpassScraping, type: :request do
       it { expect(kuu.linkedin_id).to eq '' }
       it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
     end
+
+    context '画像が設定されている場合'
+    context '画像が設定されていない場合'
+    context 'httpsからはじまる場合'
+    context 'httpsからはじまらない場合'
+    context '参加者がいない場合'
+
+    context '参加者ページがある場合' do
+      # it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
+      # it { expect(kuu.twitter_id).to eq 'Fumiya_Kume' }
+      # it { expect(kuu.facebook_id).to eq '' }
+      # it { expect(kuu.github_id).to eq '' }
+      # it { expect(kuu.linkedin_id).to eq '' }
+      # it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
+    end
+    context '参加者ページがない場合' do
+      # it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
+      # it { expect(kuu.twitter_id).to eq 'Fumiya_Kume' }
+      # it { expect(kuu.facebook_id).to eq '' }
+      # it { expect(kuu.github_id).to eq '' }
+      # it { expect(kuu.linkedin_id).to eq '' }
+      # it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
+    end
   end
 
   describe '#owners', vcr: '#owners'  do
@@ -65,6 +88,27 @@ describe ConnpassScraping, type: :request do
     it '管理者一覧が取得できること' do
       expect(owners.map(&:name)).to match_array %w(田淵義人@エクセルソフト JXUG くぅ\ -\ kuxu Sophy)
     end
+
+    context '参加者ページがある場合' do
+      # it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
+      # it { expect(kuu.twitter_id).to eq 'Fumiya_Kume' }
+      # it { expect(kuu.facebook_id).to eq '' }
+      # it { expect(kuu.github_id).to eq '' }
+      # it { expect(kuu.linkedin_id).to eq '' }
+      # it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
+    end
+    context '参加者ページがない場合' do
+      # it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
+      # it { expect(kuu.twitter_id).to eq 'Fumiya_Kume' }
+      # it { expect(kuu.facebook_id).to eq '' }
+      # it { expect(kuu.github_id).to eq '' }
+      # it { expect(kuu.linkedin_id).to eq '' }
+      # it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
+    end
+    context 'owner_info.empty?の場合'
+    context '画像が設定されている場合'
+    context '画像が設定されていない場合'
+    context '管理者がいない場合'
   end
 
   describe '#catch' do
@@ -116,54 +160,6 @@ describe ConnpassScraping, type: :request do
   describe '#participation_doc' do
     context 'group_url.nilの場合'
     context 'group_url.nilじゃない場合'
-  end
-
-  describe '#users' do
-    context '画像が設定されている場合'
-    context '画像が設定されていない場合'
-    context 'httpsからはじまる場合'
-    context 'httpsからはじまらない場合'
-    context '参加者がいない場合'
-
-    context '参加者ページがある場合' do
-      # it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
-      # it { expect(kuu.twitter_id).to eq 'Fumiya_Kume' }
-      # it { expect(kuu.facebook_id).to eq '' }
-      # it { expect(kuu.github_id).to eq '' }
-      # it { expect(kuu.linkedin_id).to eq '' }
-      # it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
-    end
-    context '参加者ページがない場合' do
-      # it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
-      # it { expect(kuu.twitter_id).to eq 'Fumiya_Kume' }
-      # it { expect(kuu.facebook_id).to eq '' }
-      # it { expect(kuu.github_id).to eq '' }
-      # it { expect(kuu.linkedin_id).to eq '' }
-      # it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
-    end
-  end
-
-  describe '#owner' do
-    context '参加者ページがある場合' do
-      # it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
-      # it { expect(kuu.twitter_id).to eq 'Fumiya_Kume' }
-      # it { expect(kuu.facebook_id).to eq '' }
-      # it { expect(kuu.github_id).to eq '' }
-      # it { expect(kuu.linkedin_id).to eq '' }
-      # it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
-    end
-    context '参加者ページがない場合' do
-      # it { expect(kuu.connpass_id).to eq 'Kuxumarin' }
-      # it { expect(kuu.twitter_id).to eq 'Fumiya_Kume' }
-      # it { expect(kuu.facebook_id).to eq '' }
-      # it { expect(kuu.github_id).to eq '' }
-      # it { expect(kuu.linkedin_id).to eq '' }
-      # it { expect(kuu.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/75/1f/751ff2dde8d0e259e4ad95c77bcda057.png' }
-    end
-    context 'owner_info.empty?の場合'
-    context '画像が設定されている場合'
-    context '画像が設定されていない場合'
-    context '管理者がいない場合'
   end
 
   context 'group_urlがない場合', vcr: '#find-no_group' do
