@@ -72,11 +72,11 @@ module Api
         elsif url.include?('https://github.com/')
           social_ids[:github_id] = url.gsub('https://github.com/', '')
         elsif url.include?('http://www.linkedin.com/in/')
-          social_ids[:linkedin_id] = url.gsub('http://www.linkedin.com/in/', '')
+          social_ids[:linkedin_id] = url.gsub('http://www.linkedin.com/in/', '').gsub(/\/.*/, '')
         elsif url.include?('https://www.linkedin.com/in/')
-          social_ids[:linkedin_id] = url.gsub('https://www.linkedin.com/in/', '')
+          social_ids[:linkedin_id] = url.gsub('https://www.linkedin.com/in/', '').gsub(/\/.*/, '')
         elsif url.include?('http://www.linkedin.com/pub/')
-          social_ids[:linkedin_id] = url.gsub('http://www.linkedin.com/pub/', '')
+          social_ids[:linkedin_id] = url.gsub('http://www.linkedin.com/pub/', '').gsub(/\/.*/, '')
         else
           puts "x doorkeeper : #{url}"
         end
