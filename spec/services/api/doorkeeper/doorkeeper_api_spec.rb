@@ -27,9 +27,15 @@ describe DoorkeeperApi, type: :request do
       it { expect(events.count).to be > 1 }
     end
 
-    context 'イベントIDを指定した場合', vcr: '#search-event_id' do
-      let(:events) { api.search(event_id: 45257) }
-      it { expect(events.first.title).to eq 'リモート開発 de ナイト ＠名古屋ギークバー' }
+    context 'イベントIDを指定した場合' do
+      context 'イベントが存在する場合', vcr: '#search-event_id-exist' do
+        let(:events) { api.search(event_id: 45257) }
+        it { expect(events.first.title).to eq 'リモート開発 de ナイト ＠名古屋ギークバー' }
+      end
+      context 'イベントが存在しない場合', vcr: '#search-event_id-not_exist' do
+        let(:events) { api.search(event_id: 47375) }
+        it { expect(events.empty?).to eq true }
+      end
     end
   end
 

@@ -174,14 +174,6 @@ describe ConnpassScraping, type: :request do
     end
   end
 
-  context 'JPSPSが表示されない問題を解決', vcr: '#find-JPSPS' do
-    # 第5回 JPSPS SharePoint/Office365名古屋分科勉強会 at GeekBar https://jpsps-ngy.connpass.com/event/47375/
-    let(:event) { api.find(event_id: 47375) }
-    it 'イベント情報が取得できること' do
-      expect(event.title).to eq '第5回 JPSPS SharePoint/Office365名古屋分科勉強会 at GeekBar'
-    end
-  end
-
   context 'Python東海の参加者数が0である問題を解決', vcr: '#find-no_users' do
     # Python東海 第32回勉強会 https://connpass.com/event/49376/
     let(:event) { api.find(event_id: 49376) }

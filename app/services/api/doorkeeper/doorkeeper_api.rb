@@ -41,6 +41,8 @@ module Api
         else
           events
         end
+      rescue Net::HTTPServerException
+        []
       rescue => e
         puts "error:#{e.class}"
         raise

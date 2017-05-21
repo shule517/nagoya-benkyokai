@@ -36,4 +36,14 @@ describe SearchEventService, type: :request do
       expect(titles).not_to include '介護のストレスケア'                                         # https://atnd.org/events/88105
     end
   end
+
+  context '開催場所に名古屋入ってない場合', vcr: '#find-JPSPS' do
+    # 第5回 JPSPS SharePoint/Office365名古屋分科勉強会 at GeekBar https://jpsps-ngy.connpass.com/event/47375/
+    # 開催場所：中区葵1-27-37 新栄シティハイツ 1F ※名古屋が入ってない
+    let(:events) { SearchEventService.new.call({ event_id: 47375 }, false) }
+    let(:titles) { events.map(&:title) }
+    it 'イベント情報が取得できること' do
+      expect(titles).to include '第5回 JPSPS SharePoint/Office365名古屋分科勉強会 at GeekBar'
+    end
+  end
 end
