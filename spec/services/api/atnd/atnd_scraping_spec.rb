@@ -4,7 +4,7 @@ include Api::Atnd
 describe AtndScraping, type: :request do
   let(:api) { AtndApi }
   describe '#find' do
-    # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
+    # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！ https://atnd.org/events/81945
     let(:event) { api.find(event_id: 81945) }
 
     it 'イベント情報の取得できること', vcr: '#find' do
@@ -29,7 +29,7 @@ describe AtndScraping, type: :request do
   describe '#users' do
     let(:users) { event.users }
     describe '参加者がいる場合', vcr: '#users-exist' do
-      # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
+      # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！ https://atnd.org/events/81945
       let(:event) { api.find(event_id: 81945) }
 
       it '参加者数が取得できること' do
@@ -52,7 +52,7 @@ describe AtndScraping, type: :request do
     let(:users) { event.users }
     describe '#get_social_id' do
       context '全てのSNSが登録されているユーザの場合', vcr: '#user-sns-exist' do
-        # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
+        # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！ https://atnd.org/events/81945
         let(:event) { api.find(event_id: 81945) }
         let(:atnd_user) { users.select { |user| user.atnd_id == '259586' }.first }
 
@@ -67,7 +67,7 @@ describe AtndScraping, type: :request do
       end
 
       context 'SNSが未登録なユーザの場合', vcr: '#user-sns-not_exist' do
-        # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
+        # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！ https://atnd.org/events/81945
         let(:event) { api.find(event_id: 81945) }
         let(:no_social_user) { users.select { |user| user.atnd_id == '260559' }.first }
 
@@ -84,7 +84,7 @@ describe AtndScraping, type: :request do
 
     describe '#image_url' do
       context '画像が設定されている場合', vcr: '#user-image_url-exist' do
-        # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
+        # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！ https://atnd.org/events/81945
         let(:event) { api.find(event_id: 81945) }
         let(:atnd_user) { users.select { |user| user.atnd_id == '259586' }.first }
 
@@ -94,7 +94,7 @@ describe AtndScraping, type: :request do
       end
 
       context '画像が設定されていない場合', vcr: '#user-image_url-not_exist' do
-        # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
+        # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！ https://atnd.org/events/81945
         let(:event) { api.find(event_id: 81945) }
         let(:no_social_user) { users.select { |user| user.atnd_id == '260559' }.first }
 
@@ -110,7 +110,7 @@ describe AtndScraping, type: :request do
   describe '#owners' do
     let(:owners) { event.owners }
     context '主催者がいる場合', vcr: '#owners-exist' do
-      # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
+      # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！ https://atnd.org/events/81945
       let(:event) { api.find(event_id: 81945) }
 
       it '主催者が取得できること' do
@@ -188,20 +188,20 @@ describe AtndScraping, type: :request do
 
   describe '#catch' do
     context 'catchが設定されている場合', vcr: '#catch-exist' do
-      # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
-      let(:event) { api.find(event_id: 81945) }
-      it 'キャッチが取得できること' do
-        expect(event.catch).to start_with '【ATEAM TECHとは】 ゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。'
-      end
     end
 
     context 'catchが設定されていない場合', vcr: '#catch-not_exist' do
+      # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！ https://atnd.org/events/81945
+      let(:event) { api.find(event_id: 81945) }
+      it 'イベント詳細が取得できること' do
+        expect(event.catch).to start_with '【ATEAM TECHとは】 ゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。'
+      end
     end
   end
 
   describe '#logo' do
     context 'logoが設定されている場合', vcr: '#logo-exist' do
-      # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
+      # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！ https://atnd.org/events/81945
       let(:event) { api.find(event_id: 81945) }
 
       it 'イベントロゴが取得できること' do
@@ -219,6 +219,29 @@ describe AtndScraping, type: :request do
     end
   end
 
-  # 主催グループがある場合
-  # 主催グループがない場合
+  describe '#group' do
+    # context '主催グループがある場合', vcr: '#group-not_exist' do
+    #   # NagoyaStat #6 https://atnd.org/events/88235
+    #   let(:event) { api.find(event_id: 88235) }
+
+    #   it 'グループ情報が取得できること' do
+    #     expect(event.group_url).to eq 'https://atnd.org/groups/nagoya-stat'
+    #     expect(event.group_id).to eq 'nagoya-stat'
+    #     expect(event.group_title).to eq 'NagoyaStat'
+    #     expect(event.group_logo).to eq 'https://atnd.org/images/icon/atnd_latent.png'
+    #   end
+    # end
+
+    context '主催グループがない場合', vcr: '#group-not_exist' do
+      # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！ https://atnd.org/events/81945
+      let(:event) { api.find(event_id: 81945) }
+
+      it 'グループ情報が空であること' do
+        expect(event.group_url).to eq nil
+        expect(event.group_id).to eq nil
+        expect(event.group_title).to eq nil
+        expect(event.group_logo).to eq nil
+      end
+    end
+  end
 end
