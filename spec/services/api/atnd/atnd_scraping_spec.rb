@@ -3,115 +3,222 @@ include Api::Atnd
 
 describe AtndScraping, type: :request do
   let(:api) { AtndApi }
-  describe 'エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！' do
+  describe '#find' do
+    # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
     let(:event) { api.find(event_id: 81945) }
-    describe 'イベント情報の取得できること', vcr: '#find-event' do
-      it { expect(event.source).to eq 'ATND' }
-      it { expect(event.event_id).to eq 81945 }
-      it { expect(event.event_url).to eq 'https://atnd.org/events/81945' }
-      it { expect(event.title).to eq 'エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！' }
-      it { expect(event.catch).to start_with '【ATEAM TECHとは】 ゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。' }
-      it { expect(event.started_at).to eq Date.parse('2016-10-11T20:00:00.000+09:00') }
-      it { expect(event.place).to eq 'エイチーム　本社' }
-      it { expect(event.address).to eq '〒450-6432　名古屋市中村区名駅三丁目28番12号　大名古屋ビルヂング 32F' }
-      it { expect(event.limit_over?).to eq false }
-      it { expect(event.logo).to eq 'https://atnd.org/event_images/0008/0890/008_original.jpg?1474957731' }
-      it { expect(event.users.count).to eq event.accepted }
-      it { expect(event.group_url).to eq nil }
-      it { expect(event.group_id).to eq nil }
-      it { expect(event.group_title).to eq nil }
-      it { expect(event.group_logo).to eq nil }
-    end
 
-    describe '参加者の情報が取得できること', vcr: '#find-users' do
-      context '全てのSNSが登録されているユーザの場合' do
-        let(:atnd_user) { event.users.select { |user| user.atnd_id == '259586' }.first }
-        it { expect(atnd_user.atnd_id).to eq '259586' }
-        it { expect(atnd_user.twitter_id).to eq 'suzukiterminal' }
-        it { expect(atnd_user.facebook_id).to eq '1800036413585884' }
-        it { expect(atnd_user.github_id).to eq '' }
-        it { expect(atnd_user.linkedin_id).to eq '' }
-        it { expect(atnd_user.name).to eq 's2terminal' }
-        it { expect(atnd_user.image_url).to eq 'https://pbs.twimg.com/profile_images/682491356460101632/4l54CzhH_normal.jpg' }
-      end
-
-      context 'SNSが未登録なユーザの場合' do
-        let(:no_social_user) { event.users.select { |user| user.atnd_id == '260559' }.first }
-        it { expect(no_social_user.atnd_id).to eq '260559' }
-        it { expect(no_social_user.twitter_id).to eq '' }
-        it { expect(no_social_user.facebook_id).to eq '' }
-        it { expect(no_social_user.github_id).to eq '' }
-        it { expect(no_social_user.linkedin_id).to eq '' }
-        it { expect(no_social_user.name).to eq 'otama567' }
-        it { expect(no_social_user.image_url).to eq 'https://atnd.org/images/icon/default_latent.png' }
-      end
-    end
-
-    describe '主催者の情報が取得できること', vcr: '#find-owners' do
-      let(:owners) { event.owners }
-      let(:ateam) { owners.select { |user| user.atnd_id == '224579' }.first }
-      it { expect(owners.count).to eq 1 }
-      it { expect(ateam.atnd_id).to eq '224579' }
-      it { expect(ateam.twitter_id).to eq '' }
-      it { expect(ateam.facebook_id).to eq '935173646549635' }
-      it { expect(ateam.github_id).to eq '' }
-      it { expect(ateam.linkedin_id).to eq '' }
-      it { expect(ateam.name).to eq 'Ateam Inc.' }
-      it { expect(ateam.image_url).to eq 'https://graph.facebook.com/935173646549635/picture?type=square' }
-    end
-  end
-
-  describe '#catch' do
-    context 'catchが設定されている場合'
-    context 'catchが設定されていない場合'
-  end
-
-  describe '#logo' do
-    context 'logoが設定されている場合'
-    context 'logoが設定されていない場合'
-  end
-
-  describe '#get_social_id' do
-    describe '#twitter_id' do
-      context 'twitter_idが設定されている場合'
-      context 'twitter_idが設定されていない場合' # nilであること
-    end
-    describe '#facebook_id' do
-      context 'facebook_idが設定されている場合'
-      context 'facebook_idが設定されていない場合' # nilであること
+    it 'イベント情報の取得できること', vcr: '#find' do
+      expect(event.source).to eq 'ATND'
+      expect(event.event_id).to eq 81945
+      expect(event.event_url).to eq 'https://atnd.org/events/81945'
+      expect(event.title).to eq 'エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！'
+      expect(event.catch).to start_with '【ATEAM TECHとは】 ゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。'
+      expect(event.started_at).to eq Date.parse('2016-10-11T20:00:00.000+09:00')
+      expect(event.place).to eq 'エイチーム　本社'
+      expect(event.address).to eq '〒450-6432　名古屋市中村区名駅三丁目28番12号　大名古屋ビルヂング 32F'
+      expect(event.limit_over?).to eq false
+      expect(event.logo).to eq 'https://atnd.org/event_images/0008/0890/008_original.jpg?1474957731'
+      expect(event.users.count).to eq event.accepted
+      expect(event.group_url).to eq nil
+      expect(event.group_id).to eq nil
+      expect(event.group_title).to eq nil
+      expect(event.group_logo).to eq nil
     end
   end
 
   describe '#users' do
-    context '画像が設定されている場合'
-    context '画像が設定されていない場合'
-    context 'httpsからはじまる場合'
-    context 'httpsからはじまらない場合'
-    context '参加者がいない場合'
+    let(:users) { event.users }
+    describe '参加者がいる場合', vcr: '#users-exist' do
+      # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
+      let(:event) { api.find(event_id: 81945) }
+
+      it '参加者数が取得できること' do
+        expect(users.count).to be > 0
+        expect(users.count).to eq event.accepted
+      end
+    end
+
+    context '参加者がいない場合', vcr: '#users-not_exist' do
+      # 【5/22豊橋でコミュニティー価値創造セミナー】 https://atnd.org/events/86752
+      let(:event) { api.find(event_id: 86752) }
+
+      it '参加者一覧が空であること' do
+        expect(users).to be_empty
+      end
+    end
+  end
+
+  describe '#user' do
+    let(:users) { event.users }
+    describe '#get_social_id' do
+      context '全てのSNSが登録されているユーザの場合', vcr: '#user-sns-exist' do
+        # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
+        let(:event) { api.find(event_id: 81945) }
+        let(:atnd_user) { users.select { |user| user.atnd_id == '259586' }.first }
+
+        it 'SNS情報が取得できること' do
+          expect(atnd_user.atnd_id).to eq '259586'
+          expect(atnd_user.twitter_id).to eq 'suzukiterminal'
+          expect(atnd_user.facebook_id).to eq '1800036413585884'
+          expect(atnd_user.github_id).to eq ''
+          expect(atnd_user.linkedin_id).to eq ''
+          expect(atnd_user.name).to eq 's2terminal'
+        end
+      end
+
+      context 'SNSが未登録なユーザの場合', vcr: '#user-sns-not_exist' do
+        # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
+        let(:event) { api.find(event_id: 81945) }
+        let(:no_social_user) { users.select { |user| user.atnd_id == '260559' }.first }
+
+        it 'SNS情報が取得できること' do
+          expect(no_social_user.atnd_id).to eq '260559'
+          expect(no_social_user.twitter_id).to eq ''
+          expect(no_social_user.facebook_id).to eq ''
+          expect(no_social_user.github_id).to eq ''
+          expect(no_social_user.linkedin_id).to eq ''
+          expect(no_social_user.name).to eq 'otama567'
+        end
+      end
+    end
+
+    describe '#image_url' do
+      context '画像が設定されている場合', vcr: '#user-image_url-exist' do
+        # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
+        let(:event) { api.find(event_id: 81945) }
+        let(:atnd_user) { users.select { |user| user.atnd_id == '259586' }.first }
+
+        it 'ユーザロゴが取得できること' do
+          expect(atnd_user.image_url).to eq 'https://pbs.twimg.com/profile_images/682491356460101632/4l54CzhH_normal.jpg'
+        end
+      end
+
+      context '画像が設定されていない場合', vcr: '#user-image_url-not_exist' do
+        # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
+        let(:event) { api.find(event_id: 81945) }
+        let(:no_social_user) { users.select { |user| user.atnd_id == '260559' }.first }
+
+        it 'ATNDロゴが取得できること' do
+          expect(no_social_user.image_url).to eq 'https://atnd.org/images/icon/default_latent.png'
+        end
+      end
+      context 'httpsからはじまる場合'
+      context 'httpsからはじまらない場合'
+    end
+  end
+
+  describe '#owners' do
+    let(:owners) { event.owners }
+    context '主催者がいる場合', vcr: '#owners-exist' do
+      # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
+      let(:event) { api.find(event_id: 81945) }
+
+      it '主催者が取得できること' do
+        expect(owners.size).to eq 1
+        expect(owners.first.name).to eq 'Ateam Inc.'
+      end
+    end
+
+    context '主催者がいない場合', vcr: '#owners-not_exist' do
+      # HULFT勉強会 in 名古屋 https://atnd.org/events/84139
+      let(:event) { api.find(event_id: 84139) }
+
+      it '主催者一覧が空であること' do
+        expect(owners).to be_empty
+      end
+    end
   end
 
   describe '#owner' do
-    context 'owner_info.empty?の場合'
-    context '画像が設定されている場合'
-    context '画像が設定されていない場合'
-    context '管理者がいない場合'
+    let(:owners) { event.owners }
+    describe '#get_social_id' do
+      context '全てのSNSが登録されているユーザの場合', vcr: '#owner-sns-exist' do
+        # 効果的な運用知識や成功事例で集客・売上増大につなぐ https://atnd.org/events/88230
+        let(:event) { api.find(event_id: 88230) }
+        let(:owner) { owners.select { |owner| owner.twitter_id == 'infochogenba' }.first }
+
+        it 'SNS情報が取得できること' do
+          expect(owner.atnd_id).to eq '258141'
+          expect(owner.twitter_id).to eq 'infochogenba'
+          expect(owner.facebook_id).to eq '258479937956641'
+          expect(owner.github_id).to eq ''
+          expect(owner.linkedin_id).to eq ''
+          expect(owner.name).to eq 'WEB塾超現場'
+        end
+      end
+
+      context 'SNSが未登録なユーザの場合', vcr: '#owner-sns-not_exist' do
+        # 介護のストレスケア https://atnd.org/events/88105
+        let(:event) { api.find(event_id: 88105) }
+        let(:owner) { owners.select { |owner| owner.name == 'アイディア東京' }.first }
+
+        it 'SNS情報が取得できること' do
+          expect(owner.atnd_id).to eq '278790'
+          expect(owner.twitter_id).to eq ''
+          expect(owner.facebook_id).to eq ''
+          expect(owner.github_id).to eq ''
+          expect(owner.linkedin_id).to eq ''
+          expect(owner.name).to eq 'アイディア東京'
+        end
+      end
+    end
+
+    describe '#image_url' do
+      context '画像が設定されている場合', vcr: '#owner-image_url-exist' do
+        # 効果的な運用知識や成功事例で集客・売上増大につなぐ https://atnd.org/events/88230
+        let(:event) { api.find(event_id: 88230) }
+        let(:owner) { owners.select { |owner| owner.twitter_id == 'infochogenba' }.first }
+
+        it 'ユーザアイコンが取得できること' do
+          expect(owner.image_url).to eq 'https://pbs.twimg.com/profile_images/708242876321243137/HoqV1Wf0_normal.jpg'
+        end
+      end
+
+      context '画像が設定されていない場合', vcr: '#owner-image_url-not_exist' do
+        # 介護のストレスケア https://atnd.org/events/88105
+        let(:event) { api.find(event_id: 88105) }
+        let(:owner) { owners.select { |owner| owner.name == 'アイディア東京' }.first }
+
+        it 'ATNDロゴが取得できること' do
+          expect(owner.image_url).to eq 'https://atnd.org/images/icon/default_latent.png'
+        end
+      end
+    end
   end
 
-  context '管理者の画像がない場合', vcr: '#find-RFC' do
-    let(:event) { api.find(keyword: 'RFC 読書会 - RFC 1034 第1回') }
-    let(:owners) { event.owners }
-    let(:tss) { owners.select { |user| user.atnd_id == '10209' }.first }
-    it { expect(owners.count).to eq 1 }
-    it { expect(tss.atnd_id).to eq '10209' }
-    it { expect(tss.twitter_id).to eq '' }
-    it { expect(tss.facebook_id).to eq '' }
-    it { expect(tss.name).to eq 'tss_ontap' }
-    it { expect(tss.image_url).to eq 'https://atnd.org/images/icon/default_latent.png' }
+  describe '#catch' do
+    context 'catchが設定されている場合', vcr: '#catch-exist' do
+      # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
+      let(:event) { api.find(event_id: 81945) }
+      it 'キャッチが取得できること' do
+        expect(event.catch).to start_with '【ATEAM TECHとは】 ゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。'
+      end
+    end
+
+    context 'catchが設定されていない場合', vcr: '#catch-not_exist' do
+    end
   end
 
-  context '管理者がいない場合', vcr: '#find-HULFT' do
-    let(:event) { api.find(keyword: 'HULFT勉強会 in 名古屋') }
-    let(:owners) { event.owners }
-    it { expect(owners.count).to eq 0 }
+  describe '#logo' do
+    context 'logoが設定されている場合', vcr: '#logo-exist' do
+      # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！ https://atnd.org/events/81945
+      let(:event) { api.find(event_id: 81945) }
+
+      it 'イベントロゴが取得できること' do
+        expect(event.logo).to eq 'https://atnd.org/event_images/0008/0890/008_original.jpg?1474957731'
+      end
+    end
+
+    context 'logoが設定されていない場合' do
+      # NagoyaStat #6 https://atnd.org/events/88235
+      let(:event) { api.find(event_id: 88235) }
+
+      it 'ATNDロゴが取得できること', vcr: '#logo-not_exist' do
+        expect(event.logo).to eq '/img/atnd.png'
+      end
+    end
   end
+
+  # 主催グループがある場合
+  # 主催グループがない場合
 end

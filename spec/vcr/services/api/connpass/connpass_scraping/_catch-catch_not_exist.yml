@@ -25,19 +25,19 @@ http_interactions:
       Content-Type:
       - text/json; charset=utf-8
       Date:
-      - Sun, 21 May 2017 13:53:24 GMT
+      - Mon, 22 May 2017 15:54:19 GMT
       Expires:
-      - Sun, 21 May 2017 13:58:24 GMT
+      - Mon, 22 May 2017 15:59:19 GMT
       Last-Modified:
-      - Sun, 21 May 2017 13:53:24 GMT
+      - Mon, 22 May 2017 15:54:19 GMT
       Server:
       - nginx
       Vary:
       - Accept-Language, Cookie
       X-Frame-Options:
       - DENY
-      Content-Length:
-      - '4146'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
@@ -85,5 +85,5 @@ http_interactions:
         "accepted": 5, "ended_at": "2017-05-11T21:00:00+09:00", "place": "Misoca"}],
         "results_start": 1, "results_available": 1}'
     http_version: 
-  recorded_at: Sun, 21 May 2017 13:53:26 GMT
+  recorded_at: Mon, 22 May 2017 15:54:19 GMT
 recorded_with: VCR 3.0.3

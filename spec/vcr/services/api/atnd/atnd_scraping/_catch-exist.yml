@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.atnd.org/events/?count=100&event_id=81945&format=json&order=2&start=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 22 May 2017 16:06:17 GMT
+      Server:
+      - Apache
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - '"3d4538a76f2c64385d09d43d8cdea9a0"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 8ac703ec-f590-436c-83f1-09471dd05aab
+      Set-Cookie:
+      - request_method=GET; path=/
+      Status:
+      - 200 OK
+      P3p:
+      - CP="NON DSP COR CURa ADMa DEVa CUSo TAIa PSDo OUR BUS UNI COM NAV STA"
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJyZXN1bHRzX3JldHVybmVkIjoxLCJyZXN1bHRzX3N0YXJ0IjoiMSIsImV2ZW50cyI6W3siZXZlbnQiOnsiZXZlbnRfaWQiOjgxOTQ1LCJ0aXRsZSI6IuOCqOOCpOODgeODvOODoOOBrumWi+eZuuWLieW8t+S8muOAjkFURUFNIFRFQ0jjgI/jgpIxMC8xMSjngaspIOOBq+WQjeWPpOWxi+OBp+mWi+WCrO+8geaIkOmVt+OBl+e2muOBkeOCi1dlYuOCteODvOODk+OCueOBruijj+WBtCBBV1PmtLvnlKjkuovkvovjgpLlpKflhazplovvvIEiLCJjYXRjaCI6bnVsbCwiZGVzY3JpcHRpb24iOiJcdTAwM2NoMlx1MDAzZeOAkEFURUFNIFRFQ0jjgajjga/jgJFcdTAwM2MvaDJcdTAwM2Vcblx1MDAzY3BcdTAwM2XjgrLjg7zjg6DjgoTjgqTjg7Pjgr/jg7zjg43jg4Pjg4jmpa3nlYzjgaflg43jgY/mioDooZPogIXlkJHjgZHjgavli4nlvLfkvJrjgoTkuqTmtYHjgafjgY3jgovloLTjgpLoqK3jgZHjgIHmlrDjgZfjgYTmsJfjgaXjgY3jgoTmiJDplbfjgavjgaTjgarjgYzjgovjgojjgYbjgarmqZ/kvJrjgpLmj5DkvpvjgZnjgovjgZPjgajjgafjgIHmioDooZPlipvjga7lkJHkuIrjgoTmpa3nlYzjga7jgZXjgonjgarjgovnmbrlsZXjgpLnm67mjIfjgZfjgb7jgZnjgIJcdTAwM2NiciAvXHUwMDNlXG7mpa3nlYzjga7mioDooZPjg4jjg6zjg7Pjg4njgavplqLjgZnjgovlhbHmnInjgoTkuqTmtYHjga7loLTjgpLpgJrjgZjjgabjgojjgormt7HjgYTnn6XorZjjgpLlvpfjgabjgIHjgZXjgonjgavjga/lj4LliqDogIXlkIzlo6vjgafjga7jgaTjgarjgYzjgorjgoLjgafjgY3jgozjgbDjgajogIPjgYjjgabjgYrjgorjgb7jgZnjgIJcdTAwM2MvcFx1MDAzZVxuXHUwMDNjcFx1MDAzZeS7iuWbnuOBruODhuODvOODnuOBr+OAjOaIkOmVt+OBl+e2muOBkeOCi1dlYuOCteODvOODk+OCueOBruijj+WBtCBBV1PmtLvnlKjkuovkvovjgpLlpKflhazplovjgI3jgafjgZnjgIJcdTAwM2NiciAvXHUwMDNlXG7jgqjjgqTjg4Hjg7zjg6DjgrDjg6vjg7zjg5fjga7jgrnjgr/jg4Pjg5XjgYzjgIFXZWLjgrXjg7zjg5PjgrnjgavjgYrjgZHjgotBV1Pjga7mtLvnlKjkuovkvovjgavjgaTjgYTjgabjgYroqbHjgZfjgb7jgZnjgIJcdTAwM2MvcFx1MDAzZVxuXHUwMDNjaDJcdTAwM2XjgqTjg5njg7Pjg4jmpoLopoFcdTAwM2MvaDJcdTAwM2Vcblx1MDAzY3BcdTAwM2Xjg7sg6ZaL5YKs5pel56iLXHUwMDNjYnIgL1x1MDAzZVxu44CA4pSXMjAxNuW5tDEw5pyIMTHml6Uo54GrKVx1MDAzY2JyIC9cdTAwM2VcbuODu+aXpeaZglx1MDAzY2JyIC9cdTAwM2VcbuOAgOKUl+mWi+WgtO+8mjE55pmCNDXliIYg6ZaL5aeL77yaMjDmmYIwMOWIhlx1MDAzY2JyIC9cdTAwM2VcbuODu+WLn+mbhue3oOWIh+aXpeaZglx1MDAzY2JyIC9cdTAwM2VcbuOAgOKUlzIwMTblubQxMOaciDEw5pelKOaciCnvvJoxOeaZgjAw5YiGXHUwMDNjYnIgL1x1MDAzZVxu44O75Y+C5Yqg6LK7XHUwMDNjYnIgL1x1MDAzZVxu44CA4pSX54Sh5paZIOKAu+i7vemjn+OCkueUqOaEj+OBl+OBpuOBiuOCiuOBvuOBmVx1MDAzY2JyIC9cdTAwM2VcbuODu+S8muWgtFx1MDAzY2JyIC9cdTAwM2VcbuOAgOKUl+agquW8j+S8muekvuOCqOOCpOODgeODvOODoCDmnKznpL4g5aSn5ZCN5Y+k5bGL44OT44Or44OC44Oz44KwMzJGXHUwMDNjL3BcdTAwM2Vcblx1MDAzY2gyXHUwMDNl44K/44Kk44Og44OG44O844OW44OrXHUwMDNjL2gyXHUwMDNlXG5cdTAwM2NwXHUwMDNlMTk6NDUgXHUwMDI2IzgyMTE7IDIwOjAw44CA5Y+X5LuYXHUwMDNjYnIgL1x1MDAzZVxuMjA6MDAgXHUwMDI2IzgyMTE7IDIwOjE144CA5Lya56S+6Kqs5piO44O744Kq44OV44Kj44K544OE44Ki44O8XHUwMDNjYnIgL1x1MDAzZVxuMjA6MTUgXHUwMDI2IzgyMTE7IDIwOjM144CA55m66KGo4pGgIOmWi+eZuuOBi+OCieS4gOatqeW8leOBhOOBn+imlueCueOBp+imi+OBn0FXU+OBqOOBhOOBhuOCpOODs+ODleODqeOBq+OBpOOBhOOBplx1MDAzY2JyIC9cdTAwM2VcbjIwOjM1IFx1MDAyNiM4MjExOyAyMDo1NeOAgOeZuuihqOKRoSBTZXJ2ZXJsZXNzIEZyYW1ld29ya+OBrua0u+eUqOS6i+S+i1x1MDAzY2JyIC9cdTAwM2VcbjIwOjU1IFx1MDAyNiM4MjExOyAyMToxNeOAgOeZuuihqOKRoiBBV1PvvItWYWdyYW5077yLQ2hlZuOBq+OCiOOCi+OCs+OCueODiOOCkuaEj+itmOOBl+OBn+mWi+eZuueSsOWig+ani+evieS6i+S+i1x1MDAzY2JyIC9cdTAwM2VcbjIxOjE1IFx1MDAyNiM4MjExOyAyMTozNeOAgOeZuuihqOKRoyBBV1PjgpLliKnnlKjjgZfjgZ/jgrXjg7zjg5DlhpfplbfljJYo5LuuKVx1MDAzY2JyIC9cdTAwM2VcbjIxOjM1IC3jgIDjgIDjgIDjgIDluqfoq4fkvJpcdTAwM2MvcFx1MDAzZVxuXHUwMDNjaDJcdTAwM2XkvJrloLTjgbjjga7jgqLjgq/jgrvjgrlcdTAwM2MvaDJcdTAwM2Vcblx1MDAzY3BcdTAwM2XmoKrlvI/kvJrnpL7jgqjjgqTjg4Hjg7zjg6Ag5pys56S+XHUwMDNjL3BcdTAwM2Vcblx1MDAzY3BcdTAwM2XjgJI0NTAtNjQzMlx1MDAzY2JyIC9cdTAwM2VcbuWQjeWPpOWxi+W4guS4readkeWMuuWQjemnheS4ieS4geebrjI455WqMTLlj7fjgIDlpKflkI3lj6TlsYvjg5Pjg6vjg4Ljg7PjgrAgMzJGXHUwMDNjYnIgL1x1MDAzZVxuaHR0cDovL3d3dy5hLXRtLmNvLmpwL2NvcnBvcmF0ZS9hY2Nlc3MuaHRtbFx1MDAzY2JyIC9cdTAwM2VcbuKAu+WQjeWPpOWxi+mnheWFqOe3muOCiOOCiuWcsOS4i+OBp+ebtOe1kFx1MDAzYy9wXHUwMDNlXG5cdTAwM2NoMlx1MDAzZeaMgeOBoeeJqVx1MDAzYy9oMlx1MDAzZVxuXHUwMDNjcFx1MDAzZeODu+WQjeWIujLmnppcdTAwM2NiciAvXHUwMDNlXG7jg7vnrYboqJjnlKjlhbdcdTAwM2MvcFx1MDAzZVxuXHUwMDNjaDJcdTAwM2XosrvnlKhcdTAwM2MvaDJcdTAwM2Vcblx1MDAzY3BcdTAwM2XnhKHmlpnjgafjgZnvvIFcdTAwM2MvcFx1MDAzZSIsImV2ZW50X3VybCI6Imh0dHA6Ly9hdG5kLm9yZy9ldmVudHMvODE5NDUiLCJzdGFydGVkX2F0IjoiMjAxNi0xMC0xMVQyMDowMDowMC4wMDArMDk6MDAiLCJlbmRlZF9hdCI6IjIwMTYtMTAtMTFUMjI6MzA6MDAuMDAwKzA5OjAwIiwidXJsIjpudWxsLCJsaW1pdCI6NDUsImFkZHJlc3MiOiLjgJI0NTAtNjQzMuOAgOWQjeWPpOWxi+W4guS4readkeWMuuWQjemnheS4ieS4geebrjI455WqMTLlj7fjgIDlpKflkI3lj6TlsYvjg5Pjg6vjg4Ljg7PjgrAgMzJGIiwicGxhY2UiOiLjgqjjgqTjg4Hjg7zjg6DjgIDmnKznpL4iLCJsYXQiOiIzNS4xNzIwNTIzIiwibG9uIjoiMTM2Ljg4NDQ5ODYiLCJvd25lcl9pZCI6MjI0NTc5LCJvd25lcl9uaWNrbmFtZSI6IkF0ZWFtIEluYy4iLCJvd25lcl90d2l0dGVyX2lkIjpudWxsLCJhY2NlcHRlZCI6MzksIndhaXRpbmciOjAsInVwZGF0ZWRfYXQiOiIyMDE2LTEwLTA4VDAwOjUyOjMzLjAwMCswOTowMCJ9fV19
+    http_version: 
+  recorded_at: Mon, 22 May 2017 16:06:17 GMT
+recorded_with: VCR 3.0.3
