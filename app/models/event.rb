@@ -24,4 +24,8 @@ class Event < ApplicationRecord
     d = Date.new(year, month, day)
     %w(日 月 火 水 木 金 土)[d.wday]
   end
+
+  def place_enc
+    URI.escape(place)
+  end
 end
