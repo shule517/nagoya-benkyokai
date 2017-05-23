@@ -72,9 +72,9 @@ describe User do
       it '名前で紐付けられること' do
         expect(User.find_doorkeeper(nil, nil, nil, nil, 'user_door_nothing').name).to eq 'user_door_nothing'
       end
-      # it '名前が同じでも、SNSが登録されているユーザとは紐付かないこと' do
-      #   expect(User.find_doorkeeper(nil, nil, nil, nil, 'user_connpass_twitter').name).to raise_error
-      # end
+      it '名前が同じでも、SNSが登録されているユーザとは紐付かないこと' do
+        expect(User.find_doorkeeper(nil, nil, nil, nil, 'user_connpass_twitter')).to eq nil
+      end
     end
   end
 

@@ -18,8 +18,8 @@ class User < ApplicationRecord
     def find_doorkeeper(twitter_id = nil, facebook_id = nil, github_id = nil, linkedin_id = nil, name = nil)
       user = find_social(twitter_id, facebook_id, github_id, linkedin_id)
       return user if user
-      # TODO twitter_id facebook_id github_id linkedin_id 全て未設定である条件を追加すること
-      User.find_by(name: name)
+      # 名前が同じでも SNSが登録されていない場合は、別ユーザとして判断する
+      User.find_by(twitter_id: nil, facebook_id: nil, github_id: nil, linkedin_id: nil, name: name)
     end
 
     def find_social(twitter_id = nil, facebook_id = nil, github_id = nil, linkedin_id = nil)
