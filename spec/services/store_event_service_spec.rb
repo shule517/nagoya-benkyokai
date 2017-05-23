@@ -14,7 +14,7 @@ describe StoreEventService, type: :request do
         expect(event.event_url).to eq 'https://atnd.org/events/81945'
         expect(event.title).to eq 'エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！'
         expect(event.catch).to start_with '【ATEAM TECHとは】 ゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。'
-        expect(event.started_at).to eq Date.parse('2016-10-11T20:00:00.000+09:00').strftime
+        expect(event.started_at).to eq '2016-10-11 20:00:00 +0900'
         expect(event.place).to eq 'エイチーム　本社'
         expect(event.address).to eq '〒450-6432　名古屋市中村区名駅三丁目28番12号　大名古屋ビルヂング 32F'
         expect(event.logo).to eq 'https://atnd.org/event_images/0008/0890/008_original.jpg?1474957731'
@@ -55,7 +55,7 @@ describe StoreEventService, type: :request do
         expect(event.title).to eq 'JXUGC #14 Xamarin ハンズオン 名古屋大会'
         expect(event.logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/d7/3c/d73cccc993bb52bffbc0b65bc4c10d38.png'
         expect(event.catch).to start_with 'にゃごやでも話題の Xamarin を触ってみよう！<br>こんにちは。エクセルソフトの田淵です。 今話題の Xamarin を名古屋でも触ってみましょう！'
-        expect(event.started_at).to eq Date.parse('2016-05-15T13:00:00+09:00').strftime
+        expect(event.started_at).to eq '2016-05-15 13:00:00 +0900'
         expect(event.place).to eq '熱田生涯学習センター'
         expect(event.address).to eq '熱田区熱田西町2-13'
         expect(event.logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/d7/3c/d73cccc993bb52bffbc0b65bc4c10d38.png'
@@ -95,7 +95,7 @@ describe StoreEventService, type: :request do
         expect(event.event_url).to eq 'https://geekbar.doorkeeper.jp/events/45257'
         expect(event.title).to eq 'リモート開発 de ナイト ＠名古屋ギークバー'
         expect(event.catch).to start_with 'リモート開発、してますか？ している人も、していないけどしたい人も、集まって情報交換しましょう。'
-        expect(event.started_at).to eq Date.parse('2016-06-13T10:30:00.000Z').strftime
+        expect(event.started_at).to eq '2016-06-13 10:30:00 UTC'
         expect(event.place).to eq 'Club Adriana'
         expect(event.address).to eq '名古屋市中区葵1-27-37シティハイツ1F'
         expect(event.logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/events_banners/45257_normal_1463562966_%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%90%E3%83%BC%E3%83%AD%E3%82%B4.png'

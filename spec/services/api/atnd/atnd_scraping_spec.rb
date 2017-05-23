@@ -7,21 +7,32 @@ describe AtndScraping, type: :request do
     # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！ https://atnd.org/events/81945
     let(:event) { api.find(event_id: 81945) }
 
-    it 'イベント情報の取得できること', vcr: '#find' do
+    example 'イベント情報の取得できること', vcr: '#find' do
       expect(event.source).to eq 'ATND'
       expect(event.event_id).to eq 81945
       expect(event.event_url).to eq 'https://atnd.org/events/81945'
+      expect(event.url).to eq nil # これ必要？
       expect(event.title).to eq 'エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！'
       expect(event.catch).to start_with '【ATEAM TECHとは】 ゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。'
-      expect(event.started_at).to eq Date.parse('2016-10-11T20:00:00.000+09:00')
+      expect(event.description).to start_with '【ATEAM TECHとは】 ゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。'
+      expect(event.logo).to eq 'https://atnd.org/event_images/0008/0890/008_original.jpg?1474957731'
+      expect(event.started_at).to eq Time.parse('2016-10-11T20:00:00.000+09:00')
+      expect(event.ended_at).to eq Time.parse('2016-10-11T22:30:00.000+09:00')
       expect(event.place).to eq 'エイチーム　本社'
       expect(event.address).to eq '〒450-6432　名古屋市中村区名駅三丁目28番12号　大名古屋ビルヂング 32F'
+      expect(event.lat).to eq '35.1720523'
+      expect(event.lon).to eq '136.8844986'
+      expect(event.limit).to eq 45
+      expect(event.accepted).to eq 39
+      expect(event.waiting).to eq 0
+      expect(event.update_time).to eq Time.parse('2016-10-08T00:52:33.000+09:00')
+      # expect(event.hash_tag).to eq 'ATEAM_TECH' # TODO 取得できていない
       expect(event.limit_over?).to eq false
-      expect(event.logo).to eq 'https://atnd.org/event_images/0008/0890/008_original.jpg?1474957731'
       expect(event.users.count).to eq event.accepted
-      expect(event.group_url).to eq nil
+      expect(event.owners.count).to eq 1
       expect(event.group_id).to eq nil
       expect(event.group_title).to eq nil
+      expect(event.group_url).to eq nil
       expect(event.group_logo).to eq nil
     end
   end

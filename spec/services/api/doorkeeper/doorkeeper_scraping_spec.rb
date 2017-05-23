@@ -6,21 +6,33 @@ describe DoorkeeperScraping, type: :request do
   describe '#find' do
     # リモート開発 de ナイト ＠名古屋ギークバー https://geekbar.doorkeeper.jp/events/45257
     let(:event) { api.find(event_id: 45257) }
-    describe 'イベント情報が取得できること', vcr: '#find' do
-      it {
-        expect(event.source).to eq 'Doorkeeper'
-        expect(event.event_id).to eq 45257
-        expect(event.event_url).to eq 'https://geekbar.doorkeeper.jp/events/45257'
-        expect(event.title).to eq 'リモート開発 de ナイト ＠名古屋ギークバー'
-        expect(event.logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/events_banners/45257_normal_1463562966_%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%90%E3%83%BC%E3%83%AD%E3%82%B4.png'
-        expect(event.started_at).to eq Date.parse('2016-06-13T10:30:00.000Z')
-        expect(event.place).to eq 'Club Adriana'
-        expect(event.address).to eq '名古屋市中区葵1-27-37シティハイツ1F'
-        expect(event.group_title).to eq '名古屋ギークバー'
-        expect(event.group_id).to eq 1995
-        expect(event.group_url).to eq 'https://geekbar.doorkeeper.jp/'
-        expect(event.group_logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/groups_logos/1995_normal_1380975297_251035_156371434432231_4785187_n.jpg'
-      }
+    example 'イベントが取得できること', vcr: '#find' do
+      expect(event.source).to eq 'Doorkeeper'
+      expect(event.event_id).to eq 45257
+      expect(event.event_url).to eq 'https://geekbar.doorkeeper.jp/events/45257'
+      expect(event.url).to eq nil # これ必要？
+      expect(event.title).to eq 'リモート開発 de ナイト ＠名古屋ギークバー'
+      expect(event.catch).to start_with 'リモート開発、してますか？ している人も、していないけどしたい人も、集まって情報交換しましょう。'
+      expect(event.description).to start_with "<p>リモート開発、してますか？<br><br>\nしている人も、していないけどしたい人も、集まって情報交換しましょう。</p>\n\n"
+      expect(event.logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/events_banners/45257_normal_1463562966_%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%90%E3%83%BC%E3%83%AD%E3%82%B4.png'
+      expect(event.started_at).to eq Time.parse('2016-06-13T10:30:00.000Z')
+      expect(event.ended_at).to eq Time.parse('2016-06-13 13:00:00.000000000 +0000')
+      expect(event.place).to eq 'Club Adriana'
+      expect(event.lat).to eq '35.170239'
+      expect(event.lon).to eq '136.92266159999997'
+      expect(event.limit).to eq 38
+      expect(event.accepted).to eq 32
+      expect(event.waiting).to eq 0
+      expect(event.update_time).to eq Time.parse('2017-01-10 12:14:06.478000000 +0000')
+      expect(event.hash_tag).to eq nil # Doorkeeperにはハッシュタグは設定されていない
+      expect(event.limit_over?).to eq false
+      expect(event.users.count + 3).to eq event.accepted # 3人非表示
+      expect(event.owners.count).to eq 1
+      expect(event.address).to eq '名古屋市中区葵1-27-37シティハイツ1F'
+      expect(event.group_id).to eq 1995
+      expect(event.group_title).to eq '名古屋ギークバー'
+      expect(event.group_url).to eq 'https://geekbar.doorkeeper.jp/'
+      expect(event.group_logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/groups_logos/1995_normal_1380975297_251035_156371434432231_4785187_n.jpg'
     end
   end
 

@@ -6,22 +6,33 @@ describe ConnpassScraping, type: :request do
   describe '#find' do
     # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
     let(:event) { api.find(event_id: 30152) }
-    it 'イベントが取得できること', vcr: '#find' do
+    example 'イベントが取得できること', vcr: '#find' do
       expect(event.source).to eq 'connpass'
       expect(event.event_id).to eq 30152
       expect(event.event_url).to eq 'https://jxug.connpass.com/event/30152/'
+      expect(event.url).to eq nil # これ必要？
       expect(event.title).to eq 'JXUGC #14 Xamarin ハンズオン 名古屋大会'
-      expect(event.logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/d7/3c/d73cccc993bb52bffbc0b65bc4c10d38.png'
       expect(event.catch).to start_with 'にゃごやでも話題の Xamarin を触ってみよう！<br>こんにちは。エクセルソフトの田淵です。 今話題の Xamarin を名古屋でも触ってみましょう！'
-      expect(event.started_at).to eq Date.parse('2016-05-15T13:00:00+09:00')
+      expect(event.description).to start_with 'こんにちは。エクセルソフトの田淵です。 今話題の Xamarin を名古屋でも触ってみましょう！'
+      expect(event.logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/d7/3c/d73cccc993bb52bffbc0b65bc4c10d38.png'
+      expect(event.started_at).to eq Time.parse('2016-05-15T13:00:00+09:00')
+      expect(event.ended_at).to eq Time.parse('2016-05-15T16:00:00+09:00')
       expect(event.place).to eq '熱田生涯学習センター'
       expect(event.address).to eq '熱田区熱田西町2-13'
-      expect(event.group_title).to eq 'JXUG'
+      expect(event.lat).to eq '35.126704400000'
+      expect(event.lon).to eq '136.899578500000'
+      expect(event.limit).to eq 38
+      expect(event.accepted).to eq 38
+      expect(event.waiting).to eq 0
+      expect(event.update_time).to eq Time.parse('2016-05-12 15:27:59 +0900')
+      expect(event.hash_tag).to eq 'JXUG'
+      expect(event.limit_over?).to eq true
+      expect(event.users.count).to eq event.accepted
+      expect(event.owners.count).to eq 4
       expect(event.group_id).to eq 1134
+      expect(event.group_title).to eq 'JXUG'
       expect(event.group_url).to eq 'https://jxug.connpass.com/'
       expect(event.group_logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/c9/d3/c9d379a73fa278df5fae314abd0d227a.png'
-      expect(event.limit_over?).to eq true
-      expect(event.accepted).to eq event.users.count
     end
   end
 

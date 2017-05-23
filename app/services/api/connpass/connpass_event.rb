@@ -34,10 +34,18 @@ module Api
       end
 
       def started_at
-        Date.parse(self[:started_at])
+        Time.parse(self[:started_at])
       end
 
-      def limit_over?
+      def ended_at
+        Time.parse(self[:ended_at])
+      end
+
+      def update_time
+        Time.parse(self[:updated_at])
+      end
+
+      def limit_over? # TODO ちゃんとテストする Modelにもっていく
         return 0 if accepted == 0
         limit <= accepted
       end

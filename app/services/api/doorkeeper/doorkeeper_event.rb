@@ -33,7 +33,32 @@ module Api
       end
 
       def started_at
-        Date.parse(self[:starts_at])
+        Time.parse(self[:starts_at])
+      end
+
+      def ended_at
+        Time.parse(self[:ends_at])
+      end
+
+      def update_time
+        Time.parse(self[:updated_at])
+      end
+
+      def lon
+        self[:long]
+      end
+
+      def limit
+        self[:ticket_limit]
+      end
+
+      def waiting
+        self[:waitlisted]
+      end
+
+      def limit_over? # TODO ちゃんとテストする Modelにもっていく
+        return 0 if accepted == 0
+        limit <= accepted
       end
     end
   end
