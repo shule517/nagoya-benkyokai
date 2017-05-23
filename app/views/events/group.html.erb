@@ -59,20 +59,20 @@
                 <img class="twitter-icon" src="/img/Twitter.png" datatoggle="tooltip" title="ツイッターリスト" style="margin-right: 2px; margin-bottom: 2px">
               </a>
               <% event.owners.each do |user| %>
-                <% if !user.twitter_id.empty?  %>
+                <% if user.twitter_id&.present?  %>
               <a class="clickable" href="<%= "https://twitter.com/#{user.twitter_id}" %>">
                 <% end %>
                 <img class="owner-icon" src="<%= user.image_url %>" datatoggle="tooltip" title="管理者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
-                <% if !user.twitter_id.empty?  %>
+                <% if user.twitter_id&.present?  %>
               </a>
                 <% end %>
               <% end %>
               <% event.users.each do |user| %>
-                <% if !user[:twitter_id].empty?  %>
+                <% if user.twitter_id&.present?  %>
               <a class="clickable" href="<%= "https://twitter.com/#{user.twitter_id}" %>">
                 <% end %>
                 <img class="user-icon" src="<%= user.image_url %>" datatoggle="tooltip" title="参加者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
-                <% if !user.twitter_id.empty?  %>
+                <% if user.twitter_id&.present?  %>
               </a>
                 <% end %>
               <% end %>
