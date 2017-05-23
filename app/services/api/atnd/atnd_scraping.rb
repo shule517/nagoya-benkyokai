@@ -8,11 +8,21 @@ module Api
         '/img/atnd.png'
       end
 
-      # def group_logo
-      #   @group_logo ||= event_doc.css('.event_group_area > div.group_inner > div > a').attribute('style').value.match(%r{url\((.*)\)})[1]
-      # rescue
-      #   ''
-      # end
+      def group_url
+        nil # TODO
+      end
+
+      def group_id
+        nil # TODO
+      end
+
+      def group_title
+        nil # TODO
+      end
+
+      def group_logo
+        nil # TODO
+      end
 
       def users
         event_doc.css('#members-join ol li span').map { |user|

@@ -8,7 +8,7 @@ module Api
       def group_logo
         @group_logo ||= event_doc.css('.event_group_area > div.group_inner > div > a').attribute('style').value.match(%r{url\((.*)\)})[1]
       rescue
-        ''
+        nil
       end
 
       def users

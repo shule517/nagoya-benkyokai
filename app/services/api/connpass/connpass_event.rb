@@ -18,7 +18,7 @@ module Api
       end
 
       def series
-        self[:series] || { url: nil, group_id: nil, group_title: nil }
+        self[:series] || { url: nil, id: nil, title: nil }
       end
 
       def group_url

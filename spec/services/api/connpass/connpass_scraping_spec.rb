@@ -187,14 +187,30 @@ describe ConnpassScraping, type: :request do
     end
   end
 
-  context 'group_urlがない場合', vcr: '#find-no_group' do
-    # ちゅーんさんちでHaskellやると楽しいという会 https://connpass.com/event/46087/
-    let(:event) { api.find(event_id: 46087) }
-    it '参加者人数が取得できること' do
-      expect(event.users.count).to eq event.accepted
+  describe '#group' do
+    context 'グループがある場合', vcr: '#group-exist' do
+      # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
+      let(:event) { api.find(event_id: 30152) }
+      it 'グループ情報が取得できること' do
+        expect(event.users.count).to eq event.accepted
+        expect(event.owners.count).to eq 4
+        expect(event.group_title).to eq 'JXUG'
+        expect(event.group_id).to eq 1134
+        expect(event.group_url).to eq 'https://jxug.connpass.com/'
+        expect(event.group_logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/c9/d3/c9d379a73fa278df5fae314abd0d227a.png'
+      end
     end
-    it '主催者人数が取得できること' do
-      expect(event.owners.count).to eq 1
+    context 'グループがない場合', vcr: '#group-not_exist' do
+      # ちゅーんさんちでHaskellやると楽しいという会 https://connpass.com/event/46087/
+      let(:event) { api.find(event_id: 46087) }
+      it 'グループ情報が空であること' do
+        expect(event.users.count).to eq event.accepted
+        expect(event.owners.count).to eq 1
+        expect(event.group_title).to eq nil
+        expect(event.group_id).to eq nil
+        expect(event.group_url).to eq nil
+        expect(event.group_logo).to eq nil
+      end
     end
   end
 
