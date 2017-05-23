@@ -4,13 +4,13 @@ require './app/services/http.rb'
 module Notifiable
   def notify(task)
     begin
-      Slack.chat_postMessage text: "#{task} start", channel: '#test-log', username: 'lambda'
+      Slack.chat_postMessage text: "#{task} start", channel: ENV['SLACK_LOG_CHANNEL'], username: 'lambda'
       yield
     rescue => e
       backtrace = e.backtrace.reject { |trace| trace.include?('/app/vendor') || trace.include?('.rbenv') }.join("\n")
-      Slack.chat_postMessage text: "#{task} #{e}\n#{backtrace}", channel: '#test-error', username: 'lambda'
+      Slack.chat_postMessage text: "#{task} #{e}\n#{backtrace}", channel: ENV['SLACK_ERROR_CHANNEL'], username: 'lambda'
     ensure
-      Slack.chat_postMessage text: "#{task} end", channel: '#test-log', username: 'lambda'
+      Slack.chat_postMessage text: "#{task} end", channel: ENV['SLACK_LOG_CHANNEL'], username: 'lambda'
     end
   end
 end
