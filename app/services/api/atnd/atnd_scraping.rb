@@ -31,7 +31,7 @@ module Api
           user_info = { atnd_id: id, name: name, image_url: image_url }
           user_info.merge!(get_social_id(id))
           AtndUser.new(user_info)
-        }.sort_by { |user| user.twitter_id }.reverse
+        }.sort_by { |user| user.twitter_id || '' }.reverse
       end
 
       def owners
@@ -51,7 +51,7 @@ module Api
           user_info = { atnd_id: id, name: self.owner_nickname, image_url: image_url }
           user_info.merge!(get_social_id(id))
           AtndUser.new(user_info)
-        }.sort_by { |user| user.twitter_id }.reverse
+        }.sort_by { |user| user.twitter_id || '' }.reverse
       end
 
       private
@@ -63,9 +63,9 @@ module Api
         users_show_info = user_doc.css('#users-show-info')
         twitter_id = users_show_info.css('dl:nth-child(2) dd a').text
         facebook_id = users_show_info.css('dl:nth-child(3) dd').text
-        twitter_id = nil if twitter_id == '-'
-        facebook_id = nil if facebook_id == '-'
-        { twitter_id: twitter_id, facebook_id: facebook_id, github_id: nil, linkedin_id: nil }
+        twitter_id = nil if twitter_id.blank? || twitter_id == '-'
+        facebook_id = nil if facebook_id.blank? || facebook_id == '-'
+        { twitter_id: twitter_id, facebook_id: facebook_id }
       end
 
       def event_doc

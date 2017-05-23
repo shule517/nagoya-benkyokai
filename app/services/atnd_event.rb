@@ -79,7 +79,7 @@ class AtndEvent < EventBase
 
     id = owner_info.attribute('href').value.gsub('/users/', '')
     social_ids = get_social_id(id)
-    owners << AtndUser.new(atnd_id: id, twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: nil, linkedin_id: nil, name: owner_nickname, image_url: image_url)
+    owners << AtndUser.new(atnd_id: id, twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], name: owner_nickname, image_url: image_url)
   end
 
   def group_url

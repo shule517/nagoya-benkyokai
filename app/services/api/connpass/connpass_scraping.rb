@@ -33,7 +33,7 @@ module Api
           user_info.merge!(social_ids)
           users << ConnpassUser.new(user_info)
         end
-        users.sort_by! { |user| user.twitter_id }.reverse
+        users.sort_by! { |user| user.twitter_id || '' }.reverse
       rescue => e
         p e
         raise
@@ -78,7 +78,7 @@ module Api
               owners << ConnpassUser.new(connpass_id: id, twitter_id: twitter_id, name: name, image_url: image_url)
             end
           end
-          owners.sort_by! { |user| user.twitter_id }.reverse
+          owners.sort_by! { |user| user.twitter_id || '' }.reverse
         rescue => e
           p e
           raise

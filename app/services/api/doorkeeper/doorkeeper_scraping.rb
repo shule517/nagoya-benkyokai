@@ -21,7 +21,7 @@ module Api
         users = participation_doc.css('.user-profile-details').map do |user|
           DoorkeeperUser.new(user_info(user))
         end
-        users.sort_by! { |user| user.twitter_id }.reverse
+        users.sort_by! { |user| user.twitter_id || '' }.reverse
       rescue
         puts "no users event:#{title} / #{group_url} / #{self.id}"
         []
@@ -31,7 +31,7 @@ module Api
         owners = group_doc.css('.with-gutter > .row > div > .user-profile > .user-profile-details').map do |owner|
           DoorkeeperUser.new(user_info(owner))
         end
-        owners.sort_by! { |user| user.twitter_id }.reverse
+        owners.sort_by! { |user| user.twitter_id || '' }.reverse
       end
 
       private
@@ -40,7 +40,7 @@ module Api
         name = user.css('.user-name').text
         image_url = user.css('img').attribute('src').value
 
-        social_ids = { twitter_id: nil, facebook_id: nil, github_id: nil, linkedin_id: nil }
+        social_ids = {}
         user.css('.user-social > .external-profile-link').each do |social|
           url = social.attribute('href').value
           get_social_id(url, social_ids)

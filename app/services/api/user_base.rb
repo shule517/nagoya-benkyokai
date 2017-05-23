@@ -10,14 +10,14 @@ module Api
       :image_url
 
     def initialize(data)
-      @connpass_id = data[:connpass_id] || ''
-      @atnd_id     = data[:atnd_id]     || ''
-      @twitter_id  = data[:twitter_id]  || ''
-      @facebook_id = data[:facebook_id] || ''
-      @github_id   = data[:github_id]   || ''
-      @linkedin_id = data[:linkedin_id] || ''
-      @name        = data[:name]        || ''
-      @image_url   = data[:image_url]   || ''
+      @connpass_id = data[:connpass_id]
+      @atnd_id     = data[:atnd_id]
+      @twitter_id  = data[:twitter_id]
+      @facebook_id = data[:facebook_id]
+      @github_id   = data[:github_id]
+      @linkedin_id = data[:linkedin_id]
+      @name        = data[:name]
+      @image_url   = data[:image_url]
     end
   end
 end

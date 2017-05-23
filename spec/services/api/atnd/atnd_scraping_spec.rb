@@ -60,8 +60,8 @@ describe AtndScraping, type: :request do
           expect(atnd_user.atnd_id).to eq '259586'
           expect(atnd_user.twitter_id).to eq 'suzukiterminal'
           expect(atnd_user.facebook_id).to eq '1800036413585884'
-          expect(atnd_user.github_id).to eq ''
-          expect(atnd_user.linkedin_id).to eq ''
+          expect(atnd_user.github_id).to eq nil
+          expect(atnd_user.linkedin_id).to eq nil
           expect(atnd_user.name).to eq 's2terminal'
         end
       end
@@ -73,10 +73,10 @@ describe AtndScraping, type: :request do
 
         it 'SNS情報が取得できること' do
           expect(no_social_user.atnd_id).to eq '260559'
-          expect(no_social_user.twitter_id).to eq ''
-          expect(no_social_user.facebook_id).to eq ''
-          expect(no_social_user.github_id).to eq ''
-          expect(no_social_user.linkedin_id).to eq ''
+          expect(no_social_user.twitter_id).to eq nil
+          expect(no_social_user.facebook_id).to eq nil
+          expect(no_social_user.github_id).to eq nil
+          expect(no_social_user.linkedin_id).to eq nil
           expect(no_social_user.name).to eq 'otama567'
         end
       end
@@ -141,8 +141,8 @@ describe AtndScraping, type: :request do
           expect(owner.atnd_id).to eq '258141'
           expect(owner.twitter_id).to eq 'infochogenba'
           expect(owner.facebook_id).to eq '258479937956641'
-          expect(owner.github_id).to eq ''
-          expect(owner.linkedin_id).to eq ''
+          expect(owner.github_id).to eq nil
+          expect(owner.linkedin_id).to eq nil
           expect(owner.name).to eq 'WEB塾超現場'
         end
       end
@@ -154,10 +154,10 @@ describe AtndScraping, type: :request do
 
         it 'SNS情報が取得できること' do
           expect(owner.atnd_id).to eq '278790'
-          expect(owner.twitter_id).to eq ''
-          expect(owner.facebook_id).to eq ''
-          expect(owner.github_id).to eq ''
-          expect(owner.linkedin_id).to eq ''
+          expect(owner.twitter_id).to eq nil
+          expect(owner.facebook_id).to eq nil
+          expect(owner.github_id).to eq nil
+          expect(owner.linkedin_id).to eq nil
           expect(owner.name).to eq 'アイディア東京'
         end
       end

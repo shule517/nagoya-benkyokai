@@ -53,15 +53,15 @@ describe ConnpassScraping, type: :request do
         it { expect(user.twitter_id).to eq 'Fumiya_Kume' }
         it { expect(user.facebook_id).to eq '1524732281184852' }
         it { expect(user.github_id).to eq 'fumiya-kume' }
-        it { expect(user.linkedin_id).to be_empty }
+        it { expect(user.linkedin_id).to eq nil }
         it { expect(user.name).to eq 'くぅ - kuxu' }
       end
       context 'IDが設定されていない場合', vcr: '#get_social_id-not_exist' do
         let(:user) { users.select { |user| user.connpass_id == 'h_aka' }.first }
-        it { expect(user.twitter_id).to be_empty }
-        it { expect(user.facebook_id).to be_empty }
-        it { expect(user.github_id).to be_empty }
-        it { expect(user.linkedin_id).to be_empty }
+        it { expect(user.twitter_id).to eq nil }
+        it { expect(user.facebook_id).to eq nil }
+        it { expect(user.github_id).to eq nil }
+        it { expect(user.linkedin_id).to eq nil }
         it { expect(user.name).to eq 'h_aka' }
       end
     end
@@ -107,7 +107,7 @@ describe ConnpassScraping, type: :request do
         it { expect(owner.twitter_id).to eq 'antimon2' }
         it { expect(owner.facebook_id).to eq '100001520124191' }
         it { expect(owner.github_id).to eq 'antimon2' }
-        it { expect(owner.linkedin_id).to eq '' }
+        it { expect(owner.linkedin_id).to eq nil }
         it { expect(owner.name).to eq 'antimon2' }
         it { expect(owner.image_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/77/f0/77f0c8eae4e9e877c1a5681a84e6e3d1.png' }
       end
@@ -116,10 +116,10 @@ describe ConnpassScraping, type: :request do
         let(:event) { api.find(event_id: 55940) }
         let(:owner) { owners.select { |owner| owner.connpass_id == 'yoshihiro_kanada' }.first }
         it { expect(owner.connpass_id).to eq 'yoshihiro_kanada' }
-        it { expect(owner.twitter_id).to eq '' }
-        it { expect(owner.facebook_id).to eq '' }
-        it { expect(owner.github_id).to eq '' }
-        it { expect(owner.linkedin_id).to eq '' }
+        it { expect(owner.twitter_id).to eq nil }
+        it { expect(owner.facebook_id).to eq nil }
+        it { expect(owner.github_id).to eq nil }
+        it { expect(owner.linkedin_id).to eq nil }
         it { expect(owner.image_url).to eq 'https://connpass.com/static/img/common/user_no_image.gif' }
       end
     end

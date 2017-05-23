@@ -72,11 +72,11 @@ describe DoorkeeperScraping, type: :request do
         # リモート開発 de ナイト ＠名古屋ギークバー https://geekbar.doorkeeper.jp/events/45257
         let(:event) { api.find(event_id: 45257) }
         let(:user) { event.users.select { |user| user.name == 'Tomoki Sakamiya' }.first }
-        it { expect(user.atnd_id).to eq '' }
-        it { expect(user.twitter_id).to eq '' }
-        it { expect(user.facebook_id).to eq '' }
-        it { expect(user.github_id).to eq '' }
-        it { expect(user.linkedin_id).to eq '' }
+        it { expect(user.atnd_id).to eq nil }
+        it { expect(user.twitter_id).to eq nil }
+        it { expect(user.facebook_id).to eq nil }
+        it { expect(user.github_id).to eq nil }
+        it { expect(user.linkedin_id).to eq nil }
         it { expect(user.name).to eq 'Tomoki Sakamiya' }
         it { expect(user.image_url).to eq 'https://secure.gravatar.com/avatar/c7102e2634db160be9f59a0029b867b7?s=25&d=mm' }
       end
@@ -124,11 +124,11 @@ describe DoorkeeperScraping, type: :request do
         # 【初開催】Startup Weekend 岡崎【プレイベント】 https://swokazaki.doorkeeper.jp/events/60330
         let(:event) { api.find(event_id: 60330) }
         let(:owner) { owners.select { |owner| owner.name == 'Startup Weekend Japan' }.first }
-        it { expect(owner.atnd_id).to eq '' }
-        it { expect(owner.twitter_id).to eq '' }
-        it { expect(owner.facebook_id).to eq '' }
-        it { expect(owner.github_id).to eq '' }
-        it { expect(owner.linkedin_id).to eq '' }
+        it { expect(owner.atnd_id).to eq nil }
+        it { expect(owner.twitter_id).to eq nil }
+        it { expect(owner.facebook_id).to eq nil }
+        it { expect(owner.github_id).to eq nil }
+        it { expect(owner.linkedin_id).to eq nil }
         it { expect(owner.name).to eq 'Startup Weekend Japan' }
         it { expect(owner.image_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/324974_original_1491355581_1835_normal_1377595229_SW_kauffman_bw.png' }
       end
