@@ -14,7 +14,8 @@ module Api
       SEARCH_MAX_COUNT = 20
       def search_core(keywords, ym_list, event_id, start = 0)
         url = request_url(keywords, ym_list, event_id, start)
-        result = Shule::Http.get_json(url, Authorization: "Bearer #{ENV['DOORKEEPER_TOKEN']}")
+        result = Shule::Http.get_json(url)
+        # result = Shule::Http.get_json(url, Authorization: "Bearer #{ENV['DOORKEEPER_TOKEN']}")
         return [DoorkeeperEvent.new(result[:event])] if result.class == Hash
         events = result.map { |hash| DoorkeeperEvent.new(hash[:event]) }
         continue = events.count >= SEARCH_MAX_COUNT
