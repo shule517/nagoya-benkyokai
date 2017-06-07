@@ -22,7 +22,7 @@
       "type": "Ruby",
       "request": "launch",
       "cwd": "${workspaceRoot}",
-      "program": "${workspaceRoot}/bin/rails",
+      "program": "/Users/shule/.rbenv/versions/2.4.1/bin/rails",
       "args": [
         "server"
       ]
@@ -32,7 +32,7 @@
       "type": "Ruby",
       "request": "launch",
       "cwd": "${workspaceRoot}",
-      "program": "C:/Ruby23-x64/bin/rspec",
+      "program": "/Users/shule/.rbenv/versions/2.4.1/bin/rspec",
       "args": [
         "-I",
         "${workspaceRoot}"
@@ -43,7 +43,7 @@
       "type": "Ruby",
       "request": "launch",
       "cwd": "${workspaceRoot}",
-      "program": "C:/Ruby23-x64/bin/rspec",
+      "program": "/Users/shule/.rbenv/versions/2.4.1/bin/rspec",
       "args": [
         "-I",
         "${workspaceRoot}",
@@ -55,7 +55,7 @@
       "type": "Ruby",
       "request": "launch",
       "cwd": "${workspaceRoot}",
-      "program": "${workspaceRoot}/bin/cucumber"
+      "program": "/Users/shule/.rbenv/versions/2.4./Users/shule/.rbenv/versions/2.4.1/bin"
     }
   ]
 }
