@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby "2.4.1" # for heroku
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
@@ -41,6 +41,8 @@ gem 'pry-rails'  # rails console(もしくは、rails c)でirbの代わりにpry
 gem 'pry-doc'    # methodを表示
 gem 'pry-byebug' # デバッグを実施
 
+gem 'openssl'
+gem 'json'
 gem 'open_uri_redirections'
 gem 'slack-api'
 gem 'google-analytics-rails'
@@ -48,16 +50,11 @@ gem 'google-analytics-rails'
 gem 'exception_notification', github: 'smartinez87/exception_notification'
 gem 'slack-notifier'
 gem 'hashie'
+gem 'rspec'
+gem 'newrelic_rpm'
 
 # ExecJS::ProgramError TypeErrorの対応
 gem 'coffee-script-source', '1.8.0'
-
-group :development, :test do
-  gem 'ruby-debug-ide'
-  gem 'debase'
-  gem 'rspec-rails'
-  gem 'factory_girl_rails'
-end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
