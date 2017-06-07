@@ -1,24 +1,26 @@
 require 'rails_helper'
 
 describe User do
-  #connpass
-  User.create(name: 'user1', connpass_id: '1', twitter_id: '', facebook_id: '', github_id: '', linkedin_id: '')
-  User.create(name: 'user2', connpass_id: '2', twitter_id: 'twitter1', facebook_id: '', github_id: '', linkedin_id: '')
-  User.create(name: 'user3', connpass_id: '3', twitter_id: '', facebook_id: 'facebook1', github_id: '', linkedin_id: '')
-  User.create(name: 'user4', connpass_id: '4', twitter_id: '', facebook_id: '', github_id: 'github1', linkedin_id: '')
+  before(:all) do
+    #connpass
+    User.create(name: 'user1', connpass_id: '1', twitter_id: '', facebook_id: '', github_id: '', linkedin_id: '')
+    User.create(name: 'user2', connpass_id: '2', twitter_id: 'twitter1', facebook_id: '', github_id: '', linkedin_id: '')
+    User.create(name: 'user3', connpass_id: '3', twitter_id: '', facebook_id: 'facebook1', github_id: '', linkedin_id: '')
+    User.create(name: 'user4', connpass_id: '4', twitter_id: '', facebook_id: '', github_id: 'github1', linkedin_id: '')
 
-  #atnd
-  User.create(name: 'user5', atnd_id: '1', twitter_id: '', facebook_id: '', github_id: '', linkedin_id: '')
-  User.create(name: 'user6', atnd_id: '2', twitter_id: 'twitter2', facebook_id: '', github_id: '', linkedin_id: '')
-  User.create(name: 'user7', atnd_id: '3', twitter_id: '', facebook_id: 'facebook2', github_id: '', linkedin_id: '')
-  User.create(name: 'user8', atnd_id: '4', twitter_id: '', facebook_id: '', github_id: 'github2', linkedin_id: '')
+    #atnd
+    User.create(name: 'user5', atnd_id: '1', twitter_id: '', facebook_id: '', github_id: '', linkedin_id: '')
+    User.create(name: 'user6', atnd_id: '2', twitter_id: 'twitter2', facebook_id: '', github_id: '', linkedin_id: '')
+    User.create(name: 'user7', atnd_id: '3', twitter_id: '', facebook_id: 'facebook2', github_id: '', linkedin_id: '')
+    User.create(name: 'user8', atnd_id: '4', twitter_id: '', facebook_id: '', github_id: 'github2', linkedin_id: '')
 
-  #Doorkeeper
-  User.create(name: 'user9', twitter_id: 'twitter3', facebook_id: '', github_id: '', linkedin_id: '')
-  User.create(name: 'user10', twitter_id: '', facebook_id: 'facebook3', github_id: '', linkedin_id: '')
-  User.create(name: 'user11', twitter_id: '', facebook_id: '', github_id: 'github3', linkedin_id: '')
-  User.create(name: 'user12', twitter_id: '', facebook_id: '', github_id: '', linkedin_id: 'linkedin3')
-  User.create(name: 'user13', twitter_id: '', facebook_id: '', github_id: '', linkedin_id: '')
+    #Doorkeeper
+    User.create(name: 'user9', twitter_id: 'twitter3', facebook_id: '', github_id: '', linkedin_id: '')
+    User.create(name: 'user10', twitter_id: '', facebook_id: 'facebook3', github_id: '', linkedin_id: '')
+    User.create(name: 'user11', twitter_id: '', facebook_id: '', github_id: 'github3', linkedin_id: '')
+    User.create(name: 'user12', twitter_id: '', facebook_id: '', github_id: '', linkedin_id: 'linkedin3')
+    User.create(name: 'user13', twitter_id: '', facebook_id: '', github_id: '', linkedin_id: '')
+  end
 
   describe '#find_connpass' do
     it('connpass-idで紐づけ') { expect(User.find_connpass('1', '', '', ''        ).name).to eq 'user1' }

@@ -14,7 +14,36 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+require 'database_cleaner'
+
 RSpec.configure do |config|
+  config.around(:each, type: :request) do |example|
+    vcr_cassette = example.metadata[:vcr]
+    if vcr_cassette
+      description = example.metadata[:file_path].gsub('./spec/', '').gsub('_spec.rb', '')
+      cassette = "#{description}/#{vcr_cassette}"
+      VCR.use_cassette cassette do
+        example.run
+      end
+    else
+      example.run
+    end
+  end
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

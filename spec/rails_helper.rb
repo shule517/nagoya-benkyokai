@@ -5,6 +5,18 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'hashie'
 Dir[Rails.root.join("./app/services/**/*.rb")].each { |f| require f }
+
+VCR.configure do |c|
+  c.cassette_library_dir = 'spec/vcr'
+  c.hook_into :webmock
+  c.allow_http_connections_when_no_cassette = false
+
+  Rails.application.secrets.each do |k, v|
+    next unless v.is_a? String
+    c.filter_sensitive_data("<#{k.upcase}>") { v }
+  end
+end
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
