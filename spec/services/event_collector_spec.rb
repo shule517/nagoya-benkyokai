@@ -33,7 +33,7 @@ describe EventCollector, type: :request do
       expect(titles).to include 'RFC 読書会 - RFC 1034 第 3 回 -' # https://atnd.org/events/87770
     end
 
-    xit '勉強会ではないイベントは除外すること', vcr: 'atnd_not_benkyokai' do
+    it '勉強会ではないイベントは除外すること', vcr: 'atnd_not_benkyokai' do
       # events = SearchEventService.new.call({ ym: ['201705', '201706'] }, false)
       events = EventCollector.new.search(['201705', '201706'], false)
       titles = events.map(&:title)
