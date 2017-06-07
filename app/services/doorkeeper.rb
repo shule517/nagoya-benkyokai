@@ -15,7 +15,7 @@ private
   def search_core(start, keyword, ym)
     url = "https://api.doorkeeper.jp/events/?q=#{keyword}&sort=starts_at#{ym.nil? ? '' : "&since=#{ym}01000000"}&page=#{start.to_s}"
     begin
-      result = Shule::Http.get_json(url)
+      result = Shule::Http.get_json(url, Authorization: "Bearer #{ENV['DOORKEEPER_TOKEN']}")
       if result.nil?
         raise
       end
