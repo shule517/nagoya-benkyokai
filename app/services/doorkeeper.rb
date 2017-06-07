@@ -6,7 +6,7 @@ class Doorkeeper
   def search(keywords, ym_list = [])
     events = []
     keywords.take(5).each do |keyword|
-      events += search_core(0, keyword, ym_list.first)
+      events += search_core(1, keyword, ym_list.first)
     end
     events
   end
