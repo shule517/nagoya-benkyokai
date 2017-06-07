@@ -8,7 +8,6 @@ cache: bundler
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate
   - bundle exec rspec
-  - bundle exec rake test
 env:
   global:
     - secure: "QzBlc75EPXRgkhvATBl9eqivIdGZLqM7f9re1Xsw4TuMXwoGHQ2+w2yhziFXwOekukCX19MNwMw7JIOErlXcl54b8dFO0BfH+Accwuqbj1FUZ+ryg6hr4SnZ5qSgbyIeLTKgq4MkiKTUzdKnFkzjAJxQM5wOAg2YCDuvpCfgJ3QtqWl0DdiaE8YL4RqKjMPrkNydffYJ64klC7xVVZro7zifs18QoZ0byxHQwMr3f3+F44rPD51JhEsKcMbq9JOOS2iknKnnWBKQtYWNsqQEnP08XIsviZNP/UnFgnnGpCZz0kPl+wct6KHaEXJ+Dpr0yEkdQQQej7YSrX8INK8uCetZlDw5TXqfWanswJrgaJD6E01HHD3Srb3DnYm5Zlcuw05mBEYyTkGkzyHSQoMnftOfrQ7E5kTA/VaEq8QaHFiLGhIFOBVCd+zoY+F3g6+6F1+/asU07Cw/UUWJDKrs5wCyZ1boLINTvssr6gp+IHh5kUZ72U+OCG6nhAxnug0tuCf6kE6fkE3EHCJ3RlC+Pl9gydw/ojD8/6upy/jnTWjs0/+VgHYPXzWKrgqSeEun0XoSp8Nu9Ub/cjo8MWJ8Hvmd390TQtY84+p5m6EybUPLGsn9Vi1/qVfCzM3dI5m9U4YdumFLd1iAepeBZutoRMSWQoZzkOcP/XJYQmmzzMQ="
