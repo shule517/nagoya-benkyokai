@@ -29,10 +29,9 @@ class Atnd
   end
 
   def request_url(start)
-    "http://api.atnd.org/events/?keyword_or=#{keywords.join(',')}&count=#{SEARCH_MAX_COUNT}&order=2&start=#{start.to_s}&format=json".tap do |url|
-      ym_list.each do |ym|
-        url << "&ym=#{ym}"
-      end
+    "http://api.atnd.org/events/?start=#{start}&count=#{SEARCH_MAX_COUNT}&order=2&format=json".tap do |url|
+      url << "&keyword_or=#{keywords.join(',')}" if keywords.present?
+      url << ym_list.map { |ym| "&ym=#{ym}" }.join
     end
   end
 end

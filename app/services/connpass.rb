@@ -29,10 +29,9 @@ class Connpass
   end
 
   def request_url(start)
-    "https://connpass.com/api/v1/event/?keyword_or=#{keywords.join(',')}&count=100&order=2&start=#{start.to_s}".tap do |url|
-      ym_list.each do |ym|
-        url << "&ym=#{ym}"
-      end
+    "https://connpass.com/api/v1/event/?start=#{start.to_s}&count=100&order=2".tap do |url|
+      url << "&keyword_or=#{keywords.join(',')}" if keywords.present?
+      url << ym_list.map { |ym| "&ym=#{ym}" }.join
     end
   end
 end
