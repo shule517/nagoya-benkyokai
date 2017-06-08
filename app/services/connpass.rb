@@ -4,11 +4,15 @@ require_relative './connpass_event'
 
 class Connpass
   def search(keyword: [], ym: [])
-    search_core(1, Array(keyword), Array(ym))
+    @keywords = Array(keyword)
+    @ym_list = Array(ym)
+    search_core(1)
   end
 
-private
-  def search_core(start, keywords, ym_list = [])
+  private
+
+  attr_reader :keywords, :ym_list
+  def search_core(start)
     url = "https://connpass.com/api/v1/event/?keyword_or=#{keywords.join(',')}&count=100&order=2&start=#{start.to_s}"
     ym_list.each do |ym|
       url += "&ym=#{ym}"
@@ -22,7 +26,7 @@ private
     events = result[:events].map { |event| ConnpassEvent.new(event) }
 
     if next_start < results_available
-      events + search_core(next_start, keywords, ym_list)
+      events + search_core(next_start)
     else
       events
     end
