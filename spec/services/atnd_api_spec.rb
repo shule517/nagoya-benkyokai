@@ -42,7 +42,7 @@ describe Atnd, type: :request do
       end
     end
 
-    xcontext 'イベントIDを指定した場合', vcr: '#search-event_id' do
+    context 'イベントIDを指定した場合', vcr: '#search-event_id' do
       let(:events) { api.search(event_id: 81945) }
 
       it '指定したIDのイベントが取得できること' do
