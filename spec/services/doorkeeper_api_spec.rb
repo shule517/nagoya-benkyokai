@@ -5,7 +5,6 @@ describe Doorkeeper, type: :request do
 
   describe '#search' do
     context '1ページ(20件以内)の場合', vcr: '#search-1page' do
-      # let(:events) { api.search(['豊橋'], ['201701']) }
       let(:events) { api.search(keyword: '豊橋', ym: '201701') }
 
       it '取得した件数が~20件であること' do
@@ -33,7 +32,6 @@ describe Doorkeeper, type: :request do
 
     context '3ページ(40件以上)の場合', vcr: '#search-3page' do
       let(:events) { api.search(keyword: '愛知', ym: ['201612', '201701']) }
-      # let(:events) { api.search(keyword: '名古屋', ym: ['201610', '201611', '201612']) }
 
       it '取得した件数が40~件であること' do
         expect(events.count).to be > 40
@@ -46,7 +44,6 @@ describe Doorkeeper, type: :request do
 
     xcontext '検索キーワードが複数の場合', vcr: '#search-keywords' do
       let(:events) { api.search(keyword: ['名古屋', '愛知'], ym: '201701') }
-      # let(:events) { api.search(keyword: ['名古屋', '愛知'], ym: '201701') }
 
       it 'イベントが取得できること' do
         expect(events.count).to be > 1
