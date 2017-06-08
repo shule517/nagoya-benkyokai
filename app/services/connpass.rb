@@ -15,13 +15,10 @@ class Connpass
   def search_core(start)
     result = Shule::Http.get_json(request_url(start))
 
-    results_returned = result[:results_returned]
-    results_available = result[:results_available]
-    results_start = result[:results_start]
-    next_start = results_start + results_returned
+    next_start = result[:results_start] + result[:results_returned]
     events = result[:events].map { |event| ConnpassEvent.new(event) }
 
-    if next_start < results_available
+    if next_start < result[:results_available]
       events + search_core(next_start)
     else
       events
