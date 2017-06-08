@@ -3,16 +3,25 @@ require_relative './http'
 require_relative './connpass_event'
 
 class Connpass
-  def search(keyword: [], ym: [], event_id: nil)
-    @keywords = Array(keyword)
-    @ym_list = Array(ym)
-    @event_id = event_id
+  def search(args)
+    set_param(args)
     search_core(1)
+  end
+
+  def find(args)
+    set_param(args)
+    search_core(1).first
   end
 
   private
 
   attr_reader :keywords, :ym_list, :event_id
+  def set_param(keyword: [], ym: [], event_id: nil)
+    @keywords = Array(keyword)
+    @ym_list = Array(ym)
+    @event_id = event_id
+  end
+
   def search_core(start)
     result = Shule::Http.get_json(request_url(start))
 
