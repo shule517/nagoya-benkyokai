@@ -3,7 +3,9 @@ require_relative './http'
 require_relative './doorkeeper_event'
 
 class Doorkeeper
-  def search(keywords, ym_list = [])
+  def search(keyword: [], ym: [])
+    keywords = Array(keyword)
+    ym_list = Array(ym)
     events = []
     keywords.take(5).each do |keyword|
       events += search_core(1, keyword, ym_list.first)

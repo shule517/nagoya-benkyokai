@@ -5,8 +5,7 @@ describe Atnd, type: :request do
 
   describe '#search' do
     context '1ページ(100件以内)の場合', vcr: '#search-1page' do
-      let(:events) { api.search(['名古屋'], ['201701']) }
-      # let(:events) { api.search(keyword: '名古屋', ym: '201701') }
+      let(:events) { api.search(keyword: '名古屋', ym: '201701') }
 
       it '取得した件数が~100件であること' do
         expect(events.count).to be > 0
@@ -19,8 +18,7 @@ describe Atnd, type: :request do
     end
 
     context '2ページ(100件以上)の場合', vcr: '#search-2page' do
-      let(:events) { api.search(['名古屋'], ['201611', '201612', '201701']) }
-      # let(:events) { api.search(keyword: '名古屋', ym: ['201611', '201612', '201701']) }
+      let(:events) { api.search(keyword: '名古屋', ym: ['201611', '201612', '201701']) }
 
       it '取得した件数が100~200件であること' do
         expect(events.count).to be > 100
@@ -33,8 +31,7 @@ describe Atnd, type: :request do
     end
 
     context '3ページ(200件以上)の場合', vcr: '#search-3page' do
-      let(:events) { api.search(['名古屋'], ['201608', '201609', '201610', '201611', '201612', '201701']) }
-      # let(:events) { api.search(keyword: '名古屋', ym: ['201608', '201609', '201610', '201611', '201612', '201701']) }
+      let(:events) { api.search(keyword: '名古屋', ym: ['201608', '201609', '201610', '201611', '201612', '201701']) }
 
       it '取得した件数が200~300件であること' do
         expect(events.count).to be > 200

@@ -3,8 +3,8 @@ require_relative './http'
 require_relative './connpass_event'
 
 class Connpass
-  def search(keywords, ym_list = [])
-    search_core(1, keywords, ym_list)
+  def search(keyword: [], ym: [])
+    search_core(1, Array(keyword), Array(ym))
   end
 
 private

@@ -3,8 +3,8 @@ require_relative './http'
 require_relative './atnd_event'
 
 class Atnd
-  def search(keywords, ym_list = [])
-    search_core(0, keywords, ym_list)
+  def search(keyword: [], ym: [])
+    search_core(0, Array(keyword), Array(ym))
   end
 
 private
