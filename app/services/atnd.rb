@@ -12,23 +12,27 @@ class Atnd
   private
 
   attr_reader :keywords, :ym_list
+  SEARCH_MAX_COUNT = 100
   def search_core(start)
-    count = 100
-    url = "http://api.atnd.org/events/?keyword_or=#{keywords.join(',')}&count=#{count}&order=2&start=#{start.to_s}&format=json"
-    ym_list.each do |ym|
-      url += "&ym=#{ym}"
-    end
-    result = Shule::Http.get_json(url)
+    result = Shule::Http.get_json(request_url(start))
 
     results_returned = result[:results_returned]
     results_start = result[:results_start].to_i
     next_start = results_start + results_returned
     events = result[:events].map { |event| AtndEvent.new(event[:event]) }
 
-    if results_returned >= count
+    if results_returned >= SEARCH_MAX_COUNT
       events + search_core(next_start)
     else
       events
+    end
+  end
+
+  def request_url(start)
+    "http://api.atnd.org/events/?keyword_or=#{keywords.join(',')}&count=#{SEARCH_MAX_COUNT}&order=2&start=#{start.to_s}&format=json".tap do |url|
+      ym_list.each do |ym|
+        url << "&ym=#{ym}"
+      end
     end
   end
 end
