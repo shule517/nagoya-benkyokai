@@ -3,23 +3,32 @@ require_relative './http'
 require_relative './atnd_event'
 
 class Atnd
-  def search(keyword: [], ym: [], event_id: nil)
-    @keywords = Array(keyword)
-    @ym_list = Array(ym)
-    @event_id = event_id
+  def search(args)
+    set_param(args)
     search_core(0)
+  end
+
+  def find(args)
+    set_param(args)
+    search_core(0).first
   end
 
   private
 
-  attr_reader :keywords, :ym_list, :event_id
   SEARCH_MAX_COUNT = 100
+
+  attr_reader :keywords, :ym_list, :event_id
+  def set_param(keyword: [], ym: [], event_id: nil)
+    @keywords = Array(keyword)
+    @ym_list = Array(ym)
+    @event_id = event_id
+  end
+
   def search_core(start)
     result = Shule::Http.get_json(request_url(start))
 
     results_returned = result[:results_returned]
-    results_start = result[:results_start].to_i
-    next_start = results_start + results_returned
+    next_start = result[:results_start].to_i + results_returned
     events = result[:events].map { |event| AtndEvent.new(event[:event]) }
 
     if results_returned >= SEARCH_MAX_COUNT
