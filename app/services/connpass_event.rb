@@ -29,13 +29,13 @@ class ConnpassEvent < EventBase
   end
 
   def group_logo
-    @group_logo ||= event_doc.css('.event_group_area > div.group_inner > div > a/@style').to_s.match(%r{url\((.*)\)})[1]
+    @group_logo ||= event_doc.css('.event_group_area > div.group_inner > div > a/@style').text.match(%r{url\((.*)\)})[1]
   rescue
     ''
   end
 
   def logo
-    @logo ||= event_doc.css('//meta[property="og:image"]/@content').to_s
+    @logo ||= event_doc.css('//meta[property="og:image"]/@content').text
   end
 
   def users
@@ -48,11 +48,11 @@ class ConnpassEvent < EventBase
 
       id = user.attribute('href').value.gsub('https://connpass.com/user/', '').gsub('/', '')
       social_ids = {}
-      name = user.css('img/@alt').to_s
-      image_url = user.css('img/@src').to_s
+      name = user.css('img/@alt').text
+      image_url = user.css('img/@src').text
 
       line.css('td.social > a/@href').each do |social_url|
-        get_social_id(social_url.to_s, social_ids)
+        get_social_id(social_url.text, social_ids)
       end
       users << ConnpassUser.new(social_ids.merge(connpass_id: id, name: name, image_url: image_url))
     end
@@ -71,13 +71,13 @@ class ConnpassEvent < EventBase
       if owner # イベント参加者ページがある場合
         owner.css('tr').each do |user|
           user_info = user.css('.user_info')
-          url = user_info.css('.image_link/@href').to_s
+          url = user_info.css('.image_link/@href').text
           id = url.gsub('https://connpass.com/user/', '').gsub('/open/', '');
           social_ids = {}
           name = user_info.css('.display_name > a').text
-          image_url = user_info.css('.image_link > img/@src').to_s
+          image_url = user_info.css('.image_link > img/@src').text
           user.css('.social > a/@href').each do |social_url|
-            get_social_id(social_url.to_s, social_ids)
+            get_social_id(social_url.text, social_ids)
           end
           owners << ConnpassUser.new(connpass_id: id, twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], name: name, image_url: image_url)
         end

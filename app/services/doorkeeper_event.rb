@@ -13,7 +13,7 @@ class DoorkeeperEvent < EventBase
   end
 
   def group_url
-    @group_url ||= event_doc.css('//meta[property="og:url"]/@content').to_s.gsub(/events.*/, '')
+    @group_url ||= event_doc.css('//meta[property="og:url"]/@content').text.gsub(/events.*/, '')
   end
 
   def group_id
@@ -21,15 +21,15 @@ class DoorkeeperEvent < EventBase
   end
 
   def group_title
-    @group_title ||= event_doc.css('//meta[property="og:site_name"]/@content').to_s
+    @group_title ||= event_doc.css('//meta[property="og:site_name"]/@content').text
   end
 
   def logo
-    @logo ||= event_doc.css('//meta[property="og:image"]/@content').to_s
+    @logo ||= event_doc.css('//meta[property="og:image"]/@content').text
   end
 
   def group_logo
-    @group_logo ||= event_doc.css('div.community-profile-picture > a > img').attribute('src').value
+    @group_logo ||= event_doc.css('div.community-profile-picture > a > img/@src').first.text
   end
 
   def users
@@ -37,10 +37,9 @@ class DoorkeeperEvent < EventBase
     participation_doc.css('.user-profile-details').each do |user|
       social_ids = {}
       name = user.css('div.user-name').children.text
-      image_url = user.css('img').attribute('src').value
-      user.css('div.user-social > a.external-profile-link').each do |social|
-        url = social.attribute('href').value
-        get_social_id(url, social_ids)
+      image_url = user.css('img/@src').text
+      user.css('div.user-social > a.external-profile-link/@href').each do |social_url|
+        get_social_id(social_url.text, social_ids)
       end
       users << DoorkeeperUser.new(social_ids.merge(name: name, image_url: image_url))
     end
@@ -55,12 +54,11 @@ class DoorkeeperEvent < EventBase
     group_doc.css('.with-gutter > .row > div > .user-profile > .user-profile-details').each do |owner|
       name = owner.css('.user-name').text
       social_ids = {}
-      image_url = owner.css('img').attribute('src').value
-      owner.css('.user-social > .external-profile-link').each do |social|
-        url = social.attribute('href').value
-        get_social_id(url, social_ids)
+      image_url = owner.css('img/@src').text
+      owner.css('.user-social > .external-profile-link/@href').each do |social_url|
+        get_social_id(social_url.text, social_ids)
       end
-      owners << DoorkeeperUser.new(twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: social_ids[:github_id], linkedin_id: social_ids[:linkedin_id], name: name, image_url: image_url)
+      owners << DoorkeeperUser.new(social_ids.merge(name: name, image_url: image_url))
     end
     owners.sort_by! { |user| user.twitter_id }.reverse
   end
