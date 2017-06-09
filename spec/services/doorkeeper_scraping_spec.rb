@@ -75,7 +75,7 @@ describe DoorkeeperEvent, type: :request do
         let(:event) { api.find(event_id: 45257) }
         let(:user) { event.users.select { |user| user.twitter_id == 'kekyo2' }.first }
         it { expect(user.twitter_id).to eq 'kekyo2' }
-        xit { expect(user.facebook_id).to eq '100004903747736' }
+        it { expect(user.facebook_id).to eq '100004903747736' }
         it { expect(user.github_id).to eq 'kekyo' }
         it { expect(user.linkedin_id).to eq 'kouji-matsui-71856762' }
         it { expect(user.name).to eq 'kekyo' }
@@ -86,7 +86,7 @@ describe DoorkeeperEvent, type: :request do
         # 【サイト制作者向けアンカンファレンス】ECサイト制作の復習と予習をしよう！ | EC-CUBE名古屋 vol.42 https://ec-cube-nagoya.doorkeeper.jp/events/59752
         let(:event) { api.find(event_id: 59752) }
         let(:user) { event.users.select { |user| user.twitter_id == 'hydra55' }.first }
-        xit { expect(user.linkedin_id).to eq 'hiroyasu-yamada' }
+        it { expect(user.linkedin_id).to eq 'hiroyasu-yamada' }
       end
 
       context 'SNSが未登録なユーザの場合', vcr: '#user-sns-not_exist' do
@@ -134,9 +134,9 @@ describe DoorkeeperEvent, type: :request do
         let(:event) { api.find(event_id: 59752) }
         let(:owner) { owners.select { |owner| owner.twitter_id == 'nanasess' }.first }
         it { expect(owner.twitter_id).to eq 'nanasess' }
-        xit { expect(owner.facebook_id).to eq '100001004509971' }
+        it { expect(owner.facebook_id).to eq '100001004509971' }
         it { expect(owner.github_id).to eq 'nanasess' }
-        xit { expect(owner.linkedin_id).to eq 'kentaro-ohkouchi' }
+        it { expect(owner.linkedin_id).to eq 'kentaro-ohkouchi' }
         it { expect(owner.name).to eq 'Kentaro Ohkouchi' }
         it { expect(owner.image_url).to eq 'https://graph.facebook.com/100001004509971/picture' }
       end
