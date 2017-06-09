@@ -50,7 +50,7 @@ describe Doorkeeper, type: :request do
       end
     end
 
-    xcontext 'イベントIDを指定した場合' do
+    context 'イベントIDを指定した場合' do
       context 'イベントが存在する場合', vcr: '#search-event_id-exist' do
         let(:events) { api.search(event_id: 45257) }
 
