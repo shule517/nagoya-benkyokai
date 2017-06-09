@@ -3,10 +3,8 @@ require_relative './http'
 require_relative './doorkeeper_event'
 
 class Doorkeeper
-  def search(keyword: [], ym: [], event_id: nil)
-    @keywords = Array(keyword)
-    @ym_list = Array(ym)
-    @event_id = event_id
+  def search(args)
+    set_param(args)
     events = []
     if event_id.present?
       events += search_core(1, nil)
@@ -18,7 +16,17 @@ class Doorkeeper
     events
   end
 
+  def find(args)
+    search(args).first
+  end
+
   private
+
+  def set_param(keyword: [], ym: [], event_id: nil)
+    @keywords = Array(keyword)
+    @ym_list = Array(ym)
+    @event_id = event_id
+  end
 
   attr_reader :keywords, :ym_list, :event_id
   def search_core(start, keyword)

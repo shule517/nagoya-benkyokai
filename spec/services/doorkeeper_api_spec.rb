@@ -69,7 +69,7 @@ describe Doorkeeper, type: :request do
     end
   end
 
-  xdescribe '#find', vcr: '#find' do
+  describe '#find', vcr: '#find' do
     let(:event) { api.find(event_id: 45257) }
 
     it '取得したイベントの1件目を取得できること' do
