@@ -17,8 +17,8 @@ describe Doorkeeper, type: :request do
       end
     end
 
-    xcontext '2ページ(40件以内)の場合', vcr: '#search-2page' do
-      let(:events) { api.search(keyword: '愛知', ym: ['201612', '201701']) }
+    context '2ページ(40件以内)の場合', vcr: '#search-2page' do
+      let(:events) { api.search(keyword: '豊橋', ym: ['201609', '201706']) }
 
       it '取得した件数が20~40件であること' do
         expect(events.count).to be > 20
