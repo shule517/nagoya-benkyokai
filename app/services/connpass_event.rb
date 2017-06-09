@@ -9,7 +9,7 @@ class ConnpassEvent < EventBase
   end
 
   def catch
-    if @catch != ''
+    if @catch.present?
       @catch + '<br>' + @description.gsub(/<\/?[^>]*>/, '')
     else
       @description.gsub(/<\/?[^>]*>/, '')
