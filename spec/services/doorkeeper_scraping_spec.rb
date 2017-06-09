@@ -184,9 +184,9 @@ describe DoorkeeperEvent, type: :request do
       let(:event) { api.find(event_id: 45257) }
       it { expect(event.group_logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/groups_logos/1995_normal_1380975297_251035_156371434432231_4785187_n.jpg' }
     end
-    xcontext 'グループロゴが設定されていない場合', vcr: '#group_logo-not_exist' do
-      # 5月26日（金）個別相談会 ＜夜の部＞ https://jimdocafe-hakata.doorkeeper.jp/
-      let(:event) { api.find(event_id: 60349) }
+    context 'グループロゴが設定されていない場合', vcr: '#group_logo-not_exist' do
+      # 5月26日（金）個別相談会 ＜朝の部＞ https://jimdocafe-hakata.doorkeeper.jp/events/60351
+      let(:event) { api.find(event_id: 60351) }
       it { expect(event.group_logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/assets/doorkeeper_group_normal-125b448b722fa8c158516cf4b86aafda26b442af55a001418b0eb2acf7117961.gif' }
     end
   end
