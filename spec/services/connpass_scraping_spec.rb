@@ -69,7 +69,7 @@ describe ConnpassEvent, type: :request do
       context 'IDが設定されている場合', vcr: '#get_social_id-exist' do
         let(:user) { users.select { |user| user.connpass_id == 'Kuxumarin' }.first }
         it { expect(user.twitter_id).to eq 'Fumiya_Kume' }
-        xit { expect(user.facebook_id).to eq '1524732281184852' }
+        it { expect(user.facebook_id).to eq '1524732281184852' }
         it { expect(user.github_id).to eq 'fumiya-kume' }
         it { expect(user.linkedin_id).to eq '' } # TODO nil
         it { expect(user.name).to eq 'くぅ - kuxu' }
@@ -123,7 +123,7 @@ describe ConnpassEvent, type: :request do
         let(:owner) { owners.select { |owner| owner.connpass_id == 'antimon2' }.first }
         it { expect(owner.connpass_id).to eq 'antimon2' }
         it { expect(owner.twitter_id).to eq 'antimon2' }
-        xit { expect(owner.facebook_id).to eq '100001520124191' }
+        it { expect(owner.facebook_id).to eq '100001520124191' }
         it { expect(owner.github_id).to eq 'antimon2' }
         it { expect(owner.linkedin_id).to eq '' } # TODO nil
         it { expect(owner.name).to eq 'antimon2' }
