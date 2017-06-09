@@ -65,7 +65,8 @@ class DoorkeeperEvent < EventBase
     owners.sort_by! { |user| user.twitter_id }.reverse
   end
 
-private
+  private
+
   def get_social_id(url, social_ids)
     if url.include?('http://twitter.com/')
       social_ids[:twitter_id] = url.gsub('http://twitter.com/', '')
