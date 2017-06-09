@@ -40,9 +40,9 @@ class Atnd
 
   def request_url(start)
     "http://api.atnd.org/events/?start=#{start}&count=#{SEARCH_MAX_COUNT}&order=2&format=json".tap do |url|
+      url << "&event_id=#{event_id}" if event_id.present?
       url << "&keyword_or=#{keywords.join(',')}" if keywords.present?
       url << ym_list.map { |ym| "&ym=#{ym}" }.join
-      url << "&event_id=#{event_id}" if event_id.present?
     end
   end
 end
