@@ -21,8 +21,8 @@ class AtndEvent < EventBase
   end
 
   def get_logo
-    event_doc.css('.events-show-img > img').each do |img|
-      return 'https://atnd.org' + img.attribute('data-original')
+    event_doc.css('.events-show-img > img/@data-original').each do |img|
+      return "https://atnd.org#{img}"
     end
     '/img/atnd.png'
   end
@@ -53,7 +53,7 @@ class AtndEvent < EventBase
       end
       a = user.css('a')
       name = a.text
-      id = a.attribute('href').value.gsub('/users/', '')
+      id = user.css('a/@href').to_s.gsub('/users/', '')
       social_ids = get_social_id(id)
       users << AtndUser.new(social_ids.merge(atnd_id: id, name: name, image_url: image_url))
     end
@@ -64,9 +64,7 @@ class AtndEvent < EventBase
     owner_info = event_doc.css('#user-id')
     return [] if owner_info.empty?
 
-    image = event_doc.css('.events-show-info img')
-    src = image.attribute('src').value
-
+    src = event_doc.css('.events-show-info img/@src').to_s
     id = owner_info.attribute('href').value.gsub('/users/', '')
     social_ids = get_social_id(id)
     image_url = (src == '/images/icon/default_latent.png') ? "https://atnd.org#{src}" : "https:#{src}"
