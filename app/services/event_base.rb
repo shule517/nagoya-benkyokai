@@ -46,8 +46,8 @@ private
     @url = data[:url] || ''                                     # 参考URL
     @address = data[:address] || ''                             # 開催場所(住所)
     @place = data[:place] || data[:venue_name] || ''            # 開催会場
-    @lat = data[:lat] || data[:long] || ''                      # 開催会場の緯度
-    @lon = data[:lon] || ''                                     # 開催会場の経度
+    @lat = data[:lat] || ''                                     # 開催会場の緯度
+    @lon = data[:lon] || data[:long] || ''                      # 開催会場の経度
     @owner_id = data[:owner_id] || ''                           # 主催者ID
     @owner_nickname = data[:owner_nickname] || ''               # 主催者nickname
     @owner_twitter_id = data[:owner_twitter_id] || ''           # 主催者twitter
