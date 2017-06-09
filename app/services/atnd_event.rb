@@ -9,7 +9,7 @@ class AtndEvent < EventBase
   end
 
   def catch
-    if @catch != ''
+    if @catch.present?
       @catch + '<br>' + @description.gsub(/<\/?[^>]*>/, '')
     else
       @description.gsub(/<\/?[^>]*>/, '')
@@ -22,10 +22,9 @@ class AtndEvent < EventBase
 
   def get_logo
     event_doc.css('.events-show-img > img').each do |img|
-      logo = 'https://atnd.org' + img.attribute('data-original')
-      return logo
+      return 'https://atnd.org' + img.attribute('data-original')
     end
-    return '/img/atnd.png'
+    '/img/atnd.png'
   end
 
   def get_social_id(user_id)
@@ -66,20 +65,14 @@ class AtndEvent < EventBase
     owner_info = event_doc.css('#user-id')
     return [] if owner_info.empty?
 
-    owners = []
     image = event_doc.css('.events-show-info img')
     src = image.attribute('src').value
 
-    image_url = ''
-    if src == '/images/icon/default_latent.png'
-      image_url = 'https://atnd.org' + src
-    else
-      image_url = 'https:' + src
-    end
-
     id = owner_info.attribute('href').value.gsub('/users/', '')
     social_ids = get_social_id(id)
-    owners << AtndUser.new(atnd_id: id, twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], github_id: nil, linkedin_id: nil, name: owner_nickname, image_url: image_url)
+    image_url = (src == '/images/icon/default_latent.png') ? "https://atnd.org#{src}" : "https:#{src}"
+
+    [AtndUser.new(social_ids.merge(atnd_id: id, name: owner_nickname, image_url: image_url))]
   end
 
   def group_url
