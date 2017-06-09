@@ -111,9 +111,9 @@ describe DoorkeeperEvent, type: :request do
       let(:event) { api.find(event_id: 45257) }
       it { expect(owners.count).to eq 1 }
     end
-    xcontext '管理者がいない場合', vcr: '#owners-not_exist' do
-      # 5月26日（金）個別相談会 ＜午後の部＞ https://jimdocafe-hakata.doorkeeper.jp/events/60350
-      let(:event) { api.find(event_id: 60350) }
+    context '管理者がいない場合', vcr: '#owners-not_exist' do
+      # 5月26日（金）個別相談会 ＜朝の部＞ https://jimdocafe-hakata.doorkeeper.jp/events/60351
+      let(:event) { api.find(event_id: 60351) }
       it { expect(owners.count).to eq 0 }
     end
   end
