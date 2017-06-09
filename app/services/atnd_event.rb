@@ -46,11 +46,10 @@ class AtndEvent < EventBase
     event_doc.css('#members-join ol li span').each do |user|
       img = user.css('img').attribute('data-original')
       image_url = ''
-      if img.nil?
-        image_url = 'https://atnd.org/images/icon/default_latent.png'
+      if img
+        image_url = "https:#{img.value}" if img.value !~ /https/
       else
-        image_url = img.value
-        image_url = 'https:' + image_url if image_url !~ /https/
+        image_url = 'https://atnd.org/images/icon/default_latent.png'
       end
       a = user.css('a')
       name = a.text
