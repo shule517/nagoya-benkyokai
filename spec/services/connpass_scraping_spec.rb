@@ -192,7 +192,7 @@ describe ConnpassEvent, type: :request do
     end
   end
 
-  xdescribe '#participation_url' do
+  describe '#participation_url' do
     context 'group_urlがない場合', vcr: '#participation_url group_url-exist' do
       # サブドメイン → connpass.com
       # ちゅーんさんちでHaskellやると楽しいという会 https://connpass.com/event/46087/

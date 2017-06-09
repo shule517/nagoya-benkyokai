@@ -102,7 +102,8 @@ class ConnpassEvent < EventBase
     owners
   end
 
-private
+  private
+
   def get_social_id(url, social_ids)
     if url.include?('https://twitter.com/intent/user?screen_name=')
       social_ids[:twitter_id] = url.gsub('https://twitter.com/intent/user?screen_name=', '')
@@ -115,13 +116,13 @@ private
     end
   end
 
+  def participation_url
+    domain = group_url ? "https://#{URI.parse(group_url).host}/" : 'https://connpass.com/'
+    "#{domain}event/#{event_id}/participation/#participants"
+  end
+
   def participation_doc
-    if group_url.nil?
-      url = 'https://connpass.com/'
-    else
-      url = "https://#{URI.parse(group_url).host}/"
-    end
-    @participation_doc ||= Shule::Http.get_document("#{url}event/#{event_id}/participation/#participants")
+    @participation_doc ||= Shule::Http.get_document(participation_url)
   rescue
     Nokogiri::HTML('')
   end
