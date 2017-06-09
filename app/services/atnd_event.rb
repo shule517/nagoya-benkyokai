@@ -57,7 +57,7 @@ class AtndEvent < EventBase
       name = a.text
       id = a.attribute('href').value.gsub('/users/', '')
       social_ids = get_social_id(id)
-      users << AtndUser.new(atnd_id: id, twitter_id: social_ids[:twitter_id], facebook_id: social_ids[:facebook_id], name: name, image_url: image_url)
+      users << AtndUser.new(social_ids.merge(atnd_id: id, name: name, image_url: image_url))
     end
     users.sort_by! { |user| user.twitter_id }.reverse
   end
