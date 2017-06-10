@@ -46,14 +46,15 @@ class ConnpassEvent < EventBase
       user = line.css('.user > .user_info > .image_link')
       return [] if user.empty? # 参加者がいない場合
 
-      id = user.attribute('href').value.gsub('https://connpass.com/user/', '').gsub('/', '')
       social_ids = {}
-      name = user.css('img/@alt').text
-      image_url = user.css('img/@src').text
-
       line.css('td.social > a/@href').each do |social_url|
         get_social_id(social_url.text, social_ids)
       end
+
+      id = user.attribute('href').value.gsub('https://connpass.com/user/', '').gsub('/', '')
+      name = user.css('img/@alt').text
+      image_url = user.css('img/@src').text
+
       users << ConnpassUser.new(social_ids.merge(connpass_id: id, name: name, image_url: image_url))
     end
     users.sort_by! { |user| user.twitter_id }.reverse

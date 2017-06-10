@@ -27,20 +27,6 @@ class AtndEvent < EventBase
     '/img/atnd.png'
   end
 
-  def get_social_id(user_id)
-    event_url = "https://atnd.org/users/#{user_id}"
-    user_doc = Shule::Http.get_document(event_url, false)
-
-    users_show_info = user_doc.css('#users-show-info')
-    twitter_id = users_show_info.css('dl:nth-child(2) dd a').text
-    facebook_id = users_show_info.css('dl:nth-child(3) dd').text
-
-    twitter_id = nil if twitter_id == '-'
-    facebook_id = nil if facebook_id == '-'
-
-    { twitter_id: twitter_id, facebook_id: facebook_id }
-  end
-
   def users
     users = []
     event_doc.css('#members-join ol li span').each do |user|
@@ -51,9 +37,8 @@ class AtndEvent < EventBase
       else
         image_url = 'https://atnd.org/images/icon/default_latent.png'
       end
-      a = user.css('a')
-      name = a.text
       id = user.css('a/@href').text.gsub('/users/', '')
+      name = user.css('a').text
       social_ids = get_social_id(id)
       users << AtndUser.new(social_ids.merge(atnd_id: id, name: name, image_url: image_url))
     end
@@ -90,6 +75,20 @@ class AtndEvent < EventBase
   end
 
   private
+
+  def get_social_id(user_id)
+    event_url = "https://atnd.org/users/#{user_id}"
+    user_doc = Shule::Http.get_document(event_url, false)
+
+    users_show_info = user_doc.css('#users-show-info')
+    twitter_id = users_show_info.css('dl:nth-child(2) dd a').text
+    facebook_id = users_show_info.css('dl:nth-child(3) dd').text
+
+    twitter_id = nil if twitter_id == '-'
+    facebook_id = nil if facebook_id == '-'
+
+    { twitter_id: twitter_id, facebook_id: facebook_id }
+  end
 
   def event_doc
     @event_doc ||= Shule::Http.get_document(event_url, false)

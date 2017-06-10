@@ -36,11 +36,12 @@ class DoorkeeperEvent < EventBase
     users = []
     participation_doc.css('.user-profile-details').each do |user|
       social_ids = {}
-      name = user.css('div.user-name').children.text
-      image_url = user.css('img/@src').text
       user.css('div.user-social > a.external-profile-link/@href').each do |social_url|
         get_social_id(social_url.text, social_ids)
       end
+
+      name = user.css('div.user-name').children.text
+      image_url = user.css('img/@src').text
       users << DoorkeeperUser.new(social_ids.merge(name: name, image_url: image_url))
     end
     users.sort_by! { |user| user.twitter_id }.reverse
@@ -52,12 +53,13 @@ class DoorkeeperEvent < EventBase
   def owners
     owners = []
     group_doc.css('.with-gutter > .row > div > .user-profile > .user-profile-details').each do |owner|
-      name = owner.css('.user-name').text
       social_ids = {}
-      image_url = owner.css('img/@src').text
       owner.css('.user-social > .external-profile-link/@href').each do |social_url|
         get_social_id(social_url.text, social_ids)
       end
+
+      name = owner.css('.user-name').text
+      image_url = owner.css('img/@src').text
       owners << DoorkeeperUser.new(social_ids.merge(name: name, image_url: image_url))
     end
     owners.sort_by! { |user| user.twitter_id }.reverse
