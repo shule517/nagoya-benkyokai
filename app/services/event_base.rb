@@ -65,13 +65,4 @@ class EventBase
     d = Date.new(year, month, day)
     @wday = %w(日 月 火 水 木 金 土)[d.wday]
   end
-
-  def place_enc
-    URI.escape(place)
-  end
-
-  def limit_over?
-    return 0 if accepted == 0
-    limit <= accepted
-  end
 end

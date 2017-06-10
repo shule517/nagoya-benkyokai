@@ -53,4 +53,13 @@ module EventFindable
       group_logo: group_logo,
       logo: logo)
   end
+
+  def place_enc
+    URI.escape(place)
+  end
+
+  def limit_over?
+    return 0 if accepted == 0
+    limit <= accepted
+  end
 end
