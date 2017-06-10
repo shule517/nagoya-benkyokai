@@ -4,6 +4,8 @@ require_relative './event_base'
 require_relative './atnd_user'
 
 class AtndEvent < EventBase
+  include EventFindable
+
   def source
     'atnd'
   end

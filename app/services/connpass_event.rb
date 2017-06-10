@@ -4,6 +4,8 @@ require_relative './event_base'
 require_relative './connpass_user'
 
 class ConnpassEvent < EventBase
+  include EventFindable
+
   def source
     'connpass'
   end

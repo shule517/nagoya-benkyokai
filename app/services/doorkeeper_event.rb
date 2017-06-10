@@ -4,6 +4,8 @@ require_relative './event_base'
 require_relative './doorkeeper_user'
 
 class DoorkeeperEvent < EventBase
+  include EventFindable
+
   def source
     'doorkeeper'
   end
