@@ -74,8 +74,4 @@ class EventBase
     return 0 if accepted == 0
     limit <= accepted
   end
-
-  def twitter_list_id
-    "nagoya-#{event_id}"
-  end
 end
