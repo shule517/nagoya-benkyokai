@@ -109,9 +109,9 @@ describe ConnpassEvent, type: :request do
       expect(owners.map(&:name)).to match_array %w(田淵義人@エクセルソフト JXUG くぅ\ -\ kuxu Sophy)
     end
 
-    context '参加者ページがある場合'
-    context '参加者ページがない場合'
-    context '管理者がいない場合' # そんな場合あるの？
+    xit '参加者ページがある場合'
+    xit '参加者ページがない場合'
+    xit '管理者がいない場合' # そんな場合あるの？
   end
 
   describe '#owner' do
@@ -253,6 +253,6 @@ describe ConnpassEvent, type: :request do
     end
   end
 
-  context '勉強会が中止された場合'
+  xit '勉強会が中止された場合'
   # よみかきの前にプログラミング！幼児向け無料体験教室 #2 https://cocomue.connpass.com/event/50505/
 end

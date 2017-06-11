@@ -44,7 +44,7 @@ describe EventCollector, type: :request do
     end
   end
 
-  xcontext '開催場所に名古屋入ってない場合', vcr: '#find-JPSPS' do
+  xcontext '開催場所に名古屋が入ってない場合', vcr: '#find-JPSPS' do
     # 第5回 JPSPS SharePoint/Office365名古屋分科勉強会 at GeekBar https://jpsps-ngy.connpass.com/event/47375/
     # 開催場所：中区葵1-27-37 新栄シティハイツ 1F ※名古屋が入ってない
     # let(:events) { SearchEventService.new.call({ event_id: 47375 }, false) }

@@ -129,8 +129,8 @@ describe AtndEvent, type: :request do
           expect(no_social_user.image_url).to eq 'https://atnd.org/images/icon/default_latent.png'
         end
       end
-      context 'httpsからはじまる場合'
-      context 'httpsからはじまらない場合'
+      xit 'httpsからはじまる場合'
+      xit 'httpsからはじまらない場合'
     end
   end
 
