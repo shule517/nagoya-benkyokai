@@ -1,5 +1,5 @@
 require 'rails_helper'
-# include Api::Connpass
+include Api::Connpass
 
 # describe ConnpassScraping, type: :request do
 describe ConnpassEvent, type: :request do

@@ -1,4 +1,5 @@
 require 'rails_helper'
+include Api::Atnd
 
 describe Atnd, type: :request do
   let(:api) { Atnd.new }

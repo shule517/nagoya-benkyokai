@@ -1,5 +1,5 @@
 require 'rails_helper'
-# include Api::Doorkeeper
+include Api::Doorkeeper
 
 describe DoorkeeperEvent, type: :request do
 # describe DoorkeeperScraping, type: :request do

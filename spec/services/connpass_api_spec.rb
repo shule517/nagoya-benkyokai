@@ -1,4 +1,5 @@
 require 'rails_helper'
+include Api::Connpass
 
 describe Connpass, type: :request do
   let(:api) { Connpass.new }

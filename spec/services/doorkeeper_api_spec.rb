@@ -1,4 +1,5 @@
 require 'rails_helper'
+include Api::Doorkeeper
 
 describe Doorkeeper, type: :request do
   let(:api) { Doorkeeper.new }
