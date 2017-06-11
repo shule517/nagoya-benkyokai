@@ -21,7 +21,8 @@ class EventUpdater
       update_db(events)
     end
 
-  private
+    private
+
     def collect_period
       now = Time.now
       day = 24 * 60 * 60
