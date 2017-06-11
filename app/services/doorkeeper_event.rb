@@ -1,7 +1,3 @@
-require 'uri'
-require_relative './http'
-require_relative './doorkeeper_user'
-
 class DoorkeeperEvent < Hashie::Mash
   include EventFindable
 

@@ -1,7 +1,3 @@
-require 'uri'
-require_relative './http'
-require_relative './atnd_user'
-
 class AtndEvent < Hashie::Mash
   include EventFindable
 

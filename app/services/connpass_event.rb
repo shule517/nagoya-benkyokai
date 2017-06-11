@@ -1,7 +1,3 @@
-require 'uri'
-require_relative './http'
-require_relative './connpass_user'
-
 class ConnpassEvent < Hashie::Mash
   include EventFindable
 
