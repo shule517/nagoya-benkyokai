@@ -15,9 +15,7 @@ describe ConnpassEvent, type: :request do
       expect(event.url).to eq nil # ATNDのみ参考URLが設定される
       expect(event.title).to eq 'JXUGC #14 Xamarin ハンズオン 名古屋大会'
       expect(event.catch).to start_with "にゃごやでも話題の Xamarin を触ってみよう！<br>こんにちは。エクセルソフトの田淵です。\n今話題の Xamarin を名古屋でも触ってみましょう！"
-      # expect(event.catch).to start_with 'にゃごやでも話題の Xamarin を触ってみよう！<br>こんにちは。エクセルソフトの田淵です。 今話題の Xamarin を名古屋でも触ってみましょう！'
       expect(event.description).to start_with "<p>こんにちは。エクセルソフトの田淵です。</p>\n<p>今話題の Xamarin を名古屋でも触ってみましょう！"
-      # expect(event.description).to start_with 'こんにちは。エクセルソフトの田淵です。 今話題の Xamarin を名古屋でも触ってみましょう！'
       expect(event.logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/d7/3c/d73cccc993bb52bffbc0b65bc4c10d38.png'
       expect(event.started_at).to eq '2016-05-15T13:00:00+09:00'
       # expect(event.started_at).to eq Time.parse('2016-05-15T13:00:00+09:00')

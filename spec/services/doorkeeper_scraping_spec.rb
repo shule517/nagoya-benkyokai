@@ -16,9 +16,7 @@ describe DoorkeeperEvent, type: :request do
       expect(event.url).to eq nil # ATNDのみ参考URLが設定される
       expect(event.title).to eq 'リモート開発 de ナイト ＠名古屋ギークバー'
       expect(event.catch).to start_with "リモート開発、してますか？\nしている人も、していないけどしたい人も、集まって情報交換しましょう。"
-      # expect(event.catch).to start_with 'リモート開発、してますか？ している人も、していないけどしたい人も、集まって情報交換しましょう。'
       expect(event.description).to start_with "<p>リモート開発、してますか？<br><br>\nしている人も、していないけどしたい人も、集まって情報交換しましょう。"
-      # expect(event.description).to start_with "<p>リモート開発、してますか？<br><br>\nしている人も、していないけどしたい人も、集まって情報交換しましょう。</p>\n\n"
       expect(event.logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/events_banners/45257_normal_1463562966_%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%90%E3%83%BC%E3%83%AD%E3%82%B4.png'
       expect(event.started_at).to eq '2016-06-13T10:30:00.000Z'
       # expect(event.started_at).to eq Time.parse('2016-06-13T10:30:00.000Z')

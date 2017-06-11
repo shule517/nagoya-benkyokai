@@ -18,7 +18,7 @@ class DoorkeeperEvent < Hashie::Mash
   end
 
   def catch
-    description.gsub(/<\/?[^>]*>/, '') # TODO .gsub(/\n+/, ' ')
+    description.gsub(/<\/?[^>]*>/, '')
   end
 
   def place

@@ -10,7 +10,7 @@ class ConnpassEvent < Hashie::Mash
   end
 
   def catch
-    desc = self[:description].gsub(/<\/?[^>]*>/, '') # TODO .gsub(/\n+/, ' ')
+    desc = self[:description].gsub(/<\/?[^>]*>/, '')
     if self[:catch].present?
       "#{self[:catch]}<br>#{desc}"
     else
