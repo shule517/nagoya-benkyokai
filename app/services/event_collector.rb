@@ -1,8 +1,4 @@
 class EventCollector
-  def initialize
-    @twitter = TwitterClient.new
-  end
-
   def search(date, after_today = true)
     puts "collect date: #{date}"
     apis = []
