@@ -23,7 +23,7 @@ class Atnd
   end
 
   def search_core(start)
-    result = Shule::Http.get_json(request_url(start))
+    result = Api::Http.get_json(request_url(start))
 
     results_returned = result[:results_returned]
     next_start = result[:results_start].to_i + results_returned

@@ -73,7 +73,7 @@ class AtndEvent < Hashie::Mash
 
   def get_social_id(user_id)
     user_url = "https://atnd.org/users/#{user_id}"
-    user_doc = Shule::Http.get_document(user_url, false)
+    user_doc = Api::Http.get_document(user_url, false)
 
     users_show_info = user_doc.css('#users-show-info')
     twitter_id = users_show_info.css('dl:nth-child(2) dd a').text
@@ -86,6 +86,6 @@ class AtndEvent < Hashie::Mash
   end
 
   def event_doc
-    @event_doc ||= Shule::Http.get_document(event_url, false)
+    @event_doc ||= Api::Http.get_document(event_url, false)
   end
 end

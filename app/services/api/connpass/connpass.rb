@@ -21,7 +21,7 @@ class Connpass
   end
 
   def search_core(start)
-    result = Shule::Http.get_json(request_url(start))
+    result = Api::Http.get_json(request_url(start))
 
     next_start = result[:results_start] + result[:results_returned]
     events = result[:events].map { |event| ConnpassEvent.new(event) }

@@ -5,7 +5,7 @@ require 'json'
 require 'open_uri_redirections'
 require 'openssl'
 
-module Shule
+module Api
   class Http
     class ToomanyRequests < StandardError
     end

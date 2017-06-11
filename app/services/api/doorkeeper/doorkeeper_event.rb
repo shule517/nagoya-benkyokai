@@ -130,14 +130,14 @@ class DoorkeeperEvent < Hashie::Mash
   end
 
   def group_doc
-    @group_doc ||= Shule::Http.get_document("#{group_url}members")
+    @group_doc ||= Api::Http.get_document("#{group_url}members")
   end
 
   def participation_doc
-    @participation_doc ||= Shule::Http.get_document("#{group_url}events/#{event_id}/participants")
+    @participation_doc ||= Api::Http.get_document("#{group_url}events/#{event_id}/participants")
   end
 
   def event_doc
-    @event_doc ||= Shule::Http.get_document(event_url)
+    @event_doc ||= Api::Http.get_document(event_url)
   end
 end

@@ -4,7 +4,7 @@ require './script/script_helper'
 # 1000件取得したけど 全て中身はからっぽだった
 events = (81000 .. 82000).map do |event_id|
   url = "http://api.atnd.org/events/?event_id=#{event_id}&order=2&format=json"
-  result = Shule::Http.get_json(url)
+  result = Api::Http.get_json(url)
   events = result[:events]
   events.first[:event] unless events.empty?
 end

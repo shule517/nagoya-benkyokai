@@ -28,7 +28,7 @@ class Doorkeeper
 
   attr_reader :keywords, :ym_list, :event_id
   def search_core(start, keyword)
-    result = Shule::Http.get_json(request_url(start, keyword), Authorization: "Bearer #{ENV['DOORKEEPER_TOKEN']}")
+    result = Api::Http.get_json(request_url(start, keyword), Authorization: "Bearer #{ENV['DOORKEEPER_TOKEN']}")
     return [DoorkeeperEvent.new(result[:event])] if result.class == Hash
     events = result.map { |event| DoorkeeperEvent.new(event[:event]) }
 

@@ -128,16 +128,16 @@ class ConnpassEvent < Hashie::Mash
   end
 
   def participation_doc
-    @participation_doc ||= Shule::Http.get_document(participation_url)
+    @participation_doc ||= Api::Http.get_document(participation_url)
   rescue
     Nokogiri::HTML('')
   end
 
   def event_doc
-    @event_doc ||= Shule::Http.get_document(event_url)
+    @event_doc ||= Api::Http.get_document(event_url)
   end
 
   def user_doc
-    @user_doc ||= Shule::Http.get_document("http://connpass.com/user/#{owner_nickname}")
+    @user_doc ||= Api::Http.get_document("http://connpass.com/user/#{owner_nickname}")
   end
 end
