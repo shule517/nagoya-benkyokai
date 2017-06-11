@@ -13,7 +13,7 @@ module NagoyaBenkyokai
     # -- all .rb files in that directory are automatically loaded.
 
     # サービスをオートロードする
-    config.autoload_paths += %W(#{config.root}/app/services)
+    config.autoload_paths += %W(#{config.root}/app/services #{config.root}/app/services/api/atnd #{config.root}/app/services/api/connpass #{config.root}/app/services/api/doorkeeper)
     config.generators do |g|
       g.test_framework :rspec,
       fixtures: true,
