@@ -1,5 +1,5 @@
 module Api
-  module Connpass
+  module Doorkeeper
     class DoorkeeperEvent < Hashie::Mash
       include EventFindable
 
