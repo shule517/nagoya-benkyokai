@@ -5,12 +5,9 @@ describe EventCollector, type: :request do
     # events = SearchEventService.new.call({ ym: '201612' }, false)
     events = EventCollector.new.search(['201612'], false)
     classes = events.map(&:class)
-    # expect(classes).to include Api::Connpass::ConnpassEvent
-    # expect(classes).to include Api::Doorkeeper::DoorkeeperEvent
-    # expect(classes).to include Api::Atnd::AtndEvent
-    expect(classes).to include ConnpassEvent
-    expect(classes).to include DoorkeeperEvent
-    expect(classes).to include AtndEvent
+    expect(classes).to include Api::Connpass::ConnpassEvent
+    expect(classes).to include Api::Doorkeeper::DoorkeeperEvent
+    expect(classes).to include Api::Atnd::AtndEvent
     titles = events.map(&:title)
     expect(titles).to include 'NGK2016B 昼の部'               # connpass
     expect(titles).to include 'ものづくりナイト@名古屋ギークバー' # Doorkeeper
