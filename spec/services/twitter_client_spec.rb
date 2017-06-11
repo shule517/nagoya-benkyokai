@@ -17,8 +17,7 @@ describe TwitterClient, type: :request do
       expect { client.list(nil) }.to raise_error Twitter::Error::BadRequest
     end
     xit '#lists', vcr: '#notify-lists' do
-      expect { client.lists }.to raise_error TypeError
-      # expect { client.lists(nil) }.to raise_error TypeError
+      expect { client.lists(nil) }.to raise_error TypeError
     end
     it '#update_list', vcr: '#notify-update_list' do
       expect { client.update_list(nil, nil, nil) }.to raise_error NoMethodError
@@ -113,13 +112,14 @@ describe TwitterClient, type: :request do
         end
       end
 
-      # context '権限がない場合' do
-      #   it 'メンバーを追加できないこと' do
-      #     list = client.create_list(name, description)
-      #     client.add_list_member(list.id, 'shule517')
-      #     members = client.list_members(list.id)
-      #     expect(members.to_a.size).to eq 1
-      #   end
+      xcontext '権限がない場合' do
+        it 'メンバーを追加できないこと' do
+          list = client.create_list(name, description)
+          client.add_list_member(list.id, 'shule517')
+          members = client.list_members(list.id)
+          expect(members.to_a.size).to eq 1
+        end
+      end
 
       describe 'メンバーの確認ができること' do
         it '登録者がいない場合', vcr: '#list_members-no_members' do

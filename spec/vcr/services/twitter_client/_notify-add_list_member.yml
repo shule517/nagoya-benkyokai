@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - TwitterRubyGem/6.1.0
       Authorization:
-      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="b0b49990c72cb37f987eba73f1bec186",
-        oauth_signature="o8XALSP0lmIdxsBiQEnsADJwUdQ%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1497196319", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="64c8a1a16ebb1c1ec7100ad97e4fb929",
+        oauth_signature="La0ouQiEM1L9yBMhBGkkOo7Crik%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1497197124", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -29,18 +29,18 @@ http_interactions:
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Sun, 11 Jun 2017 15:52:00 GMT
+      - Sun, 11 Jun 2017 16:05:24 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Sun, 11 Jun 2017 15:52:00 GMT
+      - Sun, 11 Jun 2017 16:05:24 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_m
       Set-Cookie:
-      - guest_id=v1%3A149719632011879479; Domain=.twitter.com; Path=/; Expires=Tue,
-        11-Jun-2019 15:52:00 UTC
+      - guest_id=v1%3A149719712428433621; Domain=.twitter.com; Path=/; Expires=Tue,
+        11-Jun-2019 16:05:24 UTC
       - lang=ja; Path=/
       Status:
       - 200 OK
@@ -51,7 +51,7 @@ http_interactions:
       X-Access-Level:
       - read-write
       X-Connection-Hash:
-      - 5ef33ca92006e7c1cbd3a81982c09899
+      - b95ef01d05164a61e25a845c33b21b32
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -61,11 +61,11 @@ http_interactions:
       X-Rate-Limit-Remaining:
       - '58'
       X-Rate-Limit-Reset:
-      - '1497196454'
+      - '1497197403'
       X-Response-Time:
-      - '137'
+      - '120'
       X-Transaction:
-      - 00175f6100f6f10e
+      - '0061815600a3d794'
       X-Twitter-Response-Tags:
       - BouncerCompliant
       - BouncerExempt
@@ -76,7 +76,7 @@ http_interactions:
       string: '{"id":825641644863033345,"id_str":"825641644863033345","name":"\u30b7\u30e5\u30fc\u30eb(\u958b\u767a\u7528)","screen_name":"shule517_dev","location":"\u306a\u3054\u3084","description":"@shule517\u306e\u958b\u767a\u7528\u30a2\u30ab\u30a6\u30f3\u30c8\u3067\u3059\uff01","url":"https:\/\/t.co\/75FLedYlUR","entities":{"url":{"urls":[{"url":"https:\/\/t.co\/75FLedYlUR","expanded_url":"http:\/\/nagoya-benkyokai.com","display_url":"nagoya-benkyokai.com","indices":[0,23]}]},"description":{"urls":[]}},"protected":true,"followers_count":1,"friends_count":0,"listed_count":0,"created_at":"Sun
         Jan 29 09:48:02 +0000 2017","favourites_count":15,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1343,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/825642834816487425\/8Hl3jym8_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/825642834816487425\/8Hl3jym8_normal.jpg","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
     http_version: 
-  recorded_at: Sun, 11 Jun 2017 15:52:00 GMT
+  recorded_at: Sun, 11 Jun 2017 16:05:24 GMT
 - request:
     method: post
     uri: https://api.twitter.com/1.1/lists/members/create.json
@@ -89,9 +89,9 @@ http_interactions:
       User-Agent:
       - TwitterRubyGem/6.1.0
       Authorization:
-      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="52ac87128d436ef5a51cefdd034dad6e",
-        oauth_signature="f9NviSEtALbsdVi2nTB5KLa1MV8%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1497196320", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="d4ac9b9721dd89a09641e8302e173209",
+        oauth_signature="VNgvd%2BHVvxaSXkaExcd38ylLB00%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1497197124", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -108,18 +108,18 @@ http_interactions:
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Sun, 11 Jun 2017 15:52:00 GMT
+      - Sun, 11 Jun 2017 16:05:24 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Sun, 11 Jun 2017 15:52:00 GMT
+      - Sun, 11 Jun 2017 16:05:24 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_m
       Set-Cookie:
-      - guest_id=v1%3A149719632035778098; Domain=.twitter.com; Path=/; Expires=Tue,
-        11-Jun-2019 15:52:00 UTC
+      - guest_id=v1%3A149719712450541012; Domain=.twitter.com; Path=/; Expires=Tue,
+        11-Jun-2019 16:05:24 UTC
       - lang=ja; Path=/
       Status:
       - 400 Bad Request
@@ -130,15 +130,15 @@ http_interactions:
       X-Access-Level:
       - read-write
       X-Connection-Hash:
-      - b7f23b7b90f38f354a19653137c63898
+      - 9557b660f5d3613ebd9c9b5ac967f665
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Response-Time:
-      - '108'
+      - '107'
       X-Transaction:
-      - 006f114700e0af84
+      - 00fcd06e00dade95
       X-Tsa-Request-Body-Time:
       - '0'
       X-Twitter-Response-Tags:
@@ -149,5 +149,5 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"errors":[{"code":25,"message":"Query parameters are missing."}]}'
     http_version: 
-  recorded_at: Sun, 11 Jun 2017 15:52:00 GMT
+  recorded_at: Sun, 11 Jun 2017 16:05:24 GMT
 recorded_with: VCR 3.0.3

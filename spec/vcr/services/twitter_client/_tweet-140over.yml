@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - TwitterRubyGem/6.1.0
       Authorization:
-      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="29ffe223316c0e985750a9c6f7193915",
-        oauth_signature="%2FiX2nk0D%2BuXjGIlNdkGR4Ns0uGE%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1497196321", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="b2ddaa690ad4efd89bf565dcdbc961f1",
+        oauth_signature="Vn%2BlEsoweO04yDua%2BkKL7CawTHI%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1497197125", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -33,18 +33,18 @@ http_interactions:
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Sun, 11 Jun 2017 15:52:02 GMT
+      - Sun, 11 Jun 2017 16:05:25 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Sun, 11 Jun 2017 15:52:02 GMT
+      - Sun, 11 Jun 2017 16:05:25 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_m
       Set-Cookie:
-      - guest_id=v1%3A149719632229603347; Domain=.twitter.com; Path=/; Expires=Tue,
-        11-Jun-2019 15:52:02 UTC
+      - guest_id=v1%3A149719712590502579; Domain=.twitter.com; Path=/; Expires=Tue,
+        11-Jun-2019 16:05:25 UTC
       - lang=ja; Path=/
       Status:
       - 403 Forbidden
@@ -53,15 +53,15 @@ http_interactions:
       X-Access-Level:
       - read-write
       X-Connection-Hash:
-      - 94fd0948a8b5488735204ac778d9238d
+      - 1179ee2fbb66446f64aac02016a864b4
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Response-Time:
-      - '136'
+      - '123'
       X-Transaction:
-      - '009f98f000bb1ad1'
+      - 002ad0ae00f19db7
       X-Tsa-Request-Body-Time:
       - '0'
       X-Twitter-Response-Tags:
@@ -72,5 +72,5 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"errors":[{"code":186,"message":"Status is over 140 characters."}]}'
     http_version: 
-  recorded_at: Sun, 11 Jun 2017 15:52:02 GMT
+  recorded_at: Sun, 11 Jun 2017 16:05:25 GMT
 recorded_with: VCR 3.0.3

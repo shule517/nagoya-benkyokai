@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - TwitterRubyGem/6.1.0
       Authorization:
-      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="b58801f22d358a96227105fb8b490b41",
-        oauth_signature="A42SUdCBqVdm5BJfPTAwOUvkWhE%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1497196318", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="3b2c29f11e1a4c0b4ab0548e94531fe3",
+        oauth_signature="tFgPglQTMHTa2P%2BP8RuQls0Wpo4%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1497197120", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -29,18 +29,18 @@ http_interactions:
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Sun, 11 Jun 2017 15:51:58 GMT
+      - Sun, 11 Jun 2017 16:05:20 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Sun, 11 Jun 2017 15:51:58 GMT
+      - Sun, 11 Jun 2017 16:05:20 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_m
       Set-Cookie:
-      - guest_id=v1%3A149719631874648407; Domain=.twitter.com; Path=/; Expires=Tue,
-        11-Jun-2019 15:51:58 UTC
+      - guest_id=v1%3A149719712056862519; Domain=.twitter.com; Path=/; Expires=Tue,
+        11-Jun-2019 16:05:20 UTC
       - lang=ja; Path=/
       Status:
       - 200 OK
@@ -51,7 +51,7 @@ http_interactions:
       X-Access-Level:
       - read-write
       X-Connection-Hash:
-      - 6dabd717e7b5eedd4175a1f9921b59a5
+      - 116ab248d4f641a6c1892849bc3bac1e
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -61,11 +61,11 @@ http_interactions:
       X-Rate-Limit-Remaining:
       - '61'
       X-Rate-Limit-Reset:
-      - '1497196454'
+      - '1497197403'
       X-Response-Time:
-      - '118'
+      - '116'
       X-Transaction:
-      - 00255c06009eade4
+      - 00ba291100e59aa9
       X-Twitter-Response-Tags:
       - BouncerCompliant
       - BouncerExempt
@@ -76,7 +76,7 @@ http_interactions:
       string: '{"id":825641644863033345,"id_str":"825641644863033345","name":"\u30b7\u30e5\u30fc\u30eb(\u958b\u767a\u7528)","screen_name":"shule517_dev","location":"\u306a\u3054\u3084","description":"@shule517\u306e\u958b\u767a\u7528\u30a2\u30ab\u30a6\u30f3\u30c8\u3067\u3059\uff01","url":"https:\/\/t.co\/75FLedYlUR","entities":{"url":{"urls":[{"url":"https:\/\/t.co\/75FLedYlUR","expanded_url":"http:\/\/nagoya-benkyokai.com","display_url":"nagoya-benkyokai.com","indices":[0,23]}]},"description":{"urls":[]}},"protected":true,"followers_count":1,"friends_count":0,"listed_count":0,"created_at":"Sun
         Jan 29 09:48:02 +0000 2017","favourites_count":15,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1343,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/825642834816487425\/8Hl3jym8_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/825642834816487425\/8Hl3jym8_normal.jpg","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
     http_version: 
-  recorded_at: Sun, 11 Jun 2017 15:51:58 GMT
+  recorded_at: Sun, 11 Jun 2017 16:05:20 GMT
 - request:
     method: get
     uri: https://api.twitter.com/1.1/lists/show.json?owner_id=825641644863033345
@@ -89,9 +89,9 @@ http_interactions:
       User-Agent:
       - TwitterRubyGem/6.1.0
       Authorization:
-      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="9650ef10bb926992df6b85aa91f5e603",
-        oauth_signature="dZujwo0UVc%2FbF21FG7LWR2L0F9Q%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1497196318", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="fb569c74938baf26c93d12d7d8e8658e",
+        oauth_signature="r9FvlyieALIB%2BPu3fMSwfNWXQFc%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1497197120", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -106,18 +106,18 @@ http_interactions:
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Sun, 11 Jun 2017 15:51:59 GMT
+      - Sun, 11 Jun 2017 16:05:20 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Sun, 11 Jun 2017 15:51:58 GMT
+      - Sun, 11 Jun 2017 16:05:20 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_m
       Set-Cookie:
-      - guest_id=v1%3A149719631896586237; Domain=.twitter.com; Path=/; Expires=Tue,
-        11-Jun-2019 15:51:58 UTC
+      - guest_id=v1%3A149719712078611587; Domain=.twitter.com; Path=/; Expires=Tue,
+        11-Jun-2019 16:05:20 UTC
       - lang=ja; Path=/
       Status:
       - 400 Bad Request
@@ -128,7 +128,7 @@ http_interactions:
       X-Access-Level:
       - read-write
       X-Connection-Hash:
-      - dbfa94cd256da75fdb55bb1710a3bdf2
+      - 91de9160677c903d0bbd52d7594c5865
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -136,13 +136,13 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '75'
       X-Rate-Limit-Remaining:
-      - '68'
+      - '67'
       X-Rate-Limit-Reset:
-      - '1497196455'
+      - '1497197403'
       X-Response-Time:
-      - '108'
+      - '110'
       X-Transaction:
-      - 0010f1c8002053b7
+      - 00a5e052001a7bf8
       X-Twitter-Response-Tags:
       - BouncerCompliant
       X-Xss-Protection:
@@ -152,5 +152,155 @@ http_interactions:
       string: '{"errors":[{"code":112,"message":"You must specify either a list ID
         or a slug and owner."}]}'
     http_version: 
-  recorded_at: Sun, 11 Jun 2017 15:51:59 GMT
+  recorded_at: Sun, 11 Jun 2017 16:05:20 GMT
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: channel=%23dev-error&text=TwitterCient.list%28list_id%3A+%29%0ATwitter%3A%3AError%3A%3ABadRequest%0AYou+must+specify+either+a+list+ID+or+a+slug+and+owner.%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai%2Fapp%2Fservices%2Ftwitter_client.rb%3A172%3Ain+%60list%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai%2Fapp%2Fservices%2Ftwitter_client.rb%3A25%3Ain+%60list_exists%3F%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai%2Fspec%2Fservices%2Ftwitter_client_spec.rb%3A11%3Ain+%60block+%284+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai%2Fspec%2Fservices%2Ftwitter_client_spec.rb%3A11%3Ain+%60block+%283+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai%2Fspec%2Fspec_helper.rb%3A27%3Ain+%60block+%283+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai%2Fspec%2Fspec_helper.rb%3A26%3Ain+%60block+%282+levels%29+in+%3Ctop+%28required%29%3E%27&token=xoxp-49827793543-51205615330-136715415287-4212f7726c2149283e5adbeb6f40ead8&username=lambda
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Slack Ruby Gem 1.5.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '381'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Date:
+      - Sun, 11 Jun 2017 16:05:21 GMT
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Pragma:
+      - no-cache
+      Referrer-Policy:
+      - no-referrer
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Vary:
+      - Accept-Encoding
+      X-Accepted-Oauth-Scopes:
+      - chat:write:bot,post
+      X-Content-Type-Options:
+      - nosniff
+      X-Oauth-Scopes:
+      - identify,read,post,client,apps
+      X-Slack-Backend:
+      - h
+      X-Slack-Req-Id:
+      - a585c6ab-6d34-4432-a8e9-5204e623e104
+      X-Xss-Protection:
+      - '0'
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 bd17883e044caf5d3eaee71e7171bfac.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - eCTWF82yEHZnIdAixJxtim0txAq2yFaf001iuQPergmF9JEtQD3_UA==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":true,"channel":"C5GT3B79B","ts":"1497197120.170599","message":{"text":"TwitterCient.list(list_id:
+        )\nTwitter::Error::BadRequest\nYou must specify either a list ID or a slug
+        and owner.\n\/Users\/shule\/Documents\/nagoya-benkyokai\/app\/services\/twitter_client.rb:172:in
+        `list''\n\/Users\/shule\/Documents\/nagoya-benkyokai\/app\/services\/twitter_client.rb:25:in
+        `list_exists?''\n\/Users\/shule\/Documents\/nagoya-benkyokai\/spec\/services\/twitter_client_spec.rb:11:in
+        `block (4 levels) in &lt;top (required)&gt;''\n\/Users\/shule\/Documents\/nagoya-benkyokai\/spec\/services\/twitter_client_spec.rb:11:in
+        `block (3 levels) in &lt;top (required)&gt;''\n\/Users\/shule\/Documents\/nagoya-benkyokai\/spec\/spec_helper.rb:27:in
+        `block (3 levels) in &lt;top (required)&gt;''\n\/Users\/shule\/Documents\/nagoya-benkyokai\/spec\/spec_helper.rb:26:in
+        `block (2 levels) in &lt;top (required)&gt;''","username":"lambda","bot_id":"B3Z9C1G0G","type":"message","subtype":"bot_message","ts":"1497197120.170599"}}'
+    http_version: 
+  recorded_at: Sun, 11 Jun 2017 16:05:21 GMT
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: channel=%23dev-error&text=TwitterCient.list_exists%3F%28list_id%3A+%29%0ATwitter%3A%3AError%3A%3ABadRequest%0AYou+must+specify+either+a+list+ID+or+a+slug+and+owner.%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai%2Fapp%2Fservices%2Ftwitter_client.rb%3A172%3Ain+%60list%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai%2Fapp%2Fservices%2Ftwitter_client.rb%3A25%3Ain+%60list_exists%3F%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai%2Fspec%2Fservices%2Ftwitter_client_spec.rb%3A11%3Ain+%60block+%284+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai%2Fspec%2Fservices%2Ftwitter_client_spec.rb%3A11%3Ain+%60block+%283+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai%2Fspec%2Fspec_helper.rb%3A27%3Ain+%60block+%283+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai%2Fspec%2Fspec_helper.rb%3A26%3Ain+%60block+%282+levels%29+in+%3Ctop+%28required%29%3E%27&token=xoxp-49827793543-51205615330-136715415287-4212f7726c2149283e5adbeb6f40ead8&username=lambda
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Slack Ruby Gem 1.5.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '383'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      Date:
+      - Sun, 11 Jun 2017 16:05:21 GMT
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Pragma:
+      - no-cache
+      Referrer-Policy:
+      - no-referrer
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Vary:
+      - Accept-Encoding
+      X-Accepted-Oauth-Scopes:
+      - chat:write:bot,post
+      X-Content-Type-Options:
+      - nosniff
+      X-Oauth-Scopes:
+      - identify,read,post,client,apps
+      X-Slack-Backend:
+      - h
+      X-Slack-Req-Id:
+      - c5a63ad0-4292-4f6e-9357-5d7a4c130c82
+      X-Xss-Protection:
+      - '0'
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 d6f98d2db857c32baf937a1afb4b1b6c.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - jWYNOxwkQqJEjOArQMTSawTmOlNSagf0LY1QUJndFv9TyPBFiK88aQ==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":true,"channel":"C5GT3B79B","ts":"1497197120.170613","message":{"text":"TwitterCient.list_exists?(list_id:
+        )\nTwitter::Error::BadRequest\nYou must specify either a list ID or a slug
+        and owner.\n\/Users\/shule\/Documents\/nagoya-benkyokai\/app\/services\/twitter_client.rb:172:in
+        `list''\n\/Users\/shule\/Documents\/nagoya-benkyokai\/app\/services\/twitter_client.rb:25:in
+        `list_exists?''\n\/Users\/shule\/Documents\/nagoya-benkyokai\/spec\/services\/twitter_client_spec.rb:11:in
+        `block (4 levels) in &lt;top (required)&gt;''\n\/Users\/shule\/Documents\/nagoya-benkyokai\/spec\/services\/twitter_client_spec.rb:11:in
+        `block (3 levels) in &lt;top (required)&gt;''\n\/Users\/shule\/Documents\/nagoya-benkyokai\/spec\/spec_helper.rb:27:in
+        `block (3 levels) in &lt;top (required)&gt;''\n\/Users\/shule\/Documents\/nagoya-benkyokai\/spec\/spec_helper.rb:26:in
+        `block (2 levels) in &lt;top (required)&gt;''","username":"lambda","bot_id":"B3Z9C1G0G","type":"message","subtype":"bot_message","ts":"1497197120.170613"}}'
+    http_version: 
+  recorded_at: Sun, 11 Jun 2017 16:05:21 GMT
 recorded_with: VCR 3.0.3
