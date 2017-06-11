@@ -55,7 +55,7 @@ class EventTweet
         message = "#{event.year}/#{event.month}/#{event.day}(#{event.wday})に開催される勉強会です！\n#{title}\n\nイベントページ：#{event.event_url}"
       end
 
-      if !event.hash_tag.empty?
+      if event.hash_tag.present?
         message += "\n##{event.hash_tag}"
       end
       message

@@ -1,9 +1,8 @@
 require 'uri'
 require_relative './http'
-require_relative './event_base'
 require_relative './connpass_user'
 
-class ConnpassEvent < EventBase
+class ConnpassEvent < Hashie::Mash
   include EventFindable
 
   def source
@@ -11,11 +10,21 @@ class ConnpassEvent < EventBase
   end
 
   def catch
-    if @catch.present?
-      @catch + '<br>' + @description.gsub(/<\/?[^>]*>/, '')
+    desc = self[:description].gsub(/<\/?[^>]*>/, '') # TODO .gsub(/\n+/, ' ')
+    if self[:catch].present?
+      "#{self[:catch]}<br>#{desc}"
     else
-      @description.gsub(/<\/?[^>]*>/, '')
+      desc
     end
+  end
+
+  def update_time
+    self[:updated_at]
+    # Time.parse(self[:updated_at])
+  end
+
+  def series
+    self[:series] || {}
   end
 
   def group_url

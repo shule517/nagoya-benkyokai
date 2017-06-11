@@ -1,9 +1,8 @@
 require 'uri'
 require_relative './http'
-require_relative './event_base'
 require_relative './atnd_user'
 
-class AtndEvent < EventBase
+class AtndEvent < Hashie::Mash
   include EventFindable
 
   def source
@@ -11,18 +10,16 @@ class AtndEvent < EventBase
   end
 
   def catch
-    if @catch.present?
-      @catch + '<br>' + @description.gsub(/<\/?[^>]*>/, '')
-    else
-      @description.gsub(/<\/?[^>]*>/, '')
-    end
+    # AtndApiのcatchは全て中身がからっぽ
+    description.gsub(/<\/?[^>]*>/, '')
+  end
+
+  def update_time
+    self[:updated_at]
+    # Time.parse(self[:updated_at])
   end
 
   def logo
-    @logo ||= get_logo
-  end
-
-  def get_logo
     event_doc.css('.events-show-img > img/@data-original').each do |img|
       return "https://atnd.org#{img}"
     end

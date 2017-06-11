@@ -13,7 +13,7 @@ describe AtndEvent, type: :request do
       expect(event.source).to eq 'atnd' # TODO ATND
       expect(event.event_id).to eq 81945
       expect(event.event_url).to eq 'http://atnd.org/events/81945' # TODO 'https://atnd.org/events/81945'
-      expect(event.url).to eq '' # TODO nil # ATNDのみ参考URLが設定される ※このイベントには設定されていない
+      expect(event.url).to eq nil # ATNDのみ参考URLが設定される ※このイベントには設定されていない
       expect(event.title).to eq 'エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！'
       # expect(event.catch).to start_with '【ATEAM TECHとは】 ゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。'
       expect(event.catch).to start_with "【ATEAM TECHとは】\nゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。"
@@ -31,7 +31,10 @@ describe AtndEvent, type: :request do
       expect(event.limit).to eq 45
       expect(event.accepted).to eq 39
       expect(event.waiting).to eq 0
-      # expect(event.update_time).to eq Time.parse('2016-10-08T00:52:33.000+09:00')
+      expect(event.updated_at).to eq '2016-10-08T00:52:33.000+09:00'
+      # expect(event.updated_at).to eq Time.parse('2016-05-12 15:27:59 +0900')
+      expect(event.update_time).to eq '2016-10-08T00:52:33.000+09:00'
+      # expect(event.update_time).to eq Time.parse('2016-05-12 15:27:59 +0900')
       # expect(event.hash_tag).to eq 'ATEAM_TECH' # TODO 取得できていない
       expect(event.limit_over?).to eq false
       expect(event.users.count).to eq event.accepted
@@ -213,9 +216,7 @@ describe AtndEvent, type: :request do
   end
 
   describe '#catch' do
-    context 'catchが設定されている場合', vcr: '#catch-exist' do
-    end
-
+    # ATNDはcatchが設定されることはない
     context 'catchが設定されていない場合', vcr: '#catch-not_exist' do
       # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！ https://atnd.org/events/81945
       let(:event) { api.find(event_id: 81945) }
