@@ -1,5 +1,4 @@
 require 'nokogiri'
-require_relative './http'
 
 class Connpass
   def search(args)
