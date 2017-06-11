@@ -2,12 +2,21 @@ require 'rails_helper'
 
 describe Event do
   describe '開催日が取得できること' do
-    event = Event.new(started_at: '2016-05-15T13:00:00+09:00')
-    it('開催年を取得')   { expect(event.year).to eq 2016 }
-    it('開催月を取得')   { expect(event.month).to eq 5   }
-    it('開催日を取得')   { expect(event.day).to eq 15    }
-    it('開催曜日を取得') { expect(event.wday).to eq '日' }
+    let(:event) { Event.new(started_at: '2016-05-15T13:00:00+09:00') }
+    it '開催年を取得' do
+      expect(event.year).to eq 2016
+    end
+    it '開催月を取得' do
+      expect(event.month).to eq 5
+    end
+    it '開催日を取得' do
+      expect(event.day).to eq 15
+    end
+    it '開催曜日を取得' do
+      expect(event.wday).to eq '日'
+    end
   end
+
   describe '#delete' do
     it 'Eventが削除できること' do
       event = Event.create
