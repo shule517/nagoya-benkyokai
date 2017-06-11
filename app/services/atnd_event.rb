@@ -79,8 +79,8 @@ class AtndEvent < EventBase
   private
 
   def get_social_id(user_id)
-    event_url = "https://atnd.org/users/#{user_id}"
-    user_doc = Shule::Http.get_document(event_url, false)
+    user_url = "https://atnd.org/users/#{user_id}"
+    user_doc = Shule::Http.get_document(user_url, false)
 
     users_show_info = user_doc.css('#users-show-info')
     twitter_id = users_show_info.css('dl:nth-child(2) dd a').text
