@@ -1,0 +1,153 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/account/verify_credentials.json?skip_status=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/6.1.0
+      Authorization:
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="b0b49990c72cb37f987eba73f1bec186",
+        oauth_signature="o8XALSP0lmIdxsBiQEnsADJwUdQ%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1497196319", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sun, 11 Jun 2017 15:52:00 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Sun, 11 Jun 2017 15:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A149719632011879479; Domain=.twitter.com; Path=/; Expires=Tue,
+        11-Jun-2019 15:52:00 UTC
+      - lang=ja; Path=/
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=631138519
+      Transfer-Encoding:
+      - chunked
+      X-Access-Level:
+      - read-write
+      X-Connection-Hash:
+      - 5ef33ca92006e7c1cbd3a81982c09899
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '75'
+      X-Rate-Limit-Remaining:
+      - '58'
+      X-Rate-Limit-Reset:
+      - '1497196454'
+      X-Response-Time:
+      - '137'
+      X-Transaction:
+      - 00175f6100f6f10e
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      - BouncerExempt
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":825641644863033345,"id_str":"825641644863033345","name":"\u30b7\u30e5\u30fc\u30eb(\u958b\u767a\u7528)","screen_name":"shule517_dev","location":"\u306a\u3054\u3084","description":"@shule517\u306e\u958b\u767a\u7528\u30a2\u30ab\u30a6\u30f3\u30c8\u3067\u3059\uff01","url":"https:\/\/t.co\/75FLedYlUR","entities":{"url":{"urls":[{"url":"https:\/\/t.co\/75FLedYlUR","expanded_url":"http:\/\/nagoya-benkyokai.com","display_url":"nagoya-benkyokai.com","indices":[0,23]}]},"description":{"urls":[]}},"protected":true,"followers_count":1,"friends_count":0,"listed_count":0,"created_at":"Sun
+        Jan 29 09:48:02 +0000 2017","favourites_count":15,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1343,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/825642834816487425\/8Hl3jym8_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/825642834816487425\/8Hl3jym8_normal.jpg","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
+    http_version: 
+  recorded_at: Sun, 11 Jun 2017 15:52:00 GMT
+- request:
+    method: post
+    uri: https://api.twitter.com/1.1/lists/members/create.json
+    body:
+      encoding: UTF-8
+      string: owner_id=825641644863033345
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/6.1.0
+      Authorization:
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="52ac87128d436ef5a51cefdd034dad6e",
+        oauth_signature="f9NviSEtALbsdVi2nTB5KLa1MV8%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1497196320", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sun, 11 Jun 2017 15:52:00 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Sun, 11 Jun 2017 15:52:00 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A149719632035778098; Domain=.twitter.com; Path=/; Expires=Tue,
+        11-Jun-2019 15:52:00 UTC
+      - lang=ja; Path=/
+      Status:
+      - 400 Bad Request
+      Strict-Transport-Security:
+      - max-age=631138519
+      Transfer-Encoding:
+      - chunked
+      X-Access-Level:
+      - read-write
+      X-Connection-Hash:
+      - b7f23b7b90f38f354a19653137c63898
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Response-Time:
+      - '108'
+      X-Transaction:
+      - 006f114700e0af84
+      X-Tsa-Request-Body-Time:
+      - '0'
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"code":25,"message":"Query parameters are missing."}]}'
+    http_version: 
+  recorded_at: Sun, 11 Jun 2017 15:52:00 GMT
+recorded_with: VCR 3.0.3

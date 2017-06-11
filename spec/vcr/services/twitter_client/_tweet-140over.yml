@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.twitter.com/1.1/statuses/update.json
+    body:
+      encoding: UTF-8
+      string: status=12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890X
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/6.1.0
+      Authorization:
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="29ffe223316c0e985750a9c6f7193915",
+        oauth_signature="%2FiX2nk0D%2BuXjGIlNdkGR4Ns0uGE%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1497196321", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '93'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sun, 11 Jun 2017 15:52:02 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Sun, 11 Jun 2017 15:52:02 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A149719632229603347; Domain=.twitter.com; Path=/; Expires=Tue,
+        11-Jun-2019 15:52:02 UTC
+      - lang=ja; Path=/
+      Status:
+      - 403 Forbidden
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read-write
+      X-Connection-Hash:
+      - 94fd0948a8b5488735204ac778d9238d
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Response-Time:
+      - '136'
+      X-Transaction:
+      - '009f98f000bb1ad1'
+      X-Tsa-Request-Body-Time:
+      - '0'
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"code":186,"message":"Status is over 140 characters."}]}'
+    http_version: 
+  recorded_at: Sun, 11 Jun 2017 15:52:02 GMT
+recorded_with: VCR 3.0.3

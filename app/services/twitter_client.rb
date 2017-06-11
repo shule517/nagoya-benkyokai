@@ -1,5 +1,7 @@
 require 'twitter'
 
+class TooManyListsError < StandardError;end
+class Tweet140OverError < StandardError;end
 class TwitterClient
   def initialize
     @client = Twitter::REST::Client.new do |config|
@@ -114,6 +116,7 @@ class TwitterClient
     @client.create_list(title, description: description, mode: mode)
   rescue Twitter::Error::Forbidden => e
     puts "#{e}\ntitle:#{title} description:#{description}"
+    raise TooManyListsError if e.message == 'The list failed validation: This user has too many lists.'
   end
 
   def update_list(uri, title, description)
@@ -125,11 +128,15 @@ class TwitterClient
     puts "#{e}\nuri:#{uri} list_name:#{list_name} description:#{description}"
   rescue => e
     puts "#{e}\nuri:#{uri} list_name:#{list_name} description:#{description}"
+    raise
   end
 
   def destroy_list(event_id)
     puts "destroy_list(#{event_id})"
     @client.destroy_list(event_id)
+  rescue => e
+    # NotifyService.new.call(e, "TwitterCient.add_list_member(list_id: #{list_id}, user_id: #{user_id})")
+    raise
   end
 
   def add_list_member(list_id, user_id)
@@ -137,6 +144,9 @@ class TwitterClient
     @client.add_list_member(list_id, user_id)
   rescue Twitter::Error::Forbidden
     puts "Error: #{user_id}をリストに追加する権限がありません。"
+  rescue => e
+    # NotifyService.new.call(e, "TwitterCient.add_list_member(list_id: #{list_id}, user_id: #{user_id})")
+    raise
   end
 
   def add_list_members(list_id, users)
@@ -147,6 +157,7 @@ class TwitterClient
     puts "Error: #{users}をリストに追加する権限がありません。"
   rescue => e
     p e
+    raise
   end
 
   def list(list_id)
@@ -158,11 +169,15 @@ class TwitterClient
     puts "list_members(#{list_id})"
     @client.list_members(list_id)
   rescue => e
-    p e
-    []
+    # NotifyService.new.call(e, "TwitterCient.list_members(list_id: #{list_id})")
+    raise
   end
 
   def tweet(message)
     @client.update(message)
+  rescue => e
+    raise Tweet140OverError if e.message == 'Status is over 140 characters.'
+    # NotifyService.new.call(e, "TwitterCient.tweet(message: #{message})")
+    raise
   end
 end
