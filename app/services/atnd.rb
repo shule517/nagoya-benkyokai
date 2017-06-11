@@ -1,4 +1,5 @@
 require 'nokogiri'
+require_relative './http'
 
 class Atnd
   def search(args)
