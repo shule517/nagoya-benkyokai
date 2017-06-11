@@ -25,11 +25,11 @@ http_interactions:
       Content-Type:
       - text/json; charset=utf-8
       Date:
-      - Fri, 09 Jun 2017 11:07:40 GMT
+      - Sun, 11 Jun 2017 13:42:00 GMT
       Expires:
-      - Fri, 09 Jun 2017 11:12:40 GMT
+      - Sun, 11 Jun 2017 13:47:00 GMT
       Last-Modified:
-      - Fri, 09 Jun 2017 11:07:40 GMT
+      - Sun, 11 Jun 2017 13:42:00 GMT
       Server:
       - nginx
       Vary:
@@ -85,5 +85,5 @@ http_interactions:
         "accepted": 5, "ended_at": "2017-05-11T21:00:00+09:00", "place": "Misoca"}],
         "results_start": 1, "results_available": 1}'
     http_version: 
-  recorded_at: Fri, 09 Jun 2017 11:07:40 GMT
+  recorded_at: Sun, 11 Jun 2017 13:42:00 GMT
 recorded_with: VCR 3.0.3

@@ -2,42 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://connpass.com/api/v1/event/?count=100&keyword_or=%E5%90%8D%E5%8F%A4%E5%B1%8B&order=2&start=1&ym=201611
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 301
-      message: Moved Permanently
-    headers:
-      Content-Type:
-      - text/html
-      Date:
-      - Wed, 07 Jun 2017 12:59:14 GMT
-      Location:
-      - https://connpass.com/api/v1/event/?keyword_or=%E5%90%8D%E5%8F%A4%E5%B1%8B&count=100&order=2&start=1&ym=201610&ym=201611
-      Server:
-      - nginx
-      Content-Length:
-      - '178'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
-        bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-    http_version: 
-  recorded_at: Wed, 07 Jun 2017 12:59:14 GMT
-- request:
-    method: get
     uri: https://connpass.com/api/v1/event/?count=100&keyword_or=%E5%90%8D%E5%8F%A4%E5%B1%8B&order=2&start=1&ym=201611
     body:
       encoding: US-ASCII
@@ -61,11 +25,11 @@ http_interactions:
       Content-Type:
       - text/json; charset=utf-8
       Date:
-      - Wed, 07 Jun 2017 12:59:16 GMT
+      - Sun, 11 Jun 2017 13:41:35 GMT
       Expires:
-      - Wed, 07 Jun 2017 13:04:16 GMT
+      - Sun, 11 Jun 2017 13:46:35 GMT
       Last-Modified:
-      - Wed, 07 Jun 2017 12:59:16 GMT
+      - Sun, 11 Jun 2017 13:41:35 GMT
       Server:
       - nginx
       Vary:
@@ -2292,43 +2256,7 @@ http_interactions:
         "accepted": 0, "ended_at": "2016-10-07T17:20:00+09:00", "place": "\u9577\u5d0e\u30d6\u30ea\u30c3\u30af\u30db\u30fc\u30eb"}],
         "results_start": 1, "results_available": 105}'
     http_version: 
-  recorded_at: Wed, 07 Jun 2017 12:59:16 GMT
-- request:
-    method: get
-    uri: http://connpass.com/api/v1/event/?count=100&keyword_or=%E5%90%8D%E5%8F%A4%E5%B1%8B&order=2&start=101&ym=201611
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 301
-      message: Moved Permanently
-    headers:
-      Content-Type:
-      - text/html
-      Date:
-      - Wed, 07 Jun 2017 12:59:16 GMT
-      Location:
-      - https://connpass.com/api/v1/event/?keyword_or=%E5%90%8D%E5%8F%A4%E5%B1%8B&count=100&order=2&start=101&ym=201610&ym=201611
-      Server:
-      - nginx
-      Content-Length:
-      - '178'
-      Connection:
-      - keep-alive
-    body:
-      encoding: UTF-8
-      string: "<html>\r\n<head><title>301 Moved Permanently</title></head>\r\n<body
-        bgcolor=\"white\">\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
-    http_version: 
-  recorded_at: Wed, 07 Jun 2017 12:59:16 GMT
+  recorded_at: Sun, 11 Jun 2017 13:41:37 GMT
 - request:
     method: get
     uri: https://connpass.com/api/v1/event/?count=100&keyword_or=%E5%90%8D%E5%8F%A4%E5%B1%8B&order=2&start=101&ym=201611
@@ -2354,11 +2282,11 @@ http_interactions:
       Content-Type:
       - text/json; charset=utf-8
       Date:
-      - Wed, 07 Jun 2017 12:59:17 GMT
+      - Sun, 11 Jun 2017 13:41:37 GMT
       Expires:
-      - Wed, 07 Jun 2017 13:04:17 GMT
+      - Sun, 11 Jun 2017 13:46:37 GMT
       Last-Modified:
-      - Wed, 07 Jun 2017 12:59:17 GMT
+      - Sun, 11 Jun 2017 13:41:37 GMT
       Server:
       - nginx
       Vary:
@@ -2472,5 +2400,5 @@ http_interactions:
         "accepted": 15, "ended_at": "2016-10-01T12:00:00+09:00", "place": "\u5929\u767d\u533a\u793e\u4f1a\u798f\u7949\u5354\u8b70\u4f1a\u7814\u4fee\u5ba4"}],
         "results_start": 101, "results_available": 105}'
     http_version: 
-  recorded_at: Wed, 07 Jun 2017 12:59:17 GMT
+  recorded_at: Sun, 11 Jun 2017 13:41:37 GMT
 recorded_with: VCR 3.0.3
