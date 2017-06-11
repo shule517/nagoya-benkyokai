@@ -13,7 +13,7 @@ describe AtndEvent, type: :request do
       expect(event.source).to eq 'atnd' # TODO ATND
       expect(event.event_id).to eq 81945
       expect(event.event_url).to eq 'http://atnd.org/events/81945' # TODO 'https://atnd.org/events/81945'
-      expect(event.url).to eq '' # TODO nil # これ必要？
+      expect(event.url).to eq '' # TODO nil # ATNDのみ参考URLが設定される ※このイベントには設定されていない
       expect(event.title).to eq 'エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！'
       # expect(event.catch).to start_with '【ATEAM TECHとは】 ゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。'
       expect(event.catch).to start_with "【ATEAM TECHとは】\nゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。"
@@ -40,6 +40,15 @@ describe AtndEvent, type: :request do
       expect(event.group_title).to eq nil
       expect(event.group_url).to eq nil
       expect(event.group_logo).to eq nil
+    end
+  end
+
+  describe '#url', vcr: '#url' do
+    # 名古屋V-Ray勉強会 #01 https://atnd.org/events/85182
+    let(:event) { api.find(event_id: 85182) }
+
+    it '参考URLが取得できること' do
+      expect(event.url).to eq 'http://basecamp-nagoya.jp'
     end
   end
 

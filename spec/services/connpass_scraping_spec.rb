@@ -12,7 +12,7 @@ describe ConnpassEvent, type: :request do
       expect(event.source).to eq 'connpass'
       expect(event.event_id).to eq 30152
       expect(event.event_url).to eq 'https://jxug.connpass.com/event/30152/'
-      expect(event.url).to eq '' #nil # これ必要？
+      expect(event.url).to eq '' #TODO nil # ATNDのみ参考URLが設定される
       expect(event.title).to eq 'JXUGC #14 Xamarin ハンズオン 名古屋大会'
       expect(event.catch).to start_with "にゃごやでも話題の Xamarin を触ってみよう！<br>こんにちは。エクセルソフトの田淵です。\n今話題の Xamarin を名古屋でも触ってみましょう！"
       # expect(event.catch).to start_with 'にゃごやでも話題の Xamarin を触ってみよう！<br>こんにちは。エクセルソフトの田淵です。 今話題の Xamarin を名古屋でも触ってみましょう！'

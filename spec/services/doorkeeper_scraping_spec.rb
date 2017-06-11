@@ -13,7 +13,7 @@ describe DoorkeeperEvent, type: :request do
       # expect(event.source).to eq 'Doorkeeper'
       expect(event.event_id).to eq 45257
       expect(event.event_url).to eq 'https://geekbar.doorkeeper.jp/events/45257'
-      expect(event.url).to eq '' # TODO nil # これ必要？
+      expect(event.url).to eq '' # TODO nil # ATNDのみ参考URLが設定される
       expect(event.title).to eq 'リモート開発 de ナイト ＠名古屋ギークバー'
       expect(event.catch).to start_with "リモート開発、してますか？\nしている人も、していないけどしたい人も、集まって情報交換しましょう。"
       # expect(event.catch).to start_with 'リモート開発、してますか？ している人も、していないけどしたい人も、集まって情報交換しましょう。'
