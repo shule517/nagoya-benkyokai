@@ -1,8 +1,3 @@
-require_relative './connpass'
-require_relative './doorkeeper'
-require_relative './atnd'
-require_relative './twitter_client'
-
 class EventCollector
   def initialize
     @twitter = TwitterClient.new
