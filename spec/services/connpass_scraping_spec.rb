@@ -64,6 +64,7 @@ describe ConnpassEvent, type: :request do
     let(:event) { api.find(event_id: 30152) }
     let(:users) { event.users }
 
+    xit 'キャンセルした場合、参加者一覧から除外されていること'
     describe '#get_social_id' do
       context 'IDが設定されている場合', vcr: '#get_social_id-exist' do
         let(:user) { users.select { |user| user.connpass_id == 'Kuxumarin' }.first }
