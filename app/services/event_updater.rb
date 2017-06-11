@@ -60,7 +60,7 @@ class EventUpdater
     end
 
     def update_event_to_twitter(event, lists)
-      description = "#{event.year}/#{event.month}/#{event.day}(#{event.wday}) #{event.title} #{event.url}"
+      description = "#{event.year}/#{event.month}/#{event.day}(#{event.wday}) #{event.title} #{event.event_url}"
 
       if lists.any? { |list| list.uri.to_s == event.twitter_list_url } || (event.twitter_list_url && @twitter.list_exists?(event.twitter_list_url))
         puts "update list: #{description}"
