@@ -1,5 +1,3 @@
-require_relative './user_base'
-
 class DoorkeeperUser < UserBase
   def find_or_create_by
     result = User.find_doorkeeper(twitter_id, facebook_id, github_id, linkedin_id, name)

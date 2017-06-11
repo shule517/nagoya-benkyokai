@@ -1,5 +1,3 @@
-require_relative './user_base'
-
 class ConnpassUser < UserBase
   def find_or_create_by
     result = User.find_connpass(connpass_id, twitter_id, facebook_id, github_id)

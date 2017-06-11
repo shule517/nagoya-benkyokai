@@ -1,5 +1,3 @@
-require_relative './user_base'
-
 class AtndUser < UserBase
   def find_or_create_by
     result = User.find_atnd(atnd_id, twitter_id, facebook_id)
