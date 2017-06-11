@@ -3,8 +3,7 @@ include Api::Doorkeeper
 
 describe DoorkeeperEvent, type: :request do
 # describe DoorkeeperScraping, type: :request do
-  let(:api) { Doorkeeper.new }
-  # let(:api) { DoorkeeperApi }
+  let(:api) { DoorkeeperApi.new }
   describe '#find' do
     # リモート開発 de ナイト ＠名古屋ギークバー https://geekbar.doorkeeper.jp/events/45257
     let(:event) { api.find(event_id: 45257) }

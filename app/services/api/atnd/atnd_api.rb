@@ -1,8 +1,6 @@
-require 'nokogiri'
-
 module Api
   module Atnd
-    class Atnd
+    class AtndApi
       def search(args)
         set_param(args)
         search_core(0)

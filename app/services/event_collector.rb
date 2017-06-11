@@ -6,15 +6,15 @@ class EventCollector
   def search(date, after_today = true)
     puts "collect date: #{date}"
     apis = []
-    apis << Api::Connpass::Connpass.new
-    apis << Api::Doorkeeper::Doorkeeper.new
+    apis << Api::Connpass::ConnpassApi.new
+    apis << Api::Doorkeeper::DoorkeeperApi.new
     events = []
     keywords = ['愛知', '中部', '東海', '名古屋', '豊橋', '豊田', '岡崎', '一宮', '春日井', '安城', '豊川', '西尾', '刈谷', '小牧', '稲沢', '半田', '瀬戸', '東海', '日進', '大府', '江南', '北名古屋', '尾張旭', 'あま', '知多', '知立', '蒲郡', 'みよし', '犬山', '碧南', '清須', '豊明', '長久手', '津島', '田原', '愛西', '高浜', '常滑', '東浦', '東郷', '幸田', '武豊', '岩倉', '弥富', '新城', '扶桑', '大治', '蟹江', '阿久比', '大口', '美浜', '豊山', '南知多', '飛島', '設楽', '東栄', '豊根']
     apis.each do |api|
       events += api.search(keyword: keywords, ym: date)
     end
 
-    atnd_events = Api::Atnd::Atnd.new.search(keyword: keywords, ym: date)
+    atnd_events = Api::Atnd::AtndApi.new.search(keyword: keywords, ym: date)
     ngwords = %w(仏教 クリスマスパーティ テロリスト 国際交流パーティ 社会人基礎力 カウントダウンパーティー ARMENIAN SONGS ブッダ BrightWoman 幸せの種まき 幸せの花 ブランディング オシャレな古城 受講料 mana×comu 投資 心理学 ヨガ ガン ボランティア 病 ベジタリアン ピアノ 幸せ Hearthstone ゆかりオフ オシャレカフェ eco検定 アニマルセラピー 介護)
     atnd_events.select! { |event| ngwords.all? { |ngword| !event.title.include?(ngword) } }
     events += atnd_events

@@ -1,8 +1,6 @@
-require 'nokogiri'
-
 module Api
   module Doorkeeper
-    class Doorkeeper
+    class DoorkeeperApi
       def search(args)
         set_param(args)
         events = []

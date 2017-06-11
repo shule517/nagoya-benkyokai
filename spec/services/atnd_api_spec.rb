@@ -1,8 +1,8 @@
 require 'rails_helper'
 include Api::Atnd
 
-describe Atnd, type: :request do
-  let(:api) { Atnd.new }
+describe AtndApi, type: :request do
+  let(:api) { AtndApi.new }
 
   describe '#search' do
     context '1ページ(100件以内)の場合', vcr: '#search-1page' do

@@ -3,8 +3,7 @@ include Api::Connpass
 
 # describe ConnpassScraping, type: :request do
 describe ConnpassEvent, type: :request do
-  let(:api) { Connpass.new }
-  # let(:api) { ConnpassApi }
+  let(:api) { ConnpassApi.new }
   describe '#find' do
     # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
     let(:event) { api.find(event_id: 30152) }

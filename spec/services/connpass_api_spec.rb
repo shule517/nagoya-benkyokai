@@ -1,8 +1,8 @@
 require 'rails_helper'
 include Api::Connpass
 
-describe Connpass, type: :request do
-  let(:api) { Connpass.new }
+describe ConnpassApi, type: :request do
+  let(:api) { ConnpassApi.new }
 
   describe '#search' do
     context '1ページ(100件以内)の場合', vcr: '#search-1page' do

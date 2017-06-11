@@ -1,8 +1,8 @@
 require 'rails_helper'
 include Api::Doorkeeper
 
-describe Doorkeeper, type: :request do
-  let(:api) { Doorkeeper.new }
+describe DoorkeeperApi, type: :request do
+  let(:api) { DoorkeeperApi.new }
 
   describe '#search' do
     context '1ページ(20件以内)の場合', vcr: '#search-1page' do

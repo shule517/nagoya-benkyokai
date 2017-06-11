@@ -1,8 +1,6 @@
-require 'nokogiri'
-
 module Api
   module Connpass
-    class Connpass
+    class ConnpassApi
       def search(args)
         set_param(args)
         search_core(1)

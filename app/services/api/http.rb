@@ -4,6 +4,7 @@ require 'open-uri'
 require 'json'
 require 'open_uri_redirections'
 require 'openssl'
+require 'nokogiri'
 
 module Api
   class Http

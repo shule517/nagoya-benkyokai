@@ -3,8 +3,7 @@ include Api::Atnd
 
 # describe AtndScraping, type: :request do
 describe AtndEvent, type: :request do
-  # let(:api) { AtndApi }
-  let(:api) { Atnd.new }
+  let(:api) { AtndApi.new }
   describe '#find' do
     # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！ https://atnd.org/events/81945
     let(:event) { api.find(event_id: 81945) }
