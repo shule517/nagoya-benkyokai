@@ -1,6 +1,4 @@
 require 'nokogiri'
-require_relative './http'
-require_relative './atnd_event'
 
 class Atnd
   def search(args)
