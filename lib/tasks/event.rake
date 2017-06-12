@@ -61,3 +61,27 @@ namespace :event do
     end
   end
 end
+
+namespace :twitter do
+  # desc 'ツイッターリストを全て削除する'
+  # task delete_lists: :environment do
+  #   include Notifiable
+  #   notify('event:delete_lists') do
+  #     twitter = TwitterClient.new
+  #     twitter.lists.each do |list|
+  #       twitter.destroy_list(list[:id])
+  #     end
+  #   end
+  # end
+
+  desc '新着・明日ツイートのエラー解除'
+  task clear_error: :environment do
+    include Notifiable
+    notify('twitter:clear_error') do
+      # 新着ツイートは全て完了したことにする
+      Event.all.update_all(tweeted_new: true)
+      # 明日ツイートは全て完了したことにする
+      Event.where('started_at < ?', Date.tomorrow).update_all(tweeted_tomorrow: true)
+    end
+  end
+end
