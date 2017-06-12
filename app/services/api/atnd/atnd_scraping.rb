@@ -2,42 +2,30 @@ module Api
   module Atnd
     module AtndScraping
       def group_url
-        event_doc.css('.events-show-info > dl').each do |doc|
-          if doc.css('dt').text == '主催グループ :'
-            href = doc.css('a/@href').text
-            return "https://atnd.org#{href}"
-          end
+        group_info do |doc|
+          href = doc.css('a/@href').text
+          "https://atnd.org#{href}"
         end
-        nil
       end
 
       def group_id
-        event_doc.css('.events-show-info > dl').each do |doc|
-          if doc.css('dt').text == '主催グループ :'
-            href = doc.css('a/@href').text
-            return href.gsub(/.*\//, '')
-          end
+        group_info do |doc|
+          href = doc.css('a/@href').text
+          href.gsub(/.*\//, '')
         end
-        nil
       end
 
       def group_title
-        event_doc.css('.events-show-info > dl').each do |doc|
-          if doc.css('dt').text == '主催グループ :'
-            return doc.css('a').text
-          end
+        group_info do |doc|
+          doc.css('a').text
         end
-        nil
       end
 
       def group_logo
-        event_doc.css('.events-show-info > dl').each do |doc|
-          if doc.css('dt').text == '主催グループ :'
-            src = doc.css('img/@src').text
-            return "https://atnd.org#{src}"
-          end
+        group_info do |doc|
+          src = doc.css('img/@src').text
+          "https://atnd.org#{src}"
         end
-        nil
       end
 
       def logo
@@ -77,6 +65,13 @@ module Api
       end
 
       private
+
+      def group_info
+        event_doc.css('.events-show-info > dl').each do |doc|
+          return yield doc if doc.css('dt').text == '主催グループ :'
+        end
+        nil
+      end
 
       def get_social_id(user_id)
         user_url = "https://atnd.org/users/#{user_id}"
