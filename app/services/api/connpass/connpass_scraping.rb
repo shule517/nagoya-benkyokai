@@ -2,20 +2,17 @@ module Api
   module Connpass
     module ConnpassScraping
       def group_logo
-        @group_logo ||= event_doc.css('.event_group_area > div.group_inner > div > a/@style').text.match(%r{url\((.*)\)})[1]
+        event_doc.css('.event_group_area > div.group_inner > div > a/@style').text.match(%r{url\((.*)\)})[1]
       rescue
         ''
       end
 
       def logo
-        @logo ||= event_doc.css('//meta[property="og:image"]/@content').text
+        event_doc.css('//meta[property="og:image"]/@content').text
       end
 
       def users
-        puts "get users : #{title}"
-
-        users = []
-        participation_doc.css('.applicant_area > .participation_table_area > .common_table > tbody > tr').each do |line|
+        participation_doc.css('.applicant_area > .participation_table_area > .common_table > tbody > tr').map { |line|
           user = line.css('.user > .user_info > .image_link')
           return [] if user.empty? # 参加者がいない場合
 
@@ -28,17 +25,14 @@ module Api
           name = user.css('img/@alt').text
           image_url = user.css('img/@src').text
 
-          users << ConnpassUser.new(social_ids.merge(connpass_id: id, name: name, image_url: image_url))
-        end
-        users.sort_by! { |user| user.twitter_id }.reverse
+          ConnpassUser.new(social_ids.merge(connpass_id: id, name: name, image_url: image_url))
+        }.sort_by { |user| user.twitter_id }.reverse
       rescue => e
         p e
         []
       end
 
       def owners
-        puts "get owners : #{title}"
-
         begin
           owners = []
           owner = participation_doc.css('.concerned_area > .common_table > tbody').first
@@ -68,7 +62,7 @@ module Api
               owners << ConnpassUser.new(connpass_id: id, twitter_id: twitter_id, name: name, image_url: image_url)
             end
           end
-          owners.sort_by! { |user| user.twitter_id }.reverse
+          owners.sort_by { |user| user.twitter_id }.reverse
         rescue
         end
         owners

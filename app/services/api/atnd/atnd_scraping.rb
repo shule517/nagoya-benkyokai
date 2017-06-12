@@ -9,8 +9,7 @@ module Api
       end
 
       def users
-        users = []
-        event_doc.css('#members-join ol li span').each do |user|
+        event_doc.css('#members-join ol li span').map { |user|
           img = user.css('img/@data-original')
           image_url = ''
           if img.present?
@@ -21,9 +20,8 @@ module Api
           id = user.css('a/@href').text.gsub('/users/', '')
           name = user.css('a').text
           social_ids = get_social_id(id)
-          users << AtndUser.new(social_ids.merge(atnd_id: id, name: name, image_url: image_url))
-        end
-        users.sort_by! { |user| user.twitter_id }.reverse
+          AtndUser.new(social_ids.merge(atnd_id: id, name: name, image_url: image_url))
+        }.sort_by { |user| user.twitter_id }.reverse
       end
 
       def owners

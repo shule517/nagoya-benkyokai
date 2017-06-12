@@ -2,24 +2,23 @@ module Api
   module Doorkeeper
     module DoorkeeperScraping
       def group_url
-        @group_url ||= event_doc.css('//meta[property="og:url"]/@content').text.gsub(/events.*/, '')
+        event_doc.css('//meta[property="og:url"]/@content').text.gsub(/events.*/, '')
       end
 
       def group_title
-        @group_title ||= event_doc.css('//meta[property="og:site_name"]/@content').text
+        event_doc.css('//meta[property="og:site_name"]/@content').text
       end
 
       def logo
-        @logo ||= event_doc.css('//meta[property="og:image"]/@content').text
+        event_doc.css('//meta[property="og:image"]/@content').text
       end
 
       def group_logo
-        @group_logo ||= event_doc.css('div.community-profile-picture > a > img/@src').first.text
+        event_doc.css('div.community-profile-picture > a > img/@src').first.text
       end
 
       def users
-        users = []
-        participation_doc.css('.user-profile-details').each do |user|
+        participation_doc.css('.user-profile-details').map { |user|
           social_ids = {}
           user.css('div.user-social > a.external-profile-link/@href').each do |social_url|
             get_social_id(social_url.text, social_ids)
@@ -27,17 +26,15 @@ module Api
 
           name = user.css('div.user-name').children.text
           image_url = user.css('img/@src').text
-          users << DoorkeeperUser.new(social_ids.merge(name: name, image_url: image_url))
-        end
-        users.sort_by! { |user| user.twitter_id }.reverse
+          DoorkeeperUser.new(social_ids.merge(name: name, image_url: image_url))
+        }.sort_by { |user| user.twitter_id }.reverse
       rescue
         puts "no users event:#{title} / #{group_url} / #{event_id}"
         []
       end
 
       def owners
-        owners = []
-        group_doc.css('.with-gutter > .row > div > .user-profile > .user-profile-details').each do |owner|
+        group_doc.css('.with-gutter > .row > div > .user-profile > .user-profile-details').map { |owner|
           social_ids = {}
           owner.css('.user-social > .external-profile-link/@href').each do |social_url|
             get_social_id(social_url.text, social_ids)
@@ -46,8 +43,7 @@ module Api
           name = owner.css('.user-name').text
           image_url = owner.css('img/@src').text
           owners << DoorkeeperUser.new(social_ids.merge(name: name, image_url: image_url))
-        end
-        owners.sort_by! { |user| user.twitter_id }.reverse
+        }.sort_by { |user| user.twitter_id }.reverse
       end
 
       private
