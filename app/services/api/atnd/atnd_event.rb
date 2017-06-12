@@ -17,22 +17,6 @@ module Api
         self[:updated_at]
         # Time.parse(self[:updated_at])
       end
-
-      def group_url
-        nil # TODO 未実装
-      end
-
-      def group_id
-        nil # TODO 未実装
-      end
-
-      def group_title
-        nil # TODO 未実装
-      end
-
-      def group_logo
-        nil # TODO 未実装
-      end
     end
   end
 end

@@ -245,11 +245,11 @@ describe AtndEvent, type: :request do
   end
 
   describe '#group' do
-    context '主催グループがある場合', vcr: '#group-not_exist' do
+    context '主催グループがある場合', vcr: '#group-exist' do
       # NagoyaStat #6 https://atnd.org/events/88235
       let(:event) { api.find(event_id: 88235) }
 
-      xit 'グループ情報が取得できること' do
+      it 'グループ情報が取得できること' do
         expect(event.group_url).to eq 'https://atnd.org/groups/nagoya-stat'
         expect(event.group_id).to eq 'nagoya-stat'
         expect(event.group_title).to eq 'NagoyaStat'

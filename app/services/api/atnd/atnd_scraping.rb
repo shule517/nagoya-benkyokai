@@ -1,6 +1,45 @@
 module Api
   module Atnd
     module AtndScraping
+      def group_url
+        event_doc.css('.events-show-info > dl').each do |doc|
+          if doc.css('dt').text == '主催グループ :'
+            href = doc.css('a/@href').text
+            return "https://atnd.org#{href}"
+          end
+        end
+        nil
+      end
+
+      def group_id
+        event_doc.css('.events-show-info > dl').each do |doc|
+          if doc.css('dt').text == '主催グループ :'
+            href = doc.css('a/@href').text
+            return href.gsub(/.*\//, '')
+          end
+        end
+        nil
+      end
+
+      def group_title
+        event_doc.css('.events-show-info > dl').each do |doc|
+          if doc.css('dt').text == '主催グループ :'
+            return doc.css('a').text
+          end
+        end
+        nil
+      end
+
+      def group_logo
+        event_doc.css('.events-show-info > dl').each do |doc|
+          if doc.css('dt').text == '主催グループ :'
+            src = doc.css('img/@src').text
+            return "https://atnd.org#{src}"
+          end
+        end
+        nil
+      end
+
       def logo
         event_doc.css('.events-show-img > img/@data-original').each do |img|
           return "https://atnd.org#{img}"

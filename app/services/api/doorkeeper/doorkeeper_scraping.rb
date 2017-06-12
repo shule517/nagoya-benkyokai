@@ -42,7 +42,7 @@ module Api
 
           name = owner.css('.user-name').text
           image_url = owner.css('img/@src').text
-          owners << DoorkeeperUser.new(social_ids.merge(name: name, image_url: image_url))
+          DoorkeeperUser.new(social_ids.merge(name: name, image_url: image_url))
         }.sort_by { |user| user.twitter_id }.reverse
       end
 

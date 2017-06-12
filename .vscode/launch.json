@@ -55,7 +55,7 @@
       "type": "Ruby",
       "request": "launch",
       "cwd": "${workspaceRoot}",
-      "program": "/Users/shule/.rbenv/versions/2.4./Users/shule/.rbenv/versions/2.4.1/bin"
+      "program": "/Users/shule/.rbenv/versions/2.4.1/bin"
     }
   ]
 }
