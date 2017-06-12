@@ -12,8 +12,7 @@ class EventTweet
           @twitter.tweet('[新着] ' + message)
           event.update(tweeted_new: true)
         rescue => e
-          backtrace = e.backtrace.join("\n")
-          Slack.chat_postMessage text: "`#{e}\n#{message}\n#{backtrace}`\nevent-id:#{event.event_id}", username: 'lambda', channel: '#lambda-error'
+          NotifyService.new.call(e, "EventTweet.tweet_new(event-id:#{event.event_id})")
           puts e
         end
       end
@@ -33,8 +32,7 @@ class EventTweet
           @twitter.tweet(message)
           event.update(tweeted_tomorrow: true)
         rescue => e
-          backtrace = e.backtrace.join("\n")
-          Slack.chat_postMessage text: "`#{e}\n#{backtrace}`\n#{message}\nevent-id:#{event.event_id}", username: 'lambda', channel: '#lambda-error'
+          NotifyService.new.call(e, "EventTweet.tweet_tomorrow(event-id:#{event.event_id})")
           puts e
         end
       end
