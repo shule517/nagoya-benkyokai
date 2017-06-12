@@ -4,6 +4,7 @@ include Api::Atnd
 # describe AtndScraping, type: :request do
 describe AtndEvent, type: :request do
   let(:api) { AtndApi.new }
+
   describe '#find' do
     # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！ https://atnd.org/events/81945
     let(:event) { api.find(event_id: 81945) }
@@ -217,6 +218,7 @@ describe AtndEvent, type: :request do
     context 'catchが設定されていない場合', vcr: '#catch-not_exist' do
       # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！ https://atnd.org/events/81945
       let(:event) { api.find(event_id: 81945) }
+
       it 'イベント詳細が取得できること' do
         # expect(event.catch).to start_with '【ATEAM TECHとは】 ゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。'
         expect(event.catch).to start_with "【ATEAM TECHとは】\nゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。"

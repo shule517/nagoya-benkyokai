@@ -39,6 +39,7 @@ describe TwitterClient, type: :request do
         expect { client.tweet('テスト') }.not_to raise_error
       end
     end
+
     context '140文字を超えた場合' do
       it 'tweetできること', vcr: '#tweet-140over' do
         expect { client.tweet('12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890X') }.to raise_error Tweet140OverError

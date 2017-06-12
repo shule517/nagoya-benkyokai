@@ -47,6 +47,7 @@ describe EventCollector, type: :request do
     # let(:events) { SearchEventService.new.call({ event_id: 47375 }, false) }
     let(:events) { EventCollector.new.search({ event_id: 47375 }, false) }
     let(:titles) { events.map(&:title) }
+
     it 'イベント情報が取得できること' do
       expect(titles).to include '第5回 JPSPS SharePoint/Office365名古屋分科勉強会 at GeekBar'
     end
