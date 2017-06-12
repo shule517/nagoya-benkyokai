@@ -3,7 +3,7 @@ require 'rails_helper'
 describe TwitterClient, type: :request do
   let(:client) { TwitterClient.new }
 
-  describe '#notify Slackに通知されること' do
+  xdescribe '#notify Slackに通知されること' do
     it '#tweet', vcr: '#notify-tweet' do
       expect { client.tweet(nil) }.to raise_error Twitter::Error::Forbidden
     end
