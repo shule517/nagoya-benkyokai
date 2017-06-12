@@ -7,27 +7,35 @@ describe TwitterClient, type: :request do
     it '#tweet', vcr: '#notify-tweet' do
       expect { client.tweet(nil) }.to raise_error Twitter::Error::Forbidden
     end
+
     it '#list_exists?', vcr: '#notify-list_exists?' do
       expect { client.list_exists?(nil) }.to raise_error Twitter::Error::BadRequest
     end
+
     it '#create_list', vcr: '#notify-create_list' do
       expect { client.create_list(nil, nil) }.to raise_error NoMethodError
     end
+
     it '#list', vcr: '#notify-list' do
       expect { client.list(nil) }.to raise_error Twitter::Error::BadRequest
     end
+
     xit '#lists', vcr: '#notify-lists' do
       expect { client.lists(nil) }.to raise_error TypeError
     end
+
     it '#update_list', vcr: '#notify-update_list' do
       expect { client.update_list(nil, nil, nil) }.to raise_error NoMethodError
     end
+
     it '#destroy_list', vcr: '#notify-destroy_list' do
       expect { client.destroy_list(nil) }.to raise_error Twitter::Error::BadRequest
     end
+
     it '#add_list_member', vcr: '#notify-add_list_member' do
       expect { client.add_list_member(nil, nil) }.to raise_error Twitter::Error::BadRequest
     end
+
     it '#list_members', vcr: '#notify-list_members' do
       expect { client.list_members(nil) }.to raise_error Twitter::Error::BadRequest
     end
