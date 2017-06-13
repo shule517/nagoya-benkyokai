@@ -3,15 +3,7 @@ module Api
     class DoorkeeperApi
       def search(args)
         set_param(args)
-        events = []
-        if event_id.present?
-          events += search_core(1, nil)
-        else
-          keywords.take(5).each do |keyword|
-            events += search_core(1, keyword)
-          end
-        end
-        events
+        search_core(1)
       end
 
       def find(args)
@@ -27,13 +19,13 @@ module Api
       end
 
       attr_reader :keywords, :ym_list, :event_id
-      def search_core(start, keyword)
-        result = Api::Http.get_json(request_url(start, keyword), Authorization: "Bearer #{ENV['DOORKEEPER_TOKEN']}")
+      def search_core(start)
+        result = Api::Http.get_json(request_url(start), Authorization: "Bearer #{ENV['DOORKEEPER_TOKEN']}")
         return [DoorkeeperEvent.new(result[:event])] if result.class == Hash
         events = result.map { |event| DoorkeeperEvent.new(event[:event]) }
 
         if events.count == 20
-          events + search_core(start + 1, keyword)
+          events + search_core(start + 1)
         else
           events
         end
@@ -41,14 +33,14 @@ module Api
         []
       end
 
-      def request_url(start, keyword)
+      def request_url(start)
         if event_id.present?
           "https://api.doorkeeper.jp/events/#{event_id}"
         else
-          ym = ym_list.first
           "https://api.doorkeeper.jp/events/?sort=starts_at&page=#{start.to_s}".tap do |url|
-            url << "&q=#{keyword}" if keyword.present?
-            url << "&since=#{ym}01000000" if ym.present?
+            url << "&q=#{keywords.join('|')}" if keywords.present?
+            url << "&since=#{ym_list.first}01000000" if ym_list.present?
+            # url << "&until=#{ym_list.last}31235959" if ym_list.present?
           end
         end
       end
