@@ -9,13 +9,13 @@ class DeleteTwitterList
 
     events = Event.where("ended_at < '#{date}'")
     events.each do |event|
-      puts "delete #{event.twitter_list_name}"
-      if lists.any? { |list| list.name == event.twitter_list_name }
-        begin
+      begin
+        if lists.any? { |list| list.name == event.twitter_list_name }
+          puts "delete #{event.twitter_list_name}"
           twitter.destroy_list(event.twitter_list_url)
-        rescue => e
-          puts e
         end
+      rescue => e
+        puts e
       end
     end
   end
