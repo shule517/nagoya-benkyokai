@@ -9,17 +9,14 @@ class EventCollector
   attr_reader :condition, :after_today
 
   def search_core
-    apis = [Api::Connpass::ConnpassApi.new, Api::Doorkeeper::DoorkeeperApi.new]
+    apis = [Api::Connpass::ConnpassApi.new, Api::Doorkeeper::DoorkeeperApi.new, Api::Atnd::AtndApi.new]
     events = []
     apis.each do |api|
       events += api.search(condition)
     end
 
-    atnd_events = Api::Atnd::AtndApi.new.search(condition)
-    atnd_events.select! { |event| benkyokai?(event) }
-    events += atnd_events
-
     events.select! { |event| aichi?(event) }
+    events.select! { |event| benkyokai?(event) }
     events.select! { |event| event.started_at >= Time.now.strftime } if after_today
     events.sort_by! { |event| event.started_at }
   end
@@ -43,7 +40,7 @@ class EventCollector
   end
 
   def not_benkyokai_words
-    %w(仏教 クリスマスパーティ テロリスト 国際交流パーティ 社会人基礎力 カウントダウンパーティー ARMENIAN SONGS ブッダ BrightWoman 幸せの種まき 幸せの花 ブランディング オシャレな古城 受講料 mana×comu 投資 心理学 ヨガ ガン ボランティア 病 ベジタリアン ピアノ 幸せ Hearthstone ゆかりオフ オシャレカフェ eco検定 アニマルセラピー 介護)
+    %w(仏教 クリスマスパーティ テロリスト 国際交流パーティ 社会人基礎力 カウントダウンパーティー ARMENIAN SONGS ブッダ BrightWoman 幸せの種まき 幸せの花 ブランディング オシャレな古城 受講料 mana×comu 投資 心理学 ヨガ ガン ボランティア 病 ベジタリアン ピアノ 幸せ Hearthstone ゆかりオフ オシャレカフェ eco検定 アニマルセラピー 介護 岩倉歌謡大道芸祭り 『なぜ生きる』 名古屋手帳オフ会)
   end
 
   def keywords

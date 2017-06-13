@@ -22,6 +22,24 @@ describe EventCollector, type: :request do
     expect(titles).to include 'WellHashアンベール（お披露目）会＠名古屋ギークバー' # Doorkeeper 2017-05-15
   end
 
+  context 'connpassの場合' do
+    it '勉強会ではないイベントは除外すること', vcr: 'connpass_not_benkyokai' do
+      # events = SearchEventService.new.search({ event_id: 56804 }, false)
+      events = EventCollector.new.search({ event_id: 56804 }, false) # 名古屋手帳オフ会 https://758techo-bu.connpass.com/event/56804/
+      titles = events.map(&:title)
+      expect(titles).not_to include '名古屋手帳オフ会'
+    end
+  end
+
+  context 'Doorkeeperの場合' do
+    it '勉強会ではないイベントは除外すること', vcr: 'doorkeeper_not_benkyokai' do
+      # events = SearchEventService.new.search({ event_id: 56389 }, false)
+      events = EventCollector.new.search({ event_id: 56389 }, false) # mana×comu　番外編　「働く女性の癒しヨガ」 https://manacomu.doorkeeper.jp/events/56389
+      titles = events.map(&:title)
+      expect(titles).not_to include 'mana×comu　番外編　「働く女性の癒しヨガ」'
+    end
+  end
+
   context 'ATNDの場合' do
     it '勉強会が取得できること', vcr: 'atnd_benkyokai' do
       # events = SearchEventService.new.call({ ym: '201705' }, false)
