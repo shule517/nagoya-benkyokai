@@ -42,7 +42,7 @@ class EventUpdater
         event.owners.each do |user|
           puts "owner: #{user.name}"
           user_record = user.find_or_create_by
-          if !event_record.participant_users.exists?(user_record)
+          unless event_record.participant_users.exists?(user_record)
             event_record.participant_users << user_record
             event_record.participants.select { |participant| participant.user_id == user_record.id }.first.owner = true
           end
@@ -51,7 +51,7 @@ class EventUpdater
         event.users.each do |user|
           puts "user: #{user.name}"
           user_record = user.find_or_create_by
-          if !event_record.participant_users.exists?(user_record)
+          unless event_record.participant_users.exists?(user_record)
             event_record.participant_users << user_record
           end
         end
