@@ -1,7 +1,6 @@
 require 'rails_helper'
 include Api::Atnd
 
-# describe AtndScraping, type: :request do
 describe AtndEvent, type: :request do
   let(:api) { AtndApi.new }
 
