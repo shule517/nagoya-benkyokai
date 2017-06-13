@@ -2,7 +2,7 @@ class EventUpdater
   class << self
     def call
       collector = EventCollector.new
-      events = collector.search(collect_period)
+      events = collector.search(ym: collect_period)
       update_db(events)
 
       @twitter = TwitterClient.new
@@ -17,7 +17,7 @@ class EventUpdater
 
     def update(yyyymm)
       collector = EventCollector.new
-      events = collector.search([yyyymm], false)
+      events = collector.search({ ym: [yyyymm] }, false)
       update_db(events)
     end
 
