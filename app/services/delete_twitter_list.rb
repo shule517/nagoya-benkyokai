@@ -1,19 +1,18 @@
 class DeleteTwitterList
   def self.call
-    @twitter = TwitterClient.new
-    lists = @twitter.lists
+    twitter = TwitterClient.new
+    lists = twitter.lists
 
     time = Time.now
-    time -= (24 * 60 * 60) * 7 # 1週間前
+    time -= (24 * 60 * 60) * 30 # 30日前
     date = time.strftime('%Y-%m-%d')
 
-    events = Event.where("ended_at < '#{date}'").select(:twitter_list_name)
+    events = Event.where("ended_at < '#{date}'")
     events.each do |event|
-      list_name = event.twitter_list_name
-      puts "delete #{list_name}"
-      if lists.any? { |list| list.name == list_name }
+      puts "delete #{event.twitter_list_name}"
+      if lists.any? { |list| list.name == event.twitter_list_name }
         begin
-          @twitter.destroy_list(list_name)
+          twitter.destroy_list(event.twitter_list_url)
         rescue => e
           puts e
         end
