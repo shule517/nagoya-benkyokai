@@ -17,7 +17,7 @@ class EventCollector
 
     events.select! { |event| aichi?(event) }
     events.select! { |event| benkyokai?(event) }
-    events.select! { |event| event.started_at >= Time.now.strftime } if after_today
+    events.select! { |event| event.started_at >= Time.now } if after_today
     events.sort_by! { |event| event.started_at }
   end
 
