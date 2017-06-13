@@ -10,11 +10,9 @@ class EventCollector
 
   def search_core
     apis = [Api::Connpass::ConnpassApi.new, Api::Doorkeeper::DoorkeeperApi.new, Api::Atnd::AtndApi.new]
-    events = []
-    apis.each do |api|
-      events += api.search(condition)
+    events = apis.flat_map do |api|
+      api.search(condition)
     end
-
     events.select! { |event| aichi?(event) }
     events.select! { |event| benkyokai?(event) }
     events.select! { |event| event.started_at >= Time.now } if after_today
