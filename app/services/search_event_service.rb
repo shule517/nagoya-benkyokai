@@ -1,4 +1,4 @@
-class EventCollector
+class SearchEventService
   def search(condition, after_today = true)
     @condition = condition.merge(keyword: keywords)
     @after_today = after_today
