@@ -59,9 +59,9 @@ namespace :twitter do
   # end
 
   desc '終わった勉強会のツイッターリストを削除する'
-  task clear: :environment do
+  task clear_list: :environment do
     include Notifiable
-    notify('twitter:clear') do
+    notify('twitter:clear_list') do
       ClearTwitterListService.call
     end
   end
