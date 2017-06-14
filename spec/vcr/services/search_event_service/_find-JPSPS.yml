@@ -1,0 +1,156 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://connpass.com/api/v1/event/?count=100&event_id=47375&keyword_or=%E6%84%9B%E7%9F%A5,%E4%B8%AD%E9%83%A8,%E6%9D%B1%E6%B5%B7,%E5%90%8D%E5%8F%A4%E5%B1%8B,%E8%B1%8A%E6%A9%8B,%E8%B1%8A%E7%94%B0,%E5%B2%A1%E5%B4%8E,%E4%B8%80%E5%AE%AE,%E6%98%A5%E6%97%A5%E4%BA%95,%E5%AE%89%E5%9F%8E,%E8%B1%8A%E5%B7%9D,%E8%A5%BF%E5%B0%BE,%E5%88%88%E8%B0%B7,%E5%B0%8F%E7%89%A7,%E7%A8%B2%E6%B2%A2,%E5%8D%8A%E7%94%B0,%E7%80%AC%E6%88%B8,%E6%9D%B1%E6%B5%B7,%E6%97%A5%E9%80%B2,%E5%A4%A7%E5%BA%9C,%E6%B1%9F%E5%8D%97,%E5%8C%97%E5%90%8D%E5%8F%A4%E5%B1%8B,%E5%B0%BE%E5%BC%B5%E6%97%AD,%E3%81%82%E3%81%BE,%E7%9F%A5%E5%A4%9A,%E7%9F%A5%E7%AB%8B,%E8%92%B2%E9%83%A1,%E3%81%BF%E3%82%88%E3%81%97,%E7%8A%AC%E5%B1%B1,%E7%A2%A7%E5%8D%97,%E6%B8%85%E9%A0%88,%E8%B1%8A%E6%98%8E,%E9%95%B7%E4%B9%85%E6%89%8B,%E6%B4%A5%E5%B3%B6,%E7%94%B0%E5%8E%9F,%E6%84%9B%E8%A5%BF,%E9%AB%98%E6%B5%9C,%E5%B8%B8%E6%BB%91,%E6%9D%B1%E6%B5%A6,%E6%9D%B1%E9%83%B7,%E5%B9%B8%E7%94%B0,%E6%AD%A6%E8%B1%8A,%E5%B2%A9%E5%80%89,%E5%BC%A5%E5%AF%8C,%E6%96%B0%E5%9F%8E,%E6%89%B6%E6%A1%91,%E5%A4%A7%E6%B2%BB,%E8%9F%B9%E6%B1%9F,%E9%98%BF%E4%B9%85%E6%AF%94,%E5%A4%A7%E5%8F%A3,%E7%BE%8E%E6%B5%9C,%E8%B1%8A%E5%B1%B1,%E5%8D%97%E7%9F%A5%E5%A4%9A,%E9%A3%9B%E5%B3%B6,%E8%A8%AD%E6%A5%BD,%E6%9D%B1%E6%A0%84,%E8%B1%8A%E6%A0%B9&order=2&start=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=300
+      Content-Language:
+      - ja
+      Content-Type:
+      - text/json; charset=utf-8
+      Date:
+      - Wed, 14 Jun 2017 13:36:07 GMT
+      Expires:
+      - Wed, 14 Jun 2017 13:40:25 GMT
+      Last-Modified:
+      - Wed, 14 Jun 2017 13:35:25 GMT
+      Server:
+      - nginx
+      Vary:
+      - Accept-Language, Cookie
+      X-Frame-Options:
+      - DENY
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"results_returned": 1, "events": [{"event_url": "https://jpsps-ngy.connpass.com/event/47375/",
+        "event_type": "participation", "owner_nickname": "SinyaSakakibara", "series":
+        {"url": "https://jpsps-ngy.connpass.com/", "id": 3254, "title": "JPSPS \u540d\u53e4\u5c4b\u5206\u79d1\u52c9\u5f37\u4f1a"},
+        "updated_at": "2017-01-30T18:17:19+09:00", "lat": "35.170234500000", "started_at":
+        "2017-01-30T19:30:00+09:00", "hash_tag": "JPSPS #JPSPSNGY", "title": "\u7b2c5\u56de
+        JPSPS SharePoint/Office365\u540d\u53e4\u5c4b\u5206\u79d1\u52c9\u5f37\u4f1a
+        at GeekBar", "event_id": 47375, "lon": "136.922718900000", "waiting": 0, "limit":
+        30, "owner_id": 34130, "owner_display_name": "\u698a\u539f\u4f38\u4e5f", "description":
+        "<p>\u301c\u540d\u53e4\u5c4b\u30fb\u6771\u6d77\u306eSharePoint/Office365\u3092\u3082\u3063\u3068\u76db\u308a\u4e0a\u3052\u305f\u3044\ufe15\u301c\n\u7686\u69d8\u306e\u304a\u304b\u3052\u3067\u3001\u7b2c\u4e94\u56de\u3001\u4e00\u5468\u5e74\u3092\u8fce\u3048\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3057\u305f\u3002\nSharePoint\u3082Office365\u306e\u30a2\u30c3\u30d7\u30b0\u30ec\u30fc\u30c9\u3068\u3068\u3082\u306b\u8db3\u65e9\u306b\u6539\u826f\u3092\u91cd\u306d\u3066\u304d\u3066\u304a\u308a\u3001\n\u5f53\u52c9\u5f37\u4f1a\u306e\u610f\u7fa9\u3082\u65e5\u5897\u3057\u306b\u9ad8\u307e\u3063\u3066\u304a\u308a\u307e\u3059\u3002\n\u307e\u305fMizrosoftAzure\u95a2\u9023\u306e\u30b5\u30fc\u30d3\u30b9\u3082\u7d9a\u3005\u3068\u8ffd\u52a0\u3055\u308c\u3001\u3053\u308c\u304b\u3089\u307e\u3059\u307e\u3059\u76db\u308a\u4e0a\u304c\u308b\u3068SharePointOffice365\u3092\u3001\u697d\u3057\u304f\u52c9\u5f37\u3057\u307e\u3057\u3087\u3046\ufe15</p>\n<p>\u7b2c5\u56de\u306f\u4e00\u5468\u5e74\u3068\u65b0\u5e74\u3092\u304a\u795d\u3044\u3057\u3066\u3001LT\u5927\u4f1a\u306b\u3044\u305f\u3057\u307e\u3059\u3002\n\u30bb\u30c3\u30b7\u30e7\u30f3\u6301\u3064\u307b\u3069\u306e\u9577\u3044\u6642\u9593\u306f\u5927\u5909\u3060\uff01\uff01\n\u3068\u3044\u3046\u65b9\u3001\u3061\u3087\u3063\u3068\u8a71\u3057\u305f\u3044\u3053\u3068\u304c\u3042\u308b\uff01\u3068\u3044\u3046\u65b9\u3001\u305c\u3072\u304a\u8d8a\u3057\u304f\u3060\u3055\u3044\u3002</p>\n<p>LT\u5e0c\u671b\uff08\u3042\u308b\u3044\u306f\u4e88\u5b9a\u3060\u304c\u672a\u5b9a\uff09\u306e\u65b9\u306f\u3001\u53c2\u52a0\u7533\u3057\u8fbc\u307f\u6642\u306b\u4e00\u8a00\u30b3\u30e1\u30f3\u30c8\u3044\u305f\u3060\u3051\u308b\u3068\u5e78\u3044\u3067\u3059\u3002\n\uff08\u5f53\u65e5\u3044\u304d\u306a\u308a\u3082OK!\uff09</p>\n<p>\u4f8b\u306b\u3088\u3063\u3066LT\u5e0c\u671b\u306f\u968f\u6642\u53d7\u4ed8\u3057\u3066\u304a\u308a\u307e\u3059\u3002\n\u30fb\u8cc7\u6599\u7121\u304f\u3066\u3082OK\uff01\n\u30fb\u6642\u9593\u7121\u5236\u9650\u3067\u3082\u30e9\u30a4\u30c8\u30cb\u30f3\u30b0\u306a\u3089OK!\n\u30fb\u95a2\u9023\u52c9\u5f37\u4f1a\u544a\u77e5OK\uff01</p>\n<p>LT\u3063\u3066\u3001\u306a\u3093\u304b\u3059\u3054\u3044\u3053\u3068\u8a71\u3055\u306a\u3051\u308c\u3070\u3044\u3051\u306a\u3044\u3088\u3046\u306a\u30fb\u30fb\u30fb\n\u3068\u601d\u3063\u3066\u308b\u65b9\u3001\u305d\u3093\u306a\u3053\u3068\u306f\u3042\u308a\u307e\u305b\u3093\u3002\n\u30fb\u3053\u3093\u306a\u3053\u3068\u3092\u8a66\u3057\u3066\u307f\u305f\u3051\u3069\u3001\u7d50\u5c40\u308f\u304b\u3089\u306a\u304b\u3063\u305f\uff01\u6559\u3048\u3066PLZ!\n\u306e\u3088\u3046\u306a\u30cd\u30bf\u3067\u3082\u5927\u6b53\u8fce\u3067\u3059\uff01</p>\n<p>JPSPS\u540d\u53e4\u5c4b\u5206\u79d1\u4f1a\u306f\u3001\u53c2\u52a0\u8005\u306e\u7686\u69d8\u306e\u30b3\u30df\u30e5\u30cb\u30c6\u30a3\u306e\u5834\u3067\u3059\u3002\n\u662f\u975e\u7a4d\u6975\u7684\u306b\u53c2\u52a0\u3057\u3066\u304f\u3060\u3055\u3044\u3002</p>\n<p>\u305d\u308c\u3067\u306f\u307f\u306a\u3055\u307e\u306b\u304a\u4f1a\u3044\u3067\u304d\u308b\u306e\u3092\u697d\u3057\u307f\u306b\u3057\u3066\u304a\u308a\u307e\u3059\uff01</p>",
+        "address": "\u4e2d\u533a\u84751-27-37 \u65b0\u6804\u30b7\u30c6\u30a3\u30cf\u30a4\u30c4
+        1F", "catch": "", "accepted": 9, "ended_at": "2017-01-30T21:00:00+09:00",
+        "place": "GeekBar NAGOYA\uff08Club Adriana\uff09"}], "results_start": 1, "results_available":
+        1}'
+    http_version: 
+  recorded_at: Wed, 14 Jun 2017 13:36:07 GMT
+- request:
+    method: get
+    uri: https://api.doorkeeper.jp/events/47375
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <BEARER>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 14 Jun 2017 13:36:07 GMT
+      Server:
+      - nginx/1.10.1
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit:
+      - '{"name":"authenticated API","period":300,"limit":300,"remaining":273,"until":"2017-06-14T13:40:00Z"}'
+      X-Request-Id:
+      - c30f810c-714f-4f2f-9b3d-0740f7ac5a98
+      X-Runtime:
+      - '0.011893'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 14 Jun 2017 13:36:07 GMT
+- request:
+    method: get
+    uri: http://api.atnd.org/events/?count=100&event_id=47375&format=json&keyword_or=%E6%84%9B%E7%9F%A5,%E4%B8%AD%E9%83%A8,%E6%9D%B1%E6%B5%B7,%E5%90%8D%E5%8F%A4%E5%B1%8B,%E8%B1%8A%E6%A9%8B,%E8%B1%8A%E7%94%B0,%E5%B2%A1%E5%B4%8E,%E4%B8%80%E5%AE%AE,%E6%98%A5%E6%97%A5%E4%BA%95,%E5%AE%89%E5%9F%8E,%E8%B1%8A%E5%B7%9D,%E8%A5%BF%E5%B0%BE,%E5%88%88%E8%B0%B7,%E5%B0%8F%E7%89%A7,%E7%A8%B2%E6%B2%A2,%E5%8D%8A%E7%94%B0,%E7%80%AC%E6%88%B8,%E6%9D%B1%E6%B5%B7,%E6%97%A5%E9%80%B2,%E5%A4%A7%E5%BA%9C,%E6%B1%9F%E5%8D%97,%E5%8C%97%E5%90%8D%E5%8F%A4%E5%B1%8B,%E5%B0%BE%E5%BC%B5%E6%97%AD,%E3%81%82%E3%81%BE,%E7%9F%A5%E5%A4%9A,%E7%9F%A5%E7%AB%8B,%E8%92%B2%E9%83%A1,%E3%81%BF%E3%82%88%E3%81%97,%E7%8A%AC%E5%B1%B1,%E7%A2%A7%E5%8D%97,%E6%B8%85%E9%A0%88,%E8%B1%8A%E6%98%8E,%E9%95%B7%E4%B9%85%E6%89%8B,%E6%B4%A5%E5%B3%B6,%E7%94%B0%E5%8E%9F,%E6%84%9B%E8%A5%BF,%E9%AB%98%E6%B5%9C,%E5%B8%B8%E6%BB%91,%E6%9D%B1%E6%B5%A6,%E6%9D%B1%E9%83%B7,%E5%B9%B8%E7%94%B0,%E6%AD%A6%E8%B1%8A,%E5%B2%A9%E5%80%89,%E5%BC%A5%E5%AF%8C,%E6%96%B0%E5%9F%8E,%E6%89%B6%E6%A1%91,%E5%A4%A7%E6%B2%BB,%E8%9F%B9%E6%B1%9F,%E9%98%BF%E4%B9%85%E6%AF%94,%E5%A4%A7%E5%8F%A3,%E7%BE%8E%E6%B5%9C,%E8%B1%8A%E5%B1%B1,%E5%8D%97%E7%9F%A5%E5%A4%9A,%E9%A3%9B%E5%B3%B6,%E8%A8%AD%E6%A5%BD,%E6%9D%B1%E6%A0%84,%E8%B1%8A%E6%A0%B9&order=2&start=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 Jun 2017 13:36:08 GMT
+      Server:
+      - Apache
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"aebacbe4c83ae102dbd4ae98084cff3b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 20a86832-6e6b-43b2-9234-dca607b58142
+      Status:
+      - 200 OK
+      P3p:
+      - CP="NON DSP COR CURa ADMa DEVa CUSo TAIa PSDo OUR BUS UNI COM NAV STA"
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"results_returned":0,"results_start":1,"events":[]}'
+    http_version: 
+  recorded_at: Wed, 14 Jun 2017 13:36:08 GMT
+recorded_with: VCR 3.0.3

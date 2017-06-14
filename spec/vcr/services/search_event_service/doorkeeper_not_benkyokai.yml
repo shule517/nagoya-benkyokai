@@ -1,0 +1,148 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://connpass.com/api/v1/event/?count=100&event_id=56389&keyword_or=%E6%84%9B%E7%9F%A5,%E4%B8%AD%E9%83%A8,%E6%9D%B1%E6%B5%B7,%E5%90%8D%E5%8F%A4%E5%B1%8B,%E8%B1%8A%E6%A9%8B,%E8%B1%8A%E7%94%B0,%E5%B2%A1%E5%B4%8E,%E4%B8%80%E5%AE%AE,%E6%98%A5%E6%97%A5%E4%BA%95,%E5%AE%89%E5%9F%8E,%E8%B1%8A%E5%B7%9D,%E8%A5%BF%E5%B0%BE,%E5%88%88%E8%B0%B7,%E5%B0%8F%E7%89%A7,%E7%A8%B2%E6%B2%A2,%E5%8D%8A%E7%94%B0,%E7%80%AC%E6%88%B8,%E6%9D%B1%E6%B5%B7,%E6%97%A5%E9%80%B2,%E5%A4%A7%E5%BA%9C,%E6%B1%9F%E5%8D%97,%E5%8C%97%E5%90%8D%E5%8F%A4%E5%B1%8B,%E5%B0%BE%E5%BC%B5%E6%97%AD,%E3%81%82%E3%81%BE,%E7%9F%A5%E5%A4%9A,%E7%9F%A5%E7%AB%8B,%E8%92%B2%E9%83%A1,%E3%81%BF%E3%82%88%E3%81%97,%E7%8A%AC%E5%B1%B1,%E7%A2%A7%E5%8D%97,%E6%B8%85%E9%A0%88,%E8%B1%8A%E6%98%8E,%E9%95%B7%E4%B9%85%E6%89%8B,%E6%B4%A5%E5%B3%B6,%E7%94%B0%E5%8E%9F,%E6%84%9B%E8%A5%BF,%E9%AB%98%E6%B5%9C,%E5%B8%B8%E6%BB%91,%E6%9D%B1%E6%B5%A6,%E6%9D%B1%E9%83%B7,%E5%B9%B8%E7%94%B0,%E6%AD%A6%E8%B1%8A,%E5%B2%A9%E5%80%89,%E5%BC%A5%E5%AF%8C,%E6%96%B0%E5%9F%8E,%E6%89%B6%E6%A1%91,%E5%A4%A7%E6%B2%BB,%E8%9F%B9%E6%B1%9F,%E9%98%BF%E4%B9%85%E6%AF%94,%E5%A4%A7%E5%8F%A3,%E7%BE%8E%E6%B5%9C,%E8%B1%8A%E5%B1%B1,%E5%8D%97%E7%9F%A5%E5%A4%9A,%E9%A3%9B%E5%B3%B6,%E8%A8%AD%E6%A5%BD,%E6%9D%B1%E6%A0%84,%E8%B1%8A%E6%A0%B9&order=2&start=1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=300
+      Content-Language:
+      - ja
+      Content-Type:
+      - text/json; charset=utf-8
+      Date:
+      - Wed, 14 Jun 2017 13:35:27 GMT
+      Expires:
+      - Wed, 14 Jun 2017 13:39:41 GMT
+      Last-Modified:
+      - Wed, 14 Jun 2017 13:34:41 GMT
+      Server:
+      - nginx
+      Vary:
+      - Accept-Language, Cookie
+      X-Frame-Options:
+      - DENY
+      Content-Length:
+      - '81'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"results_returned": 0, "events": [], "results_start": 1, "results_available":
+        0}'
+    http_version: 
+  recorded_at: Wed, 14 Jun 2017 13:35:27 GMT
+- request:
+    method: get
+    uri: https://api.doorkeeper.jp/events/56389
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - Bearer <BEARER>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 14 Jun 2017 13:35:28 GMT
+      Etag:
+      - W/"9776c9d879c0e1b36b19880a406fbca7"
+      Server:
+      - nginx/1.10.1
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Ratelimit:
+      - '{"name":"authenticated API","period":300,"limit":300,"remaining":284,"until":"2017-06-14T13:40:00Z"}'
+      X-Request-Id:
+      - f9d2f789-c70c-4bc1-a560-b75cb6e22044
+      X-Runtime:
+      - '0.019046'
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1558'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJldmVudCI6eyJ0aXRsZSI6Im1hbmHDl2NvbXXjgIDnlarlpJbnt6jjgIDjgIzlg43jgY/lpbPmgKfjga7nmZLjgZfjg6jjgqzjgI0iLCJpZCI6NTYzODksInN0YXJ0c19hdCI6IjIwMTctMDctMjdUMDI6MDA6MDAuMDAwWiIsImVuZHNfYXQiOiIyMDE3LTA3LTI3VDA1OjAwOjAwLjAwMFoiLCJ2ZW51ZV9uYW1lIjoi6Ieq54S244Gu6Jas566xIiwiYWRkcmVzcyI6IuOAkjQ2NC0wODUwIOaEm+efpeecjOWQjeWPpOWxi+W4guWNg+eoruWMuuS7iuaxoCDvvJHiiJLvvJLiiJLvvJcg5YGl5bq35paH5YyW6aSoIiwibGF0IjoiMzUuMTY5NTIxOTQ1NzkyNjgiLCJsb25nIjoiMTM2LjkzMTU0ODU2NTYyNjE0IiwidGlja2V0X2xpbWl0IjoxNSwicHVibGlzaGVkX2F0IjoiMjAxNy0wNC0xMFQwNDoxOTo0My40MjNaIiwidXBkYXRlZF9hdCI6IjIwMTctMDUtMThUMDM6MDQ6NTIuMTc4WiIsImdyb3VwIjo3NDAzLCJkZXNjcmlwdGlvbiI6Ilx1MDAzY3BcdTAwM2XorJvluKvvvJrph47nlLDokYnlrZDvvIjjg6jjgqzjgqTjg7Pjgrnjg4jjg6njgq/jgr/jg7zvvIblvIHorbflo6vvvIlcdTAwM2MvcFx1MDAzZVxuXG5cdTAwM2NwXHUwMDNl5LuK5Zue44GvbWFuYcOXY29tdeeVquWklue3qOOAglx1MDAzY2JyXHUwMDNlXG7jg6jjgqzjgqTjg7Pjgrnjg4jjg6njgq/jgr/jg7zjga7os4fmoLzjgoLmjIHjgaTjgIHjgrnjgr/jgqTjg6vmipznvqTvvIHjga7lvIHorbflo6vph47nlLDokYnlrZDlhYjnlJ/jga7jg6jjgqzjg6zjg4Pjgrnjg7PjgafjgZnjgIJcdTAwM2Niclx1MDAzZVxu44Oo44Ks44Kk44Oz44K544OI44Op44Kv44K/44O844Go44GX44Gm44CB44K544OI44Os44K556S+5Lya44KS5LmX44KK5YiH44KK44CB6Lqr44KC5b+D44KC44Oq44OV44Os44OD44K344Ol5Ye65p2l44KL44CM5YON44GP5aWz5oCn44Gu54K644Gu44Oo44Ks44Os44OD44K544Oz44CN44KS6ZaL5YKs44GX44G+44GZ44CCXHUwMDNjYnJcdTAwM2Vcbui/keW5tOOAgeODqOOCrOa1geihjOOCiuOBp+ODgeODo+ODrOODs+OCuOOBleOCjOOBpuOBhOOCi+aWueOCguWkmuOBhOOBi+OBqOaAneOBhOOBvuOBmeOBjOOAgeOBvuOBoOOChOOBo+OBn+OBk+OBqOOBjOOBquOBhOaWueOBq+OCgualveOBl+OCk+OBp+OBhOOBn+OBoOOBkeOCi+ODrOODg+OCueODs+OBp+OBmeOAglx1MDAzYy9wXHUwMDNlXG5cblx1MDAzY3BcdTAwM2XntYLkuoblvozjga/lgaXlurfjgpLmsJfpgaPjgaPjgZ/olqzohrPjg6njg7Pjg4HjgpLjgYTjgZ/jgaDjgY3jgarjgYzjgonjgIHmh4fopqrkvJrjgpLplovlgqzjgZfjgb7jgZnjgIJcdTAwM2Niclx1MDAzZVxu5rOV5YuZ44Gu6Kmx44Gq44Gp44GK5rCX6Lu944Gr6LOq5ZWP44GP44Gg44GV44GE44CCXHUwMDNjYnJcdTAwM2VcbumHjueUsOOBruS9k+Wei+OCkuS/neOBpOenmOioo+OCguiBnuOBjeWHuuOBm+OCi+ODgeODo+ODs+OCueOBp+OBmeOCiO+8gVx1MDAzYy9wXHUwMDNlIiwicHVibGljX3VybCI6Imh0dHBzOi8vbWFuYWNvbXUuZG9vcmtlZXBlci5qcC9ldmVudHMvNTYzODkiLCJwYXJ0aWNpcGFudHMiOjAsIndhaXRsaXN0ZWQiOjB9fQ==
+    http_version: 
+  recorded_at: Wed, 14 Jun 2017 13:35:28 GMT
+- request:
+    method: get
+    uri: http://api.atnd.org/events/?count=100&event_id=56389&format=json&keyword_or=%E6%84%9B%E7%9F%A5,%E4%B8%AD%E9%83%A8,%E6%9D%B1%E6%B5%B7,%E5%90%8D%E5%8F%A4%E5%B1%8B,%E8%B1%8A%E6%A9%8B,%E8%B1%8A%E7%94%B0,%E5%B2%A1%E5%B4%8E,%E4%B8%80%E5%AE%AE,%E6%98%A5%E6%97%A5%E4%BA%95,%E5%AE%89%E5%9F%8E,%E8%B1%8A%E5%B7%9D,%E8%A5%BF%E5%B0%BE,%E5%88%88%E8%B0%B7,%E5%B0%8F%E7%89%A7,%E7%A8%B2%E6%B2%A2,%E5%8D%8A%E7%94%B0,%E7%80%AC%E6%88%B8,%E6%9D%B1%E6%B5%B7,%E6%97%A5%E9%80%B2,%E5%A4%A7%E5%BA%9C,%E6%B1%9F%E5%8D%97,%E5%8C%97%E5%90%8D%E5%8F%A4%E5%B1%8B,%E5%B0%BE%E5%BC%B5%E6%97%AD,%E3%81%82%E3%81%BE,%E7%9F%A5%E5%A4%9A,%E7%9F%A5%E7%AB%8B,%E8%92%B2%E9%83%A1,%E3%81%BF%E3%82%88%E3%81%97,%E7%8A%AC%E5%B1%B1,%E7%A2%A7%E5%8D%97,%E6%B8%85%E9%A0%88,%E8%B1%8A%E6%98%8E,%E9%95%B7%E4%B9%85%E6%89%8B,%E6%B4%A5%E5%B3%B6,%E7%94%B0%E5%8E%9F,%E6%84%9B%E8%A5%BF,%E9%AB%98%E6%B5%9C,%E5%B8%B8%E6%BB%91,%E6%9D%B1%E6%B5%A6,%E6%9D%B1%E9%83%B7,%E5%B9%B8%E7%94%B0,%E6%AD%A6%E8%B1%8A,%E5%B2%A9%E5%80%89,%E5%BC%A5%E5%AF%8C,%E6%96%B0%E5%9F%8E,%E6%89%B6%E6%A1%91,%E5%A4%A7%E6%B2%BB,%E8%9F%B9%E6%B1%9F,%E9%98%BF%E4%B9%85%E6%AF%94,%E5%A4%A7%E5%8F%A3,%E7%BE%8E%E6%B5%9C,%E8%B1%8A%E5%B1%B1,%E5%8D%97%E7%9F%A5%E5%A4%9A,%E9%A3%9B%E5%B3%B6,%E8%A8%AD%E6%A5%BD,%E6%9D%B1%E6%A0%84,%E8%B1%8A%E6%A0%B9&order=2&start=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 Jun 2017 13:35:28 GMT
+      Server:
+      - Apache
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      Etag:
+      - W/"aebacbe4c83ae102dbd4ae98084cff3b"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 9f18ccf0-9d12-4a2e-a3ee-8bd8a3ff1573
+      Status:
+      - 200 OK
+      P3p:
+      - CP="NON DSP COR CURa ADMa DEVa CUSo TAIa PSDo OUR BUS UNI COM NAV STA"
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: UTF-8
+      string: '{"results_returned":0,"results_start":1,"events":[]}'
+    http_version: 
+  recorded_at: Wed, 14 Jun 2017 13:35:28 GMT
+recorded_with: VCR 3.0.3

@@ -1,7 +1,7 @@
 class UpdateEventService
   def call(condition = {})
     condition.merge!(ym: collect_period) if condition.empty?
-    events = SearchEventService.new.search(condition)
+    events = SearchEventService.new.call(condition)
     update(events)
 
     @twitter = TwitterClient.new
