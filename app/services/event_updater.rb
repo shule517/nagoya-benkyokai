@@ -1,8 +1,9 @@
 class EventUpdater
   class << self
-    def call
+    def call(condition = {})
       collector = EventCollector.new
-      events = collector.search(ym: collect_period)
+      condition.merge(ym: collect_period) if condition.empty?
+      events = collector.search(condition)
       update_db(events)
 
       @twitter = TwitterClient.new
