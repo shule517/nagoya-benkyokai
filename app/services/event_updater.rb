@@ -1,9 +1,8 @@
 class EventUpdater
   def call(condition = {})
-    collector = EventCollector.new
-    condition.merge(ym: collect_period) if condition.empty?
-    events = collector.search(condition)
-    update_db(events)
+    condition.merge!(ym: collect_period) if condition.empty?
+    events = EventCollector.new.search(condition)
+    update(events)
 
     @twitter = TwitterClient.new
     lists = @twitter.lists
@@ -13,12 +12,6 @@ class EventUpdater
     events.each do |event|
       update_event_to_twitter(event, lists)
     end
-  end
-
-  def update(yyyymm)
-    collector = EventCollector.new
-    events = collector.search({ ym: [yyyymm] }, false)
-    update_db(events)
   end
 
   private
@@ -34,7 +27,7 @@ class EventUpdater
     period << (now + 2 * month).strftime('%Y%m')
   end
 
-  def update_db(events)
+  def update(events)
     events.each do |event|
       event_record = event.find_or_initialize_by
       puts "event:#{event.title}"

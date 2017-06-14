@@ -37,14 +37,6 @@ namespace :event do
     end
   end
 
-  desc 'イベント情報を更新(DB)'
-  task update_db: :environment do
-    include Notifiable
-    notify('event:update_db') do
-      EventUpdater.new.update(ENV['date'])
-    end
-  end
-
   desc '明日開かれるイベントをツイート'
   task tweet: :environment do
     include Notifiable
