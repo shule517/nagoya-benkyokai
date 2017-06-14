@@ -1,4 +1,4 @@
-class DeleteTwitterList
+class ClearTwitterListService
   def self.call
     @twitter = TwitterClient.new
     @lists = twitter.lists

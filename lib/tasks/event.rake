@@ -44,14 +44,6 @@ namespace :event do
       EventTweet.tweet_tomorrow
     end
   end
-
-  desc '終わった勉強会のツイッターリストを削除する'
-  task delete_list: :environment do
-    include Notifiable
-    notify('event:delete_list') do
-      DeleteTwitterList.call
-    end
-  end
 end
 
 namespace :twitter do
@@ -65,6 +57,14 @@ namespace :twitter do
   #     end
   #   end
   # end
+
+  desc '終わった勉強会のツイッターリストを削除する'
+  task clear: :environment do
+    include Notifiable
+    notify('twitter:clear') do
+      ClearTwitterListService.call
+    end
+  end
 
   desc '新着・明日ツイートのエラー解除'
   task clear_error: :environment do
