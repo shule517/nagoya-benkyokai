@@ -62,7 +62,7 @@ namespace :twitter do
   task clear_list: :environment do
     include Notifiable
     notify('twitter:clear_list') do
-      ClearTwitterListService.call
+      ClearTwitterListService.new.call
     end
   end
 
