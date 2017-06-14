@@ -19,7 +19,7 @@ namespace :event do
   task init: :environment do
     include Notifiable
     notify('event:init') do
-      EventUpdater.new.call
+      UpdateEventService.new.call
 
       time = Time.now
       time += 24 * 60 * 60
@@ -33,7 +33,7 @@ namespace :event do
   task update: :environment do
     include Notifiable
     notify('event:update') do
-      EventUpdater.new.call
+      UpdateEventService.new.call
     end
   end
 

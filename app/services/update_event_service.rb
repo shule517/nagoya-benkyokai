@@ -1,4 +1,4 @@
-class EventUpdater
+class UpdateEventService
   def call(condition = {})
     condition.merge!(ym: collect_period) if condition.empty?
     events = EventCollector.new.search(condition)
