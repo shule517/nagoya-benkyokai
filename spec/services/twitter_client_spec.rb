@@ -153,28 +153,28 @@ describe TwitterClient do
 
   describe 'リスト名称の文字数チェック' do
     it '半角英数：25文字以下の場合は、リストが作成できる' do
-      expect(client.check_list_name('ABCDEFGHIJKLMNOPQRSTUVWXY')).to eq true   # 25文字 -> o
-      expect(client.check_list_name('ABCDEFGHIJKLMNOPQRSTUVWXYZ')).to eq false # 26文字 -> x
+      expect(client.send(:check_list_name, 'ABCDEFGHIJKLMNOPQRSTUVWXY')).to eq true   # 25文字 -> o
+      expect(client.send(:check_list_name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')).to eq false # 26文字 -> x
     end
 
     it '全角文字：55バイト以下の場合は、リストが作成できる' do
-      expect(client.check_list_name('①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱')).to eq true    # 54byte -> o
-      expect(client.check_list_name('①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱1')).to eq true   # 55byte -> o
-      expect(client.check_list_name('①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱12')).to eq false # 56byte -> x
-      expect(client.check_list_name('①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲')).to eq false # 57byte -> x
+      expect(client.send(:check_list_name, '①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱')).to eq true    # 54byte -> o
+      expect(client.send(:check_list_name, '①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱1')).to eq true   # 55byte -> o
+      expect(client.send(:check_list_name, '①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱12')).to eq false # 56byte -> x
+      expect(client.send(:check_list_name, '①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲')).to eq false # 57byte -> x
     end
   end
 
   describe 'リスト詳細の文字数チェック' do
     it '半角英数：100文字以下の場合は、リストが作成できる' do
-      expect(client.check_list_desc('1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890')).to eq true   # 100byte -> o
-      expect(client.check_list_desc('12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901')).to eq false # 101byte -> x
+      expect(client.send(:check_list_desc, '1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890')).to eq true   # 100byte -> o
+      expect(client.send(:check_list_desc, '12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901')).to eq false # 101byte -> x
     end
 
     it '全角文字：255バイト以下の場合は、リストが作成できる' do
-      expect(client.check_list_desc('１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５')).to eq true   # 255 byte -> o
-      expect(client.check_list_desc('１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４123')).to eq true # 255 byte -> o
-      expect(client.check_list_desc('１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５A')).to eq false # 256 byte -> x
+      expect(client.send(:check_list_desc, '１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５')).to eq true   # 255 byte -> o
+      expect(client.send(:check_list_desc, '１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４123')).to eq true # 255 byte -> o
+      expect(client.send(:check_list_desc, '１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５６７８９０１２３４５A')).to eq false # 256 byte -> x
     end
   end
 end
