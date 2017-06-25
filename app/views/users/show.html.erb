@@ -73,7 +73,7 @@
               </a>
               <% event.owners.each do |user| %>
                 <% if !user.twitter_id.empty?  %>
-              <a class="clickable" href="<%= "https://twitter.com/#{user.twitter_id}" %>">
+              <a class="clickable" href="<%= "./#{user.twitter_id}" %>">
                 <% end %>
                 <img class="owner-icon" src="<%= user.image_url %>" datatoggle="tooltip" title="管理者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
                 <% if !user.twitter_id.empty?  %>
@@ -82,7 +82,7 @@
               <% end %>
               <% event.users.each do |user| %>
                 <% if !user[:twitter_id].empty?  %>
-              <a class="clickable" href="<%= "https://twitter.com/#{user.twitter_id}" %>">
+              <a class="clickable" href="<%= "./#{user.twitter_id}" %>">
                 <% end %>
                 <img class="user-icon" src="<%= user.image_url %>" datatoggle="tooltip" title="参加者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
                 <% if !user.twitter_id.empty?  %>
@@ -100,8 +100,7 @@
   <div class="col-md-0 col-xs-1">
   </div>
   <div class="col-md-3 col-xs-10">
-    <% twitter_list_url = @events.select{ |event| event.participants.size > 0 }.first.twitter_list_url %>
-    <a class="twitter-timeline" href="<%= "#{twitter_list_url}/members" %>">Tweets by TwitterDev</a>
+    <a class="twitter-timeline" href="<%= "https://twitter.com/#{@user.twitter_id}" %>">Tweets by TwitterDev</a>
     <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
   </div>
 </div>
