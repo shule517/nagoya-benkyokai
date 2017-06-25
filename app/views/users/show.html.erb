@@ -72,9 +72,13 @@
           <div class="event-user">
             <div style="background-color: #EEEEEE; border-radius: 5px;">
               <div style="padding-left: 10px; padding-top: 5px; padding-bottom: 5px;">
-              <a href="<%= "#{event.twitter_list_url}" %>">
-                <img class="twitter-icon" src="/img/Twitter.png" datatoggle="tooltip" title="ツイッターリスト" style="margin-right: 2px; margin-bottom: 2px">
-              </a>
+
+              <% if false %> TODO 生きているツイッターリストだけを表示する
+                <a href="<%= "#{event.twitter_list_url}" %>">
+                  <img class="twitter-icon" src="/img/Twitter.png" datatoggle="tooltip" title="ツイッターリスト" style="margin-right: 2px; margin-bottom: 2px">
+                </a>
+              <% end %>
+
               <% event.owners.each do |user| %>
                 <% if !user.twitter_id.empty?  %>
               <a class="clickable" href="<%= "./#{user.twitter_id}" %>">
