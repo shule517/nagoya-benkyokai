@@ -11,6 +11,8 @@ class EventTweet
         begin
           @twitter.tweet('[新着] ' + message)
           event.update(tweeted_new: true)
+        rescue Tweet140OverError => e
+          NotifyService.new.send_message("Tweet140OverError\n#{message}")
         rescue => e
           NotifyService.new.call(e, "EventTweet.tweet_new(event-id:#{event.event_id})")
           puts e
@@ -31,6 +33,8 @@ class EventTweet
         begin
           @twitter.tweet(message)
           event.update(tweeted_tomorrow: true)
+        rescue Tweet140OverError => e
+          NotifyService.new.send_message("Tweet140OverError\n#{message}")
         rescue => e
           NotifyService.new.call(e, "EventTweet.tweet_tomorrow(event-id:#{event.event_id})")
           puts e
