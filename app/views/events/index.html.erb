@@ -68,7 +68,7 @@
               </a>
               <% event.owners.each do |user| %>
                 <% if !user.twitter_id.empty?  %>
-              <a class="clickable" href="<%= "https://twitter.com/#{user.twitter_id}" %>">
+              <a class="clickable" href="<%= "./users/#{user.twitter_id}" %>">
                 <% end %>
                 <img class="owner-icon" src="<%= user.image_url %>" datatoggle="tooltip" title="管理者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
                 <% if !user.twitter_id.empty?  %>
@@ -77,7 +77,7 @@
               <% end %>
               <% event.users.each do |user| %>
                 <% if !user[:twitter_id].empty?  %>
-              <a class="clickable" href="<%= "https://twitter.com/#{user.twitter_id}" %>">
+              <a class="clickable" href="<%= "./users/#{user.twitter_id}" %>">
                 <% end %>
                 <img class="user-icon" src="<%= user.image_url %>" datatoggle="tooltip" title="参加者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
                 <% if !user.twitter_id.empty?  %>
