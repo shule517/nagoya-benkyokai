@@ -13,6 +13,9 @@ class SearchEventService
     events = apis.flat_map do |api|
       api.search(condition)
     end
+    # connpassApiから取得できない勉強会は グループID指定で検索する
+    connpass_series_events = Api::Connpass::ConnpassApi.new.search(series_id: 3740) # NKC-UG 名古屋 https://msp-nkc.connpass.com/
+    events = [*events, *connpass_series_events]
     events.select! { |event| aichi?(event) }
     events.select! { |event| benkyokai?(event) }
     events.select! { |event| event.started_at >= Time.now } if after_today

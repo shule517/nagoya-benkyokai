@@ -26,6 +26,13 @@ describe SearchEventService, type: :request do
       titles = events.map(&:title)
       expect(titles).not_to include '名古屋手帳オフ会'
     end
+
+    # なぜか connpassAPIから NKCの勉強会が検索にHITしないので、グループID指定で検索する https://msp-nkc.connpass.com/event/
+    it 'グループ：NKC-UG 名古屋 の 勉強会が取得できること', vcr: 'connpass_nkc' do
+      events = SearchEventService.new.call({ ym: '201707' }, false)
+      titles = events.map(&:title)
+      expect(titles).to include '【NKC生限定】名古屋で始めるAI を使いこなせ！ Cognitive Services 勉強会！' # https://msp-nkc.connpass.com/event/61174/
+    end
   end
 
   context 'Doorkeeperの場合' do
