@@ -49,6 +49,15 @@ describe ConnpassApi, type: :request do
         expect(events.first.title).to eq 'JXUGC #14 Xamarin ハンズオン 名古屋大会'
       end
     end
+
+    context 'グループIDを指定した場合', vcr: '#search-series_id' do
+      let(:events) { api.search(series_id: 3740) } # NKC-UG 名古屋 https://msp-nkc.connpass.com/
+
+      it '指定したグループのイベントが取得できること' do
+        titles = events.map(&:title)
+        expect(titles).to include '【NKC生限定】名古屋で始めるAI を使いこなせ！ Cognitive Services 勉強会！' # https://msp-nkc.connpass.com/event/61174/
+      end
+    end
   end
 
   describe '#find', vcr: '#find' do
