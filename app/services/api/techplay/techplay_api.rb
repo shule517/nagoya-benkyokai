@@ -8,7 +8,8 @@ module Api
         events = doc.css('#main-content .eventlist .eventlist-right .title').map do |event_doc|
           title = event_doc.css('a').first.text
           tags = event_doc.css('.tags > a').map do |a|
-            a.text
+            id = a.attribute('href').text.gsub('https://techplay.jp/tag/', '')
+            { id: id, name: a.text }
           end
           [title, tags]
         end
