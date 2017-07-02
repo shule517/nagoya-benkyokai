@@ -28,5 +28,21 @@ describe TechplayApi, type: :request do
         expect(events).to include ['機械学習　名古屋　第１１回の懇親会', [{ id: 'machinelearning', name: '機械学習' }]]
       end
     end
+
+    # TODO 広告の勉強会が取得できてしまう。取得しないように対応したい。
+    xcontext '検索結果が0件の場合' do
+      let(:events) { api.search('JavaScript') }
+      it '結果が空であること', vcr: '#search-no_hit' do
+        expect(events).to be_empty
+      end
+    end
+  end
+
+  describe '#search_all_tags' do
+    let(:events) { api.search_all_tags }
+    it '指定キーワードのタグ情報が取得できること', vcr: '#search_all_tags' do
+      expect(events).to include ['機械学習　名古屋　第11回勉強会　【会場：東建ホール】', [{ id: 'machinelearning', name: '機械学習' }]]
+      expect(events).to include ['機械学習　名古屋　第１１回の懇親会', [{ id: 'machinelearning', name: '機械学習' }]]
+    end
   end
 end
