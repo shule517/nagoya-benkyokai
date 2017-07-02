@@ -1,8 +1,9 @@
 module Api
   module Techplay
     class TechplayApi
-      def search
-        url = 'https://techplay.jp/event/search?keyword=&pref=23&tag=&from=&to=&sort=started_asc'
+      def search(keyword = nil)
+        keyword = URI.escape(keyword) if keyword.present?
+        url = "https://techplay.jp/event/search?keyword=#{keyword}&pref=23&tag=&from=&to=&sort=started_asc"
         doc = Api::Http.get_document(url)
 
         events = doc.css('#main-content .eventlist .eventlist-right .title').map do |event_doc|
