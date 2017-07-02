@@ -1,6 +1,6 @@
 class UpdateEventTagService
   def call
-    @event_tags = Api::Techplay::TechplayApi.new.search
+    @event_tags = Api::Techplay::TechplayApi.new.search_all_tags
     crate_tag
     update_event
   end
