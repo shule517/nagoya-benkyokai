@@ -7,7 +7,9 @@ module Notifiable
       yield
     rescue => e
       backtrace = e.backtrace.reject { |trace| trace.include?('/app/vendor') || trace.include?('.rbenv') }.join("\n")
-      Slack.chat_postMessage text: "#{task} #{e}\n#{backtrace}", channel: ENV['SLACK_ERROR_CHANNEL'], username: 'lambda'
+      error_message = "#{task} #{e}\n#{backtrace}"
+      puts error_message
+      Slack.chat_postMessage text: error_message, channel: ENV['SLACK_ERROR_CHANNEL'], username: 'lambda'
     ensure
       Slack.chat_postMessage text: "#{task} end", channel: ENV['SLACK_LOG_CHANNEL'], username: 'lambda'
     end
@@ -42,6 +44,16 @@ namespace :event do
     include Notifiable
     notify('event:tweet') do
       EventTweet.tweet_tomorrow
+    end
+  end
+end
+
+namespace :tag do
+  desc 'タグ情報を更新'
+  task update: :environment do
+    include Notifiable
+    notify('tag:update') do
+      UpdateEventTagService.new.call
     end
   end
 end
