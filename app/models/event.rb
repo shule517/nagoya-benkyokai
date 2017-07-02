@@ -8,6 +8,9 @@ class Event < ApplicationRecord
   has_many :users_participant, -> { where(owner: false) }, class_name: 'Participant'
   has_many :users, -> { order('twitter_id DESC') }, through: :users_participant, source: :user
 
+  has_many :event_tags, dependent: :delete_all
+  has_many :tags, through: :event_tags, source: :tag
+
   def year
     started_at[0...4].to_i
   end
