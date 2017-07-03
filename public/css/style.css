@@ -65,6 +65,8 @@ img.user-icon {
 img.twitter-icon {
   width: 36px;
   height: 36px;
+  margin-right: 2px;
+  margin-bottom: 2px;
 }
 
 /* ------------------------------
