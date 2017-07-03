@@ -169,7 +169,8 @@ body {
   color: #888888;
   padding-top: 10px;
   max-height: 70px;
-  overflow: hidden
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
 .user-limit {

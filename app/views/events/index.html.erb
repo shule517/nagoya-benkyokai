@@ -51,28 +51,25 @@
           </div>
 
           <div class="event-right col-xs-9">
-            <div style="margin-bottom: 20px">
+            <a itemprop="url" href="<%= event.event_url %>">
+              <h3 class="event-title">
+                <span itemprop="name"><%= event.title %></span>
+                <small> by <%= event.source %></small>
+              </h3>
+            </a>
 
-              <a itemprop="url" href="<%= event.event_url %>">
-                <h3 class="event-title">
-                  <span itemprop="name"><%= event.title %></span>
-                  <small> by <%= event.source %></small>
-                </h3>
+            <% if event.group_url %>
+              <a href="<%= event.group_url %>">
+                <%= image_tag(event.group_logo, class: "group-logo") %>
+                <%= event.group_title %>
               </a>
+              <br>
+            <% end %>
 
-              <% if event.group_url %>
-                <a href="<%= event.group_url %>">
-                  <%= image_tag(event.group_logo, class: "group-logo") %>
-                  <%= event.group_title %>
-                </a>
-                <br>
-              <% end %>
-
-              <div class="event-detail">
-                <span itemprop="description">
-                  <%= raw event.catch %>
-                </span>
-              </div>
+            <div class="event-detail">
+              <span itemprop="description">
+                <%= raw event.catch %>
+              </span>
             </div>
 
             <div class="event-user">
