@@ -1,0 +1,7 @@
+<% if user.twitter_id? %>
+  <a class="clickable" href="<%= "./users/#{user.twitter_id}" %>">
+<% end %>
+<img class="user-icon" src="<%= user.image_url %>" datatoggle="tooltip" title="参加者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
+<% if user.twitter_id? %>
+  </a>
+<% end %>

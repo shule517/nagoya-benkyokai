@@ -1,0 +1,7 @@
+<% if owner.twitter_id? %>
+  <a class="clickable" href="<%= "./users/#{owner.twitter_id}" %>">
+<% end %>
+<img class="owner-icon" src="<%= owner.image_url %>" datatoggle="tooltip" title="管理者：<%= owner.name %>" style="margin-right: 2px; margin-bottom: 2px">
+<% if owner.twitter_id? %>
+  </a>
+<% end %>
