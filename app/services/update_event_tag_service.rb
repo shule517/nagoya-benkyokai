@@ -18,7 +18,7 @@ class UpdateEventTagService
     event_tags.each do |title, tags|
       Event.where(title: title).each do |event|
         tags.each do |tag|
-          tag = Tag.where(tag_id: tag[:id]).first
+          tag = Tag.find_by(tag_id: tag[:id])
           event.tags << tag unless event.tags.exists?(tag)
         end
       end

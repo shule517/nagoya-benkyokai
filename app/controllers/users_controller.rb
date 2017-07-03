@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = User.where(twitter_id: params[:id]).first
+    @user = User.find_by(twitter_id: params[:id])
     participants = Participant.where(user_id: @user.id)
     event_ids = participants.map { |participant| participant.event_id }
     @events = Event.where(id: event_ids).order(:started_at).reverse
