@@ -34,7 +34,7 @@ img.owner-icon {
   border-radius: 20px;
   border: 3px #FA7484 solid;
   margin-right: 2px;
-  margin-bottom: 2px
+  margin-bottom: 2px;
 }
 
 .clickable > img.owner-icon:hover {
@@ -106,6 +106,7 @@ body {
 }
 
 .event-right {
+  padding-left: 20px;
 }
 
 .event-user {
