@@ -118,12 +118,12 @@ body {
   text-align: center;
 }
 
-/*.event-logo {
-  margin-top: 0px;
-  padding-top: 0px;
-  width: 100%;
-  padding-top: 10px;
-}*/
+.event-logo {
+  width: 150px;
+  margin-top: 10px;
+  border: 1px #dddddd solid;
+  border-radius: 10px;
+}
 
 .frame {
   display: inline-block;
