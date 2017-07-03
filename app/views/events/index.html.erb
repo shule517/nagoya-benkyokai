@@ -7,10 +7,13 @@
       <% bday = day %>
 
       <div class="row" itemscope itemtype="http://schema.org/Event">
+
+        <%# 日付ごとに線を引く %>
         <% if index != 0 && is_new_day %>
           <hr class="style-two">
         <% end %>
 
+        <%# 日付を表示 %>
         <div class="col-md-2 col-xs-1">
           <% if is_new_day %>
             <h2 class="day">
@@ -21,6 +24,7 @@
         </div>
 
         <div class="event col-md-10 col-xs-10">
+          <%# 勉強会ごとに線を引く %>
           <% unless is_new_day %>
             <hr class="style-two">
           <% end %>
