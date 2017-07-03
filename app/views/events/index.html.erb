@@ -1,12 +1,13 @@
 <div class="row" class="col-md-12 col-xs-12">
   <div class="col-md-8 col-xs-12" style="margin-left: 20px">
     <% bday = "" %>
-    <% @events.each do |event| %>
+    <% @events.each_with_index do |event, index| %>
       <% day = "#{event.month}/#{event.day}" %>
       <% is_new_day = (bday != day) %>
-      <div class="row" itemscope itemtype="http://schema.org/Event">
+      <% bday = day %>
 
-        <% if bday != "" && is_new_day %>
+      <div class="row" itemscope itemtype="http://schema.org/Event">
+        <% if index != 0 && is_new_day %>
           <hr class="style-two">
         <% end %>
 
@@ -20,9 +21,7 @@
         </div>
 
         <div class="event col-md-10 col-xs-10">
-          <% if is_new_day %>
-            <% bday = day %>
-          <% else %>
+          <% unless is_new_day %>
             <hr class="style-two">
           <% end %>
 
