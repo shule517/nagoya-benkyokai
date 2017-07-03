@@ -153,6 +153,10 @@ body {
   margin-bottom: 10px;
 }
 
+.event-address {
+  display:none
+}
+
 .event-title {
   margin-top: 10px;
   vertical-align: top;
