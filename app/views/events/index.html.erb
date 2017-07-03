@@ -66,22 +66,24 @@
               <a href="<%= "#{event.twitter_list_url}" %>">
                 <img class="twitter-icon" src="/img/Twitter.png" datatoggle="tooltip" title="ツイッターリスト" style="margin-right: 2px; margin-bottom: 2px">
               </a>
-              <% event.owners.each do |user| %>
-                <% if !user.twitter_id.empty?  %>
-              <a class="clickable" href="<%= "./users/#{user.twitter_id}" %>">
+
+              <% event.owners.each do |owner| %>
+                <% if owner.twitter_id? %>
+                  <a class="clickable" href="<%= "./users/#{owner.twitter_id}" %>">
                 <% end %>
-                <img class="owner-icon" src="<%= user.image_url %>" datatoggle="tooltip" title="管理者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
-                <% if !user.twitter_id.empty?  %>
-              </a>
+                <img class="owner-icon" src="<%= owner.image_url %>" datatoggle="tooltip" title="管理者：<%= owner.name %>" style="margin-right: 2px; margin-bottom: 2px">
+                <% if owner.twitter_id? %>
+                  </a>
                 <% end %>
               <% end %>
+
               <% event.users.each do |user| %>
-                <% if !user[:twitter_id].empty?  %>
-              <a class="clickable" href="<%= "./users/#{user.twitter_id}" %>">
+                <% if user.twitter_id? %>
+                  <a class="clickable" href="<%= "./users/#{user.twitter_id}" %>">
                 <% end %>
                 <img class="user-icon" src="<%= user.image_url %>" datatoggle="tooltip" title="参加者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
-                <% if !user.twitter_id.empty?  %>
-              </a>
+                <% if user.twitter_id? %>
+                  </a>
                 <% end %>
               <% end %>
               </div>
