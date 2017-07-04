@@ -26,3 +26,14 @@
   - 明日開かれる勉強会をツイートする
 - `rkae event:delete_list`
   - 終わった勉強会のツイッターリストを削除する
+
+## インストール
+
+```
+$ git clone https://github.com/shule517/nagoya-benkyokai.git
+$ cd nagoya-benkyokai
+$ bundle
+$ cp example.env .env
+$ rake event:update
+$ rails s
+```
