@@ -24,7 +24,7 @@
   - 勉強会情報を更新し、参加者のツイッターリストを作成する
 - `rake event:tweet`
   - 明日開かれる勉強会をツイートする
-- `rkae event:delete_list`
+- `rake event:delete_list`
   - 終わった勉強会のツイッターリストを削除する
 
 ## インストール
