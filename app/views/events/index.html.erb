@@ -29,7 +29,7 @@
         <% end %>
 
         <!-- イベント情報 -->
-        <div class="event-left col-xs-3" itemprop="startDate" content="<%= "#{event.year}-#{event.month}-#{event.day}" %>">
+        <div class="event-left col-md-3 col-xs-3" itemprop="startDate" content="<%= "#{event.year}-#{event.month}-#{event.day}" %>">
           <a href="<%= event.event_url %>">
             <p class="resizeimage">
               <%= image_tag(event.logo, class: "event-logo", itemprop: "image") %>
@@ -49,7 +49,7 @@
           </div>
         </div>
 
-        <div class="event-right col-xs-9">
+        <div class="event-right col-md-9 col-xs-9">
           <a itemprop="url" href="<%= event.event_url %>">
             <h3 class="event-title">
               <span itemprop="name"><%= event.title %></span>
