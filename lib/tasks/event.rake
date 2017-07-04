@@ -33,10 +33,13 @@ namespace :event do
 
   desc 'イベント情報を更新(DB+twitter)'
   task update: :environment do
-    include Notifiable
-    notify('event:update') do
-      UpdateEventService.new.call
+    if ENV['SLACK_LOG_CHANNEL']
+     include Notifiable
+     notify('event:update') do
+       UpdateEventService.new.call
+     end
     end
+    UpdateEventService.new.call
   end
 
   desc '明日開かれるイベントをツイート'
