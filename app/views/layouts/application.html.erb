@@ -22,46 +22,9 @@
   </head>
   <body>
     <div class="container-fluid">
-      <header id="header" class="row">
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-10">
-          <a href="/">
-            <img src="/img/lambda.png" height="40">
-            <img src="/img/logo.jpg" width="300">
-          </a>
-        </div>
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-12">
-          <hr class="style-two">
-        </div>
-      </header>
-      <div class="row">
-        <%= yield %>
-      </div>
-      <footer id="footer" row="row">
-        <div class="col-md-12">
-          <hr class="style-two">
-          <div class="col-md-1">
-          </div>
-          <div class="col-md-10">
-            <center>
-              <small>
-                <a href="/">
-                  <img src="/img/lambda.png" height="20px">
-                </a>
-                powerd by <a href="https://twitter.com/shule517">@shule517</a>
-              </small>
-            </center>
-            <br>
-            <br>
-            <br>
-          </div>
-          <div class="col-md-1">
-          </div>
-        </div>
-      </footer>
+      <%= render partial: 'layouts/header' %>
+      <%= yield %>
+      <%= render partial: 'layouts/footer' %>
     </div>
   </body>
 </html>
