@@ -1,0 +1,51 @@
+<% bday = "" %>
+<% events.each_with_index do |event, index| %>
+  <% day = "#{event.month}/#{event.day}" %>
+  <% is_new_day = (bday != day) %>
+  <% bday = day %>
+
+  <div class="row" itemscope itemtype="http://schema.org/Event">
+
+    <%# 日付ごとに線を引く %>
+    <% if index != 0 && is_new_day %>
+      <hr class="style-two">
+    <% end %>
+
+    <%# 日付を表示 %>
+    <div class="col-md-2 col-xs-1">
+      <% if is_new_day %>
+        <h2 class="day">
+          <%= day %>
+          <small><%= "(#{event.wday})" %></small>
+        </h2>
+      <% end %>
+    </div>
+
+    <div class="event col-md-10 col-xs-10">
+      <%# 勉強会ごとに線を引く %>
+      <% unless is_new_day %>
+        <hr class="style-two">
+      <% end %>
+
+      <div class="event-left col-md-3 col-xs-3" itemprop="startDate" content="<%= "#{event.year}-#{event.month}-#{event.day}" %>">
+        <%= render partial: 'events/logo', locals: { event: event } %>
+        <%= render partial: 'events/place', locals: { event: event } %>
+      </div>
+
+      <div class="event-right col-md-9 col-xs-9">
+        <%= render partial: 'events/title', locals: { event: event } %>
+        <%= render partial: 'events/group', locals: { event: event } %>
+        <%= render partial: 'events/detail', locals: { event: event } %>
+
+        <div class="event-user">
+          <a href="<%= "#{event.twitter_list_url}" %>">
+            <%= image_tag("/img/Twitter.png", class: "twitter-icon", datatoggle: "tooltip", title: "ツイッターリスト") %>
+          </a>
+          <%= render partial: 'events/owner', collection: event.owners %>
+          <%= render partial: 'events/user', collection: event.users %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>
