@@ -1,5 +1,5 @@
 <% if event.group_url %>
-  <a href="<%= event.group_url %>">
+  <a href="<%= "/groups/#{event.group_title}" %>">
     <%= image_tag(event.group_logo, class: "group-logo") %>
     <%= event.group_title %>
   </a>

@@ -1,4 +1,5 @@
 <div class="col-md-8 col-xs-12" style="margin-left: 20px">
+  <% if false %>
   <h2>
     <img class="user-icon" src="<%= @user.image_url %>" datatoggle="tooltip">
     <%= "#{@user.name}" %>
@@ -6,11 +7,12 @@
       <%= "(@#{@user.twitter_id})" %>
     </small>
   </h2>
+  <% end %>
 
   <br>
 
   <h3 class="user-title">
-  参加する勉強会
+  開催する勉強会
   </h3>
   <%= render partial: 'events/event', locals: { events: @events } %>
 
@@ -27,6 +29,8 @@
 </div>
 
 <div class="col-md-3 col-xs-10">
-  <a class="twitter-timeline" href="<%= "https://twitter.com/#{@user.twitter_id}" %>">Tweets by TwitterDev</a>
-  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <% if false %>
+    <a class="twitter-timeline" href="<%= "https://twitter.com/#{@user.twitter_id}" %>">Tweets by TwitterDev</a>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <% end %>
 </div>
