@@ -1,18 +1,18 @@
 <div class="col-md-8 col-xs-12" style="margin-left: 20px">
-  <% if false %>
   <h2>
-    <img class="user-icon" src="<%= @user.image_url %>" datatoggle="tooltip">
-    <%= "#{@user.name}" %>
-    <small>
-      <%= "(@#{@user.twitter_id})" %>
-    </small>
+    <a href="<%= "#{@event.group_url}" %>">
+      <img class="group-logo" src="<%= @event.group_logo %>" datatoggle="tooltip">
+      <%= "#{@event.group_title}" %>
+      <small>
+        by <%= "#{@event.source}" %>
+      </small>
+    </a>
   </h2>
-  <% end %>
 
   <br>
 
   <h3 class="user-title">
-  開催する勉強会
+    <b>開催する勉強会</b>
   </h3>
   <%= render partial: 'events/event', locals: { events: @events } %>
 
@@ -20,7 +20,7 @@
   <br>
 
   <h3 class="user-title">
-  過去の勉強会
+    <b>過去の勉強会</b>
   </h3>
   <%= render partial: 'events/event', locals: { events: @events_histories } %>
 </div>
