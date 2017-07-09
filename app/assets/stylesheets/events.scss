@@ -3,10 +3,10 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .shadow {
-    margin-top: 5px; /* 画像の上の余白*/
-    display: inline-block; 
-    box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.8); /*横方向　下方向　ぼかし　広がり　色 */
-    border-radius: 15px;
+  margin-top: 5px; /* 画像の上の余白*/
+  display: inline-block; 
+  box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.8); /*横方向　下方向　ぼかし　広がり　色 */
+  border-radius: 15px;
 }
 
 hr.wave {
@@ -16,20 +16,20 @@ hr.wave {
 }
 
 hr.style-three {
-    border: 0;
-    border-bottom: 1px dashed #ccc;
-    background: #999;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  border: 0;
+  border-bottom: 1px dashed #ccc;
+  background: #999;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 hr.style-two {
-    border: 0;
-    height: 1px;
-    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-    background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-    background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-    background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
 }
 
 img.owner-icon {
@@ -136,6 +136,7 @@ body {
   display: inline-block;
   position: relative;
 }
+
 .frame:after {
   position: absolute;
   display: block;
@@ -187,6 +188,10 @@ body {
 
 .user-limit p {
   display: inline;
+}
+
+.user-title {
+  border-bottom: 1px dashed #ccc;
 }
 
 /* ------------------------------
