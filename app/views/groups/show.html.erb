@@ -29,8 +29,6 @@
 </div>
 
 <div class="col-md-3 col-xs-10">
-  <% if false %>
-    <a class="twitter-timeline" href="<%= "https://twitter.com/#{@user.twitter_id}" %>">Tweets by TwitterDev</a>
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-  <% end %>
+  <a class="twitter-timeline" href="<%= "#{@event.twitter_list_url}/members" %>">Tweets by TwitterDev</a>
+  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
