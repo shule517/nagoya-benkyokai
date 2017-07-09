@@ -121,12 +121,12 @@ describe TwitterClient, type: :request do
         end
       end
 
-      xcontext '権限がない場合' do
-        it 'メンバーを追加できないこと' do
+      context '権限がない場合' do
+        it 'メンバーを追加できないこと', vcr: '#add_list_member_block' do
           list = client.create_list(name, description)
           client.add_list_member(list.id, 'shule517')
           members = client.list_members(list.id)
-          expect(members.to_a.size).to eq 1
+          expect(members.to_a.size).to eq 0
         end
       end
 
