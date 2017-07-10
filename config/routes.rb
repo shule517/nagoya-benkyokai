@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   resources :tags
   resources :users
-  resources :groups
+  get '/groups/:groupname', to: 'groups#show', groupname: /.*/
   resources :rank do
     collection do
       get 'group'
