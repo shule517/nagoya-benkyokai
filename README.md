@@ -34,6 +34,7 @@ $ git clone https://github.com/shule517/nagoya-benkyokai.git
 $ cd nagoya-benkyokai
 $ bundle
 $ cp example.env .env
+$ rails db:migrate
 $ rake event:update
 $ rails s
 ```
