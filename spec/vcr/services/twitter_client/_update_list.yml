@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - TwitterRubyGem/6.1.0
       Authorization:
-      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="456795e41a86a6fd51ac6a1491defd8b",
-        oauth_signature="3z%2FpuR8bQEB8tx9tQBvixHb%2BBt4%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1497197126", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="fd6a57847b813bf0aaa03a3eff05572c",
+        oauth_signature="D1z4%2Bn%2B9FgZf4zPl7i%2FjXQPtmxA%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1500038639", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -28,40 +28,40 @@ http_interactions:
       - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
       Content-Disposition:
       - attachment; filename=json.json
+      Content-Length:
+      - '679'
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Sun, 11 Jun 2017 16:05:26 GMT
+      - Fri, 14 Jul 2017 13:23:58 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Sun, 11 Jun 2017 16:05:26 GMT
+      - Fri, 14 Jul 2017 13:23:58 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_m
       Set-Cookie:
-      - guest_id=v1%3A149719712641603133; Domain=.twitter.com; Path=/; Expires=Tue,
-        11-Jun-2019 16:05:26 UTC
+      - guest_id=v1%3A150003863831172311; Domain=.twitter.com; Path=/; Expires=Sun,
+        14-Jul-2019 13:23:58 UTC
       - lang=ja; Path=/
       Status:
       - 200 OK
       Strict-Transport-Security:
       - max-age=631138519
-      Transfer-Encoding:
-      - chunked
       X-Access-Level:
       - read-write
       X-Connection-Hash:
-      - 61956f853d7718296e1d5753d43542ef
+      - 4f0986c2d75ee905ab513f00b2130558
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Response-Time:
-      - '155'
+      - '161'
       X-Transaction:
-      - 00375a0a004f4c5c
+      - 0023e9550056b8a4
       X-Tsa-Request-Body-Time:
       - '0'
       X-Twitter-Response-Tags:
@@ -70,11 +70,11 @@ http_interactions:
       - 1; mode=block
     body:
       encoding: ASCII-8BIT
-      string: '{"id":873934206774026240,"id_str":"873934206774026240","name":"\u30c6\u30b9\u30c8","uri":"\/shule517_dev\/lists\/list82","subscriber_count":0,"member_count":0,"mode":"private","description":"\u8a73\u7d30\u8aac\u660e\u3060\u3088","slug":"list82","full_name":"@shule517_dev\/list82","created_at":"Sun
-        Jun 11 16:05:26 +0000 2017","following":false,"user":{"id":825641644863033345,"id_str":"825641644863033345","name":"\u30b7\u30e5\u30fc\u30eb(\u958b\u767a\u7528)","screen_name":"shule517_dev","location":"\u306a\u3054\u3084","description":"@shule517\u306e\u958b\u767a\u7528\u30a2\u30ab\u30a6\u30f3\u30c8\u3067\u3059\uff01","url":"https:\/\/t.co\/75FLedYlUR","entities":{"url":{"urls":[{"url":"https:\/\/t.co\/75FLedYlUR","expanded_url":"http:\/\/nagoya-benkyokai.com","display_url":"nagoya-benkyokai.com","indices":[0,23]}]},"description":{"urls":[]}},"protected":true,"followers_count":1,"friends_count":0,"listed_count":0,"created_at":"Sun
-        Jan 29 09:48:02 +0000 2017","favourites_count":15,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1343,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/825642834816487425\/8Hl3jym8_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/825642834816487425\/8Hl3jym8_normal.jpg","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}}'
+      string: '{"id":885852371489660928,"id_str":"885852371489660928","name":"\u30c6\u30b9\u30c8","uri":"\/benkyo_dev\/lists\/list20","subscriber_count":0,"member_count":0,"mode":"private","description":"\u8a73\u7d30\u8aac\u660e\u3060\u3088","slug":"list20","full_name":"@benkyo_dev\/list20","created_at":"Fri
+        Jul 14 13:23:58 +0000 2017","following":false,"user":{"id":878212227874004992,"id_str":"878212227874004992","name":"\u3079\u3093\u304d\u3087\u3046\u304b\u3044\u3066\u3059\u3068","screen_name":"benkyo_dev","location":"","description":"","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":0,"friends_count":0,"listed_count":0,"created_at":"Fri
+        Jun 23 11:24:46 +0000 2017","favourites_count":0,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}}'
     http_version: 
-  recorded_at: Sun, 11 Jun 2017 16:05:26 GMT
+  recorded_at: Fri, 14 Jul 2017 13:24:00 GMT
 - request:
     method: get
     uri: https://api.twitter.com/1.1/account/verify_credentials.json?skip_status=true
@@ -87,9 +87,9 @@ http_interactions:
       User-Agent:
       - TwitterRubyGem/6.1.0
       Authorization:
-      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="ce87ab674d97c498ae6983e460973020",
-        oauth_signature="qyaoZucy1gY2G5r9LPHTksfx1Nw%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1497197126", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="fb8947af8636646aadc6e185418d47d1",
+        oauth_signature="5lBkZovojJhiVlixoOurrP5WFiE%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1500038640", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -101,32 +101,32 @@ http_interactions:
       - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
       Content-Disposition:
       - attachment; filename=json.json
+      Content-Length:
+      - '547'
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Sun, 11 Jun 2017 16:05:26 GMT
+      - Fri, 14 Jul 2017 13:23:58 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Sun, 11 Jun 2017 16:05:26 GMT
+      - Fri, 14 Jul 2017 13:23:58 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_m
       Set-Cookie:
-      - guest_id=v1%3A149719712667703020; Domain=.twitter.com; Path=/; Expires=Tue,
-        11-Jun-2019 16:05:26 UTC
+      - guest_id=v1%3A150003863857119747; Domain=.twitter.com; Path=/; Expires=Sun,
+        14-Jul-2019 13:23:58 UTC
       - lang=ja; Path=/
       Status:
       - 200 OK
       Strict-Transport-Security:
       - max-age=631138519
-      Transfer-Encoding:
-      - chunked
       X-Access-Level:
       - read-write
       X-Connection-Hash:
-      - 0d1923a437e39a190aad82598652429e
+      - 2ed77ff0aa869a1bc9478bcb5d95bbc2
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -134,13 +134,13 @@ http_interactions:
       X-Rate-Limit-Limit:
       - '75'
       X-Rate-Limit-Remaining:
-      - '56'
+      - '74'
       X-Rate-Limit-Reset:
-      - '1497197403'
+      - '1500039538'
       X-Response-Time:
-      - '115'
+      - '120'
       X-Transaction:
-      - 00e457e000dc963d
+      - '0081e75500641a6a'
       X-Twitter-Response-Tags:
       - BouncerCompliant
       - BouncerExempt
@@ -148,25 +148,25 @@ http_interactions:
       - 1; mode=block
     body:
       encoding: ASCII-8BIT
-      string: '{"id":825641644863033345,"id_str":"825641644863033345","name":"\u30b7\u30e5\u30fc\u30eb(\u958b\u767a\u7528)","screen_name":"shule517_dev","location":"\u306a\u3054\u3084","description":"@shule517\u306e\u958b\u767a\u7528\u30a2\u30ab\u30a6\u30f3\u30c8\u3067\u3059\uff01","url":"https:\/\/t.co\/75FLedYlUR","entities":{"url":{"urls":[{"url":"https:\/\/t.co\/75FLedYlUR","expanded_url":"http:\/\/nagoya-benkyokai.com","display_url":"nagoya-benkyokai.com","indices":[0,23]}]},"description":{"urls":[]}},"protected":true,"followers_count":1,"friends_count":0,"listed_count":0,"created_at":"Sun
-        Jan 29 09:48:02 +0000 2017","favourites_count":15,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1343,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/825642834816487425\/8Hl3jym8_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/825642834816487425\/8Hl3jym8_normal.jpg","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
+      string: '{"id":878212227874004992,"id_str":"878212227874004992","name":"\u3079\u3093\u304d\u3087\u3046\u304b\u3044\u3066\u3059\u3068","screen_name":"benkyo_dev","location":"","description":"","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":0,"friends_count":0,"listed_count":0,"created_at":"Fri
+        Jun 23 11:24:46 +0000 2017","favourites_count":0,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
     http_version: 
-  recorded_at: Sun, 11 Jun 2017 16:05:26 GMT
+  recorded_at: Fri, 14 Jul 2017 13:24:00 GMT
 - request:
     method: post
     uri: https://api.twitter.com/1.1/lists/update.json
     body:
       encoding: UTF-8
-      string: description=%E6%9B%B4%E6%96%B0%3A%E8%A9%B3%E7%B4%B0%E8%AA%AC%E6%98%8E%E3%81%A0%E3%82%88&list_id=873934206774026240&mode=private&name=%E6%9B%B4%E6%96%B0%E3%83%86%E3%82%B9%E3%83%88&owner_id=825641644863033345
+      string: description=%E6%9B%B4%E6%96%B0%3A%E8%A9%B3%E7%B4%B0%E8%AA%AC%E6%98%8E%E3%81%A0%E3%82%88&list_id=885852371489660928&mode=private&name=%E6%9B%B4%E6%96%B0%E3%83%86%E3%82%B9%E3%83%88&owner_id=878212227874004992
     headers:
       Accept:
       - application/json
       User-Agent:
       - TwitterRubyGem/6.1.0
       Authorization:
-      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="00ee6419bcea7d5563f4be69091dc7cc",
-        oauth_signature="24JKE%2FE9iMKPccIo69j%2FBeE4u9Q%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1497197126", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="0720dcc9eaca48a4609b709d49ced045",
+        oauth_signature="KwxGJGwEz1DHeatlV2cy7zYAUuo%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1500038640", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -180,40 +180,40 @@ http_interactions:
       - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
       Content-Disposition:
       - attachment; filename=json.json
+      Content-Length:
+      - '690'
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Sun, 11 Jun 2017 16:05:27 GMT
+      - Fri, 14 Jul 2017 13:23:58 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Sun, 11 Jun 2017 16:05:26 GMT
+      - Fri, 14 Jul 2017 13:23:58 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_m
       Set-Cookie:
-      - guest_id=v1%3A149719712688400322; Domain=.twitter.com; Path=/; Expires=Tue,
-        11-Jun-2019 16:05:26 UTC
+      - guest_id=v1%3A150003863879312711; Domain=.twitter.com; Path=/; Expires=Sun,
+        14-Jul-2019 13:23:58 UTC
       - lang=ja; Path=/
       Status:
       - 200 OK
       Strict-Transport-Security:
       - max-age=631138519
-      Transfer-Encoding:
-      - chunked
       X-Access-Level:
       - read-write
       X-Connection-Hash:
-      - 982b8dcc48e9bcebe97cb3756ad9890c
+      - de4e110f4328ccabaaed30f56278dd13
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Response-Time:
-      - '188'
+      - '183'
       X-Transaction:
-      - '0056251800642463'
+      - 00a0e439006bce9e
       X-Tsa-Request-Body-Time:
       - '1'
       X-Twitter-Response-Tags:
@@ -222,9 +222,9 @@ http_interactions:
       - 1; mode=block
     body:
       encoding: ASCII-8BIT
-      string: '{"id":873934206774026240,"id_str":"873934206774026240","name":"\u66f4\u65b0\u30c6\u30b9\u30c8","uri":"\/shule517_dev\/lists\/list246","subscriber_count":0,"member_count":0,"mode":"private","description":"\u66f4\u65b0:\u8a73\u7d30\u8aac\u660e\u3060\u3088","slug":"list246","full_name":"@shule517_dev\/list246","created_at":"Sun
-        Jun 11 16:05:26 +0000 2017","following":false,"user":{"id":825641644863033345,"id_str":"825641644863033345","name":"\u30b7\u30e5\u30fc\u30eb(\u958b\u767a\u7528)","screen_name":"shule517_dev","location":"\u306a\u3054\u3084","description":"@shule517\u306e\u958b\u767a\u7528\u30a2\u30ab\u30a6\u30f3\u30c8\u3067\u3059\uff01","url":"https:\/\/t.co\/75FLedYlUR","entities":{"url":{"urls":[{"url":"https:\/\/t.co\/75FLedYlUR","expanded_url":"http:\/\/nagoya-benkyokai.com","display_url":"nagoya-benkyokai.com","indices":[0,23]}]},"description":{"urls":[]}},"protected":true,"followers_count":1,"friends_count":0,"listed_count":0,"created_at":"Sun
-        Jan 29 09:48:02 +0000 2017","favourites_count":15,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1343,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/825642834816487425\/8Hl3jym8_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/825642834816487425\/8Hl3jym8_normal.jpg","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}}'
+      string: '{"id":885852371489660928,"id_str":"885852371489660928","name":"\u66f4\u65b0\u30c6\u30b9\u30c8","uri":"\/benkyo_dev\/lists\/list71","subscriber_count":0,"member_count":0,"mode":"private","description":"\u66f4\u65b0:\u8a73\u7d30\u8aac\u660e\u3060\u3088","slug":"list71","full_name":"@benkyo_dev\/list71","created_at":"Fri
+        Jul 14 13:23:58 +0000 2017","following":false,"user":{"id":878212227874004992,"id_str":"878212227874004992","name":"\u3079\u3093\u304d\u3087\u3046\u304b\u3044\u3066\u3059\u3068","screen_name":"benkyo_dev","location":"","description":"","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":0,"friends_count":0,"listed_count":0,"created_at":"Fri
+        Jun 23 11:24:46 +0000 2017","favourites_count":0,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}}'
     http_version: 
-  recorded_at: Sun, 11 Jun 2017 16:05:27 GMT
+  recorded_at: Fri, 14 Jul 2017 13:24:00 GMT
 recorded_with: VCR 3.0.3
