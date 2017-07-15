@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   namespace :api, { format: 'json' } do
     namespace :v1, :only => [:index] do
       resources :events
+      get '/groups/:groupname', to: 'groups#show', groupname: /.*/
+      get '/users/:userid', to: 'users#show', userid: /.*/
     end
   end
 
