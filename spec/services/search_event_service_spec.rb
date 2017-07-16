@@ -41,6 +41,12 @@ describe SearchEventService, type: :request do
       titles = events.map(&:title)
       expect(titles).not_to include 'mana×comu　番外編　「働く女性の癒しヨガ」'
     end
+
+    it 'ガンダムナイトが取得できること', vcr: 'gundom_night' do
+      events = SearchEventService.new.call({ event_id: 61170 }, false) # 第3回 ガンダムナイト＠名古屋ギークバー https://geekbar.doorkeeper.jp/events/61170
+      titles = events.map(&:title)
+      expect(titles).to include '第3回 ガンダムナイト＠名古屋ギークバー'
+    end
   end
 
   context 'ATNDの場合' do
