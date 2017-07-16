@@ -3,15 +3,15 @@ require 'slack'
 module Notifiable
   def notify(task)
     begin
-      Slack.chat_postMessage text: "#{task} start", channel: ENV['SLACK_LOG_CHANNEL'], username: 'lambda'
+      Slack.chat_postMessage text: "#{task} start", channel: ENV['SLACK_LOG_CHANNEL'], username: 'lambda' if ENV['SLACK_LOG_CHANNEL']
       yield
     rescue => e
       backtrace = e.backtrace.reject { |trace| trace.include?('/app/vendor') || trace.include?('.rbenv') }.join("\n")
       error_message = "#{task} #{e}\n#{backtrace}"
       puts error_message
-      Slack.chat_postMessage text: error_message, channel: ENV['SLACK_ERROR_CHANNEL'], username: 'lambda'
+      Slack.chat_postMessage text: error_message, channel: ENV['SLACK_ERROR_CHANNEL'], username: 'lambda' if ENV['SLACK_LOG_CHANNEL']
     ensure
-      Slack.chat_postMessage text: "#{task} end", channel: ENV['SLACK_LOG_CHANNEL'], username: 'lambda'
+      Slack.chat_postMessage text: "#{task} end", channel: ENV['SLACK_LOG_CHANNEL'], username: 'lambda' if ENV['SLACK_LOG_CHANNEL']
     end
   end
 end
@@ -33,13 +33,10 @@ namespace :event do
 
   desc 'イベント情報を更新(DB+twitter)'
   task update: :environment do
-    if ENV['SLACK_LOG_CHANNEL']
-     include Notifiable
-     notify('event:update') do
-       UpdateEventService.new.call
-     end
+    include Notifiable
+    notify('event:update') do
+      UpdateEventService.new.call
     end
-    UpdateEventService.new.call
   end
 
   desc '明日開かれるイベントをツイート'
