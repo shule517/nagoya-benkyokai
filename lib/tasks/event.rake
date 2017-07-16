@@ -39,6 +39,15 @@ namespace :event do
     end
   end
 
+  desc 'イベント情報を更新(event id指定)'
+  task :update_eventid, ['event_id'] => :environment do |task, args|
+    p "event_id: #{args.event_id}"
+    include Notifiable
+    notify('event:update') do
+      UpdateEventService.new.call(event_id: args.event_id.to_i )
+    end
+  end
+
   desc '明日開かれるイベントをツイート'
   task tweet: :environment do
     include Notifiable
