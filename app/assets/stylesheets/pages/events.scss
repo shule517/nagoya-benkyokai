@@ -9,27 +9,15 @@
   border-radius: 15px;
 }
 
-hr.wave {
-  height: 6px;
-  background: url(http://ibrahimjabbari.com/english/images/hr-12.png) repeat-x 0 0;
+hr {
   border: 0;
+  margin: 20px 0;
 }
 
-hr.style-three {
-  border: 0;
-  border-bottom: 1px dashed #ccc;
-  background: #999;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-hr.style-two {
+.style-two {
   border: 0;
   height: 1px;
-  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+  background-image: linear-gradient(to right, transparent, #A1A1A1 35%, #A1A1A1 65%, transparent);
 }
 
 img.owner-icon {
@@ -74,7 +62,7 @@ img.twitter-icon {
 }
 
 /* ------------------------------
-　　ベース
+ベース
 ------------------------------ */
 body {
 	color: #333;
@@ -90,7 +78,6 @@ body {
 ------------------------------ */
 .header {
   width: 100%;
-  padding: 0 20px;
 }
 
 .site-name {
@@ -103,6 +90,7 @@ body {
 
 .header-logo {
   white-space: nowrap;
+  padding: 0 20px;
 }
 
 .header-logo__lambda {
@@ -126,52 +114,6 @@ body {
 
 .event-right {
   padding-left: 20px;
-}
-
-@include media($tablet) {
-  .day {
-    font-size: 23px;
-  }
-
-  .event-left {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 0 20px;
-  }
-
-  .event-right {
-    padding: 0
-  }
-
-  .event-title {
-    font-size: 18px;
-    width: 100%;
-    small {
-      display: block;
-      font-size: 14px;
-      margin-top: 10px;
-      text-align: left;
-    }
-  }
-
-  .event-place {
-    font-size: 12px;
-    margin-left: 15px;
-  }
-  .event-detail {
-    font-size: 14px;
-  }
-}
-
-@include media($mobile) {
-  .event-left {
-    width: 100%;
-  }
-
-  .event-right {
-    width: 100%;
-  }
 }
 
 .event-user {
@@ -261,6 +203,52 @@ body {
 
 .user-title {
   border-bottom: 1px dashed #ccc;
+}
+
+@include media($ipad-pro) {
+  .day {
+    font-size: 23px;
+  }
+
+  .event-left {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 20px;
+  }
+
+  .event-right {
+    padding: 0
+  }
+
+  .event-title {
+    font-size: 18px;
+    width: 100%;
+    small {
+      display: block;
+      font-size: 14px;
+      margin-top: 10px;
+      text-align: left;
+    }
+  }
+
+  .event-place {
+    font-size: 12px;
+    margin-left: 15px;
+  }
+  .event-detail {
+    font-size: 14px;
+  }
+}
+
+@include media($mobile) {
+  .event-left {
+    width: 100%;
+  }
+
+  .event-right {
+    width: 100%;
+  }
 }
 
 /* ------------------------------
