@@ -4,7 +4,7 @@
 
 .shadow {
   margin-top: 5px; /* 画像の上の余白*/
-  display: inline-block; 
+  display: inline-block;
   box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.8); /*横方向　下方向　ぼかし　広がり　色 */
   border-radius: 15px;
 }
@@ -89,7 +89,8 @@ body {
 　　ヘッダー
 ------------------------------ */
 .header {
-	padding: 30px 0;
+  width: 100%;
+  padding: 0 20px;
 }
 
 .site-name {
@@ -98,6 +99,20 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
+}
+
+.header-logo {
+  white-space: nowrap;
+}
+
+.header-logo__lambda {
+  width: 10%;
+  max-width: 40px;
+}
+
+.header-logo__text {
+  width: 80%;
+  max-width: 300px;
 }
 
 /* ------------------------------
@@ -111,6 +126,52 @@ body {
 
 .event-right {
   padding-left: 20px;
+}
+
+@include media($tablet) {
+  .day {
+    font-size: 23px;
+  }
+
+  .event-left {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 20px;
+  }
+
+  .event-right {
+    padding: 0
+  }
+
+  .event-title {
+    font-size: 18px;
+    width: 100%;
+    small {
+      display: block;
+      font-size: 14px;
+      margin-top: 10px;
+      text-align: left;
+    }
+  }
+
+  .event-place {
+    font-size: 12px;
+    margin-left: 15px;
+  }
+  .event-detail {
+    font-size: 14px;
+  }
+}
+
+@include media($mobile) {
+  .event-left {
+    width: 100%;
+  }
+
+  .event-right {
+    width: 100%;
+  }
 }
 
 .event-user {

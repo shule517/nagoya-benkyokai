@@ -2,5 +2,11 @@
 @import "//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
 @import "//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css";
 
+// Variables
+@import "variables/**/*";
+
+// Mixins
+@import "mixins/**/*";
+
 // Page CSS
 @import "pages/**/*";
