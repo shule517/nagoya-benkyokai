@@ -1,7 +1,6 @@
 <header class="header">
   <%= link_to root_path, class: 'header-logo' do %>
-    <%= image_tag("lambda.png", title: "名古屋勉強会らむだ", class: "header-logo__lambda") %>
-    <%= image_tag("logo.jpg", title: "名古屋勉強会らむだ", class: "header-logo__text") %>
+    <%= embedded_svg('svg/logo.svg', class: 'header-logo__svg') %>
   <% end %>
   <hr class="style-two">
 </header>

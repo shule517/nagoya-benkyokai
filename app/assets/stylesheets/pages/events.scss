@@ -78,6 +78,7 @@ body {
 ------------------------------ */
 .header {
   width: 100%;
+  margin-top: 20px;
 }
 
 .site-name {
@@ -93,14 +94,15 @@ body {
   padding: 0 20px;
 }
 
-.header-logo__lambda {
-  width: 10%;
-  max-width: 40px;
+.header-logo__svg {
+  max-width: 250px;
+  fill: $grey-900;
 }
 
-.header-logo__text {
-  width: 80%;
-  max-width: 300px;
+@include media($tablet) {
+  .header {
+    text-align: center;
+  }
 }
 
 /* ------------------------------
