@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - TwitterRubyGem/6.1.0
       Authorization:
-      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="13e68fdd8c0acfea438ad361c7c49263",
-        oauth_signature="i1LvZo4dKyOSF2mPGWrVtWT6LF8%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1500038638", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="00239d64a61793ccba739cfab074be11",
+        oauth_signature="0AIuz7ZJeZGKJ71TIAmnYL0tvog%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1500547819", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -29,22 +29,22 @@ http_interactions:
       Content-Disposition:
       - attachment; filename=json.json
       Content-Length:
-      - '785'
+      - '790'
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Fri, 14 Jul 2017 13:23:57 GMT
+      - Thu, 20 Jul 2017 10:50:18 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Fri, 14 Jul 2017 13:23:57 GMT
+      - Thu, 20 Jul 2017 10:50:18 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_m
       Set-Cookie:
-      - guest_id=v1%3A150003863744682029; Domain=.twitter.com; Path=/; Expires=Sun,
-        14-Jul-2019 13:23:57 UTC
+      - guest_id=v1%3A150054781810029042; Domain=.twitter.com; Path=/; Expires=Sat,
+        20-Jul-2019 10:50:18 UTC
       - lang=ja; Path=/
       Status:
       - 200 OK
@@ -53,15 +53,15 @@ http_interactions:
       X-Access-Level:
       - read-write
       X-Connection-Hash:
-      - e085513590092bf93a8c3cd57f6a46a6
+      - 0c35b10459e184482533088ffa38e0d3
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Response-Time:
-      - '210'
+      - '341'
       X-Transaction:
-      - '00486f96004b99cb'
+      - '008e7ccb00dd476b'
       X-Tsa-Request-Body-Time:
       - '0'
       X-Twitter-Response-Tags:
@@ -70,9 +70,9 @@ http_interactions:
       - 1; mode=block
     body:
       encoding: ASCII-8BIT
-      string: '{"created_at":"Fri Jul 14 13:23:57 +0000 2017","id":885852367689703424,"id_str":"885852367689703424","text":"\u30c6\u30b9\u30c8","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[]},"source":"\u003ca
-        href=\"https:\/\/nagoya-benkyokai.com\/\" rel=\"nofollow\"\u003e\u52c9\u5f37\u4f1a\u30c6\u30b9\u30c8\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":878212227874004992,"id_str":"878212227874004992","name":"\u3079\u3093\u304d\u3087\u3046\u304b\u3044\u3066\u3059\u3068","screen_name":"benkyo_dev","location":"","description":"","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":0,"friends_count":0,"listed_count":0,"created_at":"Fri
-        Jun 23 11:24:46 +0000 2017","favourites_count":0,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"},"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":0,"favorite_count":0,"favorited":false,"retweeted":false,"lang":"ja"}'
+      string: '{"created_at":"Thu Jul 20 10:50:18 +0000 2017","id":887988026139230208,"id_str":"887988026139230208","text":"\u30c6\u30b9\u30c8","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[]},"source":"\u003ca
+        href=\"https:\/\/nagoya-benkyokai.com\/\" rel=\"nofollow\"\u003e\u52c9\u5f37\u4f1a\u30c6\u30b9\u30c8\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":878212227874004992,"id_str":"878212227874004992","name":"\u3079\u3093\u304d\u3087\u3046\u304b\u3044\u3066\u3059\u3068","screen_name":"benkyo_dev","location":"","description":"","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":1,"friends_count":0,"listed_count":0,"created_at":"Fri
+        Jun 23 11:24:46 +0000 2017","favourites_count":0,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":2,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"},"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":0,"favorite_count":0,"favorited":false,"retweeted":false,"lang":"ja"}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 13:23:59 GMT
+  recorded_at: Thu, 20 Jul 2017 10:50:20 GMT
 recorded_with: VCR 3.0.3

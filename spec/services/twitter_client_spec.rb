@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe TwitterClient, type: :request do
+xdescribe TwitterClient, type: :request do
   let(:client) { TwitterClient.new }
 
   xdescribe '#notify Slackに通知されること' do

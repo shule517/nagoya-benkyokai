@@ -4,32 +4,20 @@
 
 .shadow {
   margin-top: 5px; /* 画像の上の余白*/
-  display: inline-block; 
+  display: inline-block;
   box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.8); /*横方向　下方向　ぼかし　広がり　色 */
   border-radius: 15px;
 }
 
-hr.wave {
-  height: 6px;
-  background: url(http://ibrahimjabbari.com/english/images/hr-12.png) repeat-x 0 0;
+hr {
   border: 0;
+  margin: 20px 0;
 }
 
-hr.style-three {
-  border: 0;
-  border-bottom: 1px dashed #ccc;
-  background: #999;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-hr.style-two {
+.style-two {
   border: 0;
   height: 1px;
-  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
-  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0));
+  background-image: linear-gradient(to right, transparent, #A1A1A1 35%, #A1A1A1 65%, transparent);
 }
 
 img.owner-icon {
@@ -74,22 +62,11 @@ img.twitter-icon {
 }
 
 /* ------------------------------
-　　ベース
------------------------------- */
-body {
-	color: #333;
-	font-family: "Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",Meiryo,"メイリオ","ＭＳ Ｐゴシック","MS PGothic",Verdana,sans-serif;
-	font-size: 16px;
-	background: #FFF;
-	border-top: 10px solid #FFFFFF;
-	border-bottom: 10px solid #FFFFFF;
-}
-
-/* ------------------------------
 　　ヘッダー
 ------------------------------ */
 .header {
-	padding: 30px 0;
+  width: 100%;
+  margin-top: 20px;
 }
 
 .site-name {
@@ -98,6 +75,22 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
+}
+
+.header-logo {
+  white-space: nowrap;
+  padding: 0 20px;
+}
+
+.header-logo__svg {
+  max-width: 250px;
+  fill: $grey-900;
+}
+
+@include media($tablet) {
+  .header {
+    text-align: center;
+  }
 }
 
 /* ------------------------------
@@ -156,6 +149,9 @@ body {
 .event-place {
   margin-top: 10px;
   margin-bottom: 10px;
+  span {
+    line-height: 1.3em;
+  }
 }
 
 .event-address {
@@ -200,6 +196,52 @@ body {
 
 .user-title {
   border-bottom: 1px dashed #ccc;
+}
+
+@include media($ipad-pro) {
+  .day {
+    font-size: 23px;
+  }
+
+  .event-left {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 20px;
+  }
+
+  .event-right {
+    padding: 0
+  }
+
+  .event-title {
+    font-size: 18px;
+    width: 100%;
+    small {
+      display: block;
+      font-size: 14px;
+      margin-top: 10px;
+      text-align: left;
+    }
+  }
+
+  .event-place {
+    font-size: 12px;
+    margin-left: 15px;
+  }
+  .event-detail {
+    font-size: 14px;
+  }
+}
+
+@include media($mobile) {
+  .event-left {
+    width: 100%;
+  }
+
+  .event-right {
+    width: 100%;
+  }
 }
 
 /* ------------------------------
