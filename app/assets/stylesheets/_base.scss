@@ -1,0 +1,20 @@
+html {
+  font-family: $font-family;
+}
+
+body {
+	color: $grey-900;
+	font-size: 14px;
+}
+
+/* IE10以上 */
+@media all and (-ms-high-contrast: none)  {
+  html {
+    font-family: Verdana, Meiryo, sans-serif;
+  }
+}
+@media all and (-ms-high-contrast: active) {
+  html {
+    font-family: Verdana, Meiryo, sans-serif;
+  }
+}
