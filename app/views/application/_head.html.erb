@@ -1,14 +1,14 @@
 <title>名古屋勉強会らむだ</title>
+<%= csrf_meta_tags %>
+<%= stylesheet_link_tag 'application', media: 'all' %>
+<%= javascript_include_tag 'application' %>
+<%= analytics_init if Rails.env.production? %>
+<%= render 'favicon' %>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="keywords" content="名古屋勉強会,らむだ,λ,ラムダ,勉強会,IT勉強会,名古屋,愛知" />
 <meta name="description" content="名古屋のIT勉強会を探すなら 『名古屋勉強会らむだ』" />
-<%= csrf_meta_tags %>
-<%= stylesheet_link_tag    'application', media: 'all' %>
-<%= javascript_include_tag 'application' %>
-<%= analytics_init if Rails.env.production? %>
-<link rel="shortcut icon" href="https://pbs.twimg.com/profile_images/808763126673850368/wf2FsJ_-_bigger.jpg" >
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script>
   $(function () {

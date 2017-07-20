@@ -55,6 +55,7 @@ group :development do
   gem 'web-console'
   gem 'guard-livereload', '~> 2.5', require: false
   gem 'foreman'
+  gem "rails_real_favicon" # favicon生成用
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

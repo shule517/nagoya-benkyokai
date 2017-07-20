@@ -164,6 +164,7 @@ GEM
     multipart-post (2.0.0)
     naught (1.1.0)
     nenv (0.3.0)
+    netrc (0.11.0)
     newrelic_rpm (4.2.0.334)
     nio4r (2.1.0)
     nokogiri (1.8.0)
@@ -212,6 +213,11 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_real_favicon (0.0.7)
+      json (>= 1.7, < 3)
+      rails (>= 3.1)
+      rest-client (~> 2.0)
+      rubyzip (~> 1)
     railties (5.0.4)
       actionpack (= 5.0.4)
       activesupport (= 5.0.4)
@@ -224,6 +230,10 @@ GEM
     rb-fsevent (0.10.2)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    rest-client (2.0.2)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 4.0)
+      netrc (~> 0.8)
     rspec (3.6.0)
       rspec-core (~> 3.6.0)
       rspec-expectations (~> 3.6.0)
@@ -254,6 +264,7 @@ GEM
       rake (>= 0.8.1)
     ruby-progressbar (1.8.1)
     ruby_dep (1.5.0)
+    rubyzip (1.2.1)
     safe_yaml (1.0.4)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
@@ -355,6 +366,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
+  rails_real_favicon
   rspec
   rspec-rails
   rubocop
