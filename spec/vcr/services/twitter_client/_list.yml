@@ -12,9 +12,9 @@ http_interactions:
       User-Agent:
       - TwitterRubyGem/6.1.0
       Authorization:
-      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="35b10dd594415da3396d8fc60a5eabf3",
-        oauth_signature="Z84Tj5JOLFdPo%2FUxuZgXWrzFWBE%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1500038640", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="570447d7756780e8737064a1539343e5",
+        oauth_signature="ryjONqAfb6xgfLHvOqkasQvlVrI%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1500547822", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -29,22 +29,22 @@ http_interactions:
       Content-Disposition:
       - attachment; filename=json.json
       Content-Length:
-      - '680'
+      - '685'
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Fri, 14 Jul 2017 13:23:59 GMT
+      - Thu, 20 Jul 2017 10:50:20 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Fri, 14 Jul 2017 13:23:59 GMT
+      - Thu, 20 Jul 2017 10:50:20 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_m
       Set-Cookie:
-      - guest_id=v1%3A150003863908331520; Domain=.twitter.com; Path=/; Expires=Sun,
-        14-Jul-2019 13:23:59 UTC
+      - guest_id=v1%3A150054782021142369; Domain=.twitter.com; Path=/; Expires=Sat,
+        20-Jul-2019 10:50:20 UTC
       - lang=ja; Path=/
       Status:
       - 200 OK
@@ -53,28 +53,28 @@ http_interactions:
       X-Access-Level:
       - read-write
       X-Connection-Hash:
-      - '038a8b4c43b99822c8a451624a6c3102'
+      - 23e63208469d4c788aaf098c7b12614b
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Response-Time:
-      - '161'
+      - '211'
       X-Transaction:
-      - '008caaf90092a930'
+      - '009eea7a00dde4b7'
       X-Tsa-Request-Body-Time:
-      - '0'
+      - '1'
       X-Twitter-Response-Tags:
       - BouncerCompliant
       X-Xss-Protection:
       - 1; mode=block
     body:
       encoding: ASCII-8BIT
-      string: '{"id":885852374736060417,"id_str":"885852374736060417","name":"\u30c6\u30b9\u30c8","uri":"\/benkyo_dev\/lists\/list134","subscriber_count":0,"member_count":0,"mode":"private","description":"\u8a73\u7d30\u8aac\u660e\u3060\u3088","slug":"list134","full_name":"@benkyo_dev\/list134","created_at":"Fri
-        Jul 14 13:23:59 +0000 2017","following":false,"user":{"id":878212227874004992,"id_str":"878212227874004992","name":"\u3079\u3093\u304d\u3087\u3046\u304b\u3044\u3066\u3059\u3068","screen_name":"benkyo_dev","location":"","description":"","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":0,"friends_count":0,"listed_count":0,"created_at":"Fri
-        Jun 23 11:24:46 +0000 2017","favourites_count":0,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}}'
+      string: '{"id":887988035182186498,"id_str":"887988035182186498","name":"\u30c6\u30b9\u30c8","uri":"\/benkyo_dev\/lists\/list185","subscriber_count":0,"member_count":0,"mode":"private","description":"\u8a73\u7d30\u8aac\u660e\u3060\u3088","slug":"list185","full_name":"@benkyo_dev\/list185","created_at":"Thu
+        Jul 20 10:50:20 +0000 2017","following":false,"user":{"id":878212227874004992,"id_str":"878212227874004992","name":"\u3079\u3093\u304d\u3087\u3046\u304b\u3044\u3066\u3059\u3068","screen_name":"benkyo_dev","location":"","description":"","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":1,"friends_count":0,"listed_count":0,"created_at":"Fri
+        Jun 23 11:24:46 +0000 2017","favourites_count":0,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":2,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 13:24:00 GMT
+  recorded_at: Thu, 20 Jul 2017 10:50:22 GMT
 - request:
     method: get
     uri: https://api.twitter.com/1.1/account/verify_credentials.json?skip_status=true
@@ -87,9 +87,9 @@ http_interactions:
       User-Agent:
       - TwitterRubyGem/6.1.0
       Authorization:
-      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="f5fcddf1f0c1512941c1d9a2d14ea3c3",
-        oauth_signature="sPO0vfRa1br1EKnpsgFA1W9Qf2w%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1500038640", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="b13c5d7b1ba2b53d94ac20d144bbcdba",
+        oauth_signature="NGlzKYKpWyp7Cnkl8zt%2BrQCLUCc%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1500547822", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -102,22 +102,22 @@ http_interactions:
       Content-Disposition:
       - attachment; filename=json.json
       Content-Length:
-      - '547'
+      - '548'
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Fri, 14 Jul 2017 13:23:59 GMT
+      - Thu, 20 Jul 2017 10:50:20 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Fri, 14 Jul 2017 13:23:59 GMT
+      - Thu, 20 Jul 2017 10:50:20 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_m
       Set-Cookie:
-      - guest_id=v1%3A150003863934106540; Domain=.twitter.com; Path=/; Expires=Sun,
-        14-Jul-2019 13:23:59 UTC
+      - guest_id=v1%3A150054782060308082; Domain=.twitter.com; Path=/; Expires=Sat,
+        20-Jul-2019 10:50:20 UTC
       - lang=ja; Path=/
       Status:
       - 200 OK
@@ -126,7 +126,7 @@ http_interactions:
       X-Access-Level:
       - read-write
       X-Connection-Hash:
-      - 3739e3cc95e5eb414652500e61385c8f
+      - 91040db414c206cc05945a92e24fb382
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -136,11 +136,11 @@ http_interactions:
       X-Rate-Limit-Remaining:
       - '73'
       X-Rate-Limit-Reset:
-      - '1500039538'
+      - '1500548719'
       X-Response-Time:
-      - '118'
+      - '166'
       X-Transaction:
-      - '00598c1800642fae'
+      - '0028554b00bed0c8'
       X-Twitter-Response-Tags:
       - BouncerCompliant
       - BouncerExempt
@@ -148,13 +148,13 @@ http_interactions:
       - 1; mode=block
     body:
       encoding: ASCII-8BIT
-      string: '{"id":878212227874004992,"id_str":"878212227874004992","name":"\u3079\u3093\u304d\u3087\u3046\u304b\u3044\u3066\u3059\u3068","screen_name":"benkyo_dev","location":"","description":"","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":0,"friends_count":0,"listed_count":0,"created_at":"Fri
-        Jun 23 11:24:46 +0000 2017","favourites_count":0,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
+      string: '{"id":878212227874004992,"id_str":"878212227874004992","name":"\u3079\u3093\u304d\u3087\u3046\u304b\u3044\u3066\u3059\u3068","screen_name":"benkyo_dev","location":"","description":"","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":1,"friends_count":0,"listed_count":0,"created_at":"Fri
+        Jun 23 11:24:46 +0000 2017","favourites_count":0,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":2,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 13:24:01 GMT
+  recorded_at: Thu, 20 Jul 2017 10:50:22 GMT
 - request:
     method: get
-    uri: https://api.twitter.com/1.1/lists/show.json?list_id=885852374736060417&owner_id=878212227874004992
+    uri: https://api.twitter.com/1.1/lists/show.json?list_id=887988035182186498&owner_id=878212227874004992
     body:
       encoding: US-ASCII
       string: ''
@@ -164,9 +164,9 @@ http_interactions:
       User-Agent:
       - TwitterRubyGem/6.1.0
       Authorization:
-      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="b10ead6a6bcef2fd45cc468899fc10d1",
-        oauth_signature="7KELwRwoD4T9sc8XU3baDJWSywY%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1500038641", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="794bd3a3cdec82d5a3ae24622fe2d8d8",
+        oauth_signature="5dSGaxaxVaWxNRjVDSxIkh1qeaQ%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1500547822", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -179,22 +179,22 @@ http_interactions:
       Content-Disposition:
       - attachment; filename=json.json
       Content-Length:
-      - '680'
+      - '685'
       Content-Type:
       - application/json;charset=utf-8
       Date:
-      - Fri, 14 Jul 2017 13:23:59 GMT
+      - Thu, 20 Jul 2017 10:50:20 GMT
       Expires:
       - Tue, 31 Mar 1981 05:00:00 GMT
       Last-Modified:
-      - Fri, 14 Jul 2017 13:23:59 GMT
+      - Thu, 20 Jul 2017 10:50:20 GMT
       Pragma:
       - no-cache
       Server:
       - tsa_m
       Set-Cookie:
-      - guest_id=v1%3A150003863956076451; Domain=.twitter.com; Path=/; Expires=Sun,
-        14-Jul-2019 13:23:59 UTC
+      - guest_id=v1%3A150054782087010169; Domain=.twitter.com; Path=/; Expires=Sat,
+        20-Jul-2019 10:50:20 UTC
       - lang=ja; Path=/
       Status:
       - 200 OK
@@ -203,7 +203,7 @@ http_interactions:
       X-Access-Level:
       - read-write
       X-Connection-Hash:
-      - 558e4d34955727eba390f389d7e9ef79
+      - '09044df7bcbcf8ae66d1c22c2206157d'
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -213,20 +213,20 @@ http_interactions:
       X-Rate-Limit-Remaining:
       - '74'
       X-Rate-Limit-Reset:
-      - '1500039539'
+      - '1500548720'
       X-Response-Time:
-      - '138'
+      - '186'
       X-Transaction:
-      - 001125b500a8a9ee
+      - 00ed9bd400e05413
       X-Twitter-Response-Tags:
       - BouncerCompliant
       X-Xss-Protection:
       - 1; mode=block
     body:
       encoding: ASCII-8BIT
-      string: '{"id":885852374736060417,"id_str":"885852374736060417","name":"\u30c6\u30b9\u30c8","uri":"\/benkyo_dev\/lists\/list134","subscriber_count":0,"member_count":0,"mode":"private","description":"\u8a73\u7d30\u8aac\u660e\u3060\u3088","slug":"list134","full_name":"@benkyo_dev\/list134","created_at":"Fri
-        Jul 14 13:23:59 +0000 2017","following":true,"user":{"id":878212227874004992,"id_str":"878212227874004992","name":"\u3079\u3093\u304d\u3087\u3046\u304b\u3044\u3066\u3059\u3068","screen_name":"benkyo_dev","location":"","description":"","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":0,"friends_count":0,"listed_count":0,"created_at":"Fri
-        Jun 23 11:24:46 +0000 2017","favourites_count":0,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}}'
+      string: '{"id":887988035182186498,"id_str":"887988035182186498","name":"\u30c6\u30b9\u30c8","uri":"\/benkyo_dev\/lists\/list185","subscriber_count":0,"member_count":0,"mode":"private","description":"\u8a73\u7d30\u8aac\u660e\u3060\u3088","slug":"list185","full_name":"@benkyo_dev\/list185","created_at":"Thu
+        Jul 20 10:50:20 +0000 2017","following":true,"user":{"id":878212227874004992,"id_str":"878212227874004992","name":"\u3079\u3093\u304d\u3087\u3046\u304b\u3044\u3066\u3059\u3068","screen_name":"benkyo_dev","location":"","description":"","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":1,"friends_count":0,"listed_count":0,"created_at":"Fri
+        Jun 23 11:24:46 +0000 2017","favourites_count":0,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":2,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}}'
     http_version: 
-  recorded_at: Fri, 14 Jul 2017 13:24:01 GMT
+  recorded_at: Thu, 20 Jul 2017 10:50:23 GMT
 recorded_with: VCR 3.0.3
