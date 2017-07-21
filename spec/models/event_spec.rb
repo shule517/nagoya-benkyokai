@@ -47,4 +47,20 @@ describe Event do
       end
     end
   end
+
+  describe '#ended' do
+    context '今日開催の勉強会の場合' do
+      it '取得されないこと' do
+        Event.create(started_at: Time.now)
+        expect(Event.ended.count).to eq 0
+      end
+    end
+
+    context '開催週量した勉強会の場合' do
+      it '取得されること' do
+        Event.create(started_at: Time.now.yesterday)
+        expect(Event.ended.count).to eq 1
+      end
+    end
+  end
 end
