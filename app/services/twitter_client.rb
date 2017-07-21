@@ -93,7 +93,7 @@ class TwitterClient
   rescue Twitter::Error::Forbidden
     puts "Error: #{users}をリストに追加する権限がありません。"
   rescue => e
-    NotifyService.new.call(e, "TwitterCient.add_list_member(list_id: #{list_id}, user_id: #{user_id})")
+    NotifyService.new.call(e, "TwitterCient.add_list_member(list_id: #{list_id}, user_id: #{users})")
     raise
   end
 
