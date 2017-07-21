@@ -12,7 +12,7 @@ class Event < ApplicationRecord
   has_many :tags, through: :event_tags, source: :tag
 
   scope :scheduled, -> { where('started_at >= ?', Date.today).order(:started_at) }
-  scope :ended, -> { where('started_at < ?', Date.today) }
+  scope :ended, -> { where('started_at < ?', Date.today).order(started_at: :desc) }
 
   def year
     started_at[0...4].to_i

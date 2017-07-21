@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @events = users_events.scheduled.each do |event|
       event.twitter_list_url = event.twitter_list_url.gsub('nagoya_lambda/', 'nagoya_lambda/lists/') if event.twitter_list_url.present?
     end
-    @events_histories = users_events.ended.order(:started_at).reverse.each do |event|
+    @events_histories = users_events.ended.each do |event|
       event.twitter_list_url = event.twitter_list_url.gsub('nagoya_lambda/', 'nagoya_lambda/lists/') if event.twitter_list_url.present?
     end
   end
