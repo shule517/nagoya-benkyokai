@@ -31,4 +31,20 @@ describe Event do
       expect { event.destroy }.to change(Participant, :count).by(-1)
     end
   end
+
+  describe '#scheduled' do
+    context '今日開催の勉強会の場合' do
+      it '取得できること' do
+        Event.create(started_at: Time.now)
+        expect(Event.scheduled.count).to eq 1
+      end
+    end
+
+    context '開催週量した勉強会の場合' do
+      it '取得されないこと' do
+        Event.create(started_at: Time.now.yesterday)
+        expect(Event.scheduled.count).to eq 0
+      end
+    end
+  end
 end

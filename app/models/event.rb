@@ -11,6 +11,8 @@ class Event < ApplicationRecord
   has_many :event_tags, dependent: :delete_all
   has_many :tags, through: :event_tags, source: :tag
 
+  scope :scheduled, -> { where('started_at > ?', Date.today) }
+
   def year
     started_at[0...4].to_i
   end
