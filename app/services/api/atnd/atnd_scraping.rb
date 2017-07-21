@@ -32,7 +32,7 @@ module Api
         event_doc.css('.events-show-img > img/@data-original').each do |img|
           return "https://atnd.org#{img}"
         end
-        '/img/atnd.png'
+        'atnd.png'
       end
 
       def users

@@ -240,7 +240,7 @@ describe AtndEvent, type: :request do
       let(:event) { api.find(event_id: 88235) }
 
       it 'ATNDロゴが取得できること', vcr: '#logo-not_exist' do
-        expect(event.logo).to eq '/img/atnd.png'
+        expect(event.logo).to eq 'atnd.png'
       end
     end
   end
