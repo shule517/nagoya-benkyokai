@@ -13,6 +13,10 @@ module Api
         description.gsub(/<\/?[^>]*>/, '')
       end
 
+      def event_url
+        self[:event_url].gsub('http://', 'https://')
+      end
+
       def started_at
         Time.parse(self[:started_at])
       end
