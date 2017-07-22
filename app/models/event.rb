@@ -21,6 +21,8 @@ class Event < ApplicationRecord
   def month
     started_at.month
   rescue => e
+    # TODO エラーの原因調査
+    NotifyService.new.call(e, "Event.month (started_at:#{started_at})")
     p e
   end
 
