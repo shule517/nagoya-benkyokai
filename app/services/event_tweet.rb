@@ -43,24 +43,26 @@ class EventTweet
     end
 
     def tweet_message(event)
+      message = "#{date(event)}に開催される勉強会です！\n#{title(event)}\n\nイベントページ：#{event.event_url}"
+      if event.twitter_list_url
+        twitter_list_url = event.twitter_list_url.gsub('nagoya_lambda/', 'nagoya_lambda/lists/')
+        message += "\nツイッターリスト：#{twitter_list_url}"
+      end
+      message += "\n##{event.hash_tag}" if event.hash_tag.present?
+      message
+    end
+
+    def date(event)
+      "#{event.year}/#{event.month}/#{event.day}(#{event.wday})"
+    end
+
+    def title(event)
       title = ''
       event.title.split(/[[:space:]]/).each do |str|
         title += str if (title.size + str.size) < 40
       end
       title = event.title[0..40] if title.empty?
-
-      message = ''
-      if event.twitter_list_url
-        twitter_list_url = event.twitter_list_url.gsub('nagoya_lambda/', 'nagoya_lambda/lists/')
-        message = "#{event.year}/#{event.month}/#{event.day}(#{event.wday})に開催される勉強会です！\n#{title}\n\nイベントページ：#{event.event_url}\nツイッターリスト：#{twitter_list_url}"
-      else
-        message = "#{event.year}/#{event.month}/#{event.day}(#{event.wday})に開催される勉強会です！\n#{title}\n\nイベントページ：#{event.event_url}"
-      end
-
-      if event.hash_tag.present?
-        message += "\n##{event.hash_tag}"
-      end
-      message
+      title
     end
   end
 end
