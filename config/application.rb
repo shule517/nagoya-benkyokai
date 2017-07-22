@@ -24,5 +24,6 @@ module NagoyaBenkyokai
       request_specs: false
       g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
+    config.time_zone = 'Tokyo'
   end
 end

@@ -18,20 +18,16 @@ describe DoorkeeperEvent, type: :request do
       expect(event.catch).to start_with "リモート開発、してますか？\nしている人も、していないけどしたい人も、集まって情報交換しましょう。"
       expect(event.description).to start_with "<p>リモート開発、してますか？<br><br>\nしている人も、していないけどしたい人も、集まって情報交換しましょう。"
       expect(event.logo_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/events_banners/45257_normal_1463562966_%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%90%E3%83%BC%E3%83%AD%E3%82%B4.png'
-      expect(event.started_at).to eq '2016-06-13T10:30:00.000Z'
-      # expect(event.started_at).to eq Time.parse('2016-06-13T10:30:00.000Z')
-      expect(event.ended_at).to eq '2016-06-13T13:00:00.000Z'
-      # expect(event.ended_at).to eq Time.parse('2016-06-13 13:00:00.000000000 +0000')
+      expect(event.started_at).to eq Time.parse('2016-06-13T10:30:00.000Z')
+      expect(event.ended_at).to eq Time.parse('2016-06-13 13:00:00.000000000 +0000')
       expect(event.place).to eq 'Club Adriana'
       expect(event.lat).to eq '35.170239'
       expect(event.lon).to eq '136.92266159999997'
       expect(event.limit).to eq 38
       expect(event.accepted).to eq 32
       expect(event.waiting).to eq 0
-      expect(event.updated_at).to eq '2017-01-10T12:14:06.478Z'
-      # expect(event.updated_at).to eq '2017-01-10 12:14:06.478000000 +0000'
-      expect(event.update_time).to eq '2017-01-10T12:14:06.478Z'
-      # expect(event.update_time).to eq '2017-01-10 12:14:06.478000000 +0000'
+      expect(event.updated_at).to eq Time.parse('2017-01-10 12:14:06.478000000 +0000')
+      expect(event.update_time).to eq Time.parse('2017-01-10 12:14:06.478000000 +0000')
       expect(event.hash_tag).to eq nil # Doorkeeperにはハッシュタグは設定されない
       expect(event.limit_over?).to eq false
       expect(event.users.count + 3).to eq event.accepted # 3人非表示

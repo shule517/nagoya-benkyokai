@@ -41,18 +41,19 @@ module Api
       end
 
       def started_at
-        self[:starts_at]
-        # Time.parse(self[:starts_at])
+        Time.parse(self[:starts_at])
       end
 
       def ended_at
-        self[:ends_at]
-        # Time.parse(self[:ends_at])
+        Time.parse(self[:ends_at])
+      end
+
+      def updated_at
+        Time.parse(self[:updated_at])
       end
 
       def update_time
-        self[:updated_at]
-        # Time.parse(self[:updated_at])
+        updated_at
       end
 
       def group_id

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170722023728) do
+ActiveRecord::Schema.define(version: 20170722034949) do
 
   create_table "event_tags", force: :cascade do |t|
     t.integer  "event_id"
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20170722023728) do
     t.string   "catch"
     t.string   "description"
     t.string   "event_url"
-    t.string   "started_at"
-    t.string   "ended_at"
+    t.string   "started_at_old"
+    t.string   "ended_at_old"
     t.string   "url"
     t.string   "address"
     t.string   "place"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20170722023728) do
     t.string   "group_logo_url"
     t.string   "logo_url"
     t.datetime "created_at",                        null: false
-    t.string   "update_time"
+    t.string   "update_time_old"
     t.boolean  "tweeted_new",       default: false, null: false
     t.boolean  "tweeted_tomorrow",  default: false, null: false
     t.string   "twitter_list_name"
@@ -57,6 +57,9 @@ ActiveRecord::Schema.define(version: 20170722023728) do
     t.integer  "accepted"
     t.integer  "waiting"
     t.integer  "group_id"
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.datetime "update_time"
   end
 
   create_table "participants", force: :cascade do |t|

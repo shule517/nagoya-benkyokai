@@ -17,10 +17,8 @@ describe AtndEvent, type: :request do
       expect(event.catch).to start_with "【ATEAM TECHとは】\nゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。"
       expect(event.description).to start_with "<h2>【ATEAM TECHとは】</h2>\n<p>ゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。<br />"
       expect(event.logo_url).to eq 'https://atnd.org/event_images/0008/0890/008_original.jpg?1474957731'
-      # expect(event.started_at).to eq Time.parse('2016-10-11T20:00:00.000+09:00')
-      expect(event.started_at).to eq '2016-10-11T20:00:00.000+09:00'
-      # expect(event.ended_at).to eq Time.parse('2016-10-11T22:30:00.000+09:00')
-      expect(event.ended_at).to eq '2016-10-11T22:30:00.000+09:00'
+      expect(event.started_at).to eq Time.parse('2016-10-11T20:00:00.000+09:00')
+      expect(event.ended_at).to eq Time.parse('2016-10-11T22:30:00.000+09:00')
       expect(event.place).to eq 'エイチーム　本社'
       expect(event.address).to eq '〒450-6432　名古屋市中村区名駅三丁目28番12号　大名古屋ビルヂング 32F'
       expect(event.lat).to eq '35.1720523'
@@ -28,10 +26,8 @@ describe AtndEvent, type: :request do
       expect(event.limit).to eq 45
       expect(event.accepted).to eq 39
       expect(event.waiting).to eq 0
-      expect(event.updated_at).to eq '2016-10-08T00:52:33.000+09:00'
-      # expect(event.updated_at).to eq Time.parse('2016-05-12 15:27:59 +0900')
-      expect(event.update_time).to eq '2016-10-08T00:52:33.000+09:00'
-      # expect(event.update_time).to eq Time.parse('2016-05-12 15:27:59 +0900')
+      expect(event.updated_at).to eq Time.parse('2016-10-08 00:52:33.000000000 +0900')
+      expect(event.update_time).to eq Time.parse('2016-10-08 00:52:33.000000000 +0900')
       # expect(event.hash_tag).to eq 'ATEAM_TECH' # TODO 取得できていない
       expect(event.limit_over?).to eq false
       expect(event.users.count).to eq event.accepted

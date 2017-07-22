@@ -15,15 +15,15 @@ class Event < ApplicationRecord
   scope :ended, -> { where('started_at < ?', Date.today).order(started_at: :desc) }
 
   def year
-    started_at[0...4].to_i
+    started_at.year
   end
 
   def month
-    started_at[5...7].to_i
+    started_at.month
   end
 
   def day
-    started_at[8...10].to_i
+    started_at.day
   end
 
   def wday

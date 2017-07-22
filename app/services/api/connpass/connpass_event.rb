@@ -17,9 +17,20 @@ module Api
         end
       end
 
+      def started_at
+        Time.parse(self[:started_at])
+      end
+
+      def ended_at
+        Time.parse(self[:ended_at])
+      end
+
+      def updated_at
+        Time.parse(self[:updated_at])
+      end
+
       def update_time
-        self[:updated_at]
-        # Time.parse(self[:updated_at])
+        updated_at
       end
 
       def series
