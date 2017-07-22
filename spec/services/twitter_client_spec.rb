@@ -3,7 +3,7 @@ require 'rails_helper'
 describe TwitterClient, type: :request do
   let(:client) { TwitterClient.new }
 
-  xdescribe '#notify Slackに通知されること' do
+  describe '#notify Slackに通知されること' do
     it '#tweet', vcr: '#notify-tweet' do
       expect { client.tweet(nil) }.to raise_error Twitter::Error::Forbidden
     end
@@ -20,8 +20,9 @@ describe TwitterClient, type: :request do
       expect { client.list(nil) }.to raise_error Twitter::Error::BadRequest
     end
 
-    xit '#lists', vcr: '#notify-lists' do
-      expect { client.lists(nil) }.to raise_error TypeError
+    it '#lists', vcr: '#notify-lists' do
+      client.instance_eval { @client = nil }
+      expect { client.lists(test: 'arg') }.to raise_error NoMethodError
     end
 
     it '#update_list', vcr: '#notify-update_list' do

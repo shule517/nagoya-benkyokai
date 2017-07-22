@@ -1,0 +1,212 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/account/verify_credentials.json?skip_status=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/6.1.0
+      Authorization:
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="66b888b1928a0df707dfa94cf42be93b",
+        oauth_signature="pjm2oMO6kBS5dP5cB1hPwkauNqY%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1500683009", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '546'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sat, 22 Jul 2017 00:23:29 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Sat, 22 Jul 2017 00:23:29 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A150068300937339628; Domain=.twitter.com; Path=/; Expires=Mon,
+        22-Jul-2019 00:23:29 UTC
+      - lang=ja; Path=/
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read-write
+      X-Connection-Hash:
+      - 964a8ff760d33f3c2cd31a7d6a052590
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '75'
+      X-Rate-Limit-Remaining:
+      - '63'
+      X-Rate-Limit-Reset:
+      - '1500683221'
+      X-Response-Time:
+      - '182'
+      X-Transaction:
+      - 00011f1800d5aa10
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      - BouncerExempt
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":878212227874004992,"id_str":"878212227874004992","name":"\u3079\u3093\u304d\u3087\u3046\u304b\u3044\u3066\u3059\u3068","screen_name":"benkyo_dev","location":"","description":"","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":0,"friends_count":0,"listed_count":0,"created_at":"Fri
+        Jun 23 11:24:46 +0000 2017","favourites_count":0,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":2,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}'
+    http_version: 
+  recorded_at: Sat, 22 Jul 2017 00:23:29 GMT
+- request:
+    method: post
+    uri: https://api.twitter.com/1.1/lists/members/create.json
+    body:
+      encoding: UTF-8
+      string: owner_id=878212227874004992
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/6.1.0
+      Authorization:
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="cf2e7d62383b461afff4942265ab1ccb",
+        oauth_signature="EWukBtG2RoIv66%2FDZItwrCoIops%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1500683009", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '91'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Sat, 22 Jul 2017 00:23:29 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Sat, 22 Jul 2017 00:23:29 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A150068300964576432; Domain=.twitter.com; Path=/; Expires=Mon,
+        22-Jul-2019 00:23:29 UTC
+      - lang=ja; Path=/
+      Status:
+      - 400 Bad Request
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read-write
+      X-Connection-Hash:
+      - b737bc4323e3e8a4d9ce2f8e04ae68c3
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Response-Time:
+      - '159'
+      X-Transaction:
+      - 00cfbe4500fcfabd
+      X-Tsa-Request-Body-Time:
+      - '0'
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"code":25,"message":"Query parameters are missing."}]}'
+    http_version: 
+  recorded_at: Sat, 22 Jul 2017 00:23:29 GMT
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: channel=&text=TwitterCient.add_list_member%28list_id%3A+%2C+user_id%3A+%29%0ATwitter%3A%3AError%3A%3ABadRequest%0AQuery+parameters+are+missing.%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Ftwitter-6.1.0%2Flib%2Ftwitter%2Frest%2Fresponse%2Fraise_error.rb%3A13%3Ain+%60on_complete%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Ffaraday-0.11.0%2Flib%2Ffaraday%2Fresponse.rb%3A9%3Ain+%60block+in+call%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Ffaraday-0.11.0%2Flib%2Ffaraday%2Fresponse.rb%3A61%3Ain+%60on_complete%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Ffaraday-0.11.0%2Flib%2Ffaraday%2Fresponse.rb%3A8%3Ain+%60call%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Ffaraday-0.11.0%2Flib%2Ffaraday%2Frequest%2Furl_encoded.rb%3A15%3Ain+%60call%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Ffaraday-0.11.0%2Flib%2Ffaraday%2Frequest%2Fmultipart.rb%3A14%3Ain+%60call%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Ftwitter-6.1.0%2Flib%2Ftwitter%2Frest%2Frequest%2Fmultipart_with_file.rb%3A21%3Ain+%60call%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Ffaraday-0.11.0%2Flib%2Ffaraday%2Frack_builder.rb%3A139%3Ain+%60build_response%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Ffaraday-0.11.0%2Flib%2Ffaraday%2Fconnection.rb%3A377%3Ain+%60run_request%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Ffaraday-0.11.0%2Flib%2Ffaraday%2Fconnection.rb%3A177%3Ain+%60post%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Ftwitter-6.1.0%2Flib%2Ftwitter%2Frest%2Frequest.rb%3A33%3Ain+%60perform%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Ftwitter-6.1.0%2Flib%2Ftwitter%2Frest%2Futils.rb%3A50%3Ain+%60perform_request%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Ftwitter-6.1.0%2Flib%2Ftwitter%2Frest%2Futils.rb%3A72%3Ain+%60perform_request_with_object%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Ftwitter-6.1.0%2Flib%2Ftwitter%2Frest%2Futils.rb%3A64%3Ain+%60perform_post_with_object%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Ftwitter-6.1.0%2Flib%2Ftwitter%2Frest%2Flists.rb%3A449%3Ain+%60list_from_response_with_user%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Ftwitter-6.1.0%2Flib%2Ftwitter%2Frest%2Flists.rb%3A270%3Ain+%60add_list_member%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fapp%2Fservices%2Ftwitter_client.rb%3A81%3Ain+%60add_list_member%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fspec%2Fservices%2Ftwitter_client_spec.rb%3A36%3Ain+%60block+%284+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fspec%2Fservices%2Ftwitter_client_spec.rb%3A36%3Ain+%60block+%283+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Frspec-rails-3.6.0%2Flib%2Frspec%2Frails%2Fadapters.rb%3A127%3Ain+%60block+%282+levels%29+in+%3Cmodule%3AMinitestLifecycleAdapter%3E%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fspec%2Fspec_helper.rb%3A27%3Ain+%60block+%283+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Fvcr-3.0.3%2Flib%2Fvcr%2Futil%2Fvariable_args_block_caller.rb%3A9%3Ain+%60call_block%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Fvcr-3.0.3%2Flib%2Fvcr.rb%3A189%3Ain+%60use_cassette%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fspec%2Fspec_helper.rb%3A26%3Ain+%60block+%282+levels%29+in+%3Ctop+%28required%29%3E%27&token=&username=lambda
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Slack Ruby Gem 1.6.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '53'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sat, 22 Jul 2017 00:23:29 GMT
+      Referrer-Policy:
+      - no-referrer
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Vary:
+      - Accept-Encoding
+      X-Accepted-Oauth-Scopes:
+      - chat:write:user
+      X-Content-Type-Options:
+      - nosniff
+      X-Slack-Backend:
+      - h
+      X-Slack-Req-Id:
+      - 2942dac3-61d7-4741-b033-aec28a82dc91
+      X-Xss-Protection:
+      - '0'
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 b41bd1a11cc0aca6ca4c2909108abfd3.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - dw4ZwkAZp__66zEllWSS7Vq9EDJjaCvtfgqvg8eKVU03zDNX2T8iug==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":false,"error":"not_authed"}'
+    http_version: 
+  recorded_at: Sat, 22 Jul 2017 00:23:30 GMT
+recorded_with: VCR 3.0.3

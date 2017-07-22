@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: channel=&text=TwitterCient.create_list%28title%3A+%2C+description%3A+%29%0ANoMethodError%0Aundefined+method+%60strip%21%27+for+nil%3ANilClass%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fapp%2Fservices%2Ftwitter_client.rb%3A138%3Ain+%60create_list_name%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fapp%2Fservices%2Ftwitter_client.rb%3A46%3Ain+%60create_list%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fspec%2Fservices%2Ftwitter_client_spec.rb%3A16%3Ain+%60block+%284+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fspec%2Fservices%2Ftwitter_client_spec.rb%3A16%3Ain+%60block+%283+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Frspec-rails-3.6.0%2Flib%2Frspec%2Frails%2Fadapters.rb%3A127%3Ain+%60block+%282+levels%29+in+%3Cmodule%3AMinitestLifecycleAdapter%3E%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fspec%2Fspec_helper.rb%3A27%3Ain+%60block+%283+levels%29+in+%3Ctop+%28required%29%3E%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Fvcr-3.0.3%2Flib%2Fvcr%2Futil%2Fvariable_args_block_caller.rb%3A9%3Ain+%60call_block%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fvendor%2Fbundle%2Fruby%2F2.4.0%2Fgems%2Fvcr-3.0.3%2Flib%2Fvcr.rb%3A189%3Ain+%60use_cassette%27%0A%2FUsers%2Fshule%2FDocuments%2Fnagoya-benkyokai_0721%2Fspec%2Fspec_helper.rb%3A26%3Ain+%60block+%282+levels%29+in+%3Ctop+%28required%29%3E%27&token=&username=lambda
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Slack Ruby Gem 1.6.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '53'
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Date:
+      - Sat, 22 Jul 2017 00:23:27 GMT
+      Referrer-Policy:
+      - no-referrer
+      Server:
+      - Apache
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Vary:
+      - Accept-Encoding
+      X-Accepted-Oauth-Scopes:
+      - chat:write:user
+      X-Content-Type-Options:
+      - nosniff
+      X-Slack-Backend:
+      - h
+      X-Slack-Req-Id:
+      - a01e65a6-d1fc-45e4-a2ca-08e898db29c4
+      X-Xss-Protection:
+      - '0'
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 0c20e2fdefa03f3d035d5ba5e3855121.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - g1hMd6-XXm0-cr94JzCJ11LnjSqcnYpd7D1cWIyYRjsG03e7smVkPg==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":false,"error":"not_authed"}'
+    http_version: 
+  recorded_at: Sat, 22 Jul 2017 00:23:27 GMT
+recorded_with: VCR 3.0.3
