@@ -17,10 +17,8 @@ describe ConnpassEvent, type: :request do
       expect(event.catch).to start_with "にゃごやでも話題の Xamarin を触ってみよう！<br>こんにちは。エクセルソフトの田淵です。\n今話題の Xamarin を名古屋でも触ってみましょう！"
       expect(event.description).to start_with "<p>こんにちは。エクセルソフトの田淵です。</p>\n<p>今話題の Xamarin を名古屋でも触ってみましょう！"
       expect(event.logo_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/d7/3c/d73cccc993bb52bffbc0b65bc4c10d38.png'
-      expect(event.started_at).to eq '2016-05-15T13:00:00+09:00'
-      # expect(event.started_at).to eq Time.parse('2016-05-15T13:00:00+09:00')
-      expect(event.ended_at).to eq '2016-05-15T16:00:00+09:00'
-      # expect(event.ended_at).to eq Time.parse('2016-05-15T16:00:00+09:00')
+      expect(event.started_at).to eq Time.parse('2016-05-15T13:00:00+09:00')
+      expect(event.ended_at).to eq Time.parse('2016-05-15T16:00:00+09:00')
       expect(event.place).to eq '熱田生涯学習センター'
       expect(event.address).to eq '熱田区熱田西町2-13'
       expect(event.lat).to eq '35.126704400000'
@@ -28,10 +26,8 @@ describe ConnpassEvent, type: :request do
       expect(event.limit).to eq 38
       expect(event.accepted).to eq 38
       expect(event.waiting).to eq 0
-      expect(event.updated_at).to eq '2016-05-12T15:27:59+09:00'
-      # expect(event.updated_at).to eq Time.parse('2016-05-12 15:27:59 +0900')
-      expect(event.update_time).to eq '2016-05-12T15:27:59+09:00'
-      # expect(event.update_time).to eq Time.parse('2016-05-12 15:27:59 +0900')
+      expect(event.updated_at).to eq Time.parse('2016-05-12 15:27:59 +0900')
+      expect(event.update_time).to eq Time.parse('2016-05-12 15:27:59 +0900')
       expect(event.hash_tag).to eq 'JXUG'
       expect(event.limit_over?).to eq true
       expect(event.users.count).to eq event.accepted
