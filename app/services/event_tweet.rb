@@ -53,7 +53,7 @@ class EventTweet
     end
 
     def date(event)
-      "#{event.year}/#{event.month}/#{event.day}(#{event.wday})"
+      "#{event.month}/#{event.day}(#{event.wday})"
     end
 
     def title(event)
