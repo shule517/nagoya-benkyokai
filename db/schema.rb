@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170702011147) do
+ActiveRecord::Schema.define(version: 20170722005637) do
 
   create_table "event_tags", force: :cascade do |t|
     t.integer  "event_id"
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(version: 20170702011147) do
     t.string   "group_url"
     t.string   "group_id"
     t.string   "group_title"
-    t.string   "group_logo"
-    t.string   "logo"
+    t.string   "group_logo_url"
+    t.string   "logo_url"
     t.datetime "created_at",                        null: false
     t.string   "update_time"
     t.boolean  "tweeted_new",       default: false, null: false

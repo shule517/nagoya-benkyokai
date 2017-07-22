@@ -16,7 +16,7 @@ describe AtndEvent, type: :request do
       expect(event.title).to eq 'エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！成長し続けるWebサービスの裏側 AWS活用事例を大公開！'
       expect(event.catch).to start_with "【ATEAM TECHとは】\nゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。"
       expect(event.description).to start_with "<h2>【ATEAM TECHとは】</h2>\n<p>ゲームやインターネット業界で働く技術者向けに勉強会や交流できる場を設け、新しい気づきや成長につながるような機会を提供することで、技術力の向上や業界のさらなる発展を目指します。<br />"
-      expect(event.logo).to eq 'https://atnd.org/event_images/0008/0890/008_original.jpg?1474957731'
+      expect(event.logo_url).to eq 'https://atnd.org/event_images/0008/0890/008_original.jpg?1474957731'
       # expect(event.started_at).to eq Time.parse('2016-10-11T20:00:00.000+09:00')
       expect(event.started_at).to eq '2016-10-11T20:00:00.000+09:00'
       # expect(event.ended_at).to eq Time.parse('2016-10-11T22:30:00.000+09:00')
@@ -39,7 +39,7 @@ describe AtndEvent, type: :request do
       expect(event.group_id).to eq nil
       expect(event.group_title).to eq nil
       expect(event.group_url).to eq nil
-      expect(event.group_logo).to eq nil
+      expect(event.group_logo_url).to eq nil
     end
   end
 
@@ -225,13 +225,13 @@ describe AtndEvent, type: :request do
     end
   end
 
-  describe '#logo' do
-    context 'logoが設定されている場合', vcr: '#logo-exist' do
+  describe '#logo_url' do
+    context 'logoが設定されている場合', vcr: '#logo_url-exist' do
       # エイチームの開発勉強会『ATEAM TECH』を10/11(火) に名古屋で開催！ https://atnd.org/events/81945
       let(:event) { api.find(event_id: 81945) }
 
       it 'イベントロゴが取得できること' do
-        expect(event.logo).to eq 'https://atnd.org/event_images/0008/0890/008_original.jpg?1474957731'
+        expect(event.logo_url).to eq 'https://atnd.org/event_images/0008/0890/008_original.jpg?1474957731'
       end
     end
 
@@ -239,8 +239,8 @@ describe AtndEvent, type: :request do
       # NagoyaStat #6 https://atnd.org/events/88235
       let(:event) { api.find(event_id: 88235) }
 
-      it 'ATNDロゴが取得できること', vcr: '#logo-not_exist' do
-        expect(event.logo).to eq 'atnd.png'
+      it 'ATNDロゴが取得できること', vcr: '#logo_url-not_exist' do
+        expect(event.logo_url).to eq 'atnd.png'
       end
     end
   end
@@ -254,7 +254,7 @@ describe AtndEvent, type: :request do
         expect(event.group_url).to eq 'https://atnd.org/groups/nagoya-stat'
         expect(event.group_id).to eq 'nagoya-stat'
         expect(event.group_title).to eq 'NagoyaStat'
-        expect(event.group_logo).to eq 'https://atnd.org/images/icon/atnd_latent.png'
+        expect(event.group_logo_url).to eq 'https://atnd.org/images/icon/atnd_latent.png'
       end
     end
 
@@ -266,7 +266,7 @@ describe AtndEvent, type: :request do
         expect(event.group_url).to eq nil
         expect(event.group_id).to eq nil
         expect(event.group_title).to eq nil
-        expect(event.group_logo).to eq nil
+        expect(event.group_logo_url).to eq nil
       end
     end
   end

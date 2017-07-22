@@ -21,14 +21,14 @@ module Api
         end
       end
 
-      def group_logo
+      def group_logo_url
         group_info do |doc|
           src = doc.css('img/@src').text
           "https://atnd.org#{src}"
         end
       end
 
-      def logo
+      def logo_url
         event_doc.css('.events-show-img > img/@data-original').each do |img|
           return "https://atnd.org#{img}"
         end

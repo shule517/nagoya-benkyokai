@@ -16,7 +16,7 @@ describe ConnpassEvent, type: :request do
       expect(event.title).to eq 'JXUGC #14 Xamarin ハンズオン 名古屋大会'
       expect(event.catch).to start_with "にゃごやでも話題の Xamarin を触ってみよう！<br>こんにちは。エクセルソフトの田淵です。\n今話題の Xamarin を名古屋でも触ってみましょう！"
       expect(event.description).to start_with "<p>こんにちは。エクセルソフトの田淵です。</p>\n<p>今話題の Xamarin を名古屋でも触ってみましょう！"
-      expect(event.logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/d7/3c/d73cccc993bb52bffbc0b65bc4c10d38.png'
+      expect(event.logo_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/d7/3c/d73cccc993bb52bffbc0b65bc4c10d38.png'
       expect(event.started_at).to eq '2016-05-15T13:00:00+09:00'
       # expect(event.started_at).to eq Time.parse('2016-05-15T13:00:00+09:00')
       expect(event.ended_at).to eq '2016-05-15T16:00:00+09:00'
@@ -39,7 +39,7 @@ describe ConnpassEvent, type: :request do
       expect(event.group_id).to eq 1134
       expect(event.group_title).to eq 'JXUG'
       expect(event.group_url).to eq 'https://jxug.connpass.com/'
-      expect(event.group_logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/c9/d3/c9d379a73fa278df5fae314abd0d227a.png'
+      expect(event.group_logo_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/c9/d3/c9d379a73fa278df5fae314abd0d227a.png'
     end
   end
 
@@ -197,14 +197,14 @@ describe ConnpassEvent, type: :request do
     end
   end
 
-  describe '#logo' do
-    let(:logo) { event.logo }
+  describe '#logo_url' do
+    let(:logo_url) { event.logo_url }
     context 'logoが設定されている場合' do
       # JXUGC #14 Xamarin ハンズオン 名古屋大会 https://jxug.connpass.com/event/30152/
       let(:event) { api.find(event_id: 30152) }
 
-      it '設定されたロゴが取得できること', vcr: '#logo.exist' do
-        expect(logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/d7/3c/d73cccc993bb52bffbc0b65bc4c10d38.png'
+      it '設定されたロゴが取得できること', vcr: '#logo_url.exist' do
+        expect(logo_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/d7/3c/d73cccc993bb52bffbc0b65bc4c10d38.png'
       end
     end
 
@@ -212,8 +212,8 @@ describe ConnpassEvent, type: :request do
       # 遺伝的有限集合勉強会 8 https://connpass.com/event/57258/
       let(:event) { api.find(event_id: 57258) }
 
-      it 'connpassのロゴが取得できること', vcr: '#logo.not_exist' do
-        expect(logo).to eq 'https://connpass.com/static/img/468_468.png'
+      it 'connpassのロゴが取得できること', vcr: '#logo_url.not_exist' do
+        expect(logo_url).to eq 'https://connpass.com/static/img/468_468.png'
       end
     end
   end
@@ -247,7 +247,7 @@ describe ConnpassEvent, type: :request do
         expect(event.group_title).to eq 'JXUG'
         expect(event.group_id).to eq 1134
         expect(event.group_url).to eq 'https://jxug.connpass.com/'
-        expect(event.group_logo).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/c9/d3/c9d379a73fa278df5fae314abd0d227a.png'
+        expect(event.group_logo_url).to eq 'https://connpass-tokyo.s3.amazonaws.com/thumbs/c9/d3/c9d379a73fa278df5fae314abd0d227a.png'
       end
     end
 
@@ -261,7 +261,7 @@ describe ConnpassEvent, type: :request do
         expect(event.group_title).to eq nil
         expect(event.group_id).to eq nil
         expect(event.group_url).to eq nil
-        expect(event.group_logo).to eq '' # TODO nil
+        expect(event.group_logo_url).to eq '' # TODO nil
       end
     end
   end

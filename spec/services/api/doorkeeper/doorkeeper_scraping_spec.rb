@@ -17,7 +17,7 @@ describe DoorkeeperEvent, type: :request do
       expect(event.title).to eq 'リモート開発 de ナイト ＠名古屋ギークバー'
       expect(event.catch).to start_with "リモート開発、してますか？\nしている人も、していないけどしたい人も、集まって情報交換しましょう。"
       expect(event.description).to start_with "<p>リモート開発、してますか？<br><br>\nしている人も、していないけどしたい人も、集まって情報交換しましょう。"
-      expect(event.logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/events_banners/45257_normal_1463562966_%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%90%E3%83%BC%E3%83%AD%E3%82%B4.png'
+      expect(event.logo_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/events_banners/45257_normal_1463562966_%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%90%E3%83%BC%E3%83%AD%E3%82%B4.png'
       expect(event.started_at).to eq '2016-06-13T10:30:00.000Z'
       # expect(event.started_at).to eq Time.parse('2016-06-13T10:30:00.000Z')
       expect(event.ended_at).to eq '2016-06-13T13:00:00.000Z'
@@ -40,7 +40,7 @@ describe DoorkeeperEvent, type: :request do
       expect(event.group_id).to eq 1995
       expect(event.group_title).to eq '名古屋ギークバー'
       expect(event.group_url).to eq 'https://geekbar.doorkeeper.jp/'
-      expect(event.group_logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/groups_logos/1995_normal_1380975297_251035_156371434432231_4785187_n.jpg'
+      expect(event.group_logo_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/groups_logos/1995_normal_1380975297_251035_156371434432231_4785187_n.jpg'
     end
   end
 
@@ -181,37 +181,37 @@ describe DoorkeeperEvent, type: :request do
     end
   end
 
-  describe '#logo' do
-    context 'logoが設定されている場合', vcr: '#logo-exist' do
+  describe '#logo_url' do
+    context 'logoが設定されている場合', vcr: '#logo_url-exist' do
       # リモート開発 de ナイト ＠名古屋ギークバー https://geekbar.doorkeeper.jp/events/45257
       let(:event) { api.find(event_id: 45257) }
 
-      it { expect(event.logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/events_banners/45257_normal_1463562966_%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%90%E3%83%BC%E3%83%AD%E3%82%B4.png' }
+      it { expect(event.logo_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/events_banners/45257_normal_1463562966_%E5%90%8D%E5%8F%A4%E5%B1%8B%E3%82%AE%E3%83%BC%E3%82%AF%E3%83%90%E3%83%BC%E3%83%AD%E3%82%B4.png' }
     end
 
-    context 'logoが設定されていない場合', vcr: '#logo-not_exist' do
+    context 'logoが設定されていない場合', vcr: '#logo_url-not_exist' do
       # a-blog cms 勉強会 in 名古屋 2017/05 https://ablogcms-nagoya.doorkeeper.jp/events/59695
       let(:event) { api.find(event_id: 59695) }
 
       it 'イベントロゴが設定されていない場合は、グループロゴが設定されること' do
-        expect(event.logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/groups_logos/7293_normal_1452048885_a.png'
+        expect(event.logo_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/groups_logos/7293_normal_1452048885_a.png'
       end
     end
   end
 
-  describe '#group_logo' do
-    context 'グループロゴが設定されている場合', vcr: '#group_logo-exist' do
+  describe '#group_logo_url' do
+    context 'グループロゴが設定されている場合', vcr: '#group_logo_url-exist' do
       # リモート開発 de ナイト ＠名古屋ギークバー https://geekbar.doorkeeper.jp/events/45257
       let(:event) { api.find(event_id: 45257) }
 
-      it { expect(event.group_logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/groups_logos/1995_normal_1380975297_251035_156371434432231_4785187_n.jpg' }
+      it { expect(event.group_logo_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/groups_logos/1995_normal_1380975297_251035_156371434432231_4785187_n.jpg' }
     end
 
-    context 'グループロゴが設定されていない場合', vcr: '#group_logo-not_exist' do
+    context 'グループロゴが設定されていない場合', vcr: '#group_logo_url-not_exist' do
       # 5月26日（金）個別相談会 ＜朝の部＞ https://jimdocafe-hakata.doorkeeper.jp/events/60351
       let(:event) { api.find(event_id: 60351) }
 
-      it { expect(event.group_logo).to eq 'https://dzpp79ucibp5a.cloudfront.net/assets/doorkeeper_group_normal-125b448b722fa8c158516cf4b86aafda26b442af55a001418b0eb2acf7117961.gif' }
+      it { expect(event.group_logo_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/assets/doorkeeper_group_normal-125b448b722fa8c158516cf4b86aafda26b442af55a001418b0eb2acf7117961.gif' }
     end
   end
 end

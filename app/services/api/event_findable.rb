@@ -24,8 +24,8 @@ module Api
         event.group_url = group_url
         event.group_id = group_id
         event.group_title = group_title
-        event.group_logo = group_logo
-        event.logo = logo
+        event.group_logo_url = group_logo_url
+        event.logo_url = logo_url
         return event
       end
 
@@ -51,8 +51,8 @@ module Api
         group_url: group_url,
         group_id: group_id,
         group_title: group_title,
-        group_logo: group_logo,
-        logo: logo)
+        group_logo_url: group_logo_url,
+        logo_url: logo_url)
     end
 
     def place_enc

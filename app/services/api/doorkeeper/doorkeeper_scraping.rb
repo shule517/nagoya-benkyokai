@@ -9,11 +9,11 @@ module Api
         event_doc.css('//meta[property="og:site_name"]/@content').text
       end
 
-      def logo
+      def logo_url
         event_doc.css('//meta[property="og:image"]/@content').text
       end
 
-      def group_logo
+      def group_logo_url
         event_doc.css('div.community-profile-picture > a > img/@src').first.text
       end
 

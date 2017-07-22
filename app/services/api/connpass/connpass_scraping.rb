@@ -1,13 +1,13 @@
 module Api
   module Connpass
     module ConnpassScraping
-      def group_logo
+      def group_logo_url
         event_doc.css('.event_group_area > div.group_inner > div > a/@style').text.match(%r{url\((.*)\)})[1]
       rescue
         ''
       end
 
-      def logo
+      def logo_url
         event_doc.css('//meta[property="og:image"]/@content').text
       end
 
