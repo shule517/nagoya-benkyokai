@@ -20,6 +20,8 @@ class Event < ApplicationRecord
 
   def month
     started_at.month
+  rescue => e
+    p e
   end
 
   def day
