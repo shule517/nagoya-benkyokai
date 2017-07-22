@@ -124,7 +124,7 @@ describe TwitterClient, type: :request do
       context '権限がない場合' do
         it 'メンバーを追加できないこと', vcr: '#add_list_member_block' do
           list = client.create_list(name, description)
-          client.add_list_member(list.id, 'shule517')
+          client.add_list_member(list.id, 'shule517_dev')
           members = client.list_members(list.id)
           expect(members.to_a.size).to eq 0
         end
@@ -137,9 +137,9 @@ describe TwitterClient, type: :request do
           expect(members.to_a.size).to eq 0
         end
 
-        xit '登録者が複数の場合', vcr: '#list_members-two_members' do
+        it '登録者が複数の場合', vcr: '#list_members-two_members' do
           list = client.create_list(name, description)
-          client.add_list_member(list.id, ['shule517', 'nagoya_lambda'])
+          client.add_list_members(list.id, ['shule517', 'nagoya_lambda'])
           members = client.list_members(list.id)
           expect(members.to_a.size).to eq 2
         end
