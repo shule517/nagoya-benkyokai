@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170722015000) do
+ActiveRecord::Schema.define(version: 20170722023728) do
 
   create_table "event_tags", force: :cascade do |t|
     t.integer  "event_id"
@@ -34,15 +34,15 @@ ActiveRecord::Schema.define(version: 20170722015000) do
     t.string   "place"
     t.string   "lat"
     t.string   "lon"
-    t.string   "limit"
-    t.string   "accepted"
-    t.string   "waiting"
+    t.string   "limit_old"
+    t.string   "accepted_old"
+    t.string   "waiting_old"
     t.datetime "updated_at",                        null: false
     t.string   "hash_tag"
     t.string   "place_enc"
     t.string   "source"
     t.string   "group_url"
-    t.string   "group_id"
+    t.string   "group_id_old"
     t.string   "group_title"
     t.string   "group_logo_url"
     t.string   "logo_url"
@@ -53,6 +53,10 @@ ActiveRecord::Schema.define(version: 20170722015000) do
     t.string   "twitter_list_name"
     t.string   "twitter_list_url"
     t.integer  "event_id"
+    t.integer  "limit"
+    t.integer  "accepted"
+    t.integer  "waiting"
+    t.integer  "group_id"
   end
 
   create_table "participants", force: :cascade do |t|
