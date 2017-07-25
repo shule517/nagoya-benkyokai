@@ -30,7 +30,7 @@
             </p>
           </a>
           <div class="event-place">
-            <a itemprop="location" itemscope itemtype="http://schema.org/Place" datatoggle="tooltip" title="<%= event.address %>" href="https://maps.google.co.jp/maps?q=<%= event.place_enc %>">
+            <a itemprop="location" itemscope itemtype="http://schema.org/Place" title="<%= event.address %>" href="https://maps.google.co.jp/maps?q=<%= event.place_enc %>">
               <span itemprop="name" class="glyphicon glyphicon-map-marker">
                 <%= event.place %>
               </span>
@@ -74,13 +74,13 @@
             <div style="background-color: #EEEEEE; border-radius: 5px;">
               <div style="padding-left: 10px; padding-top: 5px; padding-bottom: 5px;">
               <a href="<%= "#{event.twitter_list_url}" %>">
-                <%= image_tag("twitter.png", class: "twitter-icon", datatoggle: "tooltip", title: "ツイッターリスト") %>
+                <%= image_tag("twitter.png", class: "twitter-icon", title: "ツイッターリスト") %>
               </a>
               <% event.owners.each do |user| %>
                 <% if !user.twitter_id.empty?  %>
               <a class="clickable" href="<%= "./users/#{user.twitter_id}" %>">
                 <% end %>
-                <img class="owner-icon" src="<%= user.image_url %>" datatoggle="tooltip" title="管理者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
+                <img class="owner-icon" src="<%= user.image_url %>" title="管理者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
                 <% if !user.twitter_id.empty?  %>
               </a>
                 <% end %>
@@ -89,7 +89,7 @@
                 <% if !user[:twitter_id].empty?  %>
               <a class="clickable" href="<%= "./users/#{user.twitter_id}" %>">
                 <% end %>
-                <img class="user-icon" src="<%= user.image_url %>" datatoggle="tooltip" title="参加者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
+                <img class="user-icon" src="<%= user.image_url %>" title="参加者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
                 <% if !user.twitter_id.empty?  %>
               </a>
                 <% end %>
