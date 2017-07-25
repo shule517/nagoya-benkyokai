@@ -36,6 +36,7 @@ gem 'newrelic_rpm'
 gem "autoprefixer-rails" # 自動的にベンダープレフィックスを追加してくれる
 
 gem 'coffee-script-source', '1.8.0' # ExecJS::ProgramError TypeErrorの対応
+gem 'active_model_serializers'
 
 group :development, :test do
   gem 'byebug', platform: :mri
