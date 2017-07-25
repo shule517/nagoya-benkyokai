@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725124542) do
+ActiveRecord::Schema.define(version: 20170725131434) do
 
   create_table "event_tags", force: :cascade do |t|
     t.integer  "event_id"
@@ -29,8 +29,6 @@ ActiveRecord::Schema.define(version: 20170725124542) do
     t.string   "url"
     t.string   "address"
     t.string   "place"
-    t.string   "lat_old"
-    t.string   "lon_old"
     t.datetime "updated_at",                                                  null: false
     t.string   "hash_tag"
     t.string   "place_enc"
