@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725133913) do
+ActiveRecord::Schema.define(version: 20170725135013) do
 
   create_table "event_tags", force: :cascade do |t|
     t.integer  "event_id"
@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 20170725133913) do
 
   create_table "users", force: :cascade do |t|
     t.string   "connpass_id"
-    t.string   "atnd_id_old"
     t.string   "twitter_id"
     t.string   "facebook_id"
     t.string   "github_id"
