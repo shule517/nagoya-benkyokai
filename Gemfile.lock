@@ -32,6 +32,11 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_model_serializers (0.10.6)
+      actionpack (>= 4.1, < 6)
+      activemodel (>= 4.1, < 6)
+      case_transform (>= 0.2)
+      jsonapi-renderer (>= 0.1.1.beta1, < 0.2)
     activejob (5.0.4)
       activesupport (= 5.0.4)
       globalid (>= 0.3.6)
@@ -56,6 +61,8 @@ GEM
     buftok (0.2.0)
     builder (3.2.3)
     byebug (9.0.6)
+    case_transform (0.2)
+      activesupport
     coderay (1.1.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -143,6 +150,7 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.1.0)
+    jsonapi-renderer (0.1.3)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -343,6 +351,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers
   autoprefixer-rails
   byebug
   coffee-rails (~> 4.2)

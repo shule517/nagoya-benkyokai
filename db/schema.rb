@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170722145945) do
+ActiveRecord::Schema.define(version: 20170725135013) do
 
   create_table "event_tags", force: :cascade do |t|
     t.integer  "event_id"
@@ -29,9 +29,7 @@ ActiveRecord::Schema.define(version: 20170722145945) do
     t.string   "url"
     t.string   "address"
     t.string   "place"
-    t.string   "lat"
-    t.string   "lon"
-    t.datetime "updated_at",                        null: false
+    t.datetime "updated_at",                                                  null: false
     t.string   "hash_tag"
     t.string   "place_enc"
     t.string   "source"
@@ -39,9 +37,9 @@ ActiveRecord::Schema.define(version: 20170722145945) do
     t.string   "group_title"
     t.string   "group_logo_url"
     t.string   "logo_url"
-    t.datetime "created_at",                        null: false
-    t.boolean  "tweeted_new",       default: false, null: false
-    t.boolean  "tweeted_tomorrow",  default: false, null: false
+    t.datetime "created_at",                                                  null: false
+    t.boolean  "tweeted_new",                                 default: false, null: false
+    t.boolean  "tweeted_tomorrow",                            default: false, null: false
     t.string   "twitter_list_name"
     t.string   "twitter_list_url"
     t.integer  "event_id"
@@ -52,6 +50,8 @@ ActiveRecord::Schema.define(version: 20170722145945) do
     t.datetime "started_at"
     t.datetime "ended_at"
     t.datetime "update_time"
+    t.decimal  "lat",               precision: 17, scale: 14
+    t.decimal  "lon",               precision: 17, scale: 14
   end
 
   create_table "participants", force: :cascade do |t|
@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 20170722145945) do
 
   create_table "users", force: :cascade do |t|
     t.string   "connpass_id"
-    t.string   "atnd_id"
     t.string   "twitter_id"
     t.string   "facebook_id"
     t.string   "github_id"
@@ -82,6 +81,7 @@ ActiveRecord::Schema.define(version: 20170722145945) do
     t.string   "image_url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "atnd_id"
   end
 
 end
