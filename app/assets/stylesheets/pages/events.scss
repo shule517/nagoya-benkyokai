@@ -62,38 +62,6 @@ img.twitter-icon {
 }
 
 /* ------------------------------
-　　ヘッダー
------------------------------- */
-.header {
-  width: 100%;
-  margin-top: 20px;
-}
-
-.site-name {
-	font-size: 30px;
-  background-color: orange;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 10px;
-}
-
-.header-logo {
-  white-space: nowrap;
-  padding: 0 20px;
-}
-
-.header-logo__svg {
-  max-width: 250px;
-  fill: $grey-900;
-}
-
-@include media($tablet) {
-  .header {
-    text-align: center;
-  }
-}
-
-/* ------------------------------
 　　イベント
 ------------------------------ */
 .event {
