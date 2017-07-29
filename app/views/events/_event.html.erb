@@ -1,51 +1,51 @@
-<% bday = "" %>
-<% events.each_with_index do |event, index| %>
-  <% day = "#{event.month}/#{event.day}" %>
-  <% is_new_day = (bday != day) %>
-  <% bday = day %>
-
-  <div class="row" itemscope itemtype="http://schema.org/Event">
-
-    <%# 日付ごとに線を引く %>
-    <% if index != 0 && is_new_day %>
-      <hr class="style-two">
-    <% end %>
-
-    <%# 日付を表示 %>
-    <div class="col-md-2 col-xs-12">
-      <% if is_new_day %>
-        <h2 class="day">
-          <%= day %>
-          <small><%= "(#{event.wday})" %></small>
-        </h2>
-      <% end %>
-    </div>
-
-    <div class="event col-md-10 col-xs-12">
-      <%# 勉強会ごとに線を引く %>
-      <% unless is_new_day %>
-        <hr class="style-two">
-      <% end %>
-
-      <div class="event-left col-md-3 col-xs-3" itemprop="startDate" content="<%= "#{event.year}-#{event.month}-#{event.day}" %>">
-        <%= render partial: 'events/logo', locals: { event: event } %>
-        <%= render partial: 'events/place', locals: { event: event } %>
-      </div>
-
-      <div class="event-right col-md-9 col-xs-9">
-        <%= render partial: 'events/title', locals: { event: event } %>
-        <%= render partial: 'events/group', locals: { event: event } %>
-        <%= render partial: 'events/detail', locals: { event: event } %>
-
-        <div class="event-user">
-          <a href="<%= "#{event.twitter_list_url}" %>">
-            <%= image_tag("twitter.png", class: "twitter-icon", title: "ツイッターリスト") %>
-          </a>
-          <%= render partial: 'events/owner', collection: event.owners %>
-          <%= render partial: 'events/user', collection: event.users %>
+<% @events_box.each do |events| %>
+  <section class="events">
+    <header class="events-header">
+      <time class="events-header__day" datetime="<%= display_day_format(events.first) %>">
+        <%= display_day_format(events.first) %>
+      </time>
+    </header>
+    <div class="events-content">
+      <% events.each do |event| %>
+        <div class="event">
+          <div class="event__logo">
+            <%= link_to image_tag(event.logo_url, class: "event__logo-image"), event.event_url, class: "event__logo-link is_external-link", target: "_blank" %>
+          </div>
+          <div class="event__title">
+            <%= event.title %>
+          </div>
+          <div class="event-detail">
+            <div class="event-detail__description">
+              <%= truncate(event.catch, length: 250) do %>
+                <%= link_to 'もっと読む', event.event_url, target: "_blank" %>
+              <% end %>
+            </div>
+            <div class="event-supplement">
+              <address class="event-supplement__place"><%= event.source %></address>
+              <span class="event-supplement__map">
+                <%= link_to event.place, link_to_google_map(event.place_enc), class: "event-supplement__map-link is_external-link" %>
+              </span>
+            </div>
+          </div>
+          <div class="event-users">
+            <ul class="event-users__items">
+              <%= render partial: 'events/user-list', collection: event.owners, as: :user, locals: { owner_user: 'owner' } %>
+              <%= render partial: 'events/user-list', collection: event.users, as: :user, locals: { owner_user: 'user' } %>
+            </ul>
+            <%= link_to '参加者だけのTwitterリスト', event.twitter_list_url_gsub, class: 'event-users__twitter-list', target: '_blank' %>
+          </div>
+          <% if event.group_url.present? %>
+            <div class="event-group">
+              <%= link_to "/group/#{event.group_title}" do %>
+                <%= image_tag event.group_logo_url, class: 'event-group__logo' %>
+                <span class="event-group__title">
+                  <%= event.group_title %>
+                </span>
+              <% end %>
+            </div>
+          <% end %>
         </div>
-
-      </div>
+      <% end %>
     </div>
-  </div>
+  </section>
 <% end %>
