@@ -32,6 +32,11 @@ class Event < ApplicationRecord
     events
   end
 
+  def twitter_list_url_gsub
+    Rails.env.development? ? url = 'benkyo_dev' : url = 'nagoya_lambda'
+    self.twitter_list_url.gsub("#{url}", "#{url}/lists")
+  end
+
   def year
     started_at.year
   end
