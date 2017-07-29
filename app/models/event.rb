@@ -23,8 +23,8 @@ class Event < ApplicationRecord
   def self.event_box
     events = []
     self.upcoming_event_year.each do |year|
-      self.select_started.map{ |i| i.month if i.year == year }.uniq.each do |month|
-        self.select_started.map{ |i| i.day if i.month == month }.uniq.each do |day|
+      self.upcoming_event_month(year).each do |month|
+        self.upcoming_event_day(month).each do |day|
           events << Event.event_of_the_day(year, month, day)
         end
       end
