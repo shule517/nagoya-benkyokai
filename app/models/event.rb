@@ -20,7 +20,7 @@ class Event < ApplicationRecord
   scope :upcoming_event_day, -> (month){ select_started.map{ |i| i.day if i.month == month }.uniq }
   scope :event_of_the_day, -> (year, month, day){ where(started_at: Time.new(year, month, day).all_day) }
 
-  def self.event_box
+  def self.upcoming_events
     events = []
     self.upcoming_event_year.each do |year|
       self.upcoming_event_month(year).each do |month|
