@@ -14,6 +14,24 @@ class Event < ApplicationRecord
   scope :scheduled, -> { where('started_at >= ?', Date.today).order(:started_at) }
   scope :ended, -> { where('started_at < ?', Date.today).order(started_at: :desc) }
 
+  scope :select_started, -> { scheduled.select("started_at") }
+  scope :upcoming_event_year, -> { select_started.map{ |i| i.year }.uniq }
+  scope :upcoming_event_month, -> (year){ select_started.map{ |i| i.month if i.year == year }.uniq }
+  scope :upcoming_event_day, -> (month){ select_started.map{ |i| i.day if i.month == month }.uniq }
+  scope :event_of_the_day, -> (year, month, day){ where(started_at: Time.new(year, month, day).all_day) }
+
+  def self.event_box
+    events = []
+    self.upcoming_event_year.each do |year|
+      self.select_started.map{ |i| i.month if i.year == year }.uniq.each do |month|
+        self.select_started.map{ |i| i.day if i.month == month }.uniq.each do |day|
+          events << Event.event_of_the_day(year, month, day)
+        end
+      end
+    end
+    events
+  end
+
   def year
     started_at.year
   end
