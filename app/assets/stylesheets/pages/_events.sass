@@ -1,0 +1,145 @@
+.event-box
+  width: 1024px
+  margin: 0 auto
+  border-top: 1px solid $line-color
+  padding-top: 50px
+
+.events
+  width: 100%
+  margin-bottom: 30px
+
+.events-header
+  display: flex
+  align-items: center
+  margin-bottom: 20px
+
+.events-header__day
+  +none-padding-margin
+  font-size: $headline-font-size
+
+.events-content
+  padding-left: 30px
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  &:after
+    content: ""
+    width: 30%
+
+.event
+  width: 48%
+  margin-bottom: 30px
+
+.event__logo
+  width: 100%
+  height: 150px
+  overflow: hidden
+  display: flex
+  align-items: center
+  justify-content: center
+  margin-bottom: 10px
+
+.event__logo-image
+  width: 100%
+
+.event__logo-link
+
+.event__title
+  +none-padding-margin
+  font-size: $title-font-size
+  margin-bottom: 10px
+  &:hover
+    +opacity-effect
+
+.event-content
+  width: 100%
+
+.event-content__description
+  overflow: hidden
+  margin-bottom: 10px
+
+.event-supplement
+  display: flex
+  justify-content: flex-end
+  margin-bottom: 10px
+
+.event-supplement__place
+  font-style: normal
+  &:before
+    content: 'by'
+    padding-right: 5px
+  &:after
+    content: '|'
+    padding-left: 10px
+    padding-right: 10px
+
+.event-supplement__map
+
+.event-supplement__map-link
+
+.event-users
+  margin-bottom: 5px
+
+.event-users__items
+  +none-padding-margin
+  list-style-type: none
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-end
+  justify-content: space-between
+  margin-bottom: 10px
+  background-color: $grey-100
+  padding: 5px
+  &:after
+    content: ''
+    flex: auto
+
+.event-users__item
+  width: 30px
+  padding-left: 5px
+  margin-bottom: 5px
+
+.event-users__item-count
+  font-size: $base-font-size - .2rem
+  padding-left: 5px
+
+.event-users__image
+  width: 100%
+  border-radius: 50%
+
+.event-users__twitter-list
+  padding: 5px
+  text-align: right
+  &:hover
+    +opacity-effect
+
+.event-users__twitter-list-link
+  color: $twitter-color
+  display: block
+
+.event-group
+  display: flex
+  justify-content: flex-end
+  margin-bottom: 10px
+
+.event-group__logo
+  width: 20px
+
+.event-group__logo-image
+  width: 100%
+  border-radius: 50%
+
+.event-group__title
+  +none-padding-margin
+  padding-left: 10px
+  &:hover
+    +opacity-effect
+
++media($ipad-pro)
+  .event-box
+    width: 100%
+    padding: 0 20px
+
++media($phone)
+  .event
+    width: 100%
