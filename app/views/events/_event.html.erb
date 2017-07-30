@@ -1,9 +1,11 @@
 <% @events_box.each do |events| %>
   <section class="events">
     <header class="events-header">
-      <time class="events-header__day" datetime="<%= display_day_format(events.first) %>">
-        <%= display_day_format(events.first) %>
-      </time>
+      <h2>
+        <time class="events-header__day" datetime="<%= display_day_format(events.first) %>">
+          <%= display_day_format(events.first) %>
+        </time>
+      </h2>
     </header>
     <div class="events-content">
       <% events.each do |event| %>
@@ -11,9 +13,9 @@
           <div class="event__logo">
             <%= link_to image_tag(event.logo_url, class: "event__logo-image"), event.event_url, class: "event__logo-link is_external-link", target: "_blank" %>
           </div>
-          <div class="event__title">
+          <h3 class="event__title">
             <%= event.title %>
-          </div>
+          </h3>
           <div class="event-detail">
             <div class="event-detail__description">
               <%= truncate(event.catch, length: 250) do %>
