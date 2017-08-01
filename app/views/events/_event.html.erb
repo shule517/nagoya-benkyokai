@@ -15,7 +15,7 @@
               <%= link_to image_tag(event.logo_url, class: "event__logo-image"), event.event_url, class: "event__logo-link is_external-link", target: "_blank" %>
             </div>
             <%= link_to event.event_url do %>
-              <h3 class="event__title">
+              <h3 class="event__title is_external-link">
                 <%= event.title %>
               </h3>
             <% end %>
@@ -53,7 +53,7 @@
             <div class="event-supplement">
               <address class="event-supplement__place"><%= event.source %></address>
               <span class="event-supplement__map">
-                <%= link_to event.place, link_to_google_map(event.place_enc), class: "event-supplement__map-link is_external-link" %>
+                <%= link_to event.place, link_to_google_map(event.place_enc), class: "event-supplement__map-link" %>
               </span>
             </div>
           </div>
