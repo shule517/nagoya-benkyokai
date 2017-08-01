@@ -12,7 +12,7 @@
         <% events.each do |event| %>
           <div class="event">
             <div class="event__logo">
-              <%= link_to image_tag(event.logo_url, class: "event__logo-image"), event.event_url, class: "event__logo-link is_external-link", target: "_blank" %>
+              <%= link_to image_tag(event.logo_url, class: "event__logo-image"), event.event_url, class: "event__logo-link", target: "_blank" %>
             </div>
             <%= link_to event.event_url do %>
               <h3 class="event__title is_external-link">
