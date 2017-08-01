@@ -28,8 +28,11 @@
             <div class="event-users">
               <ul class="event-users__items">
                 <%= render partial: 'events/user-list', collection: event.owners, as: :user, locals: { owner_user: 'owner' } %>
+                <li class="event-users__item-count">主催者<%= event.owners.count%>名</li>
+              </ul>
+              <ul class="event-users__items">
                 <%= render partial: 'events/user-list', collection: event.users, as: :user, locals: { owner_user: 'user' } %>
-                <li class="event-users__item-count">参加者<%= event.owners.count + event.users.count%>名</li>
+                <li class="event-users__item-count">参加者<%= event.users.count%>名</li>
               </ul>
               <div class="event-users__twitter-list">
                 <%= link_to '参加者だけのTwitterリスト', event.twitter_list_url_gsub, class: 'event-users__twitter-list-link', target: '_blank' %>
