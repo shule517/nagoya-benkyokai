@@ -1,7 +1,7 @@
 module EventsHelper
 
   def display_day_format(day)
-    day.started_at.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[Time.now.wday]})")
+    day.started_at.strftime("%Y/%m/%d(#{%w(日 月 火 水 木 金 土)[day.started_at.wday]})")
   end
 
   def link_to_google_map(place)
