@@ -9,20 +9,23 @@
         </h2>
       </header>
       <div class="events-content">
-        <% events.each do |event| %>
+        <% events.each_with_index do |event, index| %>
           <div class="event">
             <div class="event__logo">
               <%= link_to image_tag(event.logo_url, class: "event__logo-image"), event.event_url, class: "event__logo-link", target: "_blank" %>
             </div>
-            <%= link_to event.event_url do %>
+            <%= link_to event.event_url, target: "_blank" do %>
               <h3 class="event__title is_external-link">
                 <%= event.title %>
               </h3>
             <% end %>
             <div class="event-content">
+              <label></label>
               <div class="event-content__description">
-                <%== event.catch.truncate(150) %>
-                <%= link_to 'もっと読む', event.event_url, target: "_blank" %>
+                <%== event.catch %>
+                <span>
+                  <%= link_to 'もっと読む', event.event_url, target: "_blank" %>
+                </span>
               </div>
             </div>
             <div class="event-users">
