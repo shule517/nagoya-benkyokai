@@ -4,10 +4,11 @@
     <%= render 'head' %>
   </head>
   <body>
-    <div class="container-fluid">
-      <%= render 'header' %>
+    <%= render 'global-nav' %>
+    <%= render 'header' %>
+    <main>
       <%= yield %>
-      <%= render 'footer' %>
-    </div>
+    </main>
+    <%= render 'footer' %>
   </body>
 </html>

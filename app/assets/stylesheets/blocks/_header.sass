@@ -1,0 +1,25 @@
+.header
+  width: 100%
+  padding-top: 20px
+
+.header-logo
+  padding: 0 20px
+  display: flex
+  justify-content: center
+
+.header-logo__svg
+  width: 500px
+  max-width: 500px
+  height: 80px
+  max-height: 80px
+  fill: $grey-900
+
+.header-description
+  text-align: center
+  padding-bottom: 20px
+
+@include media($tablet)
+  .header
+    text-align: center
+  .header-logo__svg
+    width: 100%

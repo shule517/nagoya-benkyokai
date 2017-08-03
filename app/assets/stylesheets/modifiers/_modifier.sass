@@ -1,0 +1,19 @@
+.is_external-link
+  &:after
+    +fontawesome("\f08e")
+    font-size: $base-font-size
+    padding-left: 5px
+
+.is_owner
+  position: relative
+  .event-users__image
+    border: 2px solid $accent-color
+  &:after
+    +fontawesome("\f058")
+    position: absolute
+    bottom: -5px
+    right: -5px
+    color: $base-color
+    font-size: $base-font-size
+
+.is_user
