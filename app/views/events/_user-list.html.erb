@@ -1,6 +1,6 @@
 <li class="event-users__item is_<%= owner_user %>">
   <%if user.twitter_id.present? %>
-    <%= link_to image_tag( user.image_url, class: "event-users__image"), "/user/#{user.twitter_id}" %>
+    <%= link_to image_tag( user.image_url, class: "event-users__image"), "/users/#{user.twitter_id}" %>
   <% else %>
     <%= image_tag user.image_url, class: "event-users__image" %>
   <% end %>
