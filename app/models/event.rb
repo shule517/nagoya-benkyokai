@@ -15,8 +15,8 @@ class Event < ApplicationRecord
   scope :ended, -> { where('started_at < ?', Date.today).order(started_at: :desc) }
 
   def self.upcoming_events
-    scheduled.group('date(started_at)').select('date(started_at) as date').map do |event|
-      scheduled.where(started_at: Time.parse(event.date).all_day)
+    group('date(started_at)').select('date(started_at) as date').map do |event|
+      where(started_at: Time.parse(event.date).all_day)
     end
   end
 
