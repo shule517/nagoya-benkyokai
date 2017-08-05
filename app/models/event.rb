@@ -14,22 +14,10 @@ class Event < ApplicationRecord
   scope :scheduled, -> { where('started_at >= ?', Date.today).order(:started_at) }
   scope :ended, -> { where('started_at < ?', Date.today).order(started_at: :desc) }
 
-  scope :select_started, -> { scheduled.select("started_at") }
-  scope :upcoming_event_year, -> { select_started.map{ |i| i.year }.uniq }
-  scope :upcoming_event_month, -> (year){ select_started.map{ |i| i.month if i.year == year }.uniq }
-  scope :upcoming_event_day, -> (month){ select_started.map{ |i| i.day if i.month == month }.uniq }
-  scope :event_of_the_day, -> (year, month, day){ where(started_at: Time.new(year, month, day).all_day) }
-
   def self.upcoming_events
-    events = []
-    self.upcoming_event_year.each do |year|
-      self.upcoming_event_month(year).each do |month|
-        self.upcoming_event_day(month).each do |day|
-          events << Event.event_of_the_day(year, month, day)
-        end
-      end
+    scheduled.group('date(started_at)').select('date(started_at) as date').map do |event|
+      scheduled.where(started_at: Time.parse(event.date).all_day)
     end
-    events
   end
 
   def twitter_list_url_gsub
