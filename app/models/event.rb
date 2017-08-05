@@ -3,10 +3,10 @@ class Event < ApplicationRecord
   has_many :participant_users, through: :participants, source: :user
 
   has_many :owners_participant, -> { where(owner: true) }, class_name: 'Participant'
-  has_many :owners, -> { order('twitter_id DESC') }, through: :owners_participant, source: :user
+  has_many :owners, -> { order(twitter_id: :desc) }, through: :owners_participant, source: :user
 
   has_many :users_participant, -> { where(owner: false) }, class_name: 'Participant'
-  has_many :users, -> { order('twitter_id DESC') }, through: :users_participant, source: :user
+  has_many :users, -> { order(twitter_id: :desc) }, through: :users_participant, source: :user
 
   has_many :event_tags, dependent: :delete_all
   has_many :tags, through: :event_tags, source: :tag
