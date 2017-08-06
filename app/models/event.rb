@@ -17,7 +17,7 @@ class Event < ApplicationRecord
 
   def self.upcoming_events
     group('date(started_at)').select('date(started_at) as date').order('date(started_at)').map do |event|
-      where(started_at: Time.parse(event.date).all_day)
+      where(started_at: Time.parse(event.date.strftime).all_day)
     end
   end
 
