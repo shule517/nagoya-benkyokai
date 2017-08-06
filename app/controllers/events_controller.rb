@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    @upcoming_events = Event.scheduled.upcoming_events
+    @upcoming_events = Event.scheduled_no_order.upcoming_events
   end
 
   # おためし機能

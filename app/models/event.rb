@@ -11,12 +11,13 @@ class Event < ApplicationRecord
   has_many :event_tags, dependent: :delete_all
   has_many :tags, through: :event_tags, source: :tag
 
-  scope :scheduled, -> { where('started_at >= ?', Date.today).order(:started_at) }
+  scope :scheduled, -> { scheduled.order(:started_at) }
+  scope :scheduled_no_order, -> { where('started_at >= ?', Date.today) }
   scope :ended, -> { where('started_at < ?', Date.today).order(started_at: :desc) }
 
   def self.upcoming_events
     group('date(started_at)').select('date(started_at) as date').order('date(started_at)').map do |event|
-      where(started_at: Time.parse(event.date.strftime).all_day)
+      where(started_at: Time.parse(event.date).all_day)
     end
   end
 
