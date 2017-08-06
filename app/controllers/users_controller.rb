@@ -6,6 +6,6 @@ class UsersController < ApplicationController
     users_events = Event.where('id in (?)', event_ids)
 
     @events = users_events.scheduled.upcoming_events
-    @events_histories = users_events.ended.upcoming_events
+    @events_histories = users_events.ended.upcoming_events.reverse
   end
 end
