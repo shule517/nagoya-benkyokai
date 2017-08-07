@@ -12,8 +12,11 @@ module NagoyaBenkyokai
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    # サービスをオートロードする
+     # grape api settings
+    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
     config.autoload_paths += %W(#{config.root}/app/services)
+
     config.generators do |g|
       g.test_framework :rspec,
       fixtures: true,

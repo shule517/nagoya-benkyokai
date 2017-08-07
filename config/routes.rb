@@ -12,13 +12,17 @@ Rails.application.routes.draw do
   get '/users/:userid', to: 'users#show', userid: /.*/
 
   # WebAPI
-  namespace :api, { format: 'json' } do
-    namespace :v1, :only => [:index] do
-      resources :events
-      get '/groups/:groupname', to: 'groups#show', groupname: /.*/
-      get '/users/:userid', to: 'users#show', userid: /.*/
-    end
-  end
+  mount ApiRoot => '/api'
+  mount GrapeSwaggerRails::Engine => '/api/docs'
+
+  # # WebAPI
+  # namespace :api, { format: 'json' } do
+  #   namespace :v1, :only => [:index] do
+  #     resources :events
+  #     get '/groups/:groupname', to: 'groups#show', groupname: /.*/
+  #     get '/users/:userid', to: 'users#show', userid: /.*/
+  #   end
+  # end
 
   # おためし機能
   resources :rank, :only => [] do
