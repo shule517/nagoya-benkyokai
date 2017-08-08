@@ -2,10 +2,16 @@ module V1
   module Entities
     class UsersEntity < Grape::Entity
       expose :id, documentation: { type: Integer, desc: 'ユーザーid' }
-      # expose :email, documentation: { type: String, desc: 'メールアドレス' }
-      # expose :name, documentation: { type: String, desc: '名前' }
-      # expose :created_at, documentation: { type: String, desc: '作成日時' }
-      # expose :updated_at, documentation: { type: String, desc: '更新日時' }
+      expose :name, documentation: { type: Integer, desc: 'ユーザーid' }
+      expose :image_url, documentation: { type: Integer, desc: 'ユーザーid' }
+      expose :connpass_id, documentation: { type: Integer, desc: 'ユーザーid' }
+      expose :atnd_id, documentation: { type: Integer, desc: 'ユーザーid' }
+      expose :twitter_id, documentation: { type: Integer, desc: 'ユーザーid' }
+      expose :github_id, documentation: { type: Integer, desc: 'ユーザーid' }
+      expose :facebook_id, documentation: { type: Integer, desc: 'ユーザーid' }
+      expose :linkedin_id, documentation: { type: Integer, desc: 'ユーザーid' }
+      expose :created_at, documentation: { type: Integer, desc: 'ユーザーid' }
+      expose :updated_at, documentation: { type: Integer, desc: 'ユーザーid' }
     end
   end
 end

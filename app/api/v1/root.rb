@@ -15,7 +15,7 @@ module V1
     # swagger doc
     add_swagger_documentation(
       api_version: 'v1',
-      base_path: '/api',
+      base_path: '/api/test',
       hide_documentation_path: true,
       info: {
         title: '名古屋勉強会らむだ WebAPIドキュメント',
