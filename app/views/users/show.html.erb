@@ -1,4 +1,4 @@
-<div class="col-md-8 col-xs-12" style="margin-left: 20px">
+<div>
   <h2>
     <img class="user-icon" src="<%= @user.image_url %>">
     <%= "#{@user.name}" %>
@@ -23,10 +23,7 @@
   <%= render partial: 'events/event', locals: { upcoming_events: @events_histories } %>
 </div>
 
-<div class="col-md-0 col-xs-1">
-</div>
-
-<div class="col-md-3 col-xs-10">
+<div>
   <a class="twitter-timeline" href="<%= "https://twitter.com/#{@user.twitter_id}" %>">Tweets by TwitterDev</a>
   <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>

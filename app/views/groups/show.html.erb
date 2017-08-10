@@ -1,4 +1,4 @@
-<div class="col-md-8 col-xs-12" style="margin-left: 20px">
+<div>
   <h2>
     <a href="<%= "#{@event.group_url}" %>">
       <img class="group-logo" src="<%= @event.group_logo_url %>">
@@ -14,7 +14,7 @@
   <h3 class="user-title">
     <b>開催する勉強会</b>
   </h3>
-  <%= render partial: 'events/event', locals: { events: @events } %>
+  <%= render partial: 'events/event', locals: { upcoming_events: @events } %>
 
   <br>
   <br>
@@ -22,13 +22,10 @@
   <h3 class="user-title">
     <b>過去の勉強会</b>
   </h3>
-  <%= render partial: 'events/event', locals: { events: @events_histories } %>
+  <%= render partial: 'events/event', locals: { upcoming_events: @events_histories } %>
 </div>
 
-<div class="col-md-0 col-xs-1">
-</div>
-
-<div class="col-md-3 col-xs-10">
+<div>
   <a class="twitter-timeline" href="<%= "#{@event.twitter_list_url}/members" %>">Tweets by TwitterDev</a>
   <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
