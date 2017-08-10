@@ -9,17 +9,6 @@
   border-radius: 15px;
 }
 
-hr {
-  border: 0;
-  margin: 20px 0;
-}
-
-.style-two {
-  border: 0;
-  height: 1px;
-  background-image: linear-gradient(to right, transparent, #A1A1A1 35%, #A1A1A1 65%, transparent);
-}
-
 img.owner-icon {
   width: 36px;
   height: 36px;
@@ -160,10 +149,6 @@ img.twitter-icon {
 
 .user-limit p {
   display: inline;
-}
-
-.user-title {
-  border-bottom: 1px dashed #ccc;
 }
 
 @include media($ipad-pro) {
