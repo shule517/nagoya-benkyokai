@@ -11,8 +11,8 @@ class Event < ApplicationRecord
   has_many :event_tags, dependent: :delete_all
   has_many :tags, through: :event_tags, source: :tag
 
-  scope :scheduled, -> { where('started_at >= ?', Date.today) }
-  scope :ended, -> { where('started_at < ?', Date.today) }
+  scope :scheduled, -> { where('started_at >= ?', Date.today).order(:started_at).includes(:users, :owners) }
+  scope :ended, -> { where('started_at < ?', Date.today).order(started_at: :desc).includes(:users, :owners) }
 
   def self.upcoming_events
     group('date(started_at)').select('date(started_at) as date').order('date(started_at)').map do |event|
