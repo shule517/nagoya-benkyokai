@@ -39,6 +39,16 @@ gem 'coffee-script-source', '1.8.0' # ExecJS::ProgramError TypeErrorの対応
 gem 'active_model_serializers'
 gem "font-awesome-sass"
 
+# api
+gem 'grape'
+gem 'grape-swagger'
+gem 'grape-swagger-rails'
+gem 'grape-entity'
+gem 'api-pagination'
+gem 'ruby-swagger'
+gem 'kaminari'
+gem 'will_paginate'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rubocop', platform: :mri

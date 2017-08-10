@@ -39,7 +39,7 @@
                 </div>
               </div>
               <% if event.group_url.present? %>
-                <%= link_to "/group/#{event.group_title}" do %>
+                <%= link_to "/groups/#{event.group_title}" do %>
                   <div class="event-group">
                     <div class="event-group__logo">
                       <%= image_tag event.group_logo_url, class: 'event-group__logo-image' %>

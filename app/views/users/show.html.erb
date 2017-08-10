@@ -1,4 +1,4 @@
-<div class="col-md-8 col-xs-12" style="margin-left: 20px">
+<div class="lower">
   <h2>
     <img class="user-icon" src="<%= @user.image_url %>">
     <%= "#{@user.name}" %>
@@ -6,27 +6,29 @@
       <%= "(@#{@user.twitter_id})" %>
     </small>
   </h2>
+</div>
 
-  <br>
-
-  <h3 class="user-title">
-    <b>参加する勉強会</b>
+<div class="event-box">
+  <h3 class="lower-title">
+    参加する勉強会
   </h3>
   <%= render partial: 'events/event', locals: { upcoming_events: @events } %>
+</div>
 
-  <br>
-  <br>
-
-  <h3 class="user-title">
-    <b>過去の勉強会</b>
+<div class="event-box">
+  <h3 class="lower-title">
+    過去の勉強会
   </h3>
-  <%= render partial: 'events/event', locals: { upcoming_events: @events_histories } %>
+  <% if @events_histories.count == 0 %>
+    <p>過去の勉強会はありません</p>
+  <% else %>
+    <%= render partial: 'events/event', locals: { upcoming_events: @events_histories } %>
+  <% end %>
 </div>
 
-<div class="col-md-0 col-xs-1">
-</div>
-
-<div class="col-md-3 col-xs-10">
-  <a class="twitter-timeline" href="<%= "https://twitter.com/#{@user.twitter_id}" %>">Tweets by TwitterDev</a>
-  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<div class="twitter">
+  <div class="twitter-content">
+    <a class="twitter-timeline" href="<%= "https://twitter.com/#{@user.twitter_id}" %>">Tweets by TwitterDev</a>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
 </div>

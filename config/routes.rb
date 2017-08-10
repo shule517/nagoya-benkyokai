@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   get '/users/:userid', to: 'users#show', userid: /.*/
 
   # WebAPI
+  mount ApiRoot => '/api/test/'
+  mount GrapeSwaggerRails::Engine => '/api/test/docs'
+
+  # WebAPI
   namespace :api, { format: 'json' } do
     namespace :v1, :only => [:index] do
       resources :events
