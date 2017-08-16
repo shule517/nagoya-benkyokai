@@ -3,7 +3,7 @@ class UpdateEventService
     condition.merge!(ym: collect_period) if condition.empty?
     events = SearchEventService.new.call(condition)
     update(events)
-    UpdateTwitterService.new.call
+    UpdateTwitterService.new.call(Event.scheduled)
   end
 
   private
