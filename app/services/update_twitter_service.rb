@@ -3,9 +3,7 @@ class UpdateTwitterService
     @twitter = TwitterClient.new
     lists = @twitter.lists
 
-    today = Time.now.strftime('%Y-%m-%d')
-    events = Event.all.where(['started_at > ?', today]).order(:started_at)
-    events.each do |event|
+    Event.scheduled.each do |event|
       update_event_to_twitter(event, lists)
     end
   end
