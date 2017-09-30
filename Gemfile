@@ -61,6 +61,8 @@ group :development, :test do
   gem 'vcr'
   gem 'database_cleaner'
   gem 'dotenv-rails'
+  gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 group :development do
@@ -68,6 +70,7 @@ group :development do
   gem 'guard-livereload', '~> 2.5', require: false
   gem 'foreman'
   gem "rails_real_favicon" # favicon生成用
+  gem 'ruby-debug-ide'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
