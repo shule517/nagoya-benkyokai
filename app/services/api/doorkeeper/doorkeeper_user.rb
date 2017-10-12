@@ -11,9 +11,9 @@ module Api
           result.name = name                if name.present?
           result.image_url = image_url      if image_url.present? && image_url !~ /secure\.gravatar\.com/
           result.save
-          return result
+          result
         else
-          return User.create(twitter_id: twitter_id, facebook_id: facebook_id, github_id: github_id, linkedin_id: linkedin_id, name: name, image_url: image_url)
+          User.create(twitter_id: twitter_id, facebook_id: facebook_id, github_id: github_id, linkedin_id: linkedin_id, name: name, image_url: image_url)
         end
       end
     end

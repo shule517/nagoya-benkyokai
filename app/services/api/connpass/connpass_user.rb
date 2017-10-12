@@ -10,9 +10,9 @@ module Api
           result.github_id = github_id     if github_id.present?
           result.image_url = image_url     if image_url.present? && image_url !~ /user_no_image/
           result.save
-          return result
+          result
         else
-          return User.create(connpass_id: connpass_id, twitter_id: twitter_id, facebook_id: facebook_id, github_id: github_id, name: name, image_url: image_url)
+          User.create(connpass_id: connpass_id, twitter_id: twitter_id, facebook_id: facebook_id, github_id: github_id, name: name, image_url: image_url)
         end
       end
     end

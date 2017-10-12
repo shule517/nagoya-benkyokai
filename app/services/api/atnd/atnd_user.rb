@@ -9,9 +9,9 @@ module Api
           result.facebook_id = facebook_id  if facebook_id.present?
           result.image_url = image_url      if image_url.present? && image_url !~ /default_latent/
           result.save
-          return result
+          result
         else
-          return User.create(atnd_id: atnd_id, twitter_id: twitter_id, facebook_id: facebook_id, name: name, image_url: image_url)
+          User.create(atnd_id: atnd_id, twitter_id: twitter_id, facebook_id: facebook_id, name: name, image_url: image_url)
         end
       end
     end

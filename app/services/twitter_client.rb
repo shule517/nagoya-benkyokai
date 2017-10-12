@@ -127,7 +127,7 @@ class TwitterClient
     return false if title.size > 25
     return false if title.bytesize > 55
     return false if title =~ (/\A[0-9]/)
-    return true
+    true
   end
 
   def trim(str)
@@ -167,7 +167,7 @@ class TwitterClient
   def check_list_desc(desc)
     return false if desc.size > 100
     return false if desc.bytesize > 255
-    return true
+    true
   end
 
   def create_list_desc(desc)
