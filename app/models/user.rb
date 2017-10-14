@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id          :integer          not null, primary key
+#  connpass_id :string
+#  twitter_id  :string
+#  facebook_id :string
+#  github_id   :string
+#  linkedin_id :string
+#  name        :string
+#  image_url   :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  atnd_id     :integer
+#
+
 class User < ApplicationRecord
   has_many :participants
   has_many :events, through: :participants

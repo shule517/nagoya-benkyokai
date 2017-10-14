@@ -1,3 +1,40 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id                :integer          not null, primary key
+#  title             :string
+#  catch             :string
+#  description       :string
+#  event_url         :string
+#  url               :string
+#  address           :string
+#  place             :string
+#  updated_at        :datetime         not null
+#  hash_tag          :string
+#  place_enc         :string
+#  source            :string
+#  group_url         :string
+#  group_title       :string
+#  group_logo_url    :string
+#  logo_url          :string
+#  created_at        :datetime         not null
+#  tweeted_new       :boolean          default(FALSE), not null
+#  tweeted_tomorrow  :boolean          default(FALSE), not null
+#  twitter_list_name :string
+#  twitter_list_url  :string
+#  event_id          :integer
+#  limit             :integer
+#  accepted          :integer
+#  waiting           :integer
+#  group_id          :integer
+#  started_at        :datetime
+#  ended_at          :datetime
+#  update_time       :datetime
+#  lat               :decimal(17, 14)
+#  lon               :decimal(17, 14)
+#
+
 require 'rails_helper'
 
 describe Event do

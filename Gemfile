@@ -63,6 +63,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'spring'
   gem 'spring-commands-rspec'
+  gem 'annotate'
 end
 
 group :development do
