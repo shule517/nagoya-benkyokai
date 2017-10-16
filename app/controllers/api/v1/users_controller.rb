@@ -6,9 +6,7 @@ module Api
         participants = Participant.where(user_id: @user.id)
         event_ids = participants.map(&:event_id)
         users_events = Event.where('id in (?)', event_ids)
-        @events = users_events.order(:started_at).each do |event|
-          event.twitter_list_url = event.twitter_list_url.gsub('nagoya_lambda/', 'nagoya_lambda/lists/') if event.twitter_list_url.present?
-        end
+        @events = users_events.order(:started_at)
         render json: @events
       end
     end

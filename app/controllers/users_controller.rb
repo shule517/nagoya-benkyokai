@@ -5,11 +5,7 @@ class UsersController < ApplicationController
     event_ids = participants.map(&:event_id)
     users_events = Event.where('id in (?)', event_ids)
 
-    @events = users_events.scheduled.each do |event|
-      event.twitter_list_url = event.twitter_list_url.gsub('nagoya_lambda/', 'nagoya_lambda/lists/') if event.twitter_list_url.present?
-    end
-    @events_histories = users_events.ended.each do |event|
-      event.twitter_list_url = event.twitter_list_url.gsub('nagoya_lambda/', 'nagoya_lambda/lists/') if event.twitter_list_url.present?
-    end
+    @events = users_events.scheduled
+    @events_histories = users_events.ended
   end
 end

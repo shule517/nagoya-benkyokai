@@ -71,4 +71,9 @@ class Event < ApplicationRecord
     d = Date.new(year, month, day)
     %w(日 月 火 水 木 金 土)[d.wday]
   end
+
+  def twitter_list_url
+    url = read_attribute(:twitter_list_url)
+    url.gsub(%r((https://twitter.com/[a-z0-9_]+/)), '\1lists/') if url.present?
+  end
 end

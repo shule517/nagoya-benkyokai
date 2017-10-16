@@ -45,8 +45,7 @@ class EventTweet
     def tweet_message(event)
       message = "#{date(event)}に開催される勉強会です！\n#{title(event)}\n\nイベントページ：#{event.event_url}"
       if event.twitter_list_url
-        twitter_list_url = event.twitter_list_url.gsub('nagoya_lambda/', 'nagoya_lambda/lists/')
-        message += "\nツイッターリスト：#{twitter_list_url}"
+        message += "\nツイッターリスト：#{event.twitter_list_url}"
       end
       message += "\n##{event.hash_tag}" if event.hash_tag.present?
       message
