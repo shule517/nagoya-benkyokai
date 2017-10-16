@@ -33,7 +33,7 @@ class UpdateTwitterService
     users.concat(event.owners)
     users.concat(event.users)
     event_users = users.map { |user| user.twitter_id }.select { |id| !id.empty? }
-    twitter_members = twitter.list_members(event.twitter_list_url).map { |member| member.screen_name }
+    twitter_members = twitter.list_members(event.twitter_list_url_raw).map { |member| member.screen_name }
     add_users = event_users.select { |user| !twitter_members.include?(user) }
     twitter.add_list_members(event.twitter_list_url, add_users)
   end

@@ -76,4 +76,8 @@ class Event < ApplicationRecord
     url = read_attribute(:twitter_list_url)
     url.gsub(%r((https://twitter.com/[a-z0-9_]+/)), '\1lists/') if url.present?
   end
+
+  def twitter_list_url_raw
+    read_attribute(:twitter_list_url)
+  end
 end
