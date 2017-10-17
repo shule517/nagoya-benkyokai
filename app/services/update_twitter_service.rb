@@ -15,9 +15,9 @@ class UpdateTwitterService
   def update_event_to_twitter(event)
     description = "#{event.year}/#{event.month}/#{event.day}(#{event.wday}) #{event.title} #{event.event_url}"
 
-    if lists.any? { |list| list.uri.to_s == event.twitter_list_url } || (event.twitter_list_url && twitter.list_exists?(event.twitter_list_url))
+    if lists.any? { |list| list.uri.to_s == event.twitter_list_url_raw } || (event.twitter_list_url_raw && twitter.list_exists?(event.twitter_list_url_raw))
       puts "update list: #{description}"
-      list = twitter.update_list(event.twitter_list_url, event.title, description)
+      list = twitter.update_list(event.twitter_list_url_raw, event.title, description)
       event.twitter_list_name = list.name
       event.twitter_list_url = list.uri
       event.save
@@ -32,7 +32,7 @@ class UpdateTwitterService
     users = []
     users.concat(event.owners)
     users.concat(event.users)
-    event_users = users.map { |user| user.twitter_id }.select { |id| !id.empty? }
+    event_users = users.map { |user| user.twitter_id }.select(&:present?)
     twitter_members = twitter.list_members(event.twitter_list_url_raw).map { |member| member.screen_name }
     add_users = event_users.select { |user| !twitter_members.include?(user) }
     twitter.add_list_members(event.twitter_list_url_raw, add_users)

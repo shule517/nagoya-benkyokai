@@ -68,16 +68,16 @@ namespace :tag do
 end
 
 namespace :twitter do
-  # desc 'ツイッターリストを全て削除する'
-  # task delete_lists: :environment do
-  #   include Notifiable
-  #   notify('event:delete_lists') do
-  #     twitter = TwitterClient.new
-  #     twitter.lists.each do |list|
-  #       twitter.destroy_list(list[:id])
-  #     end
-  #   end
-  # end
+  desc 'ツイッターリストを全て削除する'
+  task delete_lists: :environment do
+    include Notifiable
+    notify('event:delete_lists') do
+      twitter = TwitterClient.new
+      twitter.lists.each do |list|
+        twitter.destroy_list(list[:id])
+      end
+    end
+  end
 
   desc '終わった勉強会のツイッターリストを削除する'
   task clear_list: :environment do

@@ -1,0 +1,473 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/lists/list.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/6.1.0
+      Authorization:
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="fc0f11d354a082ded8673e8a0e8ca868",
+        oauth_signature="6v%2Fd5hBmiOJPiZ6gpfpbk04GN8g%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1508248286", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '28'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Tue, 17 Oct 2017 13:51:26 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Tue, 17 Oct 2017 13:51:26 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A150824828663668502; Expires=Thu, 17 Oct 2019 13:51:26 UTC; Path=/;
+        Domain=.twitter.com
+      - lang=ja; Path=/
+      - personalization_id="v1_FV3xeJwupY0lkQ6b9BWang=="; Expires=Thu, 17 Oct 2019
+        13:51:26 UTC; Path=/; Domain=.twitter.com
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read-write
+      X-Connection-Hash:
+      - 8741051545e816c59af178987820588a
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '15'
+      X-Rate-Limit-Remaining:
+      - '4'
+      X-Rate-Limit-Reset:
+      - '1508249133'
+      X-Response-Time:
+      - '118'
+      X-Transaction:
+      - 00e8b17100beaeba
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: "[]"
+    http_version: 
+  recorded_at: Tue, 17 Oct 2017 13:51:26 GMT
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/lists/list.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/6.1.0
+      Authorization:
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="52ecf4172a9238857428821a16a9c726",
+        oauth_signature="pKwzkXB973KAediUwA6CfRCassE%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1508248286", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '28'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Tue, 17 Oct 2017 13:51:27 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Tue, 17 Oct 2017 13:51:27 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A150824828712091344; Expires=Thu, 17 Oct 2019 13:51:27 UTC; Path=/;
+        Domain=.twitter.com
+      - lang=ja; Path=/
+      - personalization_id="v1_2K6pkyGBwLJ06DH8qDAUHw=="; Expires=Thu, 17 Oct 2019
+        13:51:27 UTC; Path=/; Domain=.twitter.com
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read-write
+      X-Connection-Hash:
+      - 3d02a3cbd5933bd53d23924bacb48f94
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '15'
+      X-Rate-Limit-Remaining:
+      - '3'
+      X-Rate-Limit-Reset:
+      - '1508249133'
+      X-Response-Time:
+      - '122'
+      X-Transaction:
+      - 002cb2e800f159f6
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: "[]"
+    http_version: 
+  recorded_at: Tue, 17 Oct 2017 13:51:27 GMT
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/lists/list.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/6.1.0
+      Authorization:
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="f96e9116434ee48b375611b5ef347f1b",
+        oauth_signature="Qi%2BH66y868L7KoAYRtI5vzMEP8U%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1508248287", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '28'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Tue, 17 Oct 2017 13:51:27 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Tue, 17 Oct 2017 13:51:27 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A150824828747301290; Expires=Thu, 17 Oct 2019 13:51:27 UTC; Path=/;
+        Domain=.twitter.com
+      - lang=ja; Path=/
+      - personalization_id="v1_9kR3O2Wil4oGgRfEsQD5/w=="; Expires=Thu, 17 Oct 2019
+        13:51:27 UTC; Path=/; Domain=.twitter.com
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read-write
+      X-Connection-Hash:
+      - 1bc913e682ec414d657c0875d34a8934
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '15'
+      X-Rate-Limit-Remaining:
+      - '2'
+      X-Rate-Limit-Reset:
+      - '1508249133'
+      X-Response-Time:
+      - '128'
+      X-Transaction:
+      - 00346063007ba044
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: "[]"
+    http_version: 
+  recorded_at: Tue, 17 Oct 2017 13:51:27 GMT
+- request:
+    method: post
+    uri: https://api.twitter.com/1.1/lists/create.json
+    body:
+      encoding: UTF-8
+      string: description=2016%2F5%2F15%28%E6%97%A5%29+JXUGC+%2314+Xamarin+%E3%83%8F%E3%83%B3%E3%82%BA%E3%82%AA%E3%83%B3+%E5%90%8D%E5%8F%A4%E5%B1%8B%E5%A4%A7%E4%BC%9A+https%3A%2F%2Fjxug.connpass.com%2Fevent%2F30152%2F&mode=private&name=JXUGC+%2314+Xamarin+%E3%83%8F%E3%83%B3%E3%82%BA%E3%82%AA%E3%83%B3
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/6.1.0
+      Authorization:
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="3ed0c14ae694024c8695cc1ed58e9b3c",
+        oauth_signature="%2FfjQGj7WoQjpQtOS%2Boqh84Xs%2B4A%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1508248287", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '773'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Tue, 17 Oct 2017 13:51:27 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Tue, 17 Oct 2017 13:51:27 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A150824828783172898; Expires=Thu, 17 Oct 2019 13:51:27 UTC; Path=/;
+        Domain=.twitter.com
+      - lang=ja; Path=/
+      - personalization_id="v1_dfQx21gwWzPtbGnqBSolZA=="; Expires=Thu, 17 Oct 2019
+        13:51:27 UTC; Path=/; Domain=.twitter.com
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read-write
+      X-Connection-Hash:
+      - c5b9efca67171dde99b6b193840ea53d
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Response-Time:
+      - '139'
+      X-Transaction:
+      - 00ce3539000c2197
+      X-Tsa-Request-Body-Time:
+      - '0'
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":920286137180078081,"id_str":"920286137180078081","name":"JXUGC
+        #14 Xamarin \u30cf\u30f3\u30ba\u30aa\u30f3","uri":"\/benkyo_dev\/lists\/jxugc-14-xamarin","subscriber_count":0,"member_count":0,"mode":"private","description":"2016\/5\/15(\u65e5)
+        JXUGC #14 Xamarin \u30cf\u30f3\u30ba\u30aa\u30f3 \u540d\u53e4\u5c4b\u5927\u4f1a
+        https:\/\/jxug.connpass.com\/event\/30152\/","slug":"jxugc-14-xamarin","full_name":"@benkyo_dev\/jxugc-14-xamarin","created_at":"Tue
+        Oct 17 13:51:27 +0000 2017","following":false,"user":{"id":878212227874004992,"id_str":"878212227874004992","name":"\u3079\u3093\u304d\u3087\u3046\u304b\u3044\u3066\u3059\u3068","screen_name":"benkyo_dev","location":"","description":"","url":null,"entities":{"description":{"urls":[]}},"protected":true,"followers_count":0,"friends_count":1,"listed_count":0,"created_at":"Fri
+        Jun 23 11:24:46 +0000 2017","favourites_count":2,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":16,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}}'
+    http_version: 
+  recorded_at: Tue, 17 Oct 2017 13:51:27 GMT
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/lists/members.json?cursor=-1&owner_screen_name=benkyo_dev&slug=jxugc-14-xamarin
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/6.1.0
+      Authorization:
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="c9492431b4fa3e2aa10579471d06bd9c",
+        oauth_signature="3%2F8XL4hZfTvDT41DUtyAYji3B4A%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1508248288", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '80'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Tue, 17 Oct 2017 13:51:28 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Tue, 17 Oct 2017 13:51:28 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A150824828824793777; Expires=Thu, 17 Oct 2019 13:51:28 UTC; Path=/;
+        Domain=.twitter.com
+      - lang=ja; Path=/
+      - personalization_id="v1_moJo5u8RFs2m9BPxjDnCmw=="; Expires=Thu, 17 Oct 2019
+        13:51:28 UTC; Path=/; Domain=.twitter.com
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read-write
+      X-Connection-Hash:
+      - 9fc1bb247a523fe6fd575f129c249047
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '900'
+      X-Rate-Limit-Remaining:
+      - '896'
+      X-Rate-Limit-Reset:
+      - '1508249136'
+      X-Response-Time:
+      - '118'
+      X-Transaction:
+      - '0074817500afa228'
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: '{"users":[],"next_cursor":0,"next_cursor_str":"0","previous_cursor":0,"previous_cursor_str":"0"}'
+    http_version: 
+  recorded_at: Tue, 17 Oct 2017 13:51:28 GMT
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/lists/list.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json
+      User-Agent:
+      - TwitterRubyGem/6.1.0
+      Authorization:
+      - OAuth oauth_consumer_key="<OAUTH_CONSUMER_KEY>", oauth_nonce="3437e8c05e7b433add9c6d469df78354",
+        oauth_signature="vOCxcSCVuGxsBVlrZJxNo2d03fI%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1508248288", oauth_token="<OAUTH_TOKEN>", oauth_version="1.0"
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '776'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Tue, 17 Oct 2017 13:51:28 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Tue, 17 Oct 2017 13:51:28 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_m
+      Set-Cookie:
+      - guest_id=v1%3A150824828851569677; Expires=Thu, 17 Oct 2019 13:51:28 UTC; Path=/;
+        Domain=.twitter.com
+      - lang=ja; Path=/
+      - personalization_id="v1_BQV30a35iASxXzieRw8J3Q=="; Expires=Thu, 17 Oct 2019
+        13:51:28 UTC; Path=/; Domain=.twitter.com
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read-write
+      X-Connection-Hash:
+      - 0c4d72e2ebe9110273aae169bef12cc8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '15'
+      X-Rate-Limit-Remaining:
+      - '1'
+      X-Rate-Limit-Reset:
+      - '1508249133'
+      X-Response-Time:
+      - '143'
+      X-Transaction:
+      - 00fe6836009aa0fa
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - 1; mode=block
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":920286137180078081,"id_str":"920286137180078081","name":"JXUGC
+        #14 Xamarin \u30cf\u30f3\u30ba\u30aa\u30f3","uri":"\/benkyo_dev\/lists\/jxugc-14-xamarin","subscriber_count":0,"member_count":0,"mode":"private","description":"2016\/5\/15(\u65e5)
+        JXUGC #14 Xamarin \u30cf\u30f3\u30ba\u30aa\u30f3 \u540d\u53e4\u5c4b\u5927\u4f1a
+        https:\/\/jxug.connpass.com\/event\/30152\/","slug":"jxugc-14-xamarin","full_name":"@benkyo_dev\/jxugc-14-xamarin","created_at":"Tue
+        Oct 17 13:51:27 +0000 2017","following":true,"user":{"id":878212227874004992,"id_str":"878212227874004992","name":"\u3079\u3093\u304d\u3087\u3046\u304b\u3044\u3066\u3059\u3068","screen_name":"benkyo_dev","location":"","description":"","url":null,"entities":{"description":{"urls":[]}},"protected":true,"followers_count":0,"friends_count":1,"listed_count":0,"created_at":"Fri
+        Jun 23 11:24:46 +0000 2017","favourites_count":2,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":16,"lang":"ja","contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_image_url_https":"https:\/\/abs.twimg.com\/sticky\/default_profile_images\/default_profile_normal.png","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":true,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}}]'
+    http_version: 
+  recorded_at: Tue, 17 Oct 2017 13:51:28 GMT
+recorded_with: VCR 3.0.3
