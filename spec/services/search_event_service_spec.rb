@@ -47,6 +47,12 @@ describe SearchEventService, type: :request do
       titles = events.map(&:title)
       expect(titles).to include '第3回 ガンダムナイト＠名古屋ギークバー'
     end
+
+    it 'WCAN 2018/05「ブランディングを意識したWebデザイン、そのプロセスと方法について」が取得できること', vcr: 'wcan' do
+      events = SearchEventService.new.call({ event_id: 72312 }, false) # WCAN 2018/05「ブランディングを意識したWebデザイン、そのプロセスと方法について」 https://wcan.doorkeeper.jp/
+      titles = events.map(&:title)
+      expect(titles).to include 'WCAN 2018/05「ブランディングを意識したWebデザイン、そのプロセスと方法について」'
+    end
   end
 
   context 'ATNDの場合' do
