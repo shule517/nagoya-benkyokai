@@ -1,0 +1,71 @@
+{
+  "addons": [
+    "heroku-postgresql",
+    "heroku-postgresql",
+    "scheduler"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ],
+  "env": {
+    "DOORKEEPER_TOKEN": {
+      "required": true
+    },
+    "HEROKU_POSTGRESQL_MAUVE_URL": {
+      "required": true
+    },
+    "HEROKU_POSTGRESQL_ONYX_URL": {
+      "required": true
+    },
+    "HEROKU_URL": {
+      "required": true
+    },
+    "HUBOT_HEROKU_KEEPALIVE_URL": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "SLACK_ERROR_CHANNEL": {
+      "required": true
+    },
+    "SLACK_LOG_CHANNEL": {
+      "required": true
+    },
+    "SLACK_TOKEN": {
+      "required": true
+    },
+    "TWITTER_ACCESS_TOKEN": {
+      "required": true
+    },
+    "TWITTER_ACCESS_TOKEN_SECRET": {
+      "required": true
+    },
+    "TWITTER_CONSUMER_KEY": {
+      "required": true
+    },
+    "TWITTER_CONSUMER_SECRET": {
+      "required": true
+    },
+    "TWITTER_DEBUG_MODE": {
+      "required": true
+    },
+    "TZ": {
+      "required": true
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "name": "nagoya-benkyokai",
+  "scripts": {
+  },
+  "stack": "cedar-14"
+}
