@@ -33,6 +33,14 @@ describe SearchEventService, type: :request do
       titles = events.map(&:title)
       expect(titles).to include '【NKC生限定】名古屋で始めるAI を使いこなせ！ Cognitive Services 勉強会！' # https://msp-nkc.connpass.com/event/61174/
     end
+
+    context 'Ansible Night in Nagoya 2019.02 の場合' do
+      it 'イベントが取得できること', vcr: 'ansible_night' do
+        events = SearchEventService.new.call({ event_id: 116946 }, false) # Ansible Night in Nagoya 2019.02 https://ansible-users.connpass.com/event/116946/
+        titles = events.map(&:title)
+        expect(titles).to include 'Ansible Night in Nagoya 2019.02'
+      end
+    end
   end
 
   context 'Doorkeeperの場合' do
