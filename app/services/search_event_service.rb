@@ -24,7 +24,7 @@ class SearchEventService
 
   def aichi?(event)
     # 愛知の市町村が含まれて、愛知外の市町村が含まれないこと
-    aichi_cities.any? { |aichi_city| event.address&.include?(aichi_city) } &&
+    # aichi_cities.any? { |aichi_city| event.address&.include?(aichi_city) } &&
     not_aichi_cities.all? { |not_aichi_city| event.address&.exclude?(not_aichi_city) }
   end
 
@@ -37,7 +37,7 @@ class SearchEventService
   end
 
   def aichi_cities
-    %w(愛知 名古屋市 一宮市 瀬戸市 春日井市 犬山市 江南市 小牧市 稲沢市 尾張旭市 岩倉市 豊明市 日進市 清須市 北名古屋市 長久手市 東郷町 豊山町 大口町 扶桑町 津島市 愛西市 弥富市 あま市 大治町 蟹江町 飛島村 半田市 常滑市 東海市 大府市 知多市 阿久比町 東浦町 南知多町 美浜町 武豊町 岡崎市 碧南市 刈谷市 豊田市 安城市 西尾市 知立市 高浜市 みよし市 幸田町 豊橋市 豊川市 蒲郡市 新城市 田原市 設楽町 東栄町 豊根村 千種区 東区 北区 西区 中村区 中区 昭和区 瑞穂区 熱田区 中川区 港区 南区 守山区 緑区 名東区 天白区)
+    %w(愛知 名古屋 一宮市 瀬戸市 春日井市 犬山市 江南市 小牧市 稲沢市 尾張旭市 岩倉市 豊明市 日進市 清須市 北名古屋市 長久手市 東郷町 豊山町 大口町 扶桑町 津島市 愛西市 弥富市 あま市 大治町 蟹江町 飛島村 半田市 常滑市 東海市 大府市 知多市 阿久比町 東浦町 南知多町 美浜町 武豊町 岡崎市 碧南市 刈谷市 豊田市 安城市 西尾市 知立市 高浜市 みよし市 幸田町 豊橋市 豊川市 蒲郡市 新城市 田原市 設楽町 東栄町 豊根村 千種区 東区 北区 西区 中村区 中区 昭和区 瑞穂区 熱田区 中川区 港区 南区 守山区 緑区 名東区 天白区)
   end
 
   def not_benkyokai_words
