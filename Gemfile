@@ -16,7 +16,7 @@ gem 'twitter'
 gem 'test-unit'
 
 gem 'hirb'         # モデルの出力結果を表形式で表示するGem
-gem 'hirb-unicode' # 日本語などマルチバイト文字の出力時の出力結果のずれに対応
+# gem 'hirb-unicode' # 日本語などマルチバイト文字の出力時の出力結果のずれに対応
 
 gem 'pry-rails'  # rails console(もしくは、rails c)でirbの代わりにpryを使われる
 gem 'pry-doc'    # methodを表示
@@ -50,7 +50,7 @@ gem 'will_paginate'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'rubocop', platform: :mri
+  gem 'rubocop', '>= 0.49.0'
 
   gem 'ruby-debug-ide'
   gem 'debase'
