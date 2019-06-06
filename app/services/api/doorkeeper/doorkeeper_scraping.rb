@@ -17,8 +17,8 @@ module Api
         event_doc.css('div.community-profile-picture > a > img/@src').first.text
       end
 
-      def users
-        participation_doc.css('.member-list-item').map { |user|
+      def collect_users(doc)
+        doc.css('.member-list-item').map { |user|
           user_url = user.css('a.member/@href').text
           pp user_url: user_url
           next if user_url.blank? # １番下のタグは非公開者の人数のためスキップ
@@ -33,7 +33,12 @@ module Api
           end
 
           DoorkeeperUser.new(social_ids.merge(name: name, image_url: image_url))
-        }.compact.sort_by { |user| user.twitter_id }.reverse
+        }.compact
+      end
+
+      def users
+        users = collect_users(participation_doc) + collect_users(participation_page2_doc)
+        users.sort_by { |user| user.twitter_id }.reverse
       rescue
         puts "no users event:#{title} / #{group_url} / #{event_id}"
         []
@@ -82,6 +87,10 @@ module Api
 
       def participation_doc
         @participation_doc ||= Api::Http.get_document("#{group_url}events/#{event_id}/participants")
+      end
+
+      def participation_page2_doc
+        @participation_page2_doc ||= Api::Http.get_document("#{group_url}events/#{event_id}/participants?page=2")
       end
 
       def event_doc

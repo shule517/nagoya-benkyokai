@@ -50,6 +50,13 @@ describe DoorkeeperEvent, type: :request do
       it { expect(users.count + 3).to eq event.accepted } # 3人アカウント非表示
     end
 
+    context '参加者ページが２ページある場合', vcr: '#users-exist-2page' do
+      # 名古屋Ruby会議04 https://rubytokai.doorkeeper.jp/events/90578
+      let(:event) { api.find(event_id: 90578) }
+
+      it { expect(users.count + 27).to eq event.accepted } # 27人アカウント非表示
+    end
+
     context '参加者がいない場合', vcr: '#users-not_exist' do
       # 第37回 concrete5 の日 https://concrete5nagoya.doorkeeper.jp/events/59441
       let(:event) { api.find(event_id: 59441) }
