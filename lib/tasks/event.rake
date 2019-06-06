@@ -68,6 +68,14 @@ namespace :tag do
 end
 
 namespace :twitter do
+  desc 'ツイッターの更新'
+  task update_lists: :environment do
+    include Notifiable
+    notify('event:update_lists') do
+      UpdateTwitterService.new.call(Event.scheduled)
+    end
+  end
+
   desc 'ツイッターリストを全て削除する'
   task delete_lists: :environment do
     include Notifiable
