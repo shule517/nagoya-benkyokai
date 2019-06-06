@@ -18,16 +18,22 @@ module Api
       end
 
       def users
-        participation_doc.css('.user-profile-details').map { |user|
+        participation_doc.css('.member-list-item').map { |user|
+          user_url = user.css('a.member/@href').text
+          pp user_url: user_url
+          next if user_url.blank? # １番下のタグは非公開者の人数のためスキップ
+
+          name = user.css('div.member-name > span').text
+          image_url = user.css('img.user-avatar/@data-src').text
+
+          user_doc = Api::Http.get_document(user_url)
           social_ids = {}
-          user.css('div.user-social > a.external-profile-link/@href').each do |social_url|
+          user_doc.css('div.social-links > a.external-profile-link/@href').each do |social_url|
             get_social_id(social_url.text, social_ids)
           end
 
-          name = user.css('div.user-name').children.text
-          image_url = user.css('img/@src').text
           DoorkeeperUser.new(social_ids.merge(name: name, image_url: image_url))
-        }.sort_by { |user| user.twitter_id }.reverse
+        }.compact.sort_by { |user| user.twitter_id }.reverse
       rescue
         puts "no users event:#{title} / #{group_url} / #{event_id}"
         []

@@ -26,8 +26,8 @@ describe DoorkeeperEvent, type: :request do
       expect(event.limit).to eq 38
       expect(event.accepted).to eq 32
       expect(event.waiting).to eq 0
-      expect(event.updated_at).to eq Time.parse('2017-01-10 12:14:06.478000000 +0000')
-      expect(event.update_time).to eq Time.parse('2017-01-10 12:14:06.478000000 +0000')
+      expect(event.updated_at).to eq Time.parse('2018-05-13 00:04:29.933000000 +0000')
+      expect(event.update_time).to eq Time.parse('2018-05-13 00:04:29.933000000 +0000')
       expect(event.hash_tag).to eq nil # Doorkeeperにはハッシュタグは設定されない
       expect(event.limit_over?).to eq false
       expect(event.users.count + 3).to eq event.accepted # 3人非表示
@@ -67,7 +67,7 @@ describe DoorkeeperEvent, type: :request do
 
       it { expect(user.twitter_id).to eq 'shule517' }
       it { expect(user.name).to eq 'シュール' }
-      it { expect(user.image_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/295014_original_1464427238_PeerstPlayer_Icon_normal.png' }
+      it { expect(user.image_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/295014_full_1557278539_open-uri20190508-1-kv28lk' }
     end
 
     describe '#get_social_id' do
@@ -81,7 +81,7 @@ describe DoorkeeperEvent, type: :request do
         it { expect(user.github_id).to eq 'kekyo' }
         it { expect(user.linkedin_id).to eq 'kouji-matsui-71856762' }
         it { expect(user.name).to eq 'kekyo' }
-        it { expect(user.image_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/64317_original_1484359298_github128.png' }
+        it { expect(user.image_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/users_avatar_files/64317_full_1539753195_github128.png' }
       end
 
       context 'linkedin_idのフォーマットが違う場合', vcr: '#user-sns-linkedin' do
@@ -103,7 +103,7 @@ describe DoorkeeperEvent, type: :request do
         it { expect(user.github_id).to eq '' } # TODO nil
         it { expect(user.linkedin_id).to eq '' } # TODO nil
         it { expect(user.name).to eq 'Tomoki Sakamiya' }
-        it { expect(user.image_url).to eq 'https://secure.gravatar.com/avatar/c7102e2634db160be9f59a0029b867b7?s=25&d=mm' }
+        it { expect(user.image_url).to eq 'https://secure.gravatar.com/avatar/c7102e2634db160be9f59a0029b867b7?d=mm&s=400' }
       end
     end
   end
@@ -207,7 +207,7 @@ describe DoorkeeperEvent, type: :request do
       # 5月26日（金）個別相談会 ＜朝の部＞ https://jimdocafe-hakata.doorkeeper.jp/events/60351
       let(:event) { api.find(event_id: 60351) }
 
-      it { expect(event.group_logo_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/assets/doorkeeper_group_normal-125b448b722fa8c158516cf4b86aafda26b442af55a001418b0eb2acf7117961.gif' }
+      it { expect(event.group_logo_url).to eq 'https://dzpp79ucibp5a.cloudfront.net/assets/group_logos/8AB840_normal-97f1947f9e37c77b28cfdd8d9c3a4e60941ee1a3888fab7d774d2d5fd9a26eba.png' }
     end
   end
 end
