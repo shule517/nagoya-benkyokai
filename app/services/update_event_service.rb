@@ -3,7 +3,7 @@ class UpdateEventService
     condition.merge!(ym: collect_period) if condition.empty?
     events = SearchEventService.new.call(condition)
     update(events)
-    UpdateTwitterService.new.call(Event.scheduled)
+    # TODO 一時的にツイッターリストの更新を無効化 UpdateTwitterService.new.call(Event.scheduled)
   end
 
   private
