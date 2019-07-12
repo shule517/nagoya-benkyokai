@@ -9,7 +9,7 @@ class SearchEventService
   attr_reader :condition, :after_today
 
   def search_core
-    apis = [Api::Connpass::ConnpassApi.new, Api::Doorkeeper::DoorkeeperApi.new, Api::Atnd::AtndApi.new]
+    apis = [Api::Connpass::ConnpassApi.new, Api::Doorkeeper::DoorkeeperApi.new] # Api::Atnd::AtndApi.new
     events = apis.flat_map do |api|
       api.search(condition)
     end
