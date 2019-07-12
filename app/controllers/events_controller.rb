@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.scheduled
+    @events = Event.scheduled.where.not('event_url like ?', 'https://atnd.org/%')
   end
 
   # おためし機能
