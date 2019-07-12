@@ -34,12 +34,6 @@
 #  lat               :decimal(17, 14)
 #  lon               :decimal(17, 14)
 #
-# Indexes
-#
-#  index_events_on_event_url   (event_url)
-#  index_events_on_started_at  (started_at)
-#  index_events_on_twitter_id  ()
-#
 
 require 'rails_helper'
 
