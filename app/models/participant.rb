@@ -12,6 +12,7 @@
 # Indexes
 #
 #  index_participants_on_event_id  (event_id)
+#  index_participants_on_owner     (owner)
 #  index_participants_on_user_id   (user_id)
 #
 

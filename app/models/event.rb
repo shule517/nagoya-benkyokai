@@ -34,6 +34,12 @@
 #  lat               :decimal(17, 14)
 #  lon               :decimal(17, 14)
 #
+# Indexes
+#
+#  index_events_on_event_url   (event_url)
+#  index_events_on_started_at  (started_at)
+#  index_events_on_twitter_id  ()
+#
 
 class Event < ApplicationRecord
   has_many :participants, dependent: :delete_all
