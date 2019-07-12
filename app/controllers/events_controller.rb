@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   def index
-    @events = Event.scheduled.where.not('event_url like ?', 'https://atnd.org/%')
+    @events = Event.where.not('event_url like ?', 'https://atnd.org/%')
+    @event = @events.joins(:participants).first
   end
 
   # おためし機能
