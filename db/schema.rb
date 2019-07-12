@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725135013) do
+ActiveRecord::Schema.define(version: 20190712161132) do
 
   create_table "event_tags", force: :cascade do |t|
     t.integer  "event_id"
@@ -52,6 +52,9 @@ ActiveRecord::Schema.define(version: 20170725135013) do
     t.datetime "update_time"
     t.decimal  "lat",               precision: 17, scale: 14
     t.decimal  "lon",               precision: 17, scale: 14
+    t.index ["event_url"], name: "index_events_on_event_url"
+    t.index ["started_at"], name: "index_events_on_started_at"
+    t.index [nil], name: "index_events_on_twitter_id"
   end
 
   create_table "participants", force: :cascade do |t|
@@ -61,6 +64,7 @@ ActiveRecord::Schema.define(version: 20170725135013) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["event_id"], name: "index_participants_on_event_id"
+    t.index ["owner"], name: "index_participants_on_owner"
     t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
