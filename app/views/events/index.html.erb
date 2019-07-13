@@ -1,14 +1,16 @@
-<div class="col-md-8 col-xs-12">
-  <%= render partial: 'events/event', locals: { events: @events } %>
-</div>
+<div class="row">
+  <div class="col-md-8 col-xs-12">
+    <%= render partial: 'events/event', locals: { events: @events } %>
+  </div>
 
-<div class="col-md-0 col-xs-1">
-</div>
+  <div class="col-md-0 col-xs-1">
+  </div>
 
-<div class="col-md-3 col-xs-10">
-  <% if @event.present? %>
-    <% twitter_list_url = @event.twitter_list_url %>
-    <a class="twitter-timeline" href="<%= "#{twitter_list_url}/members" %>">Tweets by TwitterDev</a>
-    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-  <% end %>
+  <div class="col-md-3 col-xs-10">
+    <% if @event.present? %>
+      <% twitter_list_url = @event.twitter_list_url %>
+      <a class="twitter-timeline" href="<%= "#{twitter_list_url}/members" %>">Tweets by TwitterDev</a>
+      <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <% end %>
+  </div>
 </div>
