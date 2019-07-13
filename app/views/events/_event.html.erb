@@ -26,25 +26,25 @@
       <% unless is_new_day %>
         <hr class="style-two">
       <% end %>
-
-      <div class="event-left col-md-3 col-xs-3" itemprop="startDate" content="<%= "#{event.year}-#{event.month}-#{event.day}" %>">
-        <%= render partial: 'events/logo', locals: { event: event } %>
-        <%= render partial: 'events/place', locals: { event: event } %>
-      </div>
-
-      <div class="event-right col-md-9 col-xs-9">
-        <%= render partial: 'events/title', locals: { event: event } %>
-        <%= render partial: 'events/group', locals: { event: event } %>
-        <%= render partial: 'events/detail', locals: { event: event } %>
-
-        <div class="event-user">
-          <a href="<%= "#{event.twitter_list_url}" %>">
-            <%= image_tag("twitter.png", class: "twitter-icon", datatoggle: "tooltip", title: "ツイッターリスト") %>
-          </a>
-          <%= render partial: 'events/owner', collection: event.owners %>
-          <%= render partial: 'events/user', collection: event.pure_users %>
+      <div class="row">
+        <div class="event-left col-md-3 col-xs-3" itemprop="startDate" content="<%= "#{event.year}-#{event.month}-#{event.day}" %>">
+          <%= render partial: 'events/logo', locals: { event: event } %>
+          <%= render partial: 'events/place', locals: { event: event } %>
         </div>
 
+        <div class="event-right col-md-9 col-xs-9">
+          <%= render partial: 'events/title', locals: { event: event } %>
+          <%= render partial: 'events/group', locals: { event: event } %>
+          <%= render partial: 'events/detail', locals: { event: event } %>
+
+          <div class="event-user">
+            <a href="<%= "#{event.twitter_list_url}" %>">
+              <%= image_tag("twitter.png", class: "twitter-icon", datatoggle: "tooltip", title: "ツイッターリスト") %>
+            </a>
+            <%= render partial: 'events/owner', collection: event.owners %>
+            <%= render partial: 'events/user', collection: event.pure_users %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

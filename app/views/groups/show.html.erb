@@ -1,35 +1,37 @@
 <% content_for(:html_title) { @event.group_title + ' の勉強会一覧 - 名古屋勉強会らむだ'} %>
-<div class="col-md-8 col-xs-12" style="margin-left: 20px">
-  <h2>
-    <a href="<%= "#{@event.group_url}" %>">
-      <img class="group-logo" src="<%= @event.group_logo_url %>" datatoggle="tooltip">
-      <%= "#{@event.group_title}" %>
-      <small>
-        by <%= "#{@event.source}" %>
-      </small>
-    </a>
-  </h2>
+<div class="row">
+  <div class="col-md-8 col-xs-12" style="margin-left: 20px">
+    <h2>
+      <a href="<%= "#{@event.group_url}" %>">
+        <img class="group-logo" src="<%= @event.group_logo_url %>" datatoggle="tooltip">
+        <%= "#{@event.group_title}" %>
+        <small>
+          by <%= "#{@event.source}" %>
+        </small>
+      </a>
+    </h2>
 
-  <br>
+    <br>
 
-  <h3 class="user-title">
-    <b>開催する勉強会</b>
-  </h3>
-  <%= render partial: 'events/event', locals: { events: @events } %>
+    <h3 class="user-title">
+      <b>開催する勉強会</b>
+    </h3>
+    <%= render partial: 'events/event', locals: { events: @events } %>
 
-  <br>
-  <br>
+    <br>
+    <br>
 
-  <h3 class="user-title">
-    <b>過去の勉強会</b>
-  </h3>
-  <%= render partial: 'events/event', locals: { events: @events_histories } %>
-</div>
+    <h3 class="user-title">
+      <b>過去の勉強会</b>
+    </h3>
+    <%= render partial: 'events/event', locals: { events: @events_histories } %>
+  </div>
 
-<div class="col-md-0 col-xs-1">
-</div>
+  <div class="col-md-0 col-xs-1">
+  </div>
 
-<div class="col-md-3 col-xs-10">
-  <a class="twitter-timeline" href="<%= "#{@event.twitter_list_url}/members" %>">Tweets by TwitterDev</a>
-  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <div class="col-md-3 col-xs-10">
+    <a class="twitter-timeline" href="<%= "#{@event.twitter_list_url}/members" %>">Tweets by TwitterDev</a>
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+  </div>
 </div>
