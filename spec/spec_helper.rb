@@ -23,7 +23,7 @@ RSpec.configure do |config|
     if vcr_cassette
       description = example.metadata[:file_path].gsub('./spec/', '').gsub('_spec.rb', '')
       cassette = "#{description}/#{vcr_cassette}"
-      VCR.use_cassette cassette do
+      VCR.use_cassette(cassette, record: :new_episodes) do
         example.run
       end
     else
