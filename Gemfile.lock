@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/smartinez87/exception_notification.git
-  revision: b04948d40e58a268a3cf9324f6cd33ceb207c53f
+  remote: https://github.com/smartinez87/exception_notification.git
+  revision: 6a89f3b3b1623fa24d4f7b55a662c3bf2ab6b00b
   specs:
     exception_notification (4.3.0)
       actionmailer (>= 4.0, < 6)
@@ -321,17 +321,6 @@ GEM
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
     safe_yaml (1.0.4)
-    sass (3.7.3)
-      sass-listen (~> 4.0.0)
-    sass-listen (4.0.0)
-      rb-fsevent (~> 0.9, >= 0.9.4)
-      rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.0.7)
-      railties (>= 4.0.0, < 6)
-      sass (~> 3.1)
-      sprockets (>= 2.8, < 4.0)
-      sprockets-rails (>= 2.0, < 4.0)
-      tilt (>= 1.1, < 3)
     shellany (0.0.1)
     simple_oauth (0.3.1)
     slack-api (1.6.1)
@@ -356,7 +345,6 @@ GEM
       power_assert
     thor (0.19.4)
     thread_safe (0.3.6)
-    tilt (2.0.9)
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -445,7 +433,6 @@ DEPENDENCIES
   rubocop (>= 0.49.0)
   ruby-debug-ide
   ruby-swagger
-  sass-rails (~> 5.0)
   slack-api
   slack-notifier
   spring

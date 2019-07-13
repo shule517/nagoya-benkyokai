@@ -21,6 +21,7 @@ gem 'hirb'         # モデルの出力結果を表形式で表示するGem
 gem 'pry-rails'  # rails console(もしくは、rails c)でirbの代わりにpryを使われる
 gem 'pry-doc'    # methodを表示
 gem 'pry-byebug' # デバッグを実施
+gem 'ruby-debug-ide'
 
 gem 'openssl'
 gem 'json'
@@ -52,7 +53,6 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rubocop', '>= 0.49.0'
 
-  gem 'ruby-debug-ide'
   gem 'debase'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
@@ -71,7 +71,6 @@ group :development do
   gem 'guard-livereload', '~> 2.5', require: false
   gem 'foreman'
   gem "rails_real_favicon" # favicon生成用
-  gem 'ruby-debug-ide'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
