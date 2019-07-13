@@ -6,11 +6,11 @@ describe SearchEventService, type: :request do
     classes = events.map(&:class)
     expect(classes).to include Api::Connpass::ConnpassEvent
     expect(classes).to include Api::Doorkeeper::DoorkeeperEvent
-    expect(classes).to include Api::Atnd::AtndEvent
+    expect(classes).not_to include Api::Atnd::AtndEvent
     titles = events.map(&:title)
     expect(titles).to include 'NGK2016B 昼の部'               # connpass
     expect(titles).to include 'ものづくりナイト@名古屋ギークバー' # Doorkeeper
-    expect(titles).to include '名古屋アプリ開発者ミーティング'    # ATND
+    expect(titles).not_to include '名古屋アプリ開発者ミーティング'    # ATND
   end
 
   it '2017/05のDoorkeeperのイベントが取得できること', vcr: '#search-201705' do
