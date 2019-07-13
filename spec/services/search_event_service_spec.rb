@@ -10,7 +10,7 @@ describe SearchEventService, type: :request do
     titles = events.map(&:title)
     expect(titles).to include 'NGK2016B 昼の部'               # connpass
     expect(titles).to include 'ものづくりナイト@名古屋ギークバー' # Doorkeeper
-    expect(titles).not_to include '名古屋アプリ開発者ミーティング'    # ATND
+    expect(titles).not_to include '名古屋アプリ開発者ミーティング' # ATND
   end
 
   it '2017/05のDoorkeeperのイベントが取得できること', vcr: '#search-201705' do
