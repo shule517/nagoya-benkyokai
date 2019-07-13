@@ -55,7 +55,7 @@ group :development, :test do
 
   gem 'debase'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'rails-controller-testing'
   gem 'webmock'
   gem 'vcr'
