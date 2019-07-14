@@ -24,7 +24,7 @@ if (typeof IntersectionObserver === 'function') {
 
     imgs.forEach(function (img) {
       img.dataset.origsrc = img.src;
-      img.src = "/assets/loader-rolling.gif";
+      img.src = "<%= image_path('loader-rolling.gif') %>";
       io.observe(img);
     });
   });
