@@ -9,4 +9,12 @@ module ApplicationHelper
     end
     doc.to_html.html_safe
   end
+
+  def conditional_wrap(tagname, options = {}, &block)
+    if options.delete(:if)
+      concat content_tag(tagname, capture(&block), options)
+    else
+      concat capture(&block)
+    end
+  end
 end
