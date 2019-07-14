@@ -14,35 +14,3 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
-if (typeof IntersectionObserver === 'function') {
-    // IntersectionObserverをサポートしていないブラウザ（IE11など）では通常のローディングにフォールバック
-    window.addEventListener('DOMContentLoaded', function () {
-        var io = new IntersectionObserver(function (entries) {
-                var that = this;
-                entries.forEach(function (entry) {
-                    if (entry.intersectionRatio === 0) return;
-                    entry.target.src = entry.target.dataset.origsrc;
-                    that.unobserve(entry.target);
-                });
-            },
-            {
-                // 画面外上下 100px まで来たら対象とする
-                rootMargin: "100px 0px 100px 0px",
-                threshold: [0.25],
-            }
-        );
-
-        var imgs = document.querySelectorAll([
-            'img.event-logo',
-            'img.owner-icon',
-            'img.user-icon'
-        ].join(','));
-
-        imgs.forEach(function (img) {
-            img.dataset.origsrc = img.src;
-            img.src = "/assets/loader-rolling.gif";
-            io.observe(img);
-        });
-    });
-}
