@@ -9,7 +9,7 @@ describe UpdateEventService, type: :request do
   end
   let(:twitter) { TwitterClient.new }
   let(:service) { UpdateTwitterService.new }
-  let(:event) { FactoryBot.create(:event) }
+  let(:event) { FactoryGirl.create(:event) }
   let(:events) { [event] }
 
   it 'ツイッターリストの新規作成', vcr: '#create' do
