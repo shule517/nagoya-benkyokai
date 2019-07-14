@@ -51,6 +51,10 @@ class Event < ApplicationRecord
   scope :scheduled, -> { where('started_at >= ?', Date.today).order(:started_at).includes(:users, :owners) }
   scope :ended, -> { where('started_at < ?', Date.today).order(started_at: :desc).includes(:users, :owners) }
 
+  def pure_users
+    users - owners
+  end
+
   def year
     started_at.year
   end

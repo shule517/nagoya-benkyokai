@@ -85,7 +85,7 @@
               </a>
                 <% end %>
               <% end %>
-              <% event.users.each do |user| %>
+              <% event.pure_users.each do |user| %>
                 <% if !user[:twitter_id].empty?  %>
               <a class="clickable" href="<%= "./users/#{user.twitter_id}" %>">
                 <% end %>
