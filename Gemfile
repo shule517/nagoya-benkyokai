@@ -67,6 +67,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'ruby-debug-ide'
   gem 'web-console'
   gem 'guard-livereload', '~> 2.5', require: false
   gem 'foreman'
