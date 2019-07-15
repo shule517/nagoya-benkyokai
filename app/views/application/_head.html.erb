@@ -1,4 +1,4 @@
-<title>名古屋勉強会らむだ</title>
+<title><%= content_for?(:html_title) ? yield(:html_title) : '名古屋勉強会らむだ' %></title>
 <%= csrf_meta_tags %>
 <%= stylesheet_link_tag 'application', media: 'all' %>
 <%= javascript_include_tag 'application' %>
