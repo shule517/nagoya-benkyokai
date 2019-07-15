@@ -42,7 +42,7 @@
             <%= image_tag("twitter.png", class: "twitter-icon", datatoggle: "tooltip", title: "ツイッターリスト") %>
           </a>
           <%= render partial: 'events/owner', collection: event.owners %>
-          <%= render partial: 'events/user', collection: event.users %>
+          <%= render partial: 'events/user', collection: event.pure_users %>
         </div>
 
       </div>
