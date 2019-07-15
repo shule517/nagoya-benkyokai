@@ -4,7 +4,7 @@ if (typeof IntersectionObserver === 'function') {
     var io = new IntersectionObserver(function (entries) {
         var that = this;
         entries.forEach(function (entry) {
-          if (entry.intersectionRatio === 0) return;
+          if (!entry.isIntersecting) return;
           entry.target.src = entry.target.dataset.origsrc;
           that.unobserve(entry.target);
         });
@@ -23,6 +23,7 @@ if (typeof IntersectionObserver === 'function') {
     ].join(','));
 
     imgs.forEach(function (img) {
+      if (img.naturalWidth > 0) return;
       img.dataset.origsrc = img.src;
       img.src = "<%= image_path('loader-rolling.gif') %>";
       io.observe(img);
