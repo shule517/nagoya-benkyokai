@@ -21,7 +21,6 @@ gem 'hirb'         # モデルの出力結果を表形式で表示するGem
 gem 'pry-rails'  # rails console(もしくは、rails c)でirbの代わりにpryを使われる
 gem 'pry-doc'    # methodを表示
 gem 'pry-byebug' # デバッグを実施
-gem 'ruby-debug-ide'
 
 gem 'openssl'
 gem 'json'
@@ -53,6 +52,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rubocop', '>= 0.49.0'
 
+  gem 'ruby-debug-ide'
   gem 'debase'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
