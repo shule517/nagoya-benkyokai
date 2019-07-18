@@ -14,9 +14,10 @@ class SearchEventService
       api.search(condition)
     end
     # connpassApiから取得できない勉強会は グループID指定で検索する
-    connpass_series_events = Api::Connpass::ConnpassApi.new.search(series_id: 3740) # NKC-UG 名古屋 https://msp-nkc.connpass.com/
-    connpass_mysql_events = Api::Connpass::ConnpassApi.new.search(event_id: 129495) # 【名古屋開催】MySQL 8.0 入門セミナー ～インストール＆アーキテクチャ基礎編～ https://connpass.com/event/129495/
-    events = [*events, *connpass_series_events, *connpass_mysql_events]
+    nkcug_events = Api::Connpass::ConnpassApi.new.search(series_id: 3740) # NKC-UG 名古屋 https://msp-nkc.connpass.com/
+    blockchain_nagoya_events = Api::Connpass::ConnpassApi.new.search(series_id: 6218) # blockchain.nagoya https://ether-nagoya.connpass.com/
+    mysql_events = Api::Connpass::ConnpassApi.new.search(event_id: 129495) # 【名古屋開催】MySQL 8.0 入門セミナー ～インストール＆アーキテクチャ基礎編～ https://connpass.com/event/129495/
+    events = [*events, *nkcug_events, *blockchain_nagoya_events, *mysql_events]
     events.select! { |event| aichi?(event) }
     events.select! { |event| benkyokai?(event) }
     events.select! { |event| event.started_at >= Time.now } if after_today
