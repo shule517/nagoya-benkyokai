@@ -1,6 +1,7 @@
 <% bday = "" %>
 <% events.each_with_index do |event, index| %>
   <% day = "#{event.month}/#{event.day}" %>
+  <% day_dom_id = "day-#{event.month}-#{event.day}" %>
   <% is_new_day = (bday != day) %>
   <% bday = day %>
 
@@ -12,7 +13,7 @@
     <% end %>
 
     <%# 日付を表示 %>
-    <div class="col-md-2 col-xs-12">
+    <div class="col-md-2 col-xs-12" id="<%= day_dom_id %>">
       <% if is_new_day %>
         <h2 class="day">
           <%= day %>
