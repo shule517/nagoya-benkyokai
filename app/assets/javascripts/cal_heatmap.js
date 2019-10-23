@@ -1,6 +1,6 @@
 function onClickHandler(date, nb) {
-  var jumpTo = ['day', date.getMonth() + 1, date.getDate()].join('-')
-  window.location.hash = jumpTo
+  var jumpTo = ['day', date.getMonth() + 1, date.getDate()].join('-');
+  window.location.hash = jumpTo;
 }
 
 window.addEventListener('DOMContentLoaded', function () {
@@ -22,6 +22,4 @@ window.addEventListener('DOMContentLoaded', function () {
     },
     onClick: onClickHandler
   });
-})
-
-
+});

@@ -12,8 +12,12 @@
     font-size: 10px;
   }
 
-  .q1, .q2, .q3, .q4, .q5 {
-    & ~ .subdomain-text {
+  .q1,
+  .q2,
+  .q3,
+  .q4,
+  .q5 {
+    ~ .subdomain-text {
       fill: #fff;
       font-weight: bold;
     }
