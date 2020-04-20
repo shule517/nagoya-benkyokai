@@ -1,3 +1,3 @@
 <% conditional_wrap('a', if:user.twitter_id?, class:'clickable', href:"/users/#{user.twitter_id}") do %>
-  <img class="user-icon" src="<%= user.image_url %>" datatoggle="tooltip" title="参加者：<%= user.name %>">
+  <img class="user-icon" loading="lazy" src="<%= user.image_url %>" datatoggle="tooltip" title="参加者：<%= user.name %>">
 <% end %>

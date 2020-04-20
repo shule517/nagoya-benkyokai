@@ -1,7 +1,7 @@
 <% content_for(:html_title) { @user.name + ' さんの勉強会一覧 - 名古屋勉強会らむだ' } %>
 <div class="col-md-8 col-xs-12" style="margin-left: 20px">
   <h2>
-    <img class="user-icon" src="<%= @user.image_url %>" datatoggle="tooltip">
+    <img class="user-icon" loading="lazy" src="<%= @user.image_url %>" datatoggle="tooltip">
     <%= "#{@user.name}" %>
     <small>
       <%= "(@#{@user.twitter_id})" %>
