@@ -1,0 +1,34 @@
+
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-messaging.js"></script>
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: 'AIzaSyA7eYUQGSJIsLaBePdMFWG3OWzVTfkic1I',
+    authDomain: 'peca-live.firebaseapp.com',
+    databaseURL: 'https://peca-live.firebaseio.com',
+    projectId: 'peca-live',
+    storageBucket: 'peca-live.appspot.com',
+    messagingSenderId: '759961842358',
+    appId: '1:759961842358:web:d0a0fbbf9be60fd9c72c17',
+    measurementId: 'G-G1XZ8N5NP2'
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+<script>
+  const messaging = firebase.messaging();
+  console.log(messaging.requestPermission());
+  messaging.usePublicVapidKey("省略");
+  messaging.requestPermission()
+    .then(function(){
+      console.log('have');
+      return messaging.getToken();
+    })
+    .then(function(token){
+      console.log(token);
+    })
+    .catch(function(err){
+      console.log('error');
+    });
+</script>
