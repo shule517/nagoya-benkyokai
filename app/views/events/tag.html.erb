@@ -26,7 +26,7 @@
         <div class="event-left col-xs-3" itemprop="startDate" content="<%= "#{event.year}-#{event.month}-#{event.day}" %>">
           <a href="<%= event.event_url %>">
             <p class="resizeimage">
-              <img itemprop="image" class="event-logo" src="<%= event.logo_url %>" style="width: 150px;margin-top: 10px;border: 1px #dddddd solid;border-radius: 10px;"><br>
+              <img itemprop="image" class="event-logo" loading="lazy" src="<%= event.logo_url %>" style="width: 150px;margin-top: 10px;border: 1px #dddddd solid;border-radius: 10px;"><br>
             </p>
           </a>
           <div class="event-place">
@@ -59,7 +59,7 @@
             </a>
             <% if event.group_url %>
             <a href="<%= event.group_url %>">
-              <img class="group-logo-small" src="<%= event.group_logo_url %>">
+              <img class="group-logo-small" loading="lazy" src="<%= event.group_logo_url %>">
               <%= event.group_title %>
             </a>
             <br>
@@ -78,12 +78,12 @@
               </a>
               <% event.owners.each do |user| %>
                 <% conditional_wrap('a', if:!user.twitter_id.empty?, class:'clickable', href:"/users/#{user.twitter_id}") do %>
-                  <img class="user-icon" src="<%= user.image_url %>" datatoggle="tooltip" title="管理者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
+                  <img class="user-icon" loading="lazy" src="<%= user.image_url %>" datatoggle="tooltip" title="管理者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
                 <% end %>
               <% end %>
               <% event.pure_users.each do |user| %>
                 <% conditional_wrap('a', if:!user.twitter_id.empty?, class:'clickable', href:"/users/#{user.twitter_id}") do %>
-                  <img class="user-icon" src="<%= user.image_url %>" datatoggle="tooltip" title="参加者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
+                  <img class="user-icon" loading="lazy" src="<%= user.image_url %>" datatoggle="tooltip" title="参加者：<%= user.name %>" style="margin-right: 2px; margin-bottom: 2px">
                 <% end %>
               <% end %>
               </div>
