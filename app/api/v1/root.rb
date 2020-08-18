@@ -11,6 +11,7 @@ module V1
     # Each APIs
     mount V1::Users
     mount V1::Events
+    mount V1::Counts
 
     # swagger doc
     add_swagger_documentation(

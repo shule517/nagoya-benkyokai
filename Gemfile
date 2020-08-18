@@ -37,6 +37,7 @@ gem "autoprefixer-rails" # 自動的にベンダープレフィックスを追�
 
 gem 'coffee-script-source', '1.8.0' # ExecJS::ProgramError TypeErrorの対応
 gem 'active_model_serializers'
+gem 'groupdate'
 
 # api
 gem 'grape'

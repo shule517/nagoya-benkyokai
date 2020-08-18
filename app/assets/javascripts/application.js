@@ -13,4 +13,6 @@
 //= require jquery3
 //= require jquery_ujs
 //= require turbolinks
+//= require d3.min
+//= require cal-heatmap.min
 //= require_tree .
